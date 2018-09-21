@@ -22,8 +22,17 @@ var pathColor = '#E6713B'  //圈住的path的color
 
 var start = new Point(view.center.x, view.center.y) //中圆点
 var end = new Point(view.center.x, view.center.y)
+//var pointPath = new Path()
+//pointPath.strokeWidth = 5;
+//pointPath.strokeColor = '#E6713B'
+//pointPath.add(new Point())
 
-
+var myPath = new Path.Circle(view.center, 10);
+myPath.strokeColor = '#E6713B';
+myPath.fillColor = '#E6713B';
+//myPath.strokeWidth = 5;
+//myPath.add(new Point(view.center.x, view.center.y) );
+//myPath.add(new Point(view.center.x+1, view.center.y));
 
 var myCircle = new Path.Circle(view.center, radius);
 myCircle.strokeColor  = circleColor
@@ -220,7 +229,7 @@ function onFrame(event) {
             //这里要计算近似值了
             var similly = output_distance.reduce(function(previousValue, currentValue, currentIndex, array){
                 return previousValue + currentValue
-            })
+            },20)
 
             console.log(similly/output_distance.length)
 
@@ -308,6 +317,39 @@ function onFrame(event) {
             document.getElementById('load_svg').appendChild(svgImg)
             //document.getElementById('myCanvas')
             //paper.project.exportSVG()
+
+            //转换成图片
+            document.getElementById('myCanvas').setAttribute("class", "backgroundred");
+            html2canvas(document.getElementById('myCanvas')).then(function(canvas){
+
+                var img = new Image()
+                img.src = canvas.toDataURL("image/png")
+                
+                //为了更换掉上面的页面
+                var svg = document.getElementById('deletedSVG')
+                svg.parentNode.removeChild(svg)
+
+                document.getElementById('load_svg').appendChild(img)
+
+
+                //var url = img.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
+                //window.open(url);
+                //canvas.toBlob()
+
+                html2canvas(document.getElementById("saveImg")).then(function(canvas){
+
+                    var img2 = new Image()
+                    img2.src = canvas.toDataURL("image/png")
+                    document.getElementById("saveImg").innerHTML = ''
+                    document.getElementById('saveImg').appendChild(img2)
+
+                    //var url = img.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
+                    //window.open(url);
+                    //canvas.toBlob()
+                })
+
+
+            })
 
 
 

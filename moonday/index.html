@@ -20,7 +20,7 @@
           <img class="title-img" src="images/title.svg">
           <img class="content-img" id="canvas-remove" src="images/m_start_img.svg"><!--需要加opacity的-->
           <!-- 将把上面的图片所占的地方给隐藏起来 -->
-              <canvas id="myCanvas" width="740" height="740" ></canvas>
+              <canvas class="io" id="myCanvas" width="740" height="740" ></canvas>
 
           <div class="fill-color-origion"><!--需要加opacity的-->
               <a id="btn-begin"  class="btn-a">
@@ -67,7 +67,7 @@
               </div>
               <div class="bottom">
                   <img src="images/f-day_img_openning_logo@2x.png" style="" />
-                  <img src="images/QRcode.svg" style="float:right;height: 2em;position: relative;right:-1.4em;">
+                  <img src="images/QRcode.png" style="float:right;height: 2em;width: 2em;">
               </div>
           </div>
       </div>
@@ -161,37 +161,7 @@
     //开始按
     function gtouchstart(){
 
-        html2canvas(document.getElementById('myCanvas')).then(function(canvas){
 
-            var img = new Image()
-            img.src = canvas.toDataURL("image/png")
-
-
-            //为了更换掉上面的页面
-            var svg = document.getElementById('deletedSVG')
-            svg.parentNode.removeChild(svg)
-
-            document.getElementById('load_svg').appendChild(img)
-
-
-            //var url = img.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
-            //window.open(url);
-            //canvas.toBlob()
-
-            html2canvas(document.getElementById("saveImg")).then(function(canvas){
-
-                var img2 = new Image()
-                img2.src = canvas.toDataURL("image/png")
-                document.getElementById("saveImg").innerHTML = ''
-                document.getElementById('saveImg').appendChild(img2)
-
-                //var url = img.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
-                //window.open(url);
-                //canvas.toBlob()
-            })
-
-
-        })
 
 
         timeOutEvent = setTimeout("longPress()",500);//这里设置定时器，定义长按500毫秒触发长按事件，时间可以自己改，个人感觉500毫秒非常合适
