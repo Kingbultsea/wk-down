@@ -17,7 +17,7 @@
           <img class="title-img" src="images/title.svg">
           <img class="content-img" id="canvas-remove" src="images/m_start_img.svg"><!--需要加opacity的-->
           <!-- 将把上面的图片所占的地方给隐藏起来 -->
-              <canvas id="myCanvas"></canvas>
+              <canvas id="myCanvas" width="640" height="640" ></canvas>
 
           <div class="fill-color-origion"><!--需要加opacity的-->
               <a id="btn-begin"  class="btn-a">
@@ -94,16 +94,16 @@
   <script src="js/paper-full.js" type="text/javascript" ></script>
   <script defer>
       //function onload(){
-          if(document.getElementById('canvas-remove').height == 0){
-              location.reload()
-          }
+          //if(document.getElementById('canvas-remove').height == 0){
+          //    location.reload()
+          //}
 
-          var canvasSize = document.getElementById('myCanvas')
-          canvasSize.width = document.getElementById('canvas-remove').height
-          canvasSize.height = document.getElementById('canvas-remove').height
+          //var canvasSize = document.getElementById('myCanvas')
+          //canvasSize.width = document.getElementById('canvas-remove').height
+          //canvasSize.height = document.getElementById('canvas-remove').height
 
-          console.log(canvasSize.width + canvasSize.height)
-          console.log('执行调整canvas')
+          //console.log(canvasSize.width + canvasSize.height)
+          //console.log('执行调整canvas')
       //}
       //setTimeout(onload,0)
 

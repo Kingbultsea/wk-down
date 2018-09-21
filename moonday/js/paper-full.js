@@ -12858,8 +12858,8 @@ new function() {
 					|| called;
 			}
 
-			if (called && !mouse.move || mouse.down && responds('mouseup'))
-				event.preventDefault();
+			if (called && !mouse.move || mouse.down && responds('mouseup')){}
+				//event.preventDefault();
 		},
 
 		_handleKeyEvent: function(type, event, key, character) {
