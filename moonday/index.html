@@ -92,18 +92,20 @@
   </div>
 
   <script src="js/paper-full.js" type="text/javascript" ></script>
-  <script>
-      if(document.getElementById('canvas-remove').height == 0){
-          location.reload()
-      }
+  <script async>
+      //function onload(){
+          if(document.getElementById('canvas-remove').height == 0){
+              location.reload()
+          }
 
-      var canvasSize = document.getElementById('myCanvas')
-      canvasSize.width = document.getElementById('canvas-remove').height
-      canvasSize.height = document.getElementById('canvas-remove').height
+          var canvasSize = document.getElementById('myCanvas')
+          canvasSize.width = document.getElementById('canvas-remove').height
+          canvasSize.height = document.getElementById('canvas-remove').height
 
-      console.log(canvasSize.width + canvasSize.height)
-      console.log('执行调整canvas')
-
+          console.log(canvasSize.width + canvasSize.height)
+          console.log('执行调整canvas')
+      //}
+      //setTimeout(onload,0)
 
   </script>
   <script src="js/main.js" type="text/paperscript" canvas="myCanvas"></script>
@@ -129,7 +131,6 @@
 
       document.getElementById('download_svg').addEventListener('click',()=>{
           location.reload()
-
       })
 
       document.getElementById('toDownloadPage').addEventListener('click',()=>{
