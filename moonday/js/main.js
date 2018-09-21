@@ -288,11 +288,11 @@ function onFrame(event) {
             console.log( pointList.length )
             //获取用户名称
             var getName = new XMLHttpRequest()
-            getName.open('GET', 'https://api.debug.psy-1.com/get/web/v1/wechat/user')
+            getName.open('GET', 'get/web/v1/wechat/user')
             getName.onreadystatechange = function(){
                 if(getName.readyState === 4){
                     if(getName.status === 200){
-                        alert(getName.body+"测试下")
+                        name.innerHTML =JSON.parse( getName.body ).data.nickname
                     }
                 }
                 //alert()
@@ -305,7 +305,7 @@ function onFrame(event) {
 
 
 
-            name.innerHTML = '口味：'+ favouriteMooncake[Math.floor(Math.random()*20)];
+            //name.innerHTML = '口味：'+ favouriteMooncake[Math.floor(Math.random()*20)];
             style.innerText = "风格：" + styleList[Math.floor(Math.random()*20)];
 
 
@@ -322,7 +322,7 @@ function onFrame(event) {
             //paper.project.exportSVG()
 
             //转换成图片
-            document.getElementById('myCanvas').setAttribute("class", "backgroundred");
+            /*document.getElementById('myCanvas').setAttribute("class", "backgroundred");
             html2canvas(document.getElementById('myCanvas')).then(function(canvas){
 
                 var img = new Image()
@@ -353,7 +353,7 @@ function onFrame(event) {
                 })
 
 
-            })
+            })*/
 
 
 
