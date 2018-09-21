@@ -295,7 +295,7 @@ function onFrame(event) {
                 //alert()
             }
             getName.onerror = function(msg){
-                //alert('错误了')
+                alert('错误了')
             }
             getName.send()
             //name.innerHtml
@@ -324,6 +324,7 @@ function onFrame(event) {
 
                 var img = new Image()
                 img.src = canvas.toDataURL("image/png")
+
 
                 //为了更换掉上面的页面
                 var svg = document.getElementById('deletedSVG')
