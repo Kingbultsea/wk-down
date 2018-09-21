@@ -268,7 +268,6 @@ function onFrame(event) {
                         alert(getName.body+"测试下")
                     }
                 }
-
             }
             //name.innerHtml
 
@@ -279,8 +278,11 @@ function onFrame(event) {
             document.getElementById('scoreTwo').src = "images/number_"+Math.floor(Math.random()*10)+".svg"
 
 
-            //显示成image
+            //paper转换
             document.getElementById('load_svg').appendChild(paper.project.exportSVG())
+
+
+
             /*var divContent = document.getElementById("load_svg").innerHTML;
             var width = document.getElementById('load_svg').clientWidth
             var height = document.getElementById('load_svg').clientHeight

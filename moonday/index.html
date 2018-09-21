@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
-
+<script src="js/html2canvas.min.js"></script>
   <img id="mooncake" src="images/mooncake_bg.svg"/>
   <!--<img id="mooncakeq" src="images/mooncake_bg.svg"/>-->
   <div class="main">
@@ -38,7 +38,7 @@
       <div class="score-tainer">
           <div class="score-border">
               <img src="images/finally_title.svg" />
-              <div id="load_svg" class="container">
+              <div id="load_svg" class="container"  ontouchstart="gtouchstart()" ontouchmove="gtouchmove()" ontouchend="gtouchend()">
                   <!--<button id="download_svg">test</button><!--下载按钮哦-->
                   <div class="container-score-frame">
                       <ul>
@@ -94,7 +94,7 @@
       </div>
 
   </div>
-
+<!-- <p id="test">sdjaskdja</p> -->
   <script src="js/paper-full.js" type="text/javascript" ></script>
   <script defer>
       //function onload(){
@@ -135,13 +135,71 @@
 
       document.getElementById('download_svg').addEventListener('click',()=>{
           location.reload()
+          //修复安卓刷新不了
+          window.location.href = window.location.href+"?pfid=1&" + Date.parse(new Date());
       })
 
       document.getElementById('toDownloadPage').addEventListener('click',()=>{
           document.getElementsByClassName("result-download")[0].style.display = 'flex'
       })
 
+      /*document.getElementById('test').addEventListener('click', ()=>{
+          //显示成image
+          document.getElementById('load_svg').appendChild(paper.project.exportSVG())
+          //转换 img
+          html2canvas(document.getElementById("load_svg")).then(function(canvas){
+              document.body.appendChild(canvas);
+          })
+      })*/
 
   </script>
+<script>
+    var timeOutEvent= 0//定时器
+    //开始按
+    function gtouchstart(){
+        timeOutEvent = setTimeout("longPress()",500);//这里设置定时器，定义长按500毫秒触发长按事件，时间可以自己改，个人感觉500毫秒非常合适
+        return false;
+    }
+    //手释放，如果在500毫秒内就释放，则取消长按事件，此时可以执行onclick应该执行的事件
+    function gtouchend(){
+        clearTimeout(timeOutEvent);//清除定时器
+        if(timeOutEvent!=0){
+            //这里写要执行的内容（尤如onclick事件）
+
+           // alert("你这是点击，不是长按");
+        }
+        return false;
+    }
+    //如果手指有移动，则取消所有事件，此时说明用户只是要移动而不是长按
+    function gtouchmove(){
+        clearTimeout(timeOutEvent);//清除定时器
+        timeOutEvent = 0;
+
+    }
+
+    //真正长按后应该执行的内容
+    function longPress(){
+        timeOutEvent = 0;
+
+        //转换 img
+        html2canvas(document.getElementById("load_svg")).then(function(canvas){
+
+            var img = new Image()
+            img.src = canvas.toDataURL("image/png")
+            //document.getElementById('load_svg').innerHTML = ''
+            //document.getElementById('load_svg').appendChild(img)
+
+            var url = img.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
+            window.open(url);
+            //canvas.toBlob()
+        })
+        //alert("长按事件触发发");
+    }
+
+
+
+</script>
+
+
 </body>
 </html>
