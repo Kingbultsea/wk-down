@@ -110,10 +110,9 @@ html {
             .score-frame .score-tainer .score-border .container .container-score-frame div .two {
               display: flex;
               flex-direction: column; }
-              .score-frame .score-tainer .score-border .container .container-score-frame div .two div:nth-of-type(1) img {
-                width: 1.5em; }
-              .score-frame .score-tainer .score-border .container .container-score-frame div .two div:nth-of-type(1) #scoreOne {
-                width: 1.5em; }
+              .score-frame .score-tainer .score-border .container .container-score-frame div .two div:nth-of-type(1) #scoreOne, .score-frame .score-tainer .score-border .container .container-score-frame div .two div:nth-of-type(1) #scoreTwo {
+                width: 1.5em;
+                height: 2.625em; }
               .score-frame .score-tainer .score-border .container .container-score-frame div .two div:nth-of-type(2) img {
                 width: 3em; }
         .score-frame .score-tainer .score-border .container svg {

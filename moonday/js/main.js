@@ -164,6 +164,8 @@ function onFrame(event) {
             //compoundPath.fillColor = '#f48f4b'
             //mooncake.opacity = 0.1
             //compoundPath.fillStyle = mooncake.style
+            //compoundPath.strokeColor = '#E6713B'
+            //compoundPath.strokeWidth = 3
             var compoundImage =  new Group([compoundPath,mooncake])
             compoundImage.setClipped(true)
 
@@ -267,8 +269,8 @@ function onFrame(event) {
 
 
 
-            offestResult.strokeColor = '#E6713B'
-            offestResult.strokeWidth = 3
+            //offestResult.strokeColor = '#E6713B'
+            //offestResult.strokeWidth = 3
             await = false
 
         }

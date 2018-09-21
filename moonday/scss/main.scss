@@ -149,11 +149,11 @@ html{
               display: flex;
               flex-direction: column;
               div:nth-of-type(1){
-                img{
+
+
+                #scoreOne, #scoreTwo{
                   width: 1.5em;
-                }
-                #scoreOne{
-                  width: 1.5em;
+                  height: 2.625em;
                 }
 
               }
@@ -161,6 +161,7 @@ html{
                 img{
                   width: 3em;
                 }
+
               }
             }
 
