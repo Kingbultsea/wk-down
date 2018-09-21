@@ -269,6 +269,7 @@ function onFrame(event) {
                     }
                 }
             }
+            getName.send()
             //name.innerHtml
 
 
