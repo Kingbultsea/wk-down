@@ -221,7 +221,7 @@ function onFrame(event) {
             var degreed = document.getElementById('degreed')
             var style = document.getElementById('style')
             var information = document.getElementById('information')
-            if(pointList.length <= 8){  changeOneSrc.src = 'images/number_0.svg';degreed.innerText = "等级：Lv1手残菜鸟"; information.innerText = ["这个月饼需要用显微镜才能看到","你确定这是一个月饼吗?"][Math.round(Math.random())] } //这是为了排除点的
+            if(pointList.length <= 5){  changeOneSrc.src = 'images/number_0.svg';degreed.innerText = "等级：Lv1手残菜鸟"; information.innerText = ["这个月饼需要用显微镜才能看到","你确定这是一个月饼吗?"][Math.round(Math.random())] } //这是为了排除点的
             else if(simillyTwo == 0.00){ changeOneSrc.src = 'images/number_9.svg';   }
             else if(simillyTwo == 0.01){ changeOneSrc.src = 'images/number_9.svg'; degreed.innerText = "等级：Lv9民间画圣"; information.innerText = ["心中有规矩便能徒手画月饼。","磨具做出的月饼，还没你画的圆！"][Math.round(Math.random())] }
             else if(simillyTwo == 0.02){ changeOneSrc.src = 'images/number_8.svg'; degreed.innerText = "等级：Lv8绘画宗师"; information.innerText = ["挥一挥手指，画个大饼来充饥。","举头望明月，低头大饼香。"][Math.round(Math.random())]}
@@ -231,8 +231,8 @@ function onFrame(event) {
             else if(simillyTwo == 0.06){ changeOneSrc.src = 'images/number_4.svg'; degreed.innerText = "等级：Lv4画室学徒"; information.innerText = ["你画的月饼是艺术，别人很难懂","你画的月饼，是被玉兔偷吃了吗？"][Math.round(Math.random())]}
             else if(simillyTwo == 0.07){ changeOneSrc.src = 'images/number_3.svg'; degreed.innerText = "等级：Lv3绘画能手"; information.innerText = '心中有月饼，画什么都能吃！'}
             else if(simillyTwo == 0.08){ changeOneSrc.src = 'images/number_2.svg'; degreed.innerText = "等级：Lv2新手临摹"; information.innerText = '月饼，在哪？完全没看见！'}
-            else if(simillyTwo == 0.09){ changeOneSrc.src = 'images/number_1.svg'; degreed.innerText = "等级：Lv2新手临摹"; information.innerText = '月饼，在哪？完全没看见！'}
-            else if(simillyTwo >= 0.10){ changeOneSrc.src = 'images/number_0.svg'; degreed.innerText = "等级：Lv1手残菜鸟"; information.innerText = ["月饼被谁吃了一口啦？","月饼被吃货藏起来了，你猜是谁"][Math.round(Math.random())] }
+            else if(simillyTwo == 0.09){ changeOneSrc.src = 'images/number_2.svg'; degreed.innerText = "等级：Lv2新手临摹"; information.innerText = '月饼，在哪？完全没看见！'}
+            else if(simillyTwo >= 0.10){ changeOneSrc.src = 'images/number_1.svg'; degreed.innerText = "等级：Lv1手残菜鸟"; information.innerText = ["月饼被谁吃了一口啦？","月饼被吃货藏起来了，你猜是谁"][Math.round(Math.random())] }
 
             name.innerHTML = '口味：'+ favouriteMooncake[Math.floor(Math.random()*20)];style.innerText = "风格：" + styleList[Math.floor(Math.random()*20)];
             document.getElementById('scoreTwo').src = "images/number_"+Math.floor(Math.random()*10)+".svg"
