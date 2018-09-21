@@ -8,7 +8,8 @@ var speed = 0.09
 //这里是为了适配的
 console.log('加载')
 //document.getElementById('mooncake').src = 'images/bg'+ ['1', '2', '3'][randomNum(0,3)]
-
+//苹果问题
+document.body.style.overflow="hidden";
 
 
 //动画开始的时候，与圆心链接的线条的样式
