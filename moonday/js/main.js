@@ -237,8 +237,8 @@ function onFrame(event) {
             document.getElementsByClassName('score-frame')[0].style.visibility = 'visible'
             //这里dom还没有更新所以你下面修改dom是做不到的
 
-
-
+            console.log(pointList.length)
+            if(pointList.length > 250 && ( similly <45 || similly > 30)){ similly -= 30}
             //获取总分
             var simillyTwo = similly.toFixed(2);
             console.log(simillyTwo)
@@ -269,16 +269,16 @@ function onFrame(event) {
             //"images/number_"+ randomNum(0,3) +".svg"
 
             if(pointList.length <= 40){  changeOneSrc.src = 'images/number_0.svg'; zero.src = "images/number_"+ randomNum(5,9) +".svg" ;degreed.innerText = "等级：Lv1手残菜鸟"; information.innerText = ["这个月饼需要用显微镜才能看到","你确定这是一个月饼吗?"][Math.round(Math.random())] } //这是为了排除点的
-            else if(similly>=0 && similly<=15){ changeOneSrc.src = 'images/number_9.svg';  zero.src = "images/number_"+ randomNum(5,9) +".svg" }
+            else if(similly>=0 && similly<=15){ changeOneSrc.src = 'images/number_9.svg';  zero.src = "images/number_"+ randomNum(5,9) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv9民间画圣"; information.innerText = ["心中有规矩便能徒手画月饼。","磨具做出的月饼，还没你画的圆！"][Math.round(Math.random())] }
             else if(similly>15 && similly<=19){ changeOneSrc.src = 'images/number_9.svg';  zero.src = "images/number_"+ randomNum(0,4) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv9民间画圣"; information.innerText = ["心中有规矩便能徒手画月饼。","磨具做出的月饼，还没你画的圆！"][Math.round(Math.random())] }
             else if(similly>19 && similly<=23){ changeOneSrc.src = 'images/number_8.svg';  zero.src = "images/number_"+ randomNum(5,9) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv8绘画宗师"; information.innerText = ["挥一挥手指，画个大饼来充饥。","举头望明月，低头大饼香。"][Math.round(Math.random())]}
-            else if(similly>23 && similly<=27){ changeOneSrc.src = 'images/number_9.svg';  zero.src = "images/number_"+ randomNum(0,4) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv7天才画家"; information.innerText = ["十五的月饼，十六圆。","画不圆的月饼，在你心里骚动。"][Math.round(Math.random())]}
-            else if(similly>27 && similly<=31){ changeOneSrc.src = 'images/number_7.svg';  zero.src = "images/number_"+ randomNum(0,9) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv6灵魂画手"; information.innerText = ["画月饼？不存在的，这明明是个哈密瓜。","别人画月饼，你画个盘子。"][Math.round(Math.random())]}
-            else if(similly>31 && similly<=35){ changeOneSrc.src = 'images/number_8.svg';  zero.src = "images/number_"+ randomNum(0,9) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv5绘画达人"; information.innerText = ["你画的月饼是艺术，别人很难懂！","画月饼？不存在的，这明明是个哈密瓜。"][Math.round(Math.random())]}
-            else if(similly>35 && similly<=40){ changeOneSrc.src = 'images/number_7.svg';  zero.src = "images/number_"+ randomNum(0,9) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv4画室学徒"; information.innerText = ["你画的月饼是艺术，别人很难懂","你画的月饼，是被玉兔偷吃了吗？"][Math.round(Math.random())]}
-            else if(similly>40 && similly<=50){ changeOneSrc.src = 'images/number_4.svg';  zero.src = "images/number_"+ randomNum(0,9) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv3绘画能手"; information.innerText = '心中有月饼，画什么都能吃！'}
-            else if(similly>50 && similly<=60){ changeOneSrc.src = 'images/number_3.svg';  zero.src = "images/number_"+ randomNum(0,9) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv2新手临摹"; information.innerText = '月饼，在哪？完全没看见！'}
-            else if(similly>60 && similly<=80){ changeOneSrc.src = 'images/number_2.svg';  zero.src = "images/number_"+ randomNum(0,9) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv2新手临摹"; information.innerText = '月饼，在哪？完全没看见！'}
+            else if(similly>23 && similly<=27){ changeOneSrc.src = 'images/number_8.svg';  zero.src = "images/number_"+ randomNum(0,4) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv8绘画宗师"; information.innerText = ["十五的月饼，十六圆。","画不圆的月饼，在你心里骚动。"][Math.round(Math.random())]}
+            else if(similly>27 && similly<=31){ changeOneSrc.src = 'images/number_7.svg';  zero.src = "images/number_"+ randomNum(6,9) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv7绘画宗师"; information.innerText = ["画月饼？不存在的，这明明是个哈密瓜。","别人画月饼，你画个盘子。"][Math.round(Math.random())]}
+            else if(similly>31 && similly<=35){ changeOneSrc.src = 'images/number_7.svg';  zero.src = "images/number_"+ randomNum(3,5) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv7天才画家"; information.innerText = ["你画的月饼是艺术，别人很难懂！","画月饼？不存在的，这明明是个哈密瓜。"][Math.round(Math.random())]}
+            else if(similly>35 && similly<=40){ changeOneSrc.src = 'images/number_7.svg';  zero.src = "images/number_"+ randomNum(1,2) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv7天才画家"; information.innerText = ["你画的月饼是艺术，别人很难懂","你画的月饼，是被玉兔偷吃了吗？"][Math.round(Math.random())]}
+            else if(similly>40 && similly<=50){ changeOneSrc.src = 'images/number_6.svg';  zero.src = "images/number_"+ randomNum(6,9) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv6灵魂画手"; information.innerText = '心中有月饼，画什么都能吃！'}
+            else if(similly>50 && similly<=60){ changeOneSrc.src = 'images/number_6.svg';  zero.src = "images/number_"+ randomNum(0,5) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv6灵魂画手"; information.innerText = ["你画的月饼是艺术，别人很难懂","你画的月饼，是被玉兔偷吃了吗？"][Math.round(Math.random())]}
+            else if(similly>60 && similly<=80){ changeOneSrc.src = 'images/number_5.svg';  zero.src = "images/number_"+ randomNum(0,9) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv5绘画达人"; information.innerText = '月饼，在哪？完全没看见！'}
             else if(similly>80){ changeOneSrc.src = 'images/number_1.svg'; zero.src = "images/number_"+ randomNum(5,9) +".svg";degreed.innerText = "等级：Lv1手残菜鸟"; information.innerText = ["月饼被谁吃了一口啦？","月饼被吃货藏起来了，你猜是谁"][Math.round(Math.random())] }
 
             //console.log( randomNum(0,4) )
