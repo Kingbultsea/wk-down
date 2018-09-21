@@ -236,6 +236,7 @@ function onFrame(event) {
             //成绩单
             document.getElementsByClassName('score-frame')[0].style.visibility = 'visible'
             //这里dom还没有更新所以你下面修改dom是做不到的
+            //a
 
             console.log(pointList.length)
             if(pointList.length > 250 && ( similly <40 || similly > 35)){ similly -= 16}
