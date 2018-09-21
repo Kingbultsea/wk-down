@@ -26,6 +26,7 @@ var end = new Point(view.center.x, view.center.y)
 
 var myCircle = new Path.Circle(view.center, radius);
 myCircle.strokeColor  = circleColor
+myCircle.strokeWidth = 5
 //myCircle.remove()  这是删除那个圆的边框的
 
 var pointer = new Path()
@@ -63,7 +64,7 @@ function onMouseDrag(event) {
     path.add(event.point)
 }
 
-//var mooncake
+var mooncake
 
 function onMouseUp(event){
 
@@ -74,7 +75,7 @@ function onMouseUp(event){
     path.closed = true
 
     //尝试clipMask来获取那个月饼
-    var mooncake = new Raster('mooncake')
+    mooncake = new Raster('mooncake')
     mooncake.size = paper.view.viewSize
     mooncake.position = view.center
     mooncake.opacity = 0.2
@@ -157,18 +158,23 @@ function onFrame(event) {
         console.log("开始计算")
         if(offestResultOpacity === 0.2){
             //绘制月饼
-            //var mooncake = new Raster('mooncake')
-            //mooncake.size = paper.view.viewSize
-            //mooncake.position = view.center
+            var mooncake = new Raster('mooncake')
+            mooncake.size = paper.view.viewSize
+            mooncake.position = view.center
             //compoundPath.fillColor = '#f48f4b'
             //mooncake.opacity = 0.1
             //compoundPath.fillStyle = mooncake.style
+            var compoundImage =  new Group([compoundPath,mooncake])
+            compoundImage.setClipped(true)
 
 
             //compoundPath.visible = false
             //显示月饼
             //mooncake.opacity = 0
-            compoundPath.fillColor = '#f48f4b'
+            //compoundPath.fillColor = '#f48f4b'
+            mooncake.bringToFront()
+
+            //compoundPath.drawImage(img)
 
             //compoundPath.clipMask = true
             //我想关闭之后添加一个月饼吧
