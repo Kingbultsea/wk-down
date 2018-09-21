@@ -319,7 +319,7 @@ function onFrame(event) {
             //paper.project.exportSVG()
 
             //转换成图片
-            document.getElementById('myCanvas').setAttribute("class", "backgroundred");
+            /*document.getElementById('myCanvas').setAttribute("class", "backgroundred");
             html2canvas(document.getElementById('myCanvas')).then(function(canvas){
 
                 var img = new Image()
@@ -349,7 +349,7 @@ function onFrame(event) {
                 })
 
 
-            })
+            })*/
 
 
 
