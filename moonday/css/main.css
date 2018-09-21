@@ -3,7 +3,8 @@
   padding: 0; }
 
 html {
-  font-size: 2.3em; }
+  font-size: 2.3em;
+  overflow: hidden; }
 
 .main {
   width: 100vw;
@@ -68,6 +69,7 @@ html {
     width: 100%;
     height: 100%;
     padding: 2em;
+    padding-bottom: 0em;
     background-size: 100% 100%;
     display: flex; }
     .score-frame .score-tainer .score-border {
@@ -128,6 +130,12 @@ html {
       .score-frame .score-tainer .score-border .bottom img {
         width: 6em;
         padding: 0.5em; }
+  .score-frame .small-tips {
+    font-size: 0.7em;
+    text-align: right;
+    margin-right: 2rem;
+    color: #8B572A;
+    opacity: 0.7; }
   .score-frame .score-bottom {
     flex-grow: 1;
     display: flex;

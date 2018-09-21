@@ -155,7 +155,7 @@ function onFrame(event) {
         }
 
         //console.log(offestResult.opacity)
-        console.log("开始计算")
+        //console.log("开始计算")
         if(offestResultOpacity === 0.2){
             //绘制月饼
             var mooncake = new Raster('mooncake')
@@ -224,6 +224,7 @@ function onFrame(event) {
         ]
 
 
+
             //计算得分，修改成绩 姓名等级风格
             var changeOneSrc = document.getElementById('scoreOne')
             var name = document.getElementById('name')
@@ -243,7 +244,8 @@ function onFrame(event) {
             else if(simillyTwo == 0.09){ changeOneSrc.src = 'images/number_2.svg'; degreed.innerText = "等级：Lv2新手临摹"; information.innerText = '月饼，在哪？完全没看见！'}
             else if(simillyTwo >= 0.10){ changeOneSrc.src = 'images/number_1.svg'; degreed.innerText = "等级：Lv1手残菜鸟"; information.innerText = ["月饼被谁吃了一口啦？","月饼被吃货藏起来了，你猜是谁"][Math.round(Math.random())] }
 
-            name.innerHTML = '口味：'+ favouriteMooncake[Math.floor(Math.random()*20)];style.innerText = "风格：" + styleList[Math.floor(Math.random()*20)];
+            name.innerHTML = '口味：'+ favouriteMooncake[Math.floor(Math.random()*20)];
+            style.innerText = "风格：" + styleList[Math.floor(Math.random()*20)];
             document.getElementById('scoreTwo').src = "images/number_"+Math.floor(Math.random()*10)+".svg"
 
 
@@ -288,3 +290,6 @@ function onFrame(event) {
 
 }
 
+function getUserName(){
+
+}
