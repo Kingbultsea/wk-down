@@ -73,10 +73,10 @@ function onMouseUp(event){
     path.closed = true
 
     //尝试clipMask来获取那个月饼
-    var mooncake = new Raster('mooncake')
-    mooncake.size = paper.view.viewSize
-    mooncake.position = view.center
-    mooncake.opacity = 0.2
+    //var mooncake = new Raster('mooncake')
+    //mooncake.size = paper.view.viewSize
+    //mooncake.position = view.center
+    //mooncake.opacity = 0.2
     //path._clipMask = true
 
     //开始onFrame动画
@@ -154,13 +154,18 @@ function onFrame(event) {
 
         //console.log(offestResult.opacity)
         if(offestResultOpacity === 0.2){
+
             //绘制月饼
             //var mooncake = new Raster('mooncake')
             //mooncake.size = paper.view.viewSize
             //mooncake.position = view.center
-            //compoundPath.fillColor = '#f48f4b'
-            //mooncake.opacity = 0.1
-            //compoundPath.fillStyle = mooncake.style
+            //compoundPath.clipMask = true
+
+            var clone = compoundPath.clone()
+
+
+            clone.fillColor = 'red'
+            clone.rotate(45)
 
 
             //compoundPath.visible = false
@@ -168,6 +173,8 @@ function onFrame(event) {
             //mooncake.opacity = 0
 
             //compoundPath.clipMask = true
+            //var cl = new Path.Circle(view.center, radius);
+
             //我想关闭之后添加一个月饼吧
             //var mooncakeShadow = new Raster('mooncake')
             //mooncakeShadow.size = paper.view.viewSize
