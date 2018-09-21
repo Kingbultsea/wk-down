@@ -186,11 +186,11 @@
 
             var img = new Image()
             img.src = canvas.toDataURL("image/png")
-            //document.getElementById('load_svg').innerHTML = ''
-            //document.getElementById('load_svg').appendChild(img)
+            document.getElementById('load_svg').innerHTML = ''
+            document.getElementById('load_svg').appendChild(img)
 
-            var url = img.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
-            window.open(url);
+            //var url = img.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
+            //window.open(url);
             //canvas.toBlob()
         })
         //alert("长按事件触发发");

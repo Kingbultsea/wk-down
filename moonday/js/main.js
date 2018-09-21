@@ -268,6 +268,10 @@ function onFrame(event) {
                         alert(getName.body+"测试下")
                     }
                 }
+                //alert()
+            }
+            getName.onerror = function(msg){
+                //alert('错误了')
             }
             getName.send()
             //name.innerHtml
@@ -280,7 +284,12 @@ function onFrame(event) {
 
 
             //paper转换
-            document.getElementById('load_svg').appendChild(paper.project.exportSVG())
+            var ImageNew = new Image()
+            ImageNew.src = document.getElementById('myCanvas').toDataURL()
+            //console.log(ImageNew.src)
+            document.getElementById('load_svg').appendChild(ImageNew)
+            //document.getElementById('myCanvas')
+            //paper.project.exportSVG()
 
 
 
