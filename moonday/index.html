@@ -35,8 +35,8 @@
 
   </div>
   <div class="score-frame">
-      <div class="score-tainer">
-          <div class="score-border">
+      <div  class="score-tainer">
+          <div class="score-border" id="saveImg">
               <img src="images/finally_title.svg" />
               <div id="load_svg" class="container"  ontouchstart="gtouchstart()" ontouchmove="gtouchmove()" ontouchend="gtouchend()">
                   <!--<button id="download_svg">test</button><!--下载按钮哦-->
@@ -182,17 +182,38 @@
         timeOutEvent = 0;
 
         //转换 img
-        html2canvas(document.getElementById("load_svg")).then(function(canvas){
+        html2canvas(document.getElementById('myCanvas')).then(function(canvas){
 
             var img = new Image()
             img.src = canvas.toDataURL("image/png")
-            document.getElementById('load_svg').innerHTML = ''
+
+
+            //为了更换掉上面的页面
+            var svg = document.getElementById('deletedSVG')
+            svg.parentNode.removeChild(svg)
+
             document.getElementById('load_svg').appendChild(img)
+
 
             //var url = img.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
             //window.open(url);
             //canvas.toBlob()
+
+            html2canvas(document.getElementById("saveImg")).then(function(canvas){
+
+                var img2 = new Image()
+                img2.src = canvas.toDataURL("image/png")
+                document.getElementById("saveImg").innerHTML = ''
+                document.getElementById('saveImg').appendChild(img2)
+
+                //var url = img.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
+                //window.open(url);
+                //canvas.toBlob()
+            })
+
+
         })
+
         //alert("长按事件触发发");
     }
 

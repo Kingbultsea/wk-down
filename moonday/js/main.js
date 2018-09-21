@@ -189,7 +189,7 @@ function onFrame(event) {
             //显示月饼
             //mooncake.opacity = 0
             //compoundPath.fillColor = '#f48f4b'
-            mooncake.bringToFront()
+            //mooncake.bringToFront()
 
             //compoundPath.drawImage(img)
 
@@ -284,12 +284,17 @@ function onFrame(event) {
 
 
             //paper转换
-            var ImageNew = new Image()
-            ImageNew.src = document.getElementById('myCanvas').toDataURL()
+            //var ImageNew = new Image()
+            //ImageNew.src = document.getElementById('myCanvas').toDataURL()
             //console.log(ImageNew.src)
-            document.getElementById('load_svg').appendChild(ImageNew)
+            var svgImg = paper.project.exportSVG()
+            svgImg.id = 'deletedSVG'
+            //console.log(svgImg.id)
+            document.getElementById('load_svg').appendChild(svgImg)
             //document.getElementById('myCanvas')
             //paper.project.exportSVG()
+
+
 
 
 
