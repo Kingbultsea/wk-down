@@ -62,7 +62,7 @@ function onMouseDrag(event) {
     path.add(event.point)
 }
 
-var mooncake
+//var mooncake
 
 function onMouseUp(event){
 
@@ -73,7 +73,7 @@ function onMouseUp(event){
     path.closed = true
 
     //尝试clipMask来获取那个月饼
-    mooncake = new Raster('mooncake')
+    var mooncake = new Raster('mooncake')
     mooncake.size = paper.view.viewSize
     mooncake.position = view.center
     mooncake.opacity = 0.2

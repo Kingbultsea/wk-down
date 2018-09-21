@@ -183,7 +183,7 @@ html{
       }
       .bottom{
         img{
-          width: 4em;
+          width: 6em;
           padding: 0.5em;
         }
       }
@@ -197,6 +197,7 @@ html{
     flex-grow: 1;
     display: flex;
     justify-content: space-around;
+    margin-bottom: 1.4em;
   }
 }
 

@@ -127,12 +127,13 @@ html {
           font-size: 1em;
           color: #8B572A; }
       .score-frame .score-tainer .score-border .bottom img {
-        width: 4em;
+        width: 6em;
         padding: 0.5em; }
   .score-frame .score-bottom {
     flex-grow: 1;
     display: flex;
-    justify-content: space-around; }
+    justify-content: space-around;
+    margin-bottom: 1.4em; }
 
 .btn {
   position: relative;
