@@ -137,7 +137,7 @@ function onFrame(event) {
         var offestResult = myCircle.subtract(result)
         offestResult.fillColor = '#f48f4b'
         offestResult.opacity = offestResultOpacity
-        offestResultOpacity += 0.005
+        offestResultOpacity += 0.01
 
         //path画出了外面的那部分
         var outerPath = path.subtract(myCircle)
@@ -153,6 +153,7 @@ function onFrame(event) {
         }
 
         //console.log(offestResult.opacity)
+        console.log("开始计算")
         if(offestResultOpacity === 0.2){
             //绘制月饼
             //var mooncake = new Raster('mooncake')
@@ -177,7 +178,7 @@ function onFrame(event) {
 
             //这里开始计算距离
             //超级难计算...
-            console.log("开始计算")
+            //console.log("开始计算")
 
             var output_distance = []
             pointList.forEach(function (value, index, array) {
