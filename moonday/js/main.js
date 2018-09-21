@@ -29,11 +29,18 @@ myCircle.strokeColor  = circleColor
 myCircle.strokeWidth = 5
 //myCircle.remove()  这是删除那个圆的边框的
 
+
 var pointer = new Path()
 pointer.strokeColor = pointerColor
 pointer.moveTo(start)
 pointer.lineTo(start + [0, radius])
-pointer.opacity = 0;
+pointer.opacity = 0
+pointer.strokeWidth = 3
+
+//var pointer2= new Path()
+//pointer2.strokeColor = pointerColor
+//pointer2.moveTo(start)
+//pointer2.lineTo(start + [0, radius])
 
 
 
@@ -96,9 +103,14 @@ var await = true
 var offestResultOpacity = 0
 
 function onFrame(event) {
+   // var mooncakeInner = new Raster('mooncake')
+   // mooncakeInner.size = paper.view.viewSize
+   // mooncakeInner.position = view.center
+   // mooncakeInner.opacity = 1
 
-    if(myCircle.opacity >= 0.05) { myCircle.opacity -= 0.02; pointer.opacity += 0.02 }else{ myCircle.opacity = 0.00000001 ; pointer.opacity = 1}
 
+    if(myCircle.opacity >= 0.05) { myCircle.opacity -= 0.02; pointer.opacity += 0.02 ; }else{ myCircle.opacity = 0.00000001 ; pointer.opacity = 1;}
+    //console.log(mooncakeInner.opacity)
 
 
 
@@ -108,6 +120,7 @@ function onFrame(event) {
         //指针旋转
         pointer.rotate(speed * 56.5, start)
         myCircle.opacity = 1
+
 
 
 
@@ -132,6 +145,8 @@ function onFrame(event) {
     if(angle <= -6.3  && await){
         //删除指针
         pointer.remove()
+        //pointer2.remove()
+        console.log('这里错误吗？')
 
         var result =  myCircle.subtract(path)
         //result.fillColor = 'red'
