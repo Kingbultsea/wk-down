@@ -238,7 +238,9 @@ function onFrame(event) {
             //这里dom还没有更新所以你下面修改dom是做不到的
 
             console.log(pointList.length)
-            if(pointList.length > 250 && ( similly <45 || similly > 30)){ similly -= 30}
+            if(pointList.length > 250 && ( similly <40 || similly > 35)){ similly -= 16}
+            else if(pointList.length > 250 && ( similly <35 || similly > 32)){ similly -= 17}
+            else if(pointList.length > 250 && ( similly <32 || similly > 20)){ similly -= 18}
             //获取总分
             var simillyTwo = similly.toFixed(2);
             console.log(simillyTwo)
