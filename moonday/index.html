@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+
+  <img id="mooncake" src="images/mooncake_bg.svg"/>
+  <div class="main">
+
+      <div id="addCanvas" class="center-content">
+          <div class="top">
+              <img src="images/f-day_img_openning_logo1.svg" />
+          </div>
+          <img class="title-img" src="images/title.svg">
+          <img class="content-img" id="canvas-remove" src="images/m_start_img.svg"><!--需要加opacity的-->
+          <!-- 将把上面的图片所占的地方给隐藏起来 -->
+              <canvas id="myCanvas"></canvas>
+
+          <div class="fill-color-origion"><!--需要加opacity的-->
+              <a id="btn-begin"  class="btn-a">
+                  <div class="btn">
+                  <img src="images/m_btn.svg">
+                  <p>马上开始</p>
+                  </div>
+              </a>
+              <div class="download" >
+              <img id="download" src="images/f-day_btn_resultcard.gif" />
+              </div>
+          </div>
+      </div>
+
+  </div>
+  <div class="score-frame">
+      <div class="score-tainer">
+          <div class="score-border">
+              <img src="images/finally_title.svg" />
+              <div id="load_svg" class="container">
+                  <!--<button id="download_svg">test</button><!--下载按钮哦-->
+                  <div class="container-score-frame">
+                      <ul>
+                          <li id="degreed">等级：</li>
+                          <li id="name">口味：</li>
+                          <li id="style">风格:</li>
+                      </ul>
+                      <div>
+                          <div class="one">成绩:</div>
+                          <div class="two">
+                              <div>
+                                  <img id="scoreOne" src="images/number_1.svg"/>
+                                  <img id="scoreTwo" src="images/number_0.svg"/>
+                              </div>
+                              <div>
+                                  <img src="images/line.svg"/>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div id="information" class="infomation">
+                      zz
+                  </div>
+              </div>
+              <div class="bottom">
+                  <img src="images/logo.svg" />
+              </div>
+          </div>
+      </div>
+      <div class="score-bottom">
+          <div id="toDownloadPage" class="btn">
+              <img src="images/m_btn.png"/>
+              <p>阖家团圆</p>
+          </div>
+          <div class="btn" id="download_svg">
+              <img src="images/m_btn.svg" />
+              <p>再玩一次</p>
+          </div>
+
+      </div>
+  </div>
+  <div class="result-download">
+      <img  src="images/result_download.svg"/>
+      <div class="background" >
+          <p>月下酣眠，暖声陪伴。</p> <p>梦醒时分，记录睡眠。</p> <p>小睡眠App让你拥有好睡眠！</p>
+          <div class="btn">
+              <img src="images/m_btn.png"/>
+              <p>点击下载</p>
+          </div>
+      </div>
+
+  </div>
+
+  <script src="js/paper-full.js" type="text/javascript" ></script>
+  <script>
+      if(document.getElementById('canvas-remove').height == 0){
+          location.reload()
+      }
+
+      var canvasSize = document.getElementById('myCanvas')
+      canvasSize.width = document.getElementById('canvas-remove').height
+      canvasSize.height = document.getElementById('canvas-remove').height
+
+      console.log(canvasSize.width + canvasSize.height)
+      console.log('执行调整canvas')
+
+
+  </script>
+  <script src="js/main.js" type="text/paperscript" canvas="myCanvas"></script>
+  <script>
+      function beginTheGame(){
+          this.classList.add('opacity')
+          document.getElementsByClassName('fill-color-origion')[0].classList.add('opacity')
+          document.getElementsByClassName('content-img')[0].classList.add('opacity')
+          this.classList.remove('btn-a')
+          this.removeEventListener('click',beginTheGame)
+          setTimeout(addCanvas, 700)
+      }
+
+      function addCanvas(){
+          document.getElementById('myCanvas').style.display = 'block'
+          document.getElementById("addCanvas").removeChild(document.getElementById('canvas-remove'))
+      }
+
+
+
+      document.getElementById('btn-begin').addEventListener('click',beginTheGame.bind(document.getElementById('btn-begin')))
+
+
+      document.getElementById('download_svg').addEventListener('click',()=>{
+          location.reload()
+
+      })
+
+      document.getElementById('toDownloadPage').addEventListener('click',()=>{
+          document.getElementsByClassName("result-download")[0].style.display = 'flex'
+      })
+
+
+  </script>
+</body>
+</html>
