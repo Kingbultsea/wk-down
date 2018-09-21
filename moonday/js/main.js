@@ -38,7 +38,8 @@ pointer.opacity = 0;
 
 
 var path = new Path({
-    strokeColor: pathColor
+    strokeColor: pathColor,
+    strokeWidth: 5
 })
 
 
@@ -137,7 +138,7 @@ function onFrame(event) {
         var offestResult = myCircle.subtract(result)
         offestResult.fillColor = '#f48f4b'
         offestResult.opacity = offestResultOpacity
-        offestResultOpacity += 0.01
+        offestResultOpacity += 0.04
 
         //path画出了外面的那部分
         var outerPath = path.subtract(myCircle)
