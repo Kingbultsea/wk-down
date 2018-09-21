@@ -259,7 +259,7 @@ function onFrame(event) {
             var zero = document.getElementById('scoreTwo')
             //"images/number_"+ randomNum(0,3) +".svg"
 
-            if(pointList.length <= 20){  changeOneSrc.src = 'images/number_0.svg'; zero.src = "images/number_"+ randomNum(5,9) +".svg" ;degreed.innerText = "等级：Lv1手残菜鸟"; information.innerText = ["这个月饼需要用显微镜才能看到","你确定这是一个月饼吗?"][Math.round(Math.random())] } //这是为了排除点的
+            if(pointList.length <= 40){  changeOneSrc.src = 'images/number_0.svg'; zero.src = "images/number_"+ randomNum(5,9) +".svg" ;degreed.innerText = "等级：Lv1手残菜鸟"; information.innerText = ["这个月饼需要用显微镜才能看到","你确定这是一个月饼吗?"][Math.round(Math.random())] } //这是为了排除点的
             else if(similly>=0 && similly<=15){ changeOneSrc.src = 'images/number_9.svg';  zero.src = "images/number_"+ randomNum(5,9) +".svg" }
             else if(similly>15 && similly<=19){ changeOneSrc.src = 'images/number_9.svg';  zero.src = "images/number_"+ randomNum(0,4) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv9民间画圣"; information.innerText = ["心中有规矩便能徒手画月饼。","磨具做出的月饼，还没你画的圆！"][Math.round(Math.random())] }
             else if(similly>19 && similly<=23){ changeOneSrc.src = 'images/number_8.svg';  zero.src = "images/number_"+ randomNum(5,9) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv8绘画宗师"; information.innerText = ["挥一挥手指，画个大饼来充饥。","举头望明月，低头大饼香。"][Math.round(Math.random())]}
