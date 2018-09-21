@@ -179,7 +179,7 @@ html {
     .result-download .background .btn img {
       width: 8em; }
 
-#mooncake {
+#mooncake1, #mooncake2, #mooncake3 {
   display: none; }
 
 #myCanvas {

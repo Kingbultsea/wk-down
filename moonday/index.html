@@ -7,7 +7,9 @@
 </head>
 <body>
 <script src="js/html2canvas.min.js"></script>
-  <img id="mooncake" src="images/mooncake_bg.svg"/>
+  <img id="mooncake1" src="images/bg1.svg"/>
+  <img id="mooncake2" src="images/bg2.svg"/>
+  <img id="mooncake3" src="images/bg3.svg"/>
   <!--<img id="mooncakeq" src="images/mooncake_bg.svg"/>-->
   <div class="main">
 
@@ -64,7 +66,8 @@
                   </div>
               </div>
               <div class="bottom">
-                  <img src="images/f-day_img_openning_logo@2x.png" />
+                  <img src="images/f-day_img_openning_logo@2x.png" style="" />
+                  <img src="images/QRcode.svg" style="float:right;height: 2em;position: relative;right:-1.4em;">
               </div>
           </div>
       </div>
@@ -217,8 +220,23 @@
         //alert("长按事件触发发");
     }
 
+    setTimeout(()=>{
+       // document.getElementById('mooncake').src = 'images/bg'+ ['1', '2', '3'][randomNum(0,2)]
+    },0)
 
-
+    function randomNum(minNum,maxNum){
+        switch(arguments.length){
+            case 1:
+                return parseInt(Math.random()*minNum+1,10);
+                break;
+            case 2:
+                return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10);
+                break;
+            default:
+                return 0;
+                break;
+        }
+    }
 </script>
 
 

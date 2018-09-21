@@ -7,6 +7,7 @@ var speed = 0.09
 
 //这里是为了适配的
 console.log('加载')
+//document.getElementById('mooncake').src = 'images/bg'+ ['1', '2', '3'][randomNum(0,3)]
 
 
 
@@ -82,6 +83,8 @@ function onMouseUp(event){
     path.closed = true
 
     //尝试clipMask来获取那个月饼
+    // document.getElementById('mooncake').src = 'images/bg'+ ['1', '2', '3'][randomNum(0,2)]
+
     mooncake = new Raster('mooncake')
     mooncake.size = paper.view.viewSize
     mooncake.position = view.center
@@ -173,7 +176,7 @@ function onFrame(event) {
         //console.log("开始计算")
         if(offestResultOpacity === 0.2){
             //绘制月饼
-            var mooncake = new Raster('mooncake')
+            var mooncake = new Raster('mooncake'+ ['1', '2', '3'][randomNum(0,2)])
             mooncake.size = paper.view.viewSize
             mooncake.position = view.center
             //compoundPath.fillColor = '#f48f4b'
@@ -340,3 +343,4 @@ function onFrame(event) {
 function getUserName(){
 
 }
+
