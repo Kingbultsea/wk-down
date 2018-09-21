@@ -40,7 +40,7 @@ html {
     .main .center-content .fill-color-origion {
       width: 100vw;
       position: relative;
-      top: -1px;
+      top: -0.1em;
       background-color: #f59a55;
       display: flex;
       align-items: center;
