@@ -49,7 +49,7 @@ html {
       .main .center-content .fill-color-origion .download {
         position: relative;
         bottom: 0; }
-        .main .center-content .fill-color-origion .download img {
+        .main .center-content .fill-color-origion .download a img {
           width: 6em; }
 
 .score-frame {
