@@ -175,7 +175,7 @@ function onFrame(event) {
         //删除指针
         pointer.remove()
         //删除背景圆
-        //raster.remove()
+        raster.remove()
         //pointer2.remove()
         console.log('这里错误吗？')
 
@@ -221,12 +221,13 @@ function onFrame(event) {
             mooncakeInside.height = radius *2
             mooncakeInside.opacity = 1 */
 
+
             //compoundPath.fillColor = '#f48f4b'
             //mooncake.opacity = 0.1
             //compoundPath.fillStyle = mooncake.style
             //compoundPath.strokeColor = '#E6713B'
             //compoundPath.strokeWidth = 3
-            var compoundImage =  new Group([compoundPath,raster])
+            var compoundImage =  new Group([compoundPath,mooncakeInside])
             compoundImage.setClipped(true)
 
 
