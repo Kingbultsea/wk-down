@@ -302,15 +302,15 @@ function onFrame(event) {
 
 
 
-            alert(getAllName)
+            //alert(getAllName)
             if(!getAllName) {
                 getName.open('GET', 'https://api.debug.psy-1.com' +'/web/v1/wechat/user?code='+code)
                 getName.onreadystatechange = function(){
-                    alert(getName.readyState+' '+getName.status)
+                    //alert(getName.readyState+' '+getName.status)
                     if(getName.readyState === 4){
-                        alert(getName.readyState+' '+getName.status)
+                        //alert(getName.readyState+' '+getName.status)
                         if(getName.status === 200){
-                            alert(JSON.parse( getName.response ).data.nickname)
+                            //alert(JSON.parse( getName.response ).data.nickname)
                             var getJson = JSON.parse( getName.response ).data.nickname
                             var url = window.location.href + '&name=' + getJson
                             //window.location.href = url
