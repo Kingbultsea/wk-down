@@ -298,6 +298,7 @@ function onFrame(event) {
             getName.onreadystatechange = function(){
                 if(getName.readyState === 4){
                     if(getName.status === 200){
+                        alert(getName.body)
                         name.innerHTML =JSON.parse( getName.body ).data.nickname
                     }
                 }
