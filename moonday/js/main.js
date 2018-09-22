@@ -294,7 +294,7 @@ function onFrame(event) {
             console.log( pointList.length )
             //获取用户名称
             var getName = new XMLHttpRequest()
-            getName.open('GET', 'get/web/v1/wechat/user')
+            getName.open('GET', window.location.origin+'/get/web/v1/wechat/user')
             getName.onreadystatechange = function(){
                 if(getName.readyState === 4){
                     if(getName.status === 200){
