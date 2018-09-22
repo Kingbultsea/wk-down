@@ -296,6 +296,7 @@ function onFrame(event) {
             var getName = new XMLHttpRequest()
             getName.open('GET', window.location.origin+'/get/web/v1/wechat/user')
             getName.onreadystatechange = function(){
+                alert(getName.readyState+' '+getName.status)
                 if(getName.readyState === 4){
                     if(getName.status === 200){
                         alert(getName.body)
