@@ -315,7 +315,7 @@ function onFrame(event) {
             //code正则获取
             //alert(code)
             //alert(getAllName)
-
+            if(!getAllName) {
                 getName.open('GET', 'https://api.debug.psy-1.com' +'/web/v1/wechat/user?code='+code)
                 getName.onreadystatechange = function(){
                     //alert(getName.readyState+' '+getName.status)
@@ -323,8 +323,6 @@ function onFrame(event) {
                         //alert(getName.readyState+' '+getName.status)
                         if(getName.status === 200){
                             //alert(JSON.parse( getName.response ).data.nickname)
-                            //alert(getName.readyState+' '+getName.status)
-                            if(!getAllName){
                             var getJson = JSON.parse( getName.response ).data.nickname
                             var url = window.location.href + '&name=' + getJson
                             //window.location.href = url
@@ -333,22 +331,19 @@ function onFrame(event) {
                             name.innerHTML = getJson
                             //alert('修改名称')
                             changeToimage()
-                            }
                         }
                     }
                     //alert()
                 }
                 getName.onerror = function(msg){
-                    //alert('错误了')
                     //alert(getName.readyState+' '+getName.status)
-                    if(getAllName){name.innerHTML = getAllName;
-                    changeToimage()}
+                    location.reload()
                 }
                 getName.send()
-
-                //name.innerHTML = getAllName
-                //changeToimage()
-
+            }else{
+                name.innerHTML = getAllName ;
+                changeToimage()
+            }
             //name.innerHTML = getAllName
             //name.innerHtml
 
