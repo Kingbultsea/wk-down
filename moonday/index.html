@@ -268,9 +268,13 @@
 
     window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx632d4c99bd681cf3&redirect_uri=' + encodeURI( window.location.href ) +'&response_type=code&scope=snsapi_userinfo&state=ST#wechart_redirect'
 
-    } else {
-        beginTheGame.apply(document.getElementById('btn-begin'))
     }
+
+    if(getAllName){
+        beginTheGame.apply( document.getElementById('btn-begin') )
+    }
+
+
 
 
 </script>
