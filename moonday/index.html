@@ -146,14 +146,14 @@
       document.getElementById('btn-begin').addEventListener('click',beginTheGame.bind(document.getElementById('btn-begin')))
 
       let getAllName
-      if( window.location.href.match(/name/) ){  getAllName = decodeURI(  window.location.href.match(/name=(.+)/)[1] ) ; alert(getAllName) }
+      if( window.location.href.match(/name/) ){  getAllName = decodeURI(  window.location.href.match(/name=(.+)/)[1] ) ;  }
 
       document.getElementById('download_svg').addEventListener('click',()=>{
           //location.reload()
           //修复安卓刷新不了
           //window.location.href = window.location.href+"?pfid=1&" + Date.parse(new Date());
           //getAllName = document.getElementById('name').innerHTML
-          alert(getAllName)
+
           alert(!window.location.href.match(/name/))
           if(!window.location.href.match(/name/)) {  window.location.href = window.location.href +"&pfid=1&" + Date.parse(new Date()) + '&name=' + getAllName; }else{
 
@@ -257,7 +257,7 @@
         if(getappid.readyState === 4){
 
             if(getappid.status === 200){
-                alert('js sdk配置成功')
+
                 //appid =JSON.parse( getappid.response ).data.appId
             }
         }
@@ -265,13 +265,14 @@
     }
     getappid.onerror = function(msg){
         alert('错误了 js sdk')
+        location.reload()
         //alert(getName.readyState+' '+getName.status)
     }
     getappid.send()
 
     //微信接口获取code
-    alert(window.location.href + '当前url')
-    alert('redirect_uri为'+ encodeURI( window.location.href ) +'已进行urIencode')
+
+
     window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx632d4c99bd681cf3&redirect_uri=' + encodeURI( window.location.href ) +'&response_type=code&scope=snsapi_userinfo&state=ST#wechart_redirect'
 
     }

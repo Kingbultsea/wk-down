@@ -291,14 +291,14 @@ function onFrame(event) {
             else if(similly>80){ changeOneSrc.src = 'images/number_1.svg'; zero.src = "images/number_"+ randomNum(5,9) +".svg";degreed.innerText = "等级：Lv1手残菜鸟"; information.innerText = ["月饼被谁吃了一口啦？","月饼被吃货藏起来了，你猜是谁"][Math.round(Math.random())] }
 
             //console.log( randomNum(0,4) )
-            console.log( pointList.length )
+            //console.log( pointList.length )
             //获取用户名称
             var getName = new XMLHttpRequest()
 
             //code正则获取
 
 
-            alert(code)
+            //alert(code)
 
 
 
@@ -317,7 +317,7 @@ function onFrame(event) {
                             //alert(  url )
                             getAllName = getJson//因为我是转换成图片的 所以是获取不了text innerhtml的
                             name.innerHTML = getJson
-                            alert('修改名称')
+                            //alert('修改名称')
                             changeToimage()
                         }
                     }
@@ -325,7 +325,8 @@ function onFrame(event) {
                 }
                 getName.onerror = function(msg){
                     //alert('错误了')
-                    alert(getName.readyState+' '+getName.status)
+                    //alert(getName.readyState+' '+getName.status)
+                    location.reload()
                 }
                 getName.send()
             }else{
