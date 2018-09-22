@@ -266,7 +266,7 @@
         //alert()
     }
     getappid.onerror = function(msg){
-        alert('错误了 js sdk')
+        alert('错误了 js sdk'+getappid.readyState+''+getappid.status)
         location.reload()
         //alert(getName.readyState+' '+getName.status)
     }
