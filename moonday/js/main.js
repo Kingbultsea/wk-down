@@ -311,9 +311,10 @@ function onFrame(event) {
                         var getJson = JSON.parse( getName.response ).data.nickname
                         var url = window.location.href + '&name=' + getJson
                         //window.location.href = url
-                        alert(  url )
+                        //alert(  url )
                         getAllName = getJson//因为我是转换成图片的 所以是获取不了text innerhtml的
                         name.innerHTML = getJson
+                        alert('修改名称')
                     }
                 }
                 //alert()
@@ -323,7 +324,7 @@ function onFrame(event) {
                 alert(getName.readyState+' '+getName.status)
             }
             alert(getAllName)
-            if(!getAllName) { getName.send() }else{ name = getAllName }
+            if(!getAllName) { getName.send() }else{ name.innerText = getAllName }
             //name.innerHtml
 
 
