@@ -314,7 +314,7 @@ function onFrame(event) {
 
             //code正则获取
             //alert(code)
-            //alert(getAllName)
+            alert(getAllName)
             if(!getAllName && isWeixin()) {
                 getName.open('GET', 'https://api.debug.psy-1.com' +'/web/v1/wechat/user?code='+code)
                 getName.onreadystatechange = function(){

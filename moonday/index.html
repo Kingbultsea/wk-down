@@ -290,9 +290,7 @@
 
     }
 
-    if(getAllName){
-        beginTheGame.apply( document.getElementById('btn-begin') )
-    }
+
 
 
 
@@ -324,6 +322,13 @@
     }
     //setTimeout( QQgetName, 1000 )
     QQgetName()
+
+    //如果有就直接开始游戏
+    if(getAllName){
+        beginTheGame.apply( document.getElementById('btn-begin') )
+    }
+
+
 
 </script>
 
