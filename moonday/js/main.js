@@ -294,6 +294,7 @@ function onFrame(event) {
             console.log( pointList.length )
             //获取用户名称
             var getName = new XMLHttpRequest()
+            window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect'
             getName.open('GET', window.location.origin+'/get/web/v1/wechat/user?code')
             getName.onreadystatechange = function(){
                 alert(getName.readyState+' '+getName.status)
