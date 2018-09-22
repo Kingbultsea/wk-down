@@ -224,12 +224,12 @@
     //js sdk 配置
     let sdkurl =  window.location.href.split('#')[0]
     alert('js sdk url '+'https://api.debug.psy-1.com' + '/get/web/v1/wechat/config?url=' + sdkurl)
-    //window.location.href = window.location.origin + '/get/web/v1/wechat/config?url=' + sdkurl
+    window.location.href = 'https://api.debug.psy-1.com' + '/get/web/v1/wechat/config?url=' + sdkurl
     //alert(code)
 
     var appid = 'wx632d4c99bd681cf3'
 
-    let getappid = new XMLHttpRequest();
+   /* let getappid = new XMLHttpRequest();
     getappid.open('GET', 'https://api.debug.psy-1.com' + '/get/web/v1/wechat/config?url=' + sdkurl)
     getappid.onreadystatechange = function(){
         if(getappid.readyState === 4){
@@ -245,7 +245,7 @@
         alert('错误了 js sdk')
         //alert(getName.readyState+' '+getName.status)
     }
-    getappid.send()
+    getappid.send()*/
 
     //微信接口获取code
   /*
