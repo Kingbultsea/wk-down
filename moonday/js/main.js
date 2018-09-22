@@ -48,10 +48,25 @@ pointer.lineTo(start + [0, radius])
 pointer.opacity = 0
 pointer.strokeWidth = 3
 
-var bg = new Raster('mooncake')
-bg.size = paper.view.viewSize
-bg.position = view.center
-bg.opacity = 0.2
+//var bg = new Raster('mooncake')
+//bg.size = paper.view.viewSize
+//bg.position = view.center
+//bg.opacity = 0.2
+var raster = new Raster('mooncake13');
+
+
+
+// Move the raster to the center of the view
+raster.position = view.center;
+raster.width =  radius *2
+raster.height = radius *2
+raster.opacity = 1
+// Scale the raster by 50%
+//raster.scale(0.5);
+
+// Rotate the raster by 45 degrees:
+//raster.rotate(45);
+
 
 //var pointer2= new Path()
 //pointer2.strokeColor = pointerColor
@@ -128,7 +143,7 @@ function onFrame(event) {
    // mooncakeInner.opacity = 1
 
 
-    if(myCircle.opacity >= 0.05) { myCircle.opacity -= 0.02; pointer.opacity += 0.02 ; }else{ myCircle.opacity = 0.00000001 ; pointer.opacity = 1;}
+    if(myCircle.opacity >= 0.05) { myCircle.opacity -= 0.02; pointer.opacity += 0.02 ; raster.opacity -= 0.02 }else{ myCircle.opacity = 0.00000001 ; pointer.opacity = 1; raster.opacity = 0.00000001}
     //console.log(mooncakeInner.opacity)
 
 
@@ -139,6 +154,7 @@ function onFrame(event) {
         //指针旋转
         pointer.rotate(speed * 56.5, start)
         myCircle.opacity = 1
+        raster.opacity = 0.1
 
 
 

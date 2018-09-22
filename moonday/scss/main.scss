@@ -133,6 +133,7 @@ body{
         display: flex;
         flex-direction: column;
         align-items: center;
+        position: relative;
 
         .container-score-frame{
           justify-content: space-between;
@@ -184,6 +185,8 @@ body{
           height: 100%;
         }
         .infomation{
+          position: absolute;
+          bottom: 1px;
           order: 3;
           font-size: 1em;
           color: #8B572A;
@@ -276,7 +279,7 @@ body{
 
 
 
-#mooncake1, #mooncake2, #mooncake3, #mooncake4, #mooncake5, #mooncake6, #mooncake7, #mooncake8, #mooncake9, #mooncake10, #mooncake11, #mooncake12{
+#mooncake1, #mooncake2, #mooncake3, #mooncake4, #mooncake5, #mooncake6, #mooncake7, #mooncake8, #mooncake9, #mooncake10, #mooncake11, #mooncake12, #mooncake13{
   display: none;
 }
 #myCanvas{
