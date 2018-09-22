@@ -230,16 +230,16 @@
     var appid = 'wx632d4c99bd681cf3' //全局
 
     var QRblock = /code=(.+?)&/
-    var QRblockResult = window.location.href.match(QRblock)
     var code
+    var QRblockResult = window.location.href.match(QRblock)
+    if( window.location.href.match(QRblock).length = 2 )    code= window.location.href.match(QRblock)[1]
 
 
-   // alert(QRblockResult.findIndex(1))
 
 
 
-    alert(location.href + '??')
-    code = window.location.href.match(QRblock)[1]
+
+    //code = window.location.href.match(QRblock)[1]
     let getappid = new XMLHttpRequest();
     getappid.open('GET', 'https://api.debug.psy-1.com' + '/web/v1/wechat/config?url=' + sdkurl)
     getappid.onreadystatechange = function(){
