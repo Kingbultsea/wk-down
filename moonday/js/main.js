@@ -434,17 +434,19 @@ function changeToimage(){
         //alert('html2canvas并没有报错')
         try{
             var img = new Image()
-            img.crossOrigin = 'anonymous'
-            img.setAttribute("crossOrigin", "anonymous");
-            alert('成？')
+            //img.crossOrigin = 'anonymous'
+            //img.setAttribute("crossOrigin", "anonymous");
+
             img.src = canvas.toDataURL("image/png")
-            //img.setAttribute('class', 'w740')
+            alert(canvas.toDataURL('image/png'))
+            img.setAttribute('class', 'w740')
             //alert('添加class的时候出错了吗？')
             //为了更换掉上面的页面
             /*var svg = document.getElementById('deletedSVG')
             svg.parentNode.removeChild(svg)*/
             //console.log(svg.style.height)
-            document.getElementById('load_svg').appendChild(img)
+            //document.getElementById('load_svg').appendChild(img)
+            document.getElementById('deletedSVG')
         }catch(e){
             alert(e)
         }
@@ -456,7 +458,7 @@ function changeToimage(){
         //window.open(url);
         //canvas.toBlob()
 
-        html2canvas(document.getElementById("saveImg")).then(function(canvas){
+       /* html2canvas(document.getElementById("saveImg")).then(function(canvas){
 
 
 
@@ -470,7 +472,7 @@ function changeToimage(){
             //var url = img.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
             //window.open(url);
             //canvas.toBlob()
-        })
+        }) */
 
 
     })
