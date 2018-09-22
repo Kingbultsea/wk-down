@@ -244,7 +244,6 @@
     //调试 添加月饼  !window.location.href.match(QRblock)
     if( !window.location.href.match(QRblock)){
     //code = window.location.href.match(QRblock)[1]
-
     let getappid = new XMLHttpRequest();
     getappid.open('GET', 'https://api.debug.psy-1.com' + '/web/v1/wechat/config?url=' + sdkurl)
     getappid.onreadystatechange = function(){
@@ -269,8 +268,9 @@
 
     window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx632d4c99bd681cf3&redirect_uri=' + encodeURI( window.location.href ) +'&response_type=code&scope=snsapi_userinfo&state=ST#wechart_redirect'
 
+    } else {
+        beginTheGame.apply(document.getElementById('btn-begin'))
     }
-
 
 
 </script>
