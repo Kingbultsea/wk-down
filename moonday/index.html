@@ -146,7 +146,7 @@
       document.getElementById('btn-begin').addEventListener('click',beginTheGame.bind(document.getElementById('btn-begin')))
 
       let getAllName
-      if( window.location.href.match(/name/) ){  getAllName = window.location.href.match(/name=(.+)/)[1] ; alert(getAllName) }
+      if( window.location.href.match(/name/) ){  getAllName = decodeURI(  window.location.href.match(/name=(.+)/)[1] ) ; alert(getAllName) }
 
       document.getElementById('download_svg').addEventListener('click',()=>{
           //location.reload()
