@@ -431,8 +431,10 @@ function changeToimage(){
 
     html2canvas(document.getElementById('myCanvas')).then(function(canvas){
 
+        alert('html2canvas并没有报错')
         var img = new Image()
         img.src = canvas.toDataURL("image/png")
+
 
 
         //为了更换掉上面的页面
