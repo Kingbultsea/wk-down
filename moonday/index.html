@@ -155,7 +155,7 @@
           //getAllName = document.getElementById('name').innerHTML
           alert(getAllName)
           alert(!window.location.href.match(/name/))
-          if(!window.location.href.match(/name/)) {  window.location.href = window.location.href + '&name=' + getAllName; }else{
+          if(!window.location.href.match(/name/)) {  window.location.href = window.location.href +"&pfid=1&" + Date.parse(new Date()) + '&name=' + getAllName; }else{
 
               window.location.href = window.location.href.replace(/&pfid.+/,'') +"&pfid=1&" + Date.parse(new Date()) + '&name=' + getAllName;
               //location.reload()
