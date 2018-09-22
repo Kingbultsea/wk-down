@@ -234,9 +234,11 @@
     var code
 
 
+   // alert(QRblockResult.findIndex(1))
 
 
-if(!QRblockResult.findIndex(1)){
+if(true){
+    alert(location.href)
     code = window.location.href.match(QRblock)[1]
     let getappid = new XMLHttpRequest();
     getappid.open('GET', 'https://api.debug.psy-1.com' + '/web/v1/wechat/config?url=' + sdkurl)
