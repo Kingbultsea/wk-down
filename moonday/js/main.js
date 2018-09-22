@@ -301,30 +301,34 @@ function onFrame(event) {
             alert(code)
 
 
-            getName.open('GET', 'https://api.debug.psy-1.com' +'/web/v1/wechat/user?code='+code)
-            getName.onreadystatechange = function(){
-                alert(getName.readyState+' '+getName.status)
-                if(getName.readyState === 4){
-                    alert(getName.readyState+' '+getName.status)
-                    if(getName.status === 200){
-                        alert(JSON.parse( getName.response ).data.nickname)
-                        var getJson = JSON.parse( getName.response ).data.nickname
-                        var url = window.location.href + '&name=' + getJson
-                        //window.location.href = url
-                        //alert(  url )
-                        getAllName = getJson//因为我是转换成图片的 所以是获取不了text innerhtml的
-                        name.innerHTML = getJson
-                        alert('修改名称')
-                    }
-                }
-                //alert()
-            }
-            getName.onerror = function(msg){
-                //alert('错误了')
-                alert(getName.readyState+' '+getName.status)
-            }
+
             alert(getAllName)
-            if(!getAllName) { getName.send() }else{ name.innerText = getAllName }
+            if(!getAllName) {
+                getName.open('GET', 'https://api.debug.psy-1.com' +'/web/v1/wechat/user?code='+code)
+                getName.onreadystatechange = function(){
+                    alert(getName.readyState+' '+getName.status)
+                    if(getName.readyState === 4){
+                        alert(getName.readyState+' '+getName.status)
+                        if(getName.status === 200){
+                            alert(JSON.parse( getName.response ).data.nickname)
+                            var getJson = JSON.parse( getName.response ).data.nickname
+                            var url = window.location.href + '&name=' + getJson
+                            //window.location.href = url
+                            //alert(  url )
+                            getAllName = getJson//因为我是转换成图片的 所以是获取不了text innerhtml的
+                            name.innerHTML = getJson
+                            alert('修改名称')
+                        }
+                    }
+                    //alert()
+                }
+                getName.onerror = function(msg){
+                    //alert('错误了')
+                    alert(getName.readyState+' '+getName.status)
+                }
+                getName.send()
+            }else{ name.innerHTML = getAllName }
+            //name.innerHTML = getAllName
             //name.innerHtml
 
 
