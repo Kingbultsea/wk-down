@@ -320,7 +320,8 @@ function onFrame(event) {
                 //alert('错误了')
                 alert(getName.readyState+' '+getName.status)
             }
-            if(!getName)getName.send()
+            alert(getName)
+            if(!getName) { getName.send() }else{ name = getName }
             //name.innerHtml
 
 
