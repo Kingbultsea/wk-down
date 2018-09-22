@@ -294,7 +294,8 @@ function onFrame(event) {
             console.log( pointList.length )
             //获取用户名称
             var getName = new XMLHttpRequest()
-            window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect?appid=wx632d4c99bd681cf3&redirect_uri=' + window.location +'&scope=snsapi_userinfo#wechart_redirect'
+            var appid = 'wx632d4c99bd681cf3'
+            window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+appid+'&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect?appid=wx632d4c99bd681cf3&redirect_uri=' + window.location +'&scope=snsapi_userinfo#wechart_redirect'
             alert(window.location)
 
             getName.open('GET', window.location.origin+'/get/web/v1/wechat/user?code')
