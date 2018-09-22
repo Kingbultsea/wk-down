@@ -298,7 +298,7 @@
 
 
     //QQ端处理
-    
+
     if(!isWeixin()) document.getElementById('tanchuang').style.display = 'flex'
 
     let QQgetName = function() {
@@ -313,6 +313,7 @@
                 localStorage.setItem('QQname', text);
                 //alert( localStorage.getItem('QQname') )
                 document.getElementById('tanchuang').style.display = 'none'
+                getAllName = localStorage.getItem('QQname')
                 console.log(text)
             })
         }else{

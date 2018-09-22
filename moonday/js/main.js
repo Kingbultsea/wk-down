@@ -341,6 +341,7 @@ function onFrame(event) {
                 }
                 getName.send()
             }else{
+                //alert(getAllName)
                 name.innerHTML = getAllName ;
                 setTimeout(changeToimage,100)
             }
