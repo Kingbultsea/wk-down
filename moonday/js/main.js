@@ -429,12 +429,12 @@ function changeToimage(){
 
     alert('html2canvas启动')
 
-    html2canvas(document.getElementById('myCanvas')).then(function(canvas){
 
-        //alert('html2canvas并没有报错')
+
+        alert('html2canvas并没有报错')
         try{
             var img = new Image()
-            img.src = canvas.toDataURL("image/png")
+            img.src = document.getElementById('myCanvas').toDataURL("image/png")
 
 
 
@@ -474,5 +474,5 @@ function changeToimage(){
         })
 
 
-    })
+
 }
