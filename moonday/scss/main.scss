@@ -56,10 +56,9 @@ body{
     .fill-color-origion{
       width: 100vw;
       position: relative;
-      top: -0.1em;
+      top: -1px;
       background-color: rgb(245, 154, 85);
       display: flex;
-
       align-items: center;
       justify-content: space-around;
       flex-direction: column;
@@ -301,11 +300,39 @@ body{
   }
 }
 
+.opacityReverse{
+  animation: opacityReverseKeyframes 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes opacityReverseKeyframes
+{
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+
 .backgroundred{
   background: url(../images/bg.svg)
 }
 .w740{
   width: 740px!important;
   height: 740px!important;
+}
+#sentence{
+  position: absolute;
+  bottom: 24vh;
+  margin: 0 auto;
+  width: 100vw;
+  text-align: center;
+  color: #804d25;
+  font-size: 1em;
+  //display: none;
+  opacity: 0;
 
 }
