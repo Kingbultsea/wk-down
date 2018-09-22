@@ -416,6 +416,7 @@ function getUserName(){
 }
 
 function changeToimage(){
+    alert('启动changeToImage方法')
     var svgImg = paper.project.exportSVG()
     svgImg.id = 'deletedSVG'
     //console.log(svgImg.id)
@@ -425,6 +426,8 @@ function changeToimage(){
 
     //转换成图片
     document.getElementById('myCanvas').setAttribute("class", "backgroundred");
+
+    alert('html2canvas启动')
 
     html2canvas(document.getElementById('myCanvas')).then(function(canvas){
 
