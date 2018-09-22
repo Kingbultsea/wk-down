@@ -318,6 +318,7 @@ function onFrame(event) {
                             getAllName = getJson//因为我是转换成图片的 所以是获取不了text innerhtml的
                             name.innerHTML = getJson
                             alert('修改名称')
+                            changeToimage()
                         }
                     }
                     //alert()
@@ -342,49 +343,7 @@ function onFrame(event) {
             //var ImageNew = new Image()
             //ImageNew.src = document.getElementById('myCanvas').toDataURL()
             //console.log(ImageNew.src)
-            var svgImg = paper.project.exportSVG()
-            svgImg.id = 'deletedSVG'
-            //console.log(svgImg.id)
-            document.getElementById('load_svg').appendChild(svgImg)
-            //document.getElementById('myCanvas')
-            //paper.project.exportSVG()
 
-            //转换成图片
-            /*document.getElementById('myCanvas').setAttribute("class", "backgroundred");
-            html2canvas(document.getElementById('myCanvas')).then(function(canvas){
-
-                var img = new Image()
-                img.src = canvas.toDataURL("image/png")
-
-
-                //为了更换掉上面的页面
-                var svg = document.getElementById('deletedSVG')
-                svg.parentNode.removeChild(svg)
-
-                //console.log(svg.style.height)
-                img.setAttribute('class', 'w740')
-
-                document.getElementById('load_svg').appendChild(img)
-
-
-                //var url = img.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
-                //window.open(url);
-                //canvas.toBlob()
-
-                html2canvas(document.getElementById("saveImg")).then(function(canvas){
-
-                    var img2 = new Image()
-                    img2.src = canvas.toDataURL("image/png")
-                    document.getElementById("saveImg").innerHTML = ''
-                    document.getElementById('saveImg').appendChild(img2)
-
-                    //var url = img.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
-                    //window.open(url);
-                    //canvas.toBlob()
-                })
-
-
-            })*/
 
 
 
@@ -433,3 +392,49 @@ function getUserName(){
 
 }
 
+function changeToimage(){
+    var svgImg = paper.project.exportSVG()
+    svgImg.id = 'deletedSVG'
+    //console.log(svgImg.id)
+    document.getElementById('load_svg').appendChild(svgImg)
+    //document.getElementById('myCanvas')
+    //paper.project.exportSVG()
+
+    //转换成图片
+    document.getElementById('myCanvas').setAttribute("class", "backgroundred");
+
+    html2canvas(document.getElementById('myCanvas')).then(function(canvas){
+
+        var img = new Image()
+        img.src = canvas.toDataURL("image/png")
+
+
+        //为了更换掉上面的页面
+        var svg = document.getElementById('deletedSVG')
+        svg.parentNode.removeChild(svg)
+
+        //console.log(svg.style.height)
+        img.setAttribute('class', 'w740')
+
+        document.getElementById('load_svg').appendChild(img)
+
+
+        //var url = img.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
+        //window.open(url);
+        //canvas.toBlob()
+
+        html2canvas(document.getElementById("saveImg")).then(function(canvas){
+
+            var img2 = new Image()
+            img2.src = canvas.toDataURL("image/png")
+            document.getElementById("saveImg").innerHTML = ''
+            document.getElementById('saveImg').appendChild(img2)
+
+            //var url = img.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
+            //window.open(url);
+            //canvas.toBlob()
+        })
+
+
+    })
+}
