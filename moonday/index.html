@@ -135,7 +135,7 @@
   </script>
   <script src="js/main.js" type="text/paperscript" canvas="myCanvas"></script>
   <script>
-      let isWeixin = function () {  var ua = navigator.userAgent.toLowerCase(); return ua.match(/MicroMessenger/i) === "micromessenger"; };
+      let isWeixin = function () {  return /micromessenger/.test(navigator.userAgent.toLowerCase()) };
 
       function beginTheGame(){
           this.classList.add('opacity')
