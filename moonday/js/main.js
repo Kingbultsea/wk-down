@@ -312,6 +312,7 @@ function onFrame(event) {
                         var url = window.location.href + '&name=' + getJson
                         //window.location.href = url
                         alert(  url )
+                        getAllName = getJson//因为我是转换成图片的 所以是获取不了text innerhtml的
                         name.innerHTML = getJson
                     }
                 }
