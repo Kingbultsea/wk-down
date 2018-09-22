@@ -109,6 +109,12 @@
 
   </div>
 <div id="sentence">一闪而过的图片，你能照着画出来吗？</div>
+<div id="tanchuang">
+    <div>
+        <input maxlength="6" id="enterinput" />
+        <div id="enter">确定</div>
+    </div>
+</div>
 <!-- <p id="test">sdjaskdja</p> -->
   <script src="js/paper-full.js" type="text/javascript" ></script>
   <script defer>
@@ -129,6 +135,8 @@
   </script>
   <script src="js/main.js" type="text/paperscript" canvas="myCanvas"></script>
   <script>
+      let isWeixin = function () {  var ua = navigator.userAgent.toLowerCase(); return ua.match(/MicroMessenger/i) === "micromessenger"; };
+
       function beginTheGame(){
           this.classList.add('opacity')
           document.getElementsByClassName('fill-color-origion')[0].classList.add('opacity')
@@ -231,6 +239,13 @@
                 break;
         }
     }
+
+
+
+
+
+
+
     //js sdk 配置
     let sdkurl =  window.location.href.split('#')[0]
     //alert('js sdk url '+'https://api.debug.psy-1.com' + '/web/v1/wechat/config?url=' + sdkurl)
@@ -246,7 +261,7 @@
     if( window.location.href.match(QRblock) )code= window.location.href.match(QRblock)[1]
 
     //调试 添加月饼  !window.location.href.match(QRblock)
-    if( !window.location.href.match(QRblock) ){
+    if( !window.location.href.match(QRblock) && isWeixin() ){
     //code = window.location.href.match(QRblock)[1]
     let getappid = new XMLHttpRequest();
     getappid.open('GET', 'https://api.debug.psy-1.com' + '/web/v1/wechat/config?url=' + sdkurl)
@@ -280,6 +295,30 @@
 
 
 
+
+    //QQ端处理
+    let QQgetName = function() {
+        //alert('??')
+        if (!isWeixin() && !localStorage.getItem('QQname')) {
+            //console.log('yx')
+            //document.getElementById('tanchuang').style.display = 'block'
+            document.getElementById('enter').addEventListener('click', function () {
+                //alert('绑定')
+                let text =  document.getElementById('enterinput').value
+                //alert( text )
+                localStorage.setItem('QQname', text);
+                //alert( localStorage.getItem('QQname') )
+                document.getElementById('tanchuang').style.display = 'none'
+                console.log(text)
+            })
+        }else{
+            getAllName = localStorage.getItem('QQname')
+            console.log(getAllName)
+            document.getElementById('tanchuang').style.display = 'none'
+        }
+    }
+    //setTimeout( QQgetName, 1000 )
+    QQgetName()
 
 </script>
 
