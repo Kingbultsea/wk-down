@@ -180,6 +180,8 @@ function onFrame(event) {
     if(angle <= -6.3  && await){
         //删除指针
         pointer.remove()
+        //删除背景圆
+        raster.remove()
         //pointer2.remove()
         console.log('这里错误吗？')
 
