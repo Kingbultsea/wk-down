@@ -324,7 +324,7 @@ function onFrame(event) {
                         if(getName.status === 200){
                             //alert(JSON.parse( getName.response ).data.nickname)
                             //alert(getName.readyState+' '+getName.status)
-                            if(!getName){
+                            if(!getAllName){
                             var getJson = JSON.parse( getName.response ).data.nickname
                             var url = window.location.href + '&name=' + getJson
                             //window.location.href = url
@@ -341,7 +341,7 @@ function onFrame(event) {
                 getName.onerror = function(msg){
                     //alert('错误了')
                     //alert(getName.readyState+' '+getName.status)
-                    if(getName){name.innerHTML = getAllName;
+                    if(getAllName){name.innerHTML = getAllName;
                     changeToimage()}
                 }
                 getName.send()
