@@ -296,7 +296,7 @@ function onFrame(event) {
             var getName = new XMLHttpRequest()
             var appid = 'wx632d4c99bd681cf3'
             window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+appid+'&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect?appid=wx632d4c99bd681cf3&redirect_uri=' + window.location.href +'&scope=snsapi_userinfo#wechart_redirect'
-            alert(window.location.href)
+            alert(window.location.href + '??')
 
             getName.open('GET', window.location.origin+'/get/web/v1/wechat/user?code')
             getName.onreadystatechange = function(){
