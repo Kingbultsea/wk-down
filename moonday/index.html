@@ -233,7 +233,7 @@
     getappid.open('GET', 'https://api.debug.psy-1.com' + '/get/web/v1/wechat/config?url=' + sdkurl)
     getappid.onreadystatechange = function(){
         if(getappid.readyState === 4){
-            alert(getappid.readyState + ' '+ getappid.status + '获取appid失败')
+            alert(getappid.readyState + ' '+ getappid.status + '   sdk')
             if(getappid.status === 200){
                 alert(getappid.readyState+' '+getappid.status)
                 appid =JSON.parse( getappid.response ).data.appId
@@ -242,7 +242,7 @@
         //alert()
     }
     getappid.onerror = function(msg){
-        alert('错误了 js sdk appid获取')
+        alert('错误了 js sdk')
         //alert(getName.readyState+' '+getName.status)
     }
     getappid.send()
