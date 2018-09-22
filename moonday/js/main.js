@@ -436,6 +436,7 @@ function changeToimage(){
             var img = new Image()
             img.src = canvas.toDataURL("image/png")
             img.setAttribute('class', 'w740')
+            alert('添加class的时候出错了吗？')
             //为了更换掉上面的页面
             var svg = document.getElementById('deletedSVG')
             svg.parentNode.removeChild(svg)
