@@ -142,8 +142,6 @@ function onFrame(event) {
     if(myCircle.opacity >= 0.05) { myCircle.opacity -= 0.02; pointer.opacity += 0.02 ; raster.opacity -= 0.02 }else{ myCircle.opacity = 0.00000001 ; pointer.opacity = 1; raster.opacity = 0.00000001}
     //console.log(mooncakeInner.opacity)
 
-
-
     //动画
     if(angle >= -6.3  && begin){
 
@@ -200,6 +198,7 @@ function onFrame(event) {
         })
 
         compoundPath.fillColor = '#f48f4b'
+        compoundPath.opacity = 0.5
 
 
         if(offestResultOpacity >0.2){
