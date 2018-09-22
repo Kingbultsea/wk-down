@@ -230,7 +230,7 @@
     var appid = 'wx632d4c99bd681cf3'
 
     let getappid = new XMLHttpRequest();
-    getappid.open('GET', window.location.origin + '/get/web/v1/wechat/config?url=' + sdkurl)
+    getappid.open('GET', 'https://api.debug.psy-1.com' + '/get/web/v1/wechat/config?url=' + sdkurl)
     getappid.onreadystatechange = function(){
         if(getappid.readyState === 4){
             alert(getappid.readyState + ' '+ getappid.status + '获取appid失败')
@@ -248,11 +248,11 @@
     getappid.send()
 
     //微信接口获取code
-
+  /*
     alert(window.location.href + '当前url')
     alert('redirect_uri为'+window.location.href)
     window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+appid+'&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect?appid=wx632d4c99bd681cf3&redirect_uri=' + window.location.href +'&scope=snsapi_userinfo#wechart_redirect'
-
+  */
 
 </script>
 
