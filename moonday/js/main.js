@@ -196,7 +196,7 @@ function onFrame(event) {
         //console.log("开始计算")
         if(offestResultOpacity === 0.2){
             //绘制月饼
-            var mooncake = new Raster('mooncake'+ ['1', '2', '3'][randomNum(0,2)])
+            var mooncake = new Raster('mooncake'+ ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'][randomNum(0,11)])
             mooncake.size = paper.view.viewSize
             mooncake.position = view.center
             //compoundPath.fillColor = '#f48f4b'
@@ -294,12 +294,17 @@ function onFrame(event) {
             console.log( pointList.length )
             //获取用户名称
             var getName = new XMLHttpRequest()
-            var appid = 'wx632d4c99bd681cf3'
-            alert(window.location.href + 'index.html')
-            window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+appid+'&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect?appid=wx632d4c99bd681cf3&redirect_uri=' + window.location.href +'index.html&scope=snsapi_userinfo#wechart_redirect'
+
+            //code正则获取
+            var QRblock = /code=(.+?)&/
+            var QRblockResult = window.location.href.match(QRblock)
+            var code
+            if(QRblockResult.findIndex(1))  code = window.location.href.match(QRblock)[1]
+
+            alert(code)
 
 
-            getName.open('GET', window.location.origin+'/get/web/v1/wechat/user?code')
+            getName.open('GET', window.location.origin+'/get/web/v1/wechat/user?code='+'code')
             getName.onreadystatechange = function(){
                 alert(getName.readyState+' '+getName.status)
                 if(getName.readyState === 4){

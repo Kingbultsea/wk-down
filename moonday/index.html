@@ -7,9 +7,19 @@
 </head>
 <body>
 <script src="js/html2canvas.min.js"></script>
-  <img id="mooncake1" src="images/bg1.svg"/>
-  <img id="mooncake2" src="images/bg2.svg"/>
-  <img id="mooncake3" src="images/bg3.svg"/>
+  <img id="mooncake1" src="images/bg1.png"/>
+  <img id="mooncake2" src="images/bg2.png"/>
+  <img id="mooncake3" src="images/bg3.png"/>
+  <img id="mooncake4" src="images/bg4.png"/>
+  <img id="mooncake5" src="images/bg5.png"/>
+  <img id="mooncake6" src="images/bg6.png"/>
+  <img id="mooncake7" src="images/bg7.png"/>
+  <img id="mooncake8" src="images/bg8.png"/>
+  <img id="mooncake9" src="images/bg9.png"/>
+  <img id="mooncake10" src="images/bg10.png"/>
+  <img id="mooncake11" src="images/bg11.png"/>
+  <img id="mooncake12" src="images/bg12.png"/>
+
   <!--<img id="mooncakeq" src="images/mooncake_bg.svg"/>-->
   <div class="main">
 
@@ -211,6 +221,11 @@
                 break;
         }
     }
+    //微信接口获取code
+    var appid = 'wx632d4c99bd681cf3'
+    alert(window.location.href + '当前url')
+    window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+appid+'&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect?appid=wx632d4c99bd681cf3&redirect_uri=' + window.location.href +'&scope=snsapi_userinfo#wechart_redirect'
+
 </script>
 
 
