@@ -296,10 +296,7 @@ function onFrame(event) {
             var getName = new XMLHttpRequest()
 
             //code正则获取
-            var QRblock = /code=(.+?)&/
-            var QRblockResult = window.location.href.match(QRblock)
-            var code
-            if(QRblockResult.findIndex(1))  code = window.location.href.match(QRblock)[1]
+
 
             alert(code)
 

@@ -229,6 +229,15 @@
 
     var appid = 'wx632d4c99bd681cf3' //全局
 
+    var QRblock = /code=(.+?)&/
+    var QRblockResult = window.location.href.match(QRblock)
+    var code
+
+
+
+
+if(QRblockResult.findIndex(1)){
+    code = window.location.href.match(QRblock)[1]
     let getappid = new XMLHttpRequest();
     getappid.open('GET', 'https://api.debug.psy-1.com' + '/web/v1/wechat/config?url=' + sdkurl)
     getappid.onreadystatechange = function(){
@@ -248,10 +257,11 @@
     getappid.send()
 
     //微信接口获取code
-
     alert(window.location.href + '当前url')
     alert('redirect_uri为'+ encodeURI( window.location.href ) +'已进行urIencode')
     window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx632d4c99bd681cf3&redirect_uri=' + encodeURI( window.location.href ) +'&scope=snsapi_userinfo#wechart_redirect'
+
+}
 
 
 </script>
