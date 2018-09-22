@@ -441,6 +441,7 @@ function changeToimage(){
 
         document.getElementById('load_svg').appendChild(img)
 
+        alert('这里svg转换成img')
 
         //var url = img.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
         //window.open(url);
@@ -448,10 +449,14 @@ function changeToimage(){
 
         html2canvas(document.getElementById("saveImg")).then(function(canvas){
 
+
+
             var img2 = new Image()
             img2.src = canvas.toDataURL("image/png")
             document.getElementById("saveImg").innerHTML = ''
             document.getElementById('saveImg').appendChild(img2)
+
+            alert('这里把整个saveImg转换成img')
 
             //var url = img.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
             //window.open(url);
