@@ -146,6 +146,8 @@
       document.getElementById('btn-begin').addEventListener('click',beginTheGame.bind(document.getElementById('btn-begin')))
 
       let getAllName
+      if( window.location.href.macth(/name=(.+?)/) ) getAllName = window.location.href.macth(/name=(.+?)/)[1]
+
       document.getElementById('download_svg').addEventListener('click',()=>{
           //location.reload()
           //修复安卓刷新不了
