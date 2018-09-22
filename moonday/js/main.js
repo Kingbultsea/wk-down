@@ -307,7 +307,7 @@ function onFrame(event) {
                 if(getName.readyState === 4){
                     alert(getName.readyState+' '+getName.status)
                     if(getName.status === 200){
-                        alert(getName.readyState+' '+getName.status)
+                        alert(JSON.parse( getName.response ).data.nickname)
                         name.innerHTML =JSON.parse( getName.response ).data.nickname
                     }
                 }
