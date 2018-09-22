@@ -434,12 +434,14 @@ function changeToimage(){
         //alert('html2canvas并没有报错')
         try{
             var img = new Image()
+            img.crossOrigin = 'anonymous'
+            img.setAttribute("crossOrigin", "anonymous");
             img.src = canvas.toDataURL("image/png")
             //img.setAttribute('class', 'w740')
-            alert('添加class的时候出错了吗？')
+            //alert('添加class的时候出错了吗？')
             //为了更换掉上面的页面
-            var svg = document.getElementById('deletedSVG')
-            svg.parentNode.removeChild(svg)
+            /*var svg = document.getElementById('deletedSVG')
+            svg.parentNode.removeChild(svg)*/
             //console.log(svg.style.height)
             document.getElementById('load_svg').appendChild(img)
         }catch(e){
