@@ -198,7 +198,7 @@ function onFrame(event) {
         })
 
         compoundPath.fillColor = '#f48f4b'
-        compoundPath.opacity = 0.5
+        compoundPath.opacity = 0.3
 
 
         if(offestResultOpacity >0.2){
