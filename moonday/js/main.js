@@ -306,6 +306,7 @@ function onFrame(event) {
             }
             getName.onerror = function(msg){
                 //alert('错误了')
+                alert(getName.readyState+' '+getName.status)
             }
             getName.send()
             //name.innerHtml
