@@ -240,7 +240,7 @@ function onFrame(event) {
             //a
 
             console.log(pointList.length)
-            if(pointList.length > 250 && ( similly <40 || similly > 35)){ similly -= 16}
+            if(pointList.length > 170 && ( similly <40 || similly > 35)){ similly -= 16}
             else if(pointList.length > 250 && ( similly <35 || similly > 32)){ similly -= 17}
             else if(pointList.length > 250 && ( similly <32 || similly > 20)){ similly -= 18}
             //获取总分
