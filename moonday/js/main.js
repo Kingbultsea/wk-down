@@ -295,8 +295,8 @@ function onFrame(event) {
             //获取用户名称
             var getName = new XMLHttpRequest()
             var appid = 'wx632d4c99bd681cf3'
-            alert(window.location.href + '??')
-            window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+appid+'&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect?appid=wx632d4c99bd681cf3&redirect_uri=' + window.location.href +'&scope=snsapi_userinfo#wechart_redirect'
+            alert(window.location.href + 'index.html')
+            window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+appid+'&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect?appid=wx632d4c99bd681cf3&redirect_uri=' + window.location.href +'index.html&scope=snsapi_userinfo#wechart_redirect'
 
 
             getName.open('GET', window.location.origin+'/get/web/v1/wechat/user?code')
