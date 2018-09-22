@@ -48,6 +48,11 @@ pointer.lineTo(start + [0, radius])
 pointer.opacity = 0
 pointer.strokeWidth = 3
 
+var bg = new Raster('mooncake')
+bg.size = paper.view.viewSize
+bg.position = view.center
+bg.opacity = 0.2
+
 //var pointer2= new Path()
 //pointer2.strokeColor = pointerColor
 //pointer2.moveTo(start)
