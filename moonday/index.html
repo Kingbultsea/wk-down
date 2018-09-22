@@ -184,10 +184,6 @@
     var timeOutEvent= 0//定时器
     //开始按
     function gtouchstart(){
-
-
-
-
         timeOutEvent = setTimeout("longPress()",500);//这里设置定时器，定义长按500毫秒触发长按事件，时间可以自己改，个人感觉500毫秒非常合适
         return false;
     }
@@ -196,7 +192,6 @@
         clearTimeout(timeOutEvent);//清除定时器
         if(timeOutEvent!=0){
             //这里写要执行的内容（尤如onclick事件）
-
            // alert("你这是点击，不是长按");
         }
         return false;
@@ -211,10 +206,7 @@
     //真正长按后应该执行的内容
     function longPress(){
         timeOutEvent = 0;
-
         //转换 img
-
-
         //alert("长按事件触发发");
     }
 
@@ -250,7 +242,7 @@
     if( window.location.href.match(QRblock) )code= window.location.href.match(QRblock)[1]
 
     //调试 添加月饼  !window.location.href.match(QRblock)
-    if( !window.location.href.match(QRblock) ){
+    if( false ){
     //code = window.location.href.match(QRblock)[1]
 
     let getappid = new XMLHttpRequest();
