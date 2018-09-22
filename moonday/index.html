@@ -314,7 +314,7 @@
                 getAllName = localStorage.getItem('QQname')
                 console.log(text)
             })
-        }else{
+        }else if(!isWeixin()){
             getAllName = localStorage.getItem('QQname')
             console.log(getAllName)
             document.getElementById('tanchuang').style.display = 'none'
