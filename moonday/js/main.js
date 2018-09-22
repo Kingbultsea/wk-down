@@ -342,7 +342,7 @@ function onFrame(event) {
                 getName.send()
             }else{
                 name.innerHTML = getAllName ;
-                changeToimage()
+                setTimeout(changeToimage,100)
             }
             //name.innerHTML = getAllName
             //name.innerHtml
