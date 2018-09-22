@@ -314,7 +314,7 @@ function onFrame(event) {
 
             //code正则获取
             //alert(code)
-            alert(getAllName)
+            //alert(getAllName)
 
                 getName.open('GET', 'https://api.debug.psy-1.com' +'/web/v1/wechat/user?code='+code)
                 getName.onreadystatechange = function(){
@@ -323,6 +323,7 @@ function onFrame(event) {
                         //alert(getName.readyState+' '+getName.status)
                         if(getName.status === 200){
                             //alert(JSON.parse( getName.response ).data.nickname)
+                            //alert(getName.readyState+' '+getName.status)
                             if(!getName){
                             var getJson = JSON.parse( getName.response ).data.nickname
                             var url = window.location.href + '&name=' + getJson
