@@ -298,9 +298,10 @@ function onFrame(event) {
             getName.onreadystatechange = function(){
                 alert(getName.readyState+' '+getName.status)
                 if(getName.readyState === 4){
+                    alert(getName.readyState+' '+getName.status)
                     if(getName.status === 200){
-                        alert(getName.body)
-                        name.innerHTML =JSON.parse( getName.body ).data.nickname
+                        alert(getName.readyState+' '+getName.status)
+                        name.innerHTML =JSON.parse( getName.response ).data.nickname
                     }
                 }
                 //alert()
