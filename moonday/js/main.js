@@ -416,7 +416,7 @@ function getUserName(){
 }
 
 function changeToimage(){
-    alert('启动changeToImage方法')
+    //alert('启动changeToImage方法')
     var svgImg = paper.project.exportSVG()
     svgImg.id = 'deletedSVG'
     //console.log(svgImg.id)
@@ -427,11 +427,11 @@ function changeToimage(){
     //转换成图片
     document.getElementById('myCanvas').setAttribute("class", "backgroundred");
 
-    alert('html2canvas启动')
+    //alert('html2canvas启动')
 
 
 
-        alert('html2canvas并没有报错')
+        //alert('html2canvas并没有报错')
         try{
             var img = new Image()
             img.src = document.getElementById('myCanvas').toDataURL("image/png")
@@ -451,7 +451,7 @@ function changeToimage(){
         }
 
 
-        alert('这里svg转换成img')
+        //alert('这里svg转换成img')
 
         //var url = img.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
         //window.open(url);
@@ -466,7 +466,7 @@ function changeToimage(){
             document.getElementById("saveImg").innerHTML = ''
             document.getElementById('saveImg').appendChild(img2)
 
-            alert('这里把整个saveImg转换成img')
+            //alert('这里把整个saveImg转换成img')
 
             //var url = img.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
             //window.open(url);
