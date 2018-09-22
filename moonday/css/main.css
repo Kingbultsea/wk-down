@@ -6,6 +6,10 @@ html {
   font-size: 2.3em;
   overflow: hidden; }
 
+body {
+  width: 100vw;
+  height: 100vh; }
+
 .main {
   width: 100vw;
   height: 100vh;
@@ -197,3 +201,7 @@ html {
 
 .backgroundred {
   background: url(../images/bg.svg); }
+
+.w740 {
+  width: 740px !important;
+  height: 740px !important; }
