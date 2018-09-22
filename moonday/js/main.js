@@ -175,7 +175,7 @@ function onFrame(event) {
         //删除指针
         pointer.remove()
         //删除背景圆
-        raster.remove()
+        //raster.remove()
         //pointer2.remove()
         console.log('这里错误吗？')
 
@@ -209,18 +209,24 @@ function onFrame(event) {
         //console.log("开始计算")
         if(offestResultOpacity === 0.2){
             //绘制月饼
-            console.log('什么问题哦 竟然不绘制？')
-            var mooncakeInside = new Raster('mooncake'+ ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'][randomNum(0,11)])
+
+           /* var mooncakeInside = new Raster('mooncake'+ ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'][randomNum(0,11)])
             mooncakeInside.size = paper.view.viewSize
             mooncakeInside.position = paper.view.center
-            mooncakeInside.opacity = 0.7
-            console.log('什么问题哦 竟然不绘制？')
+            mooncakeInside.opacity = 0.7 */
+
+           /* var mooncakeInside = new Raster('mooncake13');
+            mooncakeInside.position = view.center;
+            mooncakeInside.width =  radius *2
+            mooncakeInside.height = radius *2
+            mooncakeInside.opacity = 1 */
+
             //compoundPath.fillColor = '#f48f4b'
             //mooncake.opacity = 0.1
             //compoundPath.fillStyle = mooncake.style
             //compoundPath.strokeColor = '#E6713B'
             //compoundPath.strokeWidth = 3
-            var compoundImage =  new Group([compoundPath,mooncakeInside])
+            var compoundImage =  new Group([compoundPath,raster])
             compoundImage.setClipped(true)
 
 
