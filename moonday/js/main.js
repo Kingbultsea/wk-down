@@ -187,7 +187,8 @@ function onFrame(event) {
         offestResult.opacity = offestResultOpacity
         offestResultOpacity += 0.04
 
-        
+
+
         //path画出了外面的那部分
         var outerPath = path.subtract(myCircle)
 
@@ -208,19 +209,12 @@ function onFrame(event) {
         //console.log("开始计算")
         if(offestResultOpacity === 0.2){
             //绘制月饼
-
-           /* var mooncakeInside = new Raster('mooncake'+ ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'][randomNum(0,11)])
+            console.log('什么问题哦 竟然不绘制？')
+            var mooncakeInside = new Raster('mooncake'+ ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'][randomNum(0,11)])
             mooncakeInside.size = paper.view.viewSize
             mooncakeInside.position = paper.view.center
-            mooncakeInside.opacity = 0.7 */
-
-           /* var mooncakeInside = new Raster('mooncake13');
-            mooncakeInside.position = view.center;
-            mooncakeInside.width =  radius *2
-            mooncakeInside.height = radius *2
-            mooncakeInside.opacity = 1 */
-
-
+            mooncakeInside.opacity = 0.7
+            console.log('什么问题哦 竟然不绘制？')
             //compoundPath.fillColor = '#f48f4b'
             //mooncake.opacity = 0.1
             //compoundPath.fillStyle = mooncake.style
