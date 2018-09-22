@@ -303,8 +303,9 @@ function onFrame(event) {
             else if(similly>35 && similly<=40){ changeOneSrc.src = 'images/number_7.svg';  zero.src = "images/number_"+ randomNum(1,2) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv7天才画家"; information.innerText = ["你画的月饼是艺术，别人很难懂","你画的月饼，是被玉兔偷吃了吗？"][Math.round(Math.random())]}
             else if(similly>40 && similly<=50){ changeOneSrc.src = 'images/number_6.svg';  zero.src = "images/number_"+ randomNum(6,9) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv6灵魂画手"; information.innerText = '心中有月饼，画什么都能吃！'}
             else if(similly>50 && similly<=60){ changeOneSrc.src = 'images/number_6.svg';  zero.src = "images/number_"+ randomNum(0,5) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv6灵魂画手"; information.innerText = ["你画的月饼是艺术，别人很难懂","你画的月饼，是被玉兔偷吃了吗？"][Math.round(Math.random())]}
-            else if(similly>60 && similly<=80){ changeOneSrc.src = 'images/number_5.svg';  zero.src = "images/number_"+ randomNum(0,9) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv5绘画达人"; information.innerText = '月饼，在哪？完全没看见！'}
-            else if(similly>80){ changeOneSrc.src = 'images/number_1.svg'; zero.src = "images/number_"+ randomNum(5,9) +".svg";degreed.innerText = "等级：Lv1手残菜鸟"; information.innerText = ["月饼被谁吃了一口啦？","月饼被吃货藏起来了，你猜是谁"][Math.round(Math.random())] }
+            else if(similly>60 && similly<=80){ changeOneSrc.src = 'images/number_5.svg';  zero.src = "images/number_"+ randomNum(0,9) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv5绘画达人"; information.innerText = '你画的月饼是艺术，别人很难懂！'}
+            else if(similly>80 && similly<=90){ changeOneSrc.src = 'images/number_4.svg';  zero.src = "images/number_"+ randomNum(0,9) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv5绘画达人"; information.innerText = '月饼，在哪？完全没看见！'}
+            else if(similly>90){ changeOneSrc.src = 'images/number_1.svg'; zero.src = "images/number_"+ randomNum(5,9) +".svg";degreed.innerText = "等级：Lv1手残菜鸟"; information.innerText = ["月饼被谁吃了一口啦？","月饼被吃货藏起来了，你猜是谁"][Math.round(Math.random())] }
 
             //console.log( randomNum(0,4) )
             //console.log( pointList.length )
