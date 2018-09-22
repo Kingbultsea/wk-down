@@ -145,11 +145,18 @@
 
       document.getElementById('btn-begin').addEventListener('click',beginTheGame.bind(document.getElementById('btn-begin')))
 
-
+      let getName
       document.getElementById('download_svg').addEventListener('click',()=>{
-          location.reload()
+          //location.reload()
           //修复安卓刷新不了
-          window.location.href = window.location.href+"?pfid=1&" + Date.parse(new Date());
+          //window.location.href = window.location.href+"?pfid=1&" + Date.parse(new Date());
+          getName = document.getElementById('name').innerText
+          if(!getName.match(/name/)) {  window.location.href + '&name=' + getName }else{
+              window.location.href = window.location.href+"&pfid=1&" + Date.parse(new Date());
+          }
+
+
+
       })
 
       document.getElementById('toDownloadPage').addEventListener('click',()=>{

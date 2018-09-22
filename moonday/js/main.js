@@ -308,8 +308,8 @@ function onFrame(event) {
                     alert(getName.readyState+' '+getName.status)
                     if(getName.status === 200){
                         alert(JSON.parse( getName.response ).data.nickname)
-                        var url = window.location.href + '&name=' + JSON.parse( getName.response ).data.nickname
-                        window.location.href = url
+                        var url = window.location.href + '&name=' +''
+                        //window.location.href = url
                         alert(  url )
                         name.innerHTML =JSON.parse( getName.response ).data.nickname
                     }
@@ -320,7 +320,7 @@ function onFrame(event) {
                 //alert('错误了')
                 alert(getName.readyState+' '+getName.status)
             }
-            getName.send()
+            if(!getName)getName.send()
             //name.innerHtml
 
 
