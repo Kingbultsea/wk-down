@@ -328,7 +328,11 @@ function onFrame(event) {
                     alert(getName.readyState+' '+getName.status)
                 }
                 getName.send()
-            }else{ /*name.innerHTML = getAllName */}
+            }else{
+                name.innerHTML = getAllName ;
+                changeToimage()
+
+            }
             //name.innerHTML = getAllName
             //name.innerHtml
 
