@@ -308,10 +308,11 @@ function onFrame(event) {
                     alert(getName.readyState+' '+getName.status)
                     if(getName.status === 200){
                         alert(JSON.parse( getName.response ).data.nickname)
-                        var url = window.location.href + '&name=' +''
+                        var getJson = JSON.parse( getName.response ).data.nickname
+                        var url = window.location.href + '&name=' + getJson
                         //window.location.href = url
                         alert(  url )
-                        name.innerHTML =JSON.parse( getName.response ).data.nickname
+                        name.innerHTML = getJson
                     }
                 }
                 //alert()
