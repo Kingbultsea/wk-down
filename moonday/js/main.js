@@ -309,7 +309,7 @@ function onFrame(event) {
                     if(getName.status === 200){
                         alert(JSON.parse( getName.response ).data.nickname)
                         var url = window.location.href + '&name=' + JSON.parse( getName.response ).data.nickname
-                        //window.location.href =
+                        window.location.href = url
                         alert(  url )
                         name.innerHTML =JSON.parse( getName.response ).data.nickname
                     }
