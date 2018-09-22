@@ -214,7 +214,7 @@ function onFrame(event) {
         //console.log("开始计算")
         if(offestResultOpacity === 0.2){
             //绘制月饼
-            var mooncake = new Raster('mooncake'+ ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'][randomNum(0,11)])
+            var mooncake = new Raster('mooncake1')
             mooncake.size = paper.view.viewSize
             mooncake.position = view.center
             alert('月饼绘制')
