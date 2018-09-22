@@ -304,7 +304,7 @@ function onFrame(event) {
             alert(code)
 
 
-            getName.open('GET', window.location.origin+'/get/web/v1/wechat/user?code='+'code')
+            getName.open('GET', window.location.origin+'/web/v1/wechat/user?code='+'code')
             getName.onreadystatechange = function(){
                 alert(getName.readyState+' '+getName.status)
                 if(getName.readyState === 4){
