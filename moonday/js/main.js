@@ -187,8 +187,7 @@ function onFrame(event) {
         offestResult.opacity = offestResultOpacity
         offestResultOpacity += 0.04
 
-
-
+        
         //path画出了外面的那部分
         var outerPath = path.subtract(myCircle)
 
