@@ -103,7 +103,6 @@ function onMouseDrag(event) {
     path.add(event.point)
 }
 
-var mooncake
 
 function onMouseUp(event){
 
@@ -116,10 +115,7 @@ function onMouseUp(event){
     //尝试clipMask来获取那个月饼
     // document.getElementById('mooncake').src = 'images/bg'+ ['1', '2', '3'][randomNum(0,2)]
 
-    mooncake = new Raster('mooncake')
-    mooncake.size = paper.view.viewSize
-    mooncake.position = view.center
-    mooncake.opacity = 0.2
+
     //path._clipMask = true
 
     //开始onFrame动画
@@ -214,9 +210,11 @@ function onFrame(event) {
         //console.log("开始计算")
         if(offestResultOpacity === 0.2){
             //绘制月饼
+            console.log('什么问题哦 竟然不绘制？')
             var mooncake = new Raster('mooncake'+ ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'][randomNum(0,11)])
             mooncake.size = paper.view.viewSize
             mooncake.position = paper.view.center
+            console.log('什么问题哦 竟然不绘制？')
             //compoundPath.fillColor = '#f48f4b'
             //mooncake.opacity = 0.1
             //compoundPath.fillStyle = mooncake.style
@@ -408,10 +406,6 @@ function onFrame(event) {
         //完成动画后 添加再来一次按钮
 
     }
-
-}
-
-function getUserName(){
 
 }
 
