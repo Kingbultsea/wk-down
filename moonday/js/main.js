@@ -416,7 +416,7 @@ function getUserName(){
 }
 
 function changeToimage(){
-    //alert('启动changeToImage方法')
+    alert('启动changeToImage方法')
     var svgImg = paper.project.exportSVG()
     svgImg.id = 'deletedSVG'
     //console.log(svgImg.id)
@@ -427,38 +427,37 @@ function changeToimage(){
     //转换成图片
     document.getElementById('myCanvas').setAttribute("class", "backgroundred");
 
-    //alert('html2canvas启动')
+    alert('html2canvas启动')
 
     html2canvas(document.getElementById('myCanvas')).then(function(canvas){
 
         //alert('html2canvas并没有报错')
         try{
             var img = new Image()
-            //img.crossOrigin = 'anonymous'
-            //img.setAttribute("crossOrigin", "anonymous");
-
             img.src = canvas.toDataURL("image/png")
-            alert(canvas.toDataURL('image/png'))
-            img.setAttribute('class', 'w740')
-            //alert('添加class的时候出错了吗？')
+
+
+
             //为了更换掉上面的页面
-            /*var svg = document.getElementById('deletedSVG')
-            svg.parentNode.removeChild(svg)*/
+            var svg = document.getElementById('deletedSVG')
+            svg.parentNode.removeChild(svg)
+
             //console.log(svg.style.height)
-            //document.getElementById('load_svg').appendChild(img)
-            document.getElementById('deletedSVG')
+            img.setAttribute('class', 'w740')
+
+            document.getElementById('load_svg').appendChild(img)
         }catch(e){
             alert(e)
         }
 
 
-        //alert('这里svg转换成img')
+        alert('这里svg转换成img')
 
         //var url = img.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
         //window.open(url);
         //canvas.toBlob()
 
-       /* html2canvas(document.getElementById("saveImg")).then(function(canvas){
+        html2canvas(document.getElementById("saveImg")).then(function(canvas){
 
 
 
@@ -467,12 +466,12 @@ function changeToimage(){
             document.getElementById("saveImg").innerHTML = ''
             document.getElementById('saveImg').appendChild(img2)
 
-            //alert('这里把整个saveImg转换成img')
+            alert('这里把整个saveImg转换成img')
 
             //var url = img.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
             //window.open(url);
             //canvas.toBlob()
-        }) */
+        })
 
 
     })
