@@ -432,19 +432,24 @@ function changeToimage(){
     html2canvas(document.getElementById('myCanvas')).then(function(canvas){
 
         alert('html2canvas并没有报错')
-        var img = new Image()
-        img.src = canvas.toDataURL("image/png")
+        try{
+            var img = new Image()
+            img.src = canvas.toDataURL("image/png")
 
 
 
-        //为了更换掉上面的页面
-        var svg = document.getElementById('deletedSVG')
-        svg.parentNode.removeChild(svg)
+            //为了更换掉上面的页面
+            var svg = document.getElementById('deletedSVG')
+            svg.parentNode.removeChild(svg)
 
-        //console.log(svg.style.height)
-        img.setAttribute('class', 'w740')
+            //console.log(svg.style.height)
+            img.setAttribute('class', 'w740')
 
-        document.getElementById('load_svg').appendChild(img)
+            document.getElementById('load_svg').appendChild(img)
+        }catch(e){
+            alert(e)
+        }
+
 
         alert('这里svg转换成img')
 
