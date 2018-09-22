@@ -223,11 +223,32 @@
     }
     //js sdk 配置
     let sdkurl =  window.location.href.split('#')[0]
-    alert('js sdk url'+ window.location.origin + '/get/web/v1/wechat/config?url=' + sdkurl )
-    window.location.href = window.location.origin + '/get/web/v1/wechat/config?url=' + sdkurl
+    alert('js sdk url 获取apoid'+ window.location.origin + '/get/web/v1/wechat/config?url=' + sdkurl )
+    //window.location.href = window.location.origin + '/get/web/v1/wechat/config?url=' + sdkurl
+    alert(code)
+
+    var appid
+
+    let getappid = XMLHttpRequest();
+    getappid.open('GET', window.location.origin + '/get/web/v1/wechat/config?url=' + sdkurl)
+    getappid.onreadystatechange = function(){
+        if(getappid.readyState === 4){
+            alert(getappid.readyState+' '+getappid.status)
+            if(getappid.status === 200){
+                alert(getappid.readyState+' '+getappid.status)
+                appid =JSON.parse( getappid.response ).data.appId
+            }
+        }
+        //alert()
+    }
+    getappid.onerror = function(msg){
+        alert('错误了 js sdk appid获取')
+        //alert(getName.readyState+' '+getName.status)
+    }
+    getName.send()
 
     //微信接口获取code
-    var appid = 'wx632d4c99bd681cf3'
+
     alert(window.location.href + '当前url')
     alert('redirect_uri为'+window.location.href)
     window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+appid+'&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect?appid=wx632d4c99bd681cf3&redirect_uri=' + window.location.href +'&scope=snsapi_userinfo#wechart_redirect'
