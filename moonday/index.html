@@ -233,9 +233,9 @@
     getappid.open('GET', 'https://api.debug.psy-1.com' + '/web/v1/wechat/config?url=' + sdkurl)
     getappid.onreadystatechange = function(){
         if(getappid.readyState === 4){
-            alert(getappid.readyState + ' '+ getappid.status + '   sdk')
+
             if(getappid.status === 200){
-                alert('成功')
+                alert('js sdk配置成功')
                 //appid =JSON.parse( getappid.response ).data.appId
             }
         }
