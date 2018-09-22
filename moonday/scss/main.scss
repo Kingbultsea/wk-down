@@ -321,11 +321,11 @@ body{
   background: url(../images/bg.svg)
 }
 .w740{
-  width: 740px!important;
-  height: 740px!important;
+  width: 700px!important;
+  height: 700px!important;
 }
 #sentence{
-  position: absolute;
+  position: fixed;
   bottom: 24vh;
   margin: 0 auto;
   width: 100vw;
