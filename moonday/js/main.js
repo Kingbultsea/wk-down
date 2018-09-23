@@ -459,7 +459,7 @@ function changeToimage(){
             var img2 = new Image()
             img2.src = canvas.toDataURL("image/png")
             document.getElementById("saveImg").innerHTML = ''
-            setTimeout(function(){document.getElementById('loading').style.display = 'none'},800)
+            setTimeout(function(){document.getElementById('loading').style.display = 'none'},500)
             //console.log()
             document.getElementById('saveImg').appendChild(img2)
             //alert('这里把整个saveImg转换成img')
