@@ -169,6 +169,18 @@
           //document.getElementById('sentence').style.display = 'inline-block'
           document.getElementById('sentence').classList.add('opacityReverse')
           } )
+
+          if(isWeixin()){
+              that.classList.add('opacity')
+              document.getElementsByClassName('fill-color-origion')[0].classList.add('opacity')
+              document.getElementsByClassName('content-img')[0].classList.add('opacity')
+              that.classList.remove('btn-a')
+              that.removeEventListener('click', beginTheGame)
+              setTimeout(addCanvas, 700)
+              //document.getElementById('sentence').style.display = 'inline-block'
+              document.getElementById('sentence').classList.add('opacityReverse')
+          }
+
       }
 
       function addCanvas(){
@@ -348,8 +360,6 @@
             document.getElementById('tanchuang').style.display = 'none'
             console.log('这个应该启动呀?')
             resolve()
-        }else if(getAllName){
-            resolve()
         }
     })
     //setTimeout( QQgetName, 1000 )
@@ -362,7 +372,8 @@
 
         //})
         console.log('微信端开启游戏')
-        FireEvent(document.getElementById('btn-begin'),'click')
+
+
     }
 
     if(localStorage.getItem('QQname')){
