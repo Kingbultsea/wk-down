@@ -3,7 +3,7 @@
   padding: 0; }
 
 html {
-  font-size: 4.3vw;
+  font-size: 4.0vw;
   overflow: hidden; }
 
 body {
@@ -35,10 +35,12 @@ body {
       .main .center-content .top img {
         position: absolute;
         left: 1em;
-        top: 2em;
+        top: 1em;
         width: 5em; }
     .main .center-content .title-img {
-      max-width: 75vw; }
+      max-width: 75vw;
+      position: fixed;
+      top: 16vh; }
     .main .center-content .content-img {
       width: 100vw; }
     .main .center-content .fill-color-origion, .main .center-content .top {
@@ -223,7 +225,7 @@ body {
 
 #sentence {
   position: fixed;
-  bottom: 22vh;
+  bottom: 16vh;
   margin: 0 auto;
   width: 100vw;
   text-align: center;
