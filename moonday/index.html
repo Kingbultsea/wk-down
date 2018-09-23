@@ -111,7 +111,7 @@
 <div id="sentence">一闪而过的图片，你能照着画出来吗？</div>
 <div id="tanchuang">
     <div>
-        <input maxlength="6" id="enterinput" />
+        <input placeholder="请输入你的大名" maxlength="8" id="enterinput" />
         <div id="enter">确定</div>
     </div>
 </div>
@@ -136,18 +136,39 @@
   </script>
   <script src="js/main.js" type="text/paperscript" canvas="myCanvas"></script>
   <script>
-      let isWeixin = function () {  return /micromessenger/.test(navigator.userAgent.toLowerCase()) };
+      function FireEvent(elem, eventName) {
+          if (typeof(elem) == 'object') {
+              eventName = eventName.replace(/^on/i, '');
+              if (document.all) {//
+                  eventName = "on" + eventName;
+                  elem.fireEvent(eventName);
+              }
+              else {
+                  var evt = document.createEvent('HTMLEvents');
+                  evt.initEvent(eventName, true, true);
+                  elem.dispatchEvent(evt);
+              }
+          }
 
-      function beginTheGame(){
-          this.classList.add('opacity')
+      }
+
+
+
+          let isWeixin = function () {  return /micromessenger/.test(navigator.userAgent.toLowerCase()) };
+
+      function beginTheGame() {
+          if (!isWeixin()  && !localStorage.getItem('QQname')) document.getElementById('tanchuang').style.display = 'flex'
+          let that = this
+          QQgetName.then( ()=>{  //用这个就可以去除this指向了
+          that.classList.add('opacity')
           document.getElementsByClassName('fill-color-origion')[0].classList.add('opacity')
           document.getElementsByClassName('content-img')[0].classList.add('opacity')
-          this.classList.remove('btn-a')
-          this.removeEventListener('click',beginTheGame)
+          that.classList.remove('btn-a')
+          that.removeEventListener('click', beginTheGame)
           setTimeout(addCanvas, 700)
           //document.getElementById('sentence').style.display = 'inline-block'
           document.getElementById('sentence').classList.add('opacityReverse')
-
+          } )
       }
 
       function addCanvas(){
@@ -303,9 +324,9 @@
 
     //QQ端处理
 
-    if(!isWeixin()) document.getElementById('tanchuang').style.display = 'flex'
 
-    let QQgetName = function() {
+
+    let QQgetName = new Promise(  function(resolve) {
         //alert('??')
         if (!isWeixin() && !localStorage.getItem('QQname')) {
             //console.log('yx')
@@ -319,19 +340,33 @@
                 document.getElementById('tanchuang').style.display = 'none'
                 getAllName = localStorage.getItem('QQname')
                 console.log(text)
+                resolve()
             })
-        }else if(!isWeixin()){
+        }else if(!isWeixin() && localStorage.getItem('QQname')){
             getAllName = localStorage.getItem('QQname')
             console.log(getAllName)
             document.getElementById('tanchuang').style.display = 'none'
+            console.log('这个应该启动呀?')
+            resolve()
+        }else if(getAllName){
+            resolve()
         }
-    }
+    })
     //setTimeout( QQgetName, 1000 )
-    QQgetName()
+
 
     //如果有就直接开始游戏
-    if(getAllName){
-        beginTheGame.apply( document.getElementById('btn-begin') )
+    if(getAllName  && isWeixin()){
+        //beginTheGame.apply( document.getElementById('btn-begin') )
+        //QQgetName.then(function(){
+
+        //})
+        console.log('微信端开启游戏')
+        FireEvent(document.getElementById('btn-begin'),'click')
+    }
+
+    if(localStorage.getItem('QQname')){
+        FireEvent(document.getElementById('btn-begin'),'click')
     }
 
 
@@ -363,21 +398,30 @@
 let share_data = {
     type1:{
         title: '你画的月饼有多圆？',
-        desc: '你画的多少分？PK一下！'
+        desc: '你画的多少分？PK一下！',
+        link: window.location.href.replace(/\?.+/,''),
+        imgUrl: 'https://res.psy-1.com/cosleep/moonday/logo@3x.png',
+        shareType: 1
     },
     type2:{
         title: '你画的月饼有多圆？',
-        desc: '你画的多少分？PK一下！'
+        desc: '你画的多少分？PK一下！',
+        link: window.location.href.replace(/\?.+/,''),
+        imgUrl: 'https://res.psy-1.com/cosleep/moonday/logo@3x.png',
+        shareType: 2
     },
     type3:{
         title: '你画的月饼有多圆？',
-        desc: '你画的多少分？PK一下！'
+        desc: '你画的多少分？PK一下！',
+        link: window.location.href.replace(/\?.+/,''),
+        imgUrl: 'https://res.psy-1.com/cosleep/moonday/logo@3x.png',
+        shareType: 3
     }
 }
 
+
 //share_data[Symbol['title']] = '测试下'
 console.log( JSON.stringify(share_data) )
-
 document.getElementById('share').value = JSON.stringify(share_data)
 </script>
 
