@@ -286,7 +286,7 @@
 
     //调试 添加月饼  !window.location.href.match(QRblock)
     //alert(isWeixin())
-    if( !window.location.href.match(QRblock) && isWeixin() ){
+    //if( !window.location.href.match(QRblock) && isWeixin() ){
     //code = window.location.href.match(QRblock)[1]
     let getappid = new XMLHttpRequest();
     getappid.open('GET', 'https://api.debug.psy-1.com' + '/web/v1/wechat/config?url=' + sdkurl)
@@ -294,7 +294,20 @@
         if(getappid.readyState === 4){
 
             if(getappid.status === 200){
-
+                wx.config({
+                    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                    appId: appid, // 必填，公众号的唯一标识
+                    timestamp: Date.parse(new Date()), // 必填，生成签名的时间戳
+                    nonceStr: Date.parse(new Date()), // 必填，生成签名的随机串
+                    signature: Date.parse(new Date()),// 必填，签名
+                    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareQZone'] // 必填，需要使用的JS接口列表
+                });
+                wx.onMenuShareAppMessage({
+                    title: 'asd',
+                    desc: 'asd',
+                    link: window.location.href.replace(/\?.+/,'').replace(/:[0-9]+/,''),
+                    success: ()=> alert('分享成功')
+                })
                 //appid =JSON.parse( getappid.response ).data.appId
             }
         }
@@ -309,7 +322,7 @@
 
     //微信接口获取code
 
-
+    if( !window.location.href.match(QRblock) && isWeixin() ){
     window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx632d4c99bd681cf3&redirect_uri=' + encodeURI( window.location.href ) +'&response_type=code&scope=snsapi_userinfo&state=ST#wechart_redirect'
 
     }
@@ -428,7 +441,9 @@ let share_data = {
 console.log( JSON.stringify(share_data) )
 document.getElementById('share').value = JSON.stringify(share_data)
 </script>
+<script>
 
+</script>
 
 </body>
 </html>
