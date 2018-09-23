@@ -271,7 +271,7 @@
 
 
     //js sdk 配置
-    let sdkurl =  window.location.href.split('#')[0].replace(/&state/,'')
+    let sdkurl =  encodeURIComponent(window.location.href.split('#')[0])
     //alert('js sdk url '+'https://api.debug.psy-1.com' + '/web/v1/wechat/config?url=' + sdkurl)
     //window.location.href = 'https://api.debug.psy-1.com' + '/get/web/v1/wechat/config?url=' + sdkurl
     //alert(code)
@@ -290,7 +290,7 @@
     //code = window.location.href.match(QRblock)[1]
     if(isWeixin()){
 
-
+        //这里是测试服务器的 记得修改
         let getappid = new XMLHttpRequest();
         getappid.open('GET', 'https://api.debug.psy-1.com' + '/web/v1/wechat/config?url=' + sdkurl)
         getappid.onreadystatechange = function(){
