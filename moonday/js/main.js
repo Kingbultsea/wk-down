@@ -452,7 +452,7 @@ function changeToimage(){
         //window.open(url);
         //canvas.toBlob()
 
-        html2canvas(document.getElementById("saveImg")).then(function(canvas){
+        html2canvas(document.getElementById("saveImg"),{timeout:300}).then(function(canvas){
 
 
 

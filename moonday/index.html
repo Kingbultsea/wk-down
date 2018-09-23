@@ -312,9 +312,33 @@
                     wx.onMenuShareAppMessage({
                         title: share_data.type1.title,
                         desc: share_data.type1.desc,
-                        link: window.location.href.replace(/\?.+/,'').replace(/:[0-9]+/,'')
+                        link: window.location.href.replace(/\?.+/,'').replace(/:[0-9]+/,''),
+                        imgUrl: 'https://res.psy-1.com/cosleep/moonday/logo@3x.png'
                         //success: ()=> alert('分享成功')
                     })
+                    wx.onMenuShareQQ({
+                        title: share_data.type1.title,
+                        desc: share_data.type1.desc,
+                        link: window.location.href.replace(/\?.+/,'').replace(/:[0-9]+/,''),
+                        imgUrl: 'https://res.psy-1.com/cosleep/moonday/logo@3x.png'
+                        //success: ()=> alert('分享成功')
+                    })
+                    wx.onMenuShareQZone({
+                        title: share_data.type1.title,
+                        desc: share_data.type1.desc,
+                        link: window.location.href.replace(/\?.+/,'').replace(/:[0-9]+/,''),
+                        imgUrl: 'https://res.psy-1.com/cosleep/moonday/logo@3x.png'
+                        //success: ()=> alert('分享成功')
+                    })
+                    wx.onMenuShareQZone({
+                        title: share_data.type1.title,
+                        desc: share_data.type1.desc,
+                        link: window.location.href.replace(/\?.+/,'').replace(/:[0-9]+/,''),
+                        imgUrl: 'https://res.psy-1.com/cosleep/moonday/logo@3x.png'
+                        //success: ()=> alert('分享成功')
+                    })
+
+
                     wx.error((res)=>{
                         console.log(res)
                     })
