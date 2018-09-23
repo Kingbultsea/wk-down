@@ -310,10 +310,10 @@
                         jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareQZone'] // 必填，需要使用的JS接口列表
                     });
                     wx.onMenuShareAppMessage({
-                        title: 'asd',
-                        desc: 'asd',
-                        link: window.location.href.replace(/\?.+/,'').replace(/:[0-9]+/,''),
-                        success: ()=> alert('分享成功')
+                        title: share_data.type1.title,
+                        desc: share_data.type1.desc,
+                        link: window.location.href.replace(/\?.+/,'').replace(/:[0-9]+/,'')
+                        //success: ()=> alert('分享成功')
                     })
                     wx.error((res)=>{
                         console.log(res)
