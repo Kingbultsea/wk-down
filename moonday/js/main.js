@@ -452,14 +452,14 @@ function changeToimage(){
         //window.open(url);
         //canvas.toBlob()
 
-        html2canvas(document.getElementById("saveImg"),{timeout:300}).then(function(canvas){
+        html2canvas(document.getElementById("saveImg"),{timeout:200}).then(function(canvas){
 
 
 
             var img2 = new Image()
             img2.src = canvas.toDataURL("image/png")
             document.getElementById("saveImg").innerHTML = ''
-            document.getElementById('loading').style.display = 'none'
+            setTimeout(()=>{document.getElementById('loading').style.display = 'none'},100)
             //console.log()
             document.getElementById('saveImg').appendChild(img2)
             //alert('这里把整个saveImg转换成img')
