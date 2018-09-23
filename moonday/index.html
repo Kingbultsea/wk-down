@@ -371,11 +371,19 @@
         //QQgetName.then(function(){
 
         //})
+        let that = document.getElementById('btn-begin')
         console.log('微信端开启游戏')
+        that.classList.add('opacity')
+        document.getElementsByClassName('fill-color-origion')[0].classList.add('opacity')
+        document.getElementsByClassName('content-img')[0].classList.add('opacity')
+        that.classList.remove('btn-a')
+        that.removeEventListener('click', beginTheGame)
+        setTimeout(addCanvas, 700)
+        //document.getElementById('sentence').style.display = 'inline-block'
+        document.getElementById('sentence').classList.add('opacityReverse')
 
 
     }
-
     if(localStorage.getItem('QQname')){
         FireEvent(document.getElementById('btn-begin'),'click')
     }
