@@ -297,6 +297,8 @@
             if(getappid.readyState === 4){
 
                 if(getappid.status === 200){
+                    console.log(getappid.response.body)
+                    console.log(getappid.response)
                     let getSDK = JSON.parse( getappid.response.body )
                     console.log(getSDK)
                     wx.config({
