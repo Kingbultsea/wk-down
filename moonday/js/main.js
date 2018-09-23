@@ -480,4 +480,6 @@ function changeShareTitle(title){
     share_data.type3.title = '我是' + title + ',画的月饼' + one + two +'分'
     console.log( JSON.stringify(share_data) )
     document.getElementById('share').value = JSON.stringify(share_data)
+    document.getElementById('share2').value = JSON.stringify(share_data)
+    document.getElementById('share3').value = JSON.stringify(share_data)
 }
