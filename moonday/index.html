@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>你画的月饼有多圆？</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
@@ -115,6 +115,7 @@
         <div id="enter">确定</div>
     </div>
 </div>
+<input id="share" style="visibility: hidden;position: absolute;" type="hidden" name="xinchao_share" value="">
 <!-- <p id="test">sdjaskdja</p> -->
   <script src="js/paper-full.js" type="text/javascript" ></script>
   <script defer>
@@ -335,6 +336,49 @@
 
 
 
+</script>
+<script>
+//webapp
+/*const callAppRouter=(method, params={}, callback)=>{
+    let req = {
+        'Method': method,
+        'Data': params
+    },cbName = `CB_${Date.now()}_${Math.ceil(Math.random() * 10)}`;
+    req=JSON.stringify(req);
+    Xinchao.Web[cbName] =  (err, result) => {
+        if(callback){
+            callback(err, result);
+        }
+        delete Xinchao.Web[cbName];
+    };
+    if (/(iPhone|iPad|iPod)/i.test(navigator.userAgent)) {
+        window.webkit.messageHandlers.XinchaoApp.postMessage({req,
+            cbName});
+    } else {
+        XinchaoApp.callRouter(req, cbName);
+    }
+} */
+
+//全局share
+let share_data = {
+    type1:{
+        title: '你画的月饼有多圆？',
+        desc: '你画的多少分？PK一下！'
+    },
+    type2:{
+        title: '你画的月饼有多圆？',
+        desc: '你画的多少分？PK一下！'
+    },
+    type3:{
+        title: '你画的月饼有多圆？',
+        desc: '你画的多少分？PK一下！'
+    }
+}
+
+//share_data[Symbol['title']] = '测试下'
+console.log( JSON.stringify(share_data) )
+
+document.getElementById('share').value = JSON.stringify(share_data)
 </script>
 
 

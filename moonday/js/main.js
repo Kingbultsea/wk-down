@@ -307,6 +307,12 @@ function onFrame(event) {
             else if(similly>80 && similly<=90){ changeOneSrc.src = 'images/number_4.svg';  zero.src = "images/number_"+ randomNum(0,9) +".svg"; console.log( "images/number_"+ randomNum(0,9) );degreed.innerText = "等级：Lv5绘画达人"; information.innerText = '月饼，在哪？完全没看见！'}
             else if(similly>90){ changeOneSrc.src = 'images/number_1.svg'; zero.src = "images/number_"+ randomNum(5,9) +".svg";degreed.innerText = "等级：Lv1手残菜鸟"; information.innerText = ["月饼被谁吃了一口啦？","月饼被吃货藏起来了，你猜是谁"][Math.round(Math.random())] }
 
+
+            //修改转发的标题
+            changeShareTitle(degreed.innerText)
+
+
+
             //console.log( randomNum(0,4) )
             //console.log( pointList.length )
             //获取用户名称
@@ -462,4 +468,16 @@ function changeToimage(){
 
 
 
+}
+
+function changeShareTitle(title){
+    title = title.replace(/等级：Lv[0-9]/,'')
+    console.log(title)
+    var one = document.getElementById('scoreOne').src.replace(/^.+images\/number_/,'').replace(/\.svg/,'')
+    var two = document.getElementById('scoreTwo').src.replace(/^.+images\/number_/,'').replace(/\.svg/,'')
+    share_data.type1.title = '我是' + title + ',画的月饼' + one + two +'分'
+    share_data.type2.title = '我是' + title + ',画的月饼' + one + two +'分'
+    share_data.type3.title = '我是' + title + ',画的月饼' + one + two +'分'
+    console.log( JSON.stringify(share_data) )
+    document.getElementById('share').value = JSON.stringify(share_data)
 }
