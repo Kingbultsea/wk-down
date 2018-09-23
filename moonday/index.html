@@ -301,6 +301,7 @@
                     console.log(getappid.response)
                     let getSDK = JSON.parse( getappid.response )
                     console.log(getSDK)
+                    getSDK.data.wechat_config.debug = false
                     wx.config(getSDK.data.wechat_config);
                     wx.onMenuShareAppMessage({
                         title: share_data.type1.title,
@@ -323,7 +324,7 @@
                         imgUrl: 'https://res.psy-1.com/cosleep/moonday/logo@3x.png'
                         //success: ()=> alert('分享成功')
                     })
-                    wx.onMenuShareQZone({
+                    wx.onMenuShareTimeline({
                         title: share_data.type1.title,
                         desc: share_data.type1.desc,
                         link: window.location.href.replace(/\?.+/,'').replace(/:[0-9]+/,''),
