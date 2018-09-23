@@ -136,9 +136,9 @@ body {
           position: absolute;
           bottom: 1px;
           order: 3;
-          font-size: 1em;
+          font-size: 0.9em;
           color: #8B572A;
-          padding: 0.5em; }
+          padding: 0; }
       .score-frame .score-tainer .score-border .bottom img {
         width: 6em;
         padding: 0.5em; }
