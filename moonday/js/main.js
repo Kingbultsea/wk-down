@@ -281,7 +281,7 @@ function onFrame(event) {
         ]
 
 
-
+            document.getElementById('loading').style.display = 'flex'
             //计算得分，修改成绩 姓名等级风格
             var changeOneSrc = document.getElementById('scoreOne')
             var name = document.getElementById('name')
@@ -459,6 +459,8 @@ function changeToimage(){
             var img2 = new Image()
             img2.src = canvas.toDataURL("image/png")
             document.getElementById("saveImg").innerHTML = ''
+            document.getElementById('loading').style.display = 'none'
+            //console.log()
             document.getElementById('saveImg').appendChild(img2)
             //alert('这里把整个saveImg转换成img')
             //var url = img.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
