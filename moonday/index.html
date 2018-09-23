@@ -292,7 +292,7 @@
 
         //这里是测试服务器的 记得修改
         let getappid = new XMLHttpRequest();
-        getappid.open('GET', 'https://api.debug.psy-1.com' + '/web/v1/wechat/config?url=' + sdkurl)
+        getappid.open('GET', 'https://api.debug.psy-1.com' + '/web/v1/wechat/config?debug=1&url=' + sdkurl)
         getappid.onreadystatechange = function(){
             if(getappid.readyState === 4){
 
