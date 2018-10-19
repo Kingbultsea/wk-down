@@ -484,9 +484,10 @@ export default {
       //overflow:hidden;
       background:rgba(0,0,0,0.5);
       width:px2html(375px);
-      bottom:0px;
       position:fixed;
-      font-size:px2html(10px);
+      bottom:0%;
+
+      font-size:px2html(13px);
       color:#fff;
       .bottom-img{
         width:px2html(60px);
@@ -563,6 +564,7 @@ export default {
       top:0;
       left:0;
       z-index:10000;
+      background-color: rgba(146, 204, 202,0.5);
       .outer{
         position:absolute;
         top:45%;
@@ -598,9 +600,11 @@ export default {
         }
         .close{
           position:absolute;
+          //background:red;
           width:px2html(80px);
-          height:px2html(80px);
-          right:px2html(5px)
+          height:px2html(90px);
+          right:px2html(5px);
+          top:0%;
         }
       }
 
