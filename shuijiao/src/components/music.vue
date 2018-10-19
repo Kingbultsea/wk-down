@@ -1,7 +1,7 @@
 <template>
     <div>
         <img ref="audio" @click="musicPlay" class="music" :src="tgImg" />
-        <audio   id="myaudio" controls hidden>
+        <audio  src="https://res.psy-1.com/music/voice/Boiled_dumplings_1min-PcguwNRLOtnF2Ei8KAEP.mp3" ref="zz" id="myaudio" controls hidden>
             <source  :src="musicPath" type="audio/mpeg" >
         </audio>
     </div>
@@ -31,7 +31,11 @@
                 const musicdom = document.getElementById('myaudio')
                 if(musicdom.paused) {
                     document.querySelector('.music').classList.add('rotate')
-                    musicdom.play()
+                    console.log(document.getElementById('myaudio'))
+                    document.getElementById('myaudio').play()
+                    console.log('fgh')
+                    //musicdom.play()
+                    //document.getElementById("myaudio").load()
                     this.toggle = true
                 }else{
                     musicdom.pause()
@@ -41,19 +45,17 @@
 
             },
             initMusic(){
-
                 if(!this.$store.getters.isWeiXin){
                     if(  this.$store.getters.isApp   ){
-                        setTimeout(()=>{
-                           if(document.querySelector('#myaudio').paused) this.musicPlay()
-                        },300)
+
+                            this.musicPlay()
+
                     }
                 }else{
                     document.addEventListener("WeixinJSBridgeReady", ()=>{
                         console.log('浏览器非苹果播放')
-                        setTimeout(()=>{
-                            if(document.querySelector('#myaudio').paused) this.musicPlay()
-                        },300)
+                            this.musicPlay()
+
                     }, false)
                 }
             },
@@ -62,8 +64,14 @@
             }
         },
         mounted(){
-            this.initMusic()
+
+                this.initMusic()
+
+
             localStorage.removeItem('fuckyou')
+
+
+
         }
     }
 </script>

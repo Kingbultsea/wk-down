@@ -159,7 +159,7 @@ export default {
               this.changeBG(data.data.music_data.page_bg_color)
 
               this.musicPath = data.data.music_data.musicurl_try
-              document.querySelector('#myaudio').setAttribute('src',data.data.music_data.musicurl_try)
+              //document.querySelector('#myaudio').setAttribute('src',data.data.music_data.musicurl_try)
 
               const danmudata = eval('(' +data.data.music_data.share_danmu+')')
               console.log(danmudata)
@@ -385,8 +385,9 @@ export default {
         align-items: center;
         border-radius:px2html(30px);
         //top:100%;
-        right:0;
+        right:px2html(-200px);
         transform: translateX(100%);
+
         .danmu-list-sentance{
           font-size:px2html(12px);
           padding-right:px2html(10px);
@@ -634,8 +635,11 @@ export default {
     animation-fill-mode: forwards;
   }
   @keyframes move{
+    0%{
+      transform: translateX( 50% );
+    }
     100% {
-      transform: translateX( px2html(-375px) );
+      transform: translateX( px2html(-575px) );
     }
   }
 
