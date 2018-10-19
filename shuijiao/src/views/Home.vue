@@ -635,9 +635,6 @@ export default {
     animation-fill-mode: forwards;
   }
   @keyframes move{
-    0%{
-      transform: translateX( 50% );
-    }
     100% {
       transform: translateX( px2html(-575px) );
     }
