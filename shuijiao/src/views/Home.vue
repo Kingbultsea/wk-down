@@ -41,7 +41,9 @@
           <img  class='bottom-hehe' src="../assets/hehe.png"/>
         </div>
         <p class="bottom-center">小睡眠，不负休憩好时光</p>
+        <a class="dl"  target="view_window" href="https://a.app.qq.com/o/simple.jsp?pkgname=com.psyone.brainmusic" >
         <p class="bottom-dl">下载</p>
+        </a>
       </div>
     </div>
 
@@ -54,7 +56,9 @@
         <img class="end-bg" src="https://webres.psy-1.com/sgy/dist/static/img/tinysleep_sheep_window_bg.fbc1ed4.png" />
         <p class="one-p">试听结束</p>
         <p class="two-p">想听完整版？</p>
-        <p class="three-p">去下载小睡眠</p>
+        <a class="dl"  target="view_window" href="https://a.app.qq.com/o/simple.jsp?pkgname=com.psyone.brainmusic" >
+          <p class="three-p">去下载小睡眠</p>
+        </a>
         <div @click="close" class="close"></div>
       </div>
 

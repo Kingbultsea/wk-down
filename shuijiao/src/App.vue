@@ -22,6 +22,10 @@
 }
 </style>
 <style>
+  a,a:link,a:visited,a:hover,a:active{
+    text-decoration: none;
+    color:inherit;
+  }
   body{
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
