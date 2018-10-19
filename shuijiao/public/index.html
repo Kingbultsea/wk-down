@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=0.5,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script>
+        var Xinchao = {}
+        Xinchao.Web = {}
+    </script>
+
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+
+
+    <title>shuijiao</title>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but shuijiao doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <input id="share" style="visibility: hidden;position: absolute;display:none" type="hidden" name="xinchao_share" value="">
+    <input id="share2" style="visibility: hidden;position: absolute;display:none" type="hidden" name="ShareAppMessage" value="">
+    <input id="share3" style="visibility: hidden;position: absolute;display:none" type="hidden" name="ShareTimeline" value="">
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vConsole/3.2.0/vconsole.min.js"></script>
+    <script>
+        // init vConsole
+        var vConsole = new VConsole();
+        console.log('Hello world');
+    </script>
+  </body>
+</html>

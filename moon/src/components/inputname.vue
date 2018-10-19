@@ -21,7 +21,7 @@
                 if(!this.name) this.name = '无名同学'  //小失误 就是if条件判断的时候没有加上this
                 if(this.name){  //又是上面的失误 看来这个情况挺严重的呀
                     localStorage.setItem('name',this.name)
-                    this.$router.push( {path:'/playing/b'} )
+                    this.$router.push( {path:'/playpage'} )
                 }
             }
         }
@@ -29,11 +29,18 @@
 </script>
 
 <style lang="scss" scoped>
+    @function px2html($px){
+        $rem: 37.5px;
+        @return ($px / $rem) + rem;
+    }
+
+
 .main{
     width: 100vw;
     height: 100vh;
     background: rgba(0,0,0,0.5);
     position: relative;
+    font-size:px2html(16px);
     .input{
         position: absolute;
         background: rgba(255,255,255,1);
@@ -44,15 +51,19 @@
         justify-content: space-around;
         align-items: center;
         right:50%;
-        transform:translateX(50%);
+        top: 50%;
+        transform: translateY(-50%) translateX(50%);
         border-radius: 1em;
+        color:#8B572A;
         input{
             background:none;
             outline:none;
             border:0px;
-            font-size:1em;
-            border-bottom: 2px #8B572A solid;
+            font-size:px2html(18px);
+            color:#8B572A;
+            border-bottom: px2html(2px) #8B572A solid;
             text-align:center;
+            padding-bottom: px2html(2px);
         }
 
     }
