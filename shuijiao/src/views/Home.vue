@@ -36,33 +36,13 @@
 
       </div>
 
-      <div class="bottom">
-        <div class="bottom-img">
-          <img  class='bottom-hehe' src="../assets/hehe.png"/>
-        </div>
-        <p class="bottom-center">小睡眠，不负休憩好时光</p>
-        <a class="dl"  target="view_window" href="https://a.app.qq.com/o/simple.jsp?pkgname=com.psyone.brainmusic" >
-        <p class="bottom-dl">下载</p>
-        </a>
-      </div>
     </div>
 
     <transition name="fade">
       <div v-if="tips_toggle" class="tips">点一次就好，不要太贪心哦~</div>
     </transition>
 
-    <div class="end" v-if="end">
-      <div class="outer">
-        <img class="end-bg" src="https://webres.psy-1.com/sgy/dist/static/img/tinysleep_sheep_window_bg.fbc1ed4.png" />
-        <p class="one-p">试听结束</p>
-        <p class="two-p">想听完整版？</p>
-        <a class="dl"  target="view_window" href="https://a.app.qq.com/o/simple.jsp?pkgname=com.psyone.brainmusic" >
-          <p class="three-p">去下载小睡眠</p>
-        </a>
-        <div @click="close" class="close"></div>
-      </div>
 
-    </div>
 
 
   </div>
@@ -74,6 +54,7 @@
 <script>
 // @ is an alias to /src
 require('@/components/sizeRem.js')
+import BScroll from 'better-scroll'
 import music from '@/components/music.vue'
 import shareTool from '@/components/shareandgetname.js'
 
@@ -100,7 +81,7 @@ export default {
             onPath: 'https://res.psy-1.com/music/voice/tinysleep_sheep_play2-BHgSoY5B6WFClAfSEh2i.png',
             dianzan:1000,
             danmu_list:[],
-            max:25,
+            max:30,
             tips_toggle:false,
             one:1,
             two:'01 : 12',
@@ -176,7 +157,7 @@ export default {
           })
       },
         apiDianZanClick(url){
-            $.get(url + '/web/v1/smallslleep/music/voteData',{func_id:this.func_id, func_type:this.func_type, sharecode:this.sharecode}, (data)=>{console.log('jq都不行？');
+            $.post(url + '/web/v1/smallslleep/music/shareActiveVote',{func_id:this.func_id, func_type:this.func_type, sharecode:this.sharecode}, (data)=>{console.log('jq都不行？');
 
             })
         },
@@ -318,13 +299,13 @@ export default {
               setTimeout(()=>{
                   that.danmu_list = []
                   a = setInterval(zz,2000)
-                  that.max = 15
+                  that.max = 30
               },7000)
           }
 
 
       }
-      a = setInterval(zz,2000)
+      a = setInterval(zz,4000)
 
 
 
@@ -335,12 +316,27 @@ export default {
           this.musicCount()
       },1000)
 
+
+
      /* setTimeout(()=>{
           this.$children[0].musicPlay()
       },200) */
 
 
       //this.$children[0].musicPlay()
+      let wrapper = document.querySelector('#app')
+      let scroll = new BScroll(wrapper, {
+          click: true,
+          bounce: {
+              top: false,
+              bottom: false,
+              left: false,
+              right: false
+          }
+      })
+
+
+
 
   }
 }
@@ -349,6 +345,12 @@ export default {
 <style lang="scss" scoped>
   .home{
     position: relative;
+    height:px2html(1280px);
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
     .music {
       position:fixed;
       z-index:9999;
@@ -385,8 +387,8 @@ export default {
         align-items: center;
         border-radius:px2html(30px);
         //top:100%;
-        right:px2html(-200px);
-        transform: translateX(100%);
+        right:px2html(-375px);
+        //transform: translateX(100%);
 
         .danmu-list-sentance{
           font-size:px2html(12px);
@@ -480,53 +482,7 @@ export default {
       }
 
     }
-    .bottom{
-      height:px2html(40px);
-      //overflow:hidden;
-      background:rgba(0,0,0,0.5);
-      width:px2html(375px);
-      position:fixed;
-      bottom:0%;
 
-      font-size:px2html(13px);
-      color:#fff;
-      .bottom-img{
-        width:px2html(60px);
-        position:relative;
-        overflow:hidden;
-        position:absolute;
-        height:px2html(51px);
-        left:px2html(10px);
-        top:px2html(-20px);
-        .bottom-hehe{
-          position:absolute;
-          height:px2html(90px);
-          left:px2html(-40px);
-          top:px2html(-2px);
-          z-index:999;
-        }
-      }
-
-
-      .bottom-center{
-        position:absolute;
-        right:50%;
-        top:50%;
-        transform: translateX(50%) translateY(-50%);
-        color:skyblue;
-      }
-      .bottom-dl{
-        position:absolute;
-        right:px2html(30px);
-        top:50%;
-        border:1px #fff solid;
-        padding:px2html(10px);
-        padding-top:px2html(1px);
-        padding-bottom:px2html(1px);
-        border-radius:px2html(8px);
-        transform: translateX(50%) translateY(-50%);
-      }
-    }
     .tips{
       position:fixed;
       top:50%;
@@ -557,59 +513,7 @@ export default {
       color:#fff
     }
 
-    .end{
-      width:100%;
-      height:100%;
-      background:#6b6ba75c;
-      position:fixed;
-      top:0;
-      left:0;
-      z-index:10000;
-      background-color: rgba(146, 204, 202,0.5);
-      .outer{
-        position:absolute;
-        top:45%;
-        left:50%;
-        font-size:px2html(13px);
-        transform: translateX(-50%) translateY(-50%);
-        display:flex;
-        flex-direction:column;
-        align-items: center;
-        .end-bg{
-          width:px2html(300px);
-        }
-        .one-p{
-          position:relative;
-          top:px2html(-160px);
-          font-size:px2html(18px);
-          color:skyblue;
-          font-weight:900;
-        }
-        .two-p{
-          position:relative;
-          top:px2html(-120px);
-          color:skyblue;
-        }
-        .three-p{
-          position:relative;
-          top:px2html(-110px);
-          padding:px2html(3px);
-          background:skyblue;
-          width:px2html(100px);
-          color:#fff;
-          border-radius:px2html(10px);
-        }
-        .close{
-          position:absolute;
-          //background:red;
-          width:px2html(80px);
-          height:px2html(90px);
-          right:px2html(5px);
-          top:0%;
-        }
-      }
 
-    }
 
   }
 </style>
@@ -631,12 +535,12 @@ export default {
 
 
   .moveLeftAnimatin{
-    animation: move ease-in 4s forwards;
+    animation: move ease-in 8s forwards;
     animation-fill-mode: forwards;
   }
   @keyframes move{
     100% {
-      transform: translateX( px2html(-575px) );
+      transform: translateX( px2html(-875px) );
     }
   }
 
