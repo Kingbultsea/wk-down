@@ -47,6 +47,7 @@
             initMusic(){
                 if(!this.$store.getters.isWeiXin){
                     if(  this.$store.getters.isApp   ){
+                        console.log('??')
 
                             this.musicPlay()
 
@@ -64,8 +65,10 @@
             }
         },
         mounted(){
-
+            setTimeout(()=>{
                 this.initMusic()
+            },1000)
+
 
 
             localStorage.removeItem('fuckyou')
