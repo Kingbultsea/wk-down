@@ -156,8 +156,9 @@ export default {
           })
       },
         apiDianZanClick(url){
+          const that =this
             $.post(url + '/web/v1/smallslleep/music/shareActiveVote',{func_id:this.func_id, func_type:this.func_type, sharecode:this.sharecode}, (data)=>{console.log('jq都不行？');
-
+                that.shuaXinZan(url)
             })
         },
       close(){
@@ -173,15 +174,13 @@ export default {
         },
       zanClick(){
           this.apiDianZanClick(this.url)
-          this.shuaXinZan(this.url)
-          if(!localStorage.getItem('mark')){
-              localStorage.setItem('mark','1')
-          }else{
+
+
               this.$parent.tips_toggle = true
               setTimeout(()=>{
                   this.$parent.tips_toggle = false
               },1000)
-          }
+
 
       },
         fuck(e){
