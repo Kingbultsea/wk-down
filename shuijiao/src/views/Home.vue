@@ -229,7 +229,7 @@ export default {
             this.danmu_list.push(duix)
         },
         musicCount(){
-           const a = 72 - Math.round(document.querySelector('#myaudio').currentTime)
+           const a = Math.round(document.querySelector('#myaudio').duration) - Math.round(document.querySelector('#myaudio').currentTime)
             this.two = this.formatSeconds(    a   )
       },
         formatSeconds(value) {
