@@ -166,8 +166,14 @@ export default {
           this.someThingShow()
           //document.querySelector('#myaudio').play()
       },
+        shuaXinZan(){
+            $.post(url + '/web/v1/smallslleep/music/shareActiveView',{func_id:this.func_id, func_type:this.func_type, sharecode:this.sharecode}, (data)=>{console.log('jq都不行？');
+
+            })
+        },
       zanClick(){
           this.apiDianZanClick(this.url)
+          this.shuaXinZan(this.url)
           if(!localStorage.getItem('mark')){
               localStorage.setItem('mark','1')
           }else{
