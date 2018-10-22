@@ -83,6 +83,7 @@
             },false);
             musicdom.addEventListener("error",function(){
                 console.log("加载失败！");
+                musicdom.load()
             },false);
 
 
