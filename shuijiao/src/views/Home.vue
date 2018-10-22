@@ -168,7 +168,6 @@ export default {
       zanClick(){
           this.apiDianZanClick(this.url)
           if(!localStorage.getItem('mark')){
-              this.dianzan += 1
               localStorage.setItem('mark','1')
           }else{
               this.$parent.tips_toggle = true
@@ -286,6 +285,9 @@ export default {
         this.apiDianZan('https://api.debug.psy-1.com')
     },
   mounted(){
+
+      localStorage.removeItem('mark')
+
       let a
       const that = this
       function zz(){
