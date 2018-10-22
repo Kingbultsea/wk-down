@@ -77,6 +77,14 @@
 
                 this.initMusic()
 
+            const musicdom = document.getElementById('myaudio')
+            musicdom.addEventListener("canplaythrough",function(){
+                console.log("加载完成！");
+            },false);
+            musicdom.addEventListener("error",function(){
+                console.log("加载失败！");
+            },false);
+
 
 
 
