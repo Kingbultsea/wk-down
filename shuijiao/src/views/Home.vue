@@ -167,7 +167,7 @@ export default {
           //document.querySelector('#myaudio').play()
       },
         shuaXinZan(){
-            $.post(url + '/web/v1/smallslleep/music/shareActiveView',{func_id:this.func_id, func_type:this.func_type, sharecode:this.sharecode}, (data)=>{console.log('jq都不行？');
+            $.post(url + '/web/v1/smallslleep/music/shareActiveView',{func_id:this.func_id, func_type:this.func_type, sharecode:this.sharecode}, (data)=>{console.log('jq都不行？asdsasdas');
 
             })
         },
