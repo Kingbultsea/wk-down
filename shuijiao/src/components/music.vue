@@ -62,8 +62,8 @@
                 }else{
                     document.addEventListener("WeixinJSBridgeReady", ()=>{
                         console.log('浏览器非苹果播放')
-                            this.musicPlay()
-
+                            //this.musicPlay()
+                        this.rawPlay()
                     }, false)
                 }
             },
@@ -72,9 +72,9 @@
             }
         },
         mounted(){
-            setTimeout(()=>{
+
                 this.initMusic()
-            },1000)
+
 
 
 
