@@ -48,7 +48,7 @@
                 const music_dom = document.querySelector('#myaudio')
                 if(music_dom.paused){
                     music_dom.play()
-                    this.toggle =  false
+                    this.toggle =  true
                 }
             },
             initMusic(){
