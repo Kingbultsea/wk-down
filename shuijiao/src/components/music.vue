@@ -44,13 +44,19 @@
                 }
 
             },
+            rawPlay(){
+                const music_dom = document.querySelector('#myaudio')
+                if(music_dom.paused){
+                    music_dom.play()
+                    this.toggle =  false
+                }
+            },
             initMusic(){
                 if(!this.$store.getters.isWeiXin){
                     if(  this.$store.getters.isApp   ){
                         console.log('??')
-                        document.getElementById('myaudio').play()
 
-                            //this.musicPlay()
+                            this.rawPlay()
 
                     }
                 }else{
