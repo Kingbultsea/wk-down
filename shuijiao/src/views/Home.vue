@@ -158,7 +158,10 @@ export default {
         apiDianZanClick(url){
           const that =this
             $.post(url + '/web/v1/smallslleep/music/shareActiveVote',{func_id:this.func_id, func_type:this.func_type, sharecode:this.sharecode}, (data)=>{console.log('jq都不行？');
-                that.shuaXinZan(url)
+                if(data.status == 1){
+                    console.log('zaaaa')
+                    this.dianzan += 1
+                }
             })
         },
       close(){
