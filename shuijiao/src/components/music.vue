@@ -55,8 +55,10 @@
                 if(!this.$store.getters.isWeiXin){
                     if(  this.$store.getters.isApp   ){
                         console.log('??')
-
+                        setTimeout(()=>{
                             this.rawPlay()
+                        },500)
+
 
                     }
                 }else{
