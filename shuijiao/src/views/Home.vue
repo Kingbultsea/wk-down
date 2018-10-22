@@ -81,7 +81,7 @@ export default {
             max:30,
             tips_toggle:false,
             one:1,
-            two:'01 : 12',
+            two:'',
             music_intro: '',
             func_id:window.location.href.match(/func_id=(.+)/)[1],
             func_type:window.location.href.match(/func_type=(.+)/)[1],
