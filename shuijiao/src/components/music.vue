@@ -1,7 +1,7 @@
 <template>
     <div>
         <img ref="audio" @click="musicPlay" class="music" :src="tgImg" />
-        <audio ref="miao" src="" ref="zz" id="myaudio" controls hidden>
+        <audio  src="" ref="zz" id="myaudio" controls hidden>
             <source  :src="musicPath" type="audio/mpeg" >
         </audio>
     </div>
@@ -75,16 +75,26 @@
         },
         mounted(){
 
+            const that = this
                 this.initMusic()
 
             const musicdom = document.getElementById('myaudio')
-            musicdom.addEventListener("canplaythrough",function(){
-                console.log("加载完成！");
-            },false);
-            musicdom.addEventListener("error",function(){
-                console.log("加载失败！");
-                musicdom.load()
-            },false);
+            let s  =  false
+            /*setTimeout(()=>{
+                musicdom.addEventListener("canplaythrough",function(){
+                    //that.initMusic()
+                    console.log("加载完成！");
+                    s = true
+                },false);
+            },500) */
+
+            /*musicdom.addEventListener("error",function(){
+                setTimeout(()=>{
+                    console.log("加载失败！");
+                    if(!s)location.reload();
+                },5000)
+
+            },false);*/
 
 
 

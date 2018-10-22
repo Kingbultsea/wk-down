@@ -70,6 +70,12 @@ function randomNum(minNum,maxNum){
     }
 }
 
+function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]); return null;
+}
+
 export default {
   name: 'home',
     data(){
@@ -83,9 +89,9 @@ export default {
             one:1,
             two:'',
             music_intro: '',
-            func_id:window.location.href.match(/func_id=(.+)/)[1],
-            func_type:window.location.href.match(/func_type=(.+)/)[1],
-            sharecode:window.location.href.match(/sharecode=(.+)/)[1],
+            func_id:getQueryString('func_id'),
+            func_type:getQueryString('func_type'),
+            sharecode:getQueryString('sharecode'),
             url:'https://api.debug.psy-1.com',
             get_danmu_data: '',
             end: false,
@@ -347,6 +353,7 @@ export default {
           }
       })
 
+      console.log(this.func_id)
 
 
 
