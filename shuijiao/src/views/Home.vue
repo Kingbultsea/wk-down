@@ -182,7 +182,7 @@ export default {
         },
       zanClick(){
           this.apiDianZanClick(this.url)
-          this.shuaXinZan(this.url)
+          //this.shuaXinZan(this.url)
 
 
 
