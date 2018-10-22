@@ -1,7 +1,7 @@
 <template>
     <div>
         <img ref="audio" @click="musicPlay" class="music" :src="tgImg" />
-        <audio  src="" ref="zz" id="myaudio" controls hidden>
+        <audio ref="miao" src="" ref="zz" id="myaudio" controls hidden>
             <source  :src="musicPath" type="audio/mpeg" >
         </audio>
     </div>
@@ -48,8 +48,9 @@
                 if(!this.$store.getters.isWeiXin){
                     if(  this.$store.getters.isApp   ){
                         console.log('??')
+                        this.$ref.miao.play()
 
-                            this.musicPlay()
+                            //this.musicPlay()
 
                     }
                 }else{
