@@ -131,6 +131,7 @@ export default {
 
               this.share_desc = data.data.music_data.share_desc
               this.share_title = data.data.music_data.share_title
+              document.title = data.data.music_data.share_title
               this.share_img = data.data.music_data.share_imgurl
               this.bg_img = data.data.music_data.page_bg_img
               document.querySelector('body').style.backgroundColor = this.bg_img
