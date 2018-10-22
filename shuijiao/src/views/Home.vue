@@ -177,7 +177,7 @@ export default {
         },
       zanClick(){
           this.apiDianZanClick(this.url)
-
+          this.shuaXinZan(this.url)
 
               this.$parent.tips_toggle = true
               setTimeout(()=>{
