@@ -38,9 +38,6 @@
 
     </div>
 
-    <transition name="fade">
-      <div v-if="tips_toggle" class="tips">点一次就好，不要太贪心哦~</div>
-    </transition>
 
 
 
@@ -86,9 +83,9 @@ export default {
             one:1,
             two:'01 : 12',
             music_intro: '',
-            func_id:'10012',
-            func_type:'4',
-            sharecode:'sharecode=b7e7a268e5c374ce65b72a5f4af686a6a28ab369',
+            func_id:window.location.href.match(/func_id=(.+)/)[1],
+            func_type:window.location.href.match(/func_type=(.+)/)[1],
+            sharecode:window.location.href.match(/sharecode=(.+)/)[1],
             url:'https://api.debug.psy-1.com',
             get_danmu_data: '',
             end: false,
@@ -136,11 +133,12 @@ export default {
               this.share_title = data.data.music_data.share_title
               this.share_img = data.data.music_data.share_imgurl
               this.bg_img = data.data.music_data.page_bg_img
+              document.querySelector('body').style.backgroundColor = this.bg_img
               this.title_img = data.data.music_data.page_title_img
               this.changeBG(data.data.music_data.page_bg_color)
 
               this.musicPath = data.data.music_data.musicurl_try
-              //document.querySelector('#myaudio').setAttribute('src',data.data.music_data.musicurl_try)
+              document.querySelector('#myaudio').setAttribute('src',data.data.music_data.musicurl_try)
 
               const danmudata = eval('(' +data.data.music_data.share_danmu+')')
               console.log(danmudata)
@@ -173,9 +171,9 @@ export default {
               this.dianzan += 1
               localStorage.setItem('mark','1')
           }else{
-              this.tips_toggle = true
+              this.$parent.tips_toggle = true
               setTimeout(()=>{
-                  this.tips_toggle = false
+                  this.$parent.tips_toggle = false
               },1000)
           }
 
@@ -280,7 +278,7 @@ export default {
             })
 
             c.then(()=>{
-                this.end = true;
+                this.$parent.end = true;
             })
         }
     },

@@ -1,7 +1,7 @@
 <template>
     <div>
         <img ref="audio" @click="musicPlay" class="music" :src="tgImg" />
-        <audio  src="https://res.psy-1.com/music/voice/Boiled_dumplings_1min-PcguwNRLOtnF2Ei8KAEP.mp3" ref="zz" id="myaudio" controls hidden>
+        <audio  src="" ref="zz" id="myaudio" controls hidden>
             <source  :src="musicPath" type="audio/mpeg" >
         </audio>
     </div>

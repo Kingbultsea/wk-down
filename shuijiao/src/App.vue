@@ -25,6 +25,10 @@
 
     </div>
 
+      <transition name="fade">
+          <div v-if="tips_toggle" class="tips">点一次就好，不要太贪心哦~</div>
+      </transition>
+
 
   </div>
 </template>
@@ -35,7 +39,8 @@
   export default {
       data(){
           return {
-              end: false
+              end: false,
+              tips_toggle:false
           }
       },
       methods:{
@@ -76,6 +81,23 @@
   -ms-text-size-adjust: none;
   -o-text-size-adjust: none;
   text-size-adjust: none;
+
+    .tips{
+        position:fixed;
+        top:50%;
+        right:50%;
+        transform:translateX(50%) translateY(-50%);
+        font-size:px2html(10px);
+        background:rgba(0,0,0,0.5);
+        color:#fff;
+        padding:px2html(8px);
+        border-radius:px2html(10px);
+        padding-left:px2html(15px);
+        padding-right:px2html(15px);
+        //width:px2html(375px);
+    }
+
+
 
   .bottom{
     height:px2html(40px);
@@ -183,14 +205,14 @@
 
 }
 </style>
-<style>
+<style lang="scss">
   a,a:link,a:visited,a:hover,a:active{
     text-decoration: none;
     color:inherit;
   }
   body{
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    background-color: rgb(146, 204, 202);
+    //background-color: rgb(146, 204, 202);
     position:fixed;
     width:100%;
     height:100%;
@@ -199,5 +221,13 @@
     padding: 0px;
     margin: 0px;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  .fade-enter-active, .fade-leave-active {
+      transition: all .5s;
+  }
+  .fade-enter, .fade-leave-to{
+      opacity: 0;
+      /* color: rgb(23,23,23);*/
+
   }
 </style>
