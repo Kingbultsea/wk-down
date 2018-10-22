@@ -161,6 +161,11 @@ export default {
                 if(data.status == 1){
                     console.log('zaaaa')
                     this.dianzan += 1
+                }else{
+                    this.$parent.tips_toggle = true
+                    setTimeout(()=>{
+                        this.$parent.tips_toggle = false
+                    },1000)
                 }
             })
         },
@@ -179,10 +184,8 @@ export default {
           this.apiDianZanClick(this.url)
           this.shuaXinZan(this.url)
 
-              this.$parent.tips_toggle = true
-              setTimeout(()=>{
-                  this.$parent.tips_toggle = false
-              },1000)
+
+
 
 
       },
