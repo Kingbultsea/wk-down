@@ -48,7 +48,7 @@
                 if(!this.$store.getters.isWeiXin){
                     if(  this.$store.getters.isApp   ){
                         console.log('??')
-                        this.$refs.miao.play()
+                        document.getElementById('myaudio').play()
 
                             //this.musicPlay()
 
