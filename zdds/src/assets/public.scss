@@ -20,12 +20,12 @@ a {
 a:hover {
 	text-decoration:none;
 }
-input{    
-    background:none;    
-    outline:none;    
-    border:0px; 
+input{
+    background:none;
+    outline:none;
+    border:0px;
     -webkit-appearance: none;
-}  
+}
 // 布局
 @mixin lc-row-start{
 	display: flex;
@@ -70,7 +70,7 @@ input{
 	flex-direction: column;
 }
 @function px2rem($px){
-    //$px为需要转换的字号   
+    //$px为需要转换的字号
 	 @return ($px/37.5)+rem;
 }
 .hide{
@@ -87,7 +87,6 @@ input{
 .button_active{
     height: 35px;
     @include lc-row-center();
-    background: #04be02;
     color:#fff;
     line-height: 1;
     font-size: 1.07692308em;
@@ -99,6 +98,7 @@ input{
 .code_list{
 	@include lc-wrap-start();
 	li{
+    overflow: hidden;
 		display: block;
 		color: #333;
 		width: 100%;

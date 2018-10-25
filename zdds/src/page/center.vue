@@ -3,29 +3,9 @@
         <!-- <div class="all_code button_active" @click="getCode">
             点击获取
         </div> -->
-      <div class="wjh">
-        <div class="wjh-outer">
-          <p>打开氛围脑波，播放音频组合</p>
-          <input v-model="wjh.one.one" placeholder="code" style="width: 100%;background-color: #eee" />
-          <input v-model="wjh.one.two" placeholder="music" style="width: 100%;background-color: #eee" />
-          <button @click="one" type="info">提交</button>
-        </div>
-      </div>
 
-      <div class="wjh">
-        <div class="wjh-outer">
-          <p>siri捷径</p>
-          <button @click="two" type="info">提交</button>
-        </div>
-      </div>
 
-      <div class="wjh">
-        <div class="wjh-outer">
-          <p>氛围脑波页面，如果有传tag_id，则跳特定类别(1026)</p>
-          <input v-model="wjh.three.one" placeholder="tag_id" style="width: 100%;background-color: #eee" />
-          <button @click="three" type="info">提交</button>
-        </div>
-      </div>
+
 
 
 
@@ -35,6 +15,25 @@
       <ul class="code_list">
           <li v-for="(item, index) in codeArr" @click.prevent="redirectCtrl(item.code_number)">
               {{ item.code_desc }}({{item.code_number}})
+
+
+            <div v-if="item.code_number == 10010" class="wjh">
+              <div class="wjh-outer">
+                <input v-model="wjh.one.one" placeholder="code" style="width: 100%;background-color: #eee" />
+                <input v-model="wjh.one.two" placeholder="music" style="width: 100%;background-color: #eee" />
+                <button @click="one" type="info">提交</button>
+              </div>
+            </div>
+
+            <div v-if="item.code_number == 1026" class="wjh">
+              <div class="wjh-outer">
+                <p>氛围脑波页面，如果有传tag_id，则跳特定类别(1026)</p>
+                <input v-model="wjh.three.one" placeholder="tag_id" style="width: 100%;background-color: #eee" />
+                <button @click="three" type="info">提交</button>
+              </div>
+            </div>
+
+
               <div v-if="item.code_number == 10007" class="input_container">
                   <span>tag_id:</span>
                   <input type="text"  @click.stop="showId">
@@ -262,7 +261,7 @@ export default {
     align-content: center;
     align-items: center;
     .wjh-outer{
-      width:100vw;
+      width:90vw;
       border:1px solid #eee;
       padding:3px;
     }
