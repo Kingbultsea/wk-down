@@ -35,7 +35,7 @@
             <div v-if="item.code_number == 1017" class="wjh">
               <div class="wjh-outer">
                 <input  @click.stop="showId" v-model="wjh.four" placeholder="tag_id" style="width: 100%;background-color: #eee" />
-                <button @click.stop="four(item)" type="info">提交</button>
+                <button @click.stop="four" type="info">提交</button>
               </div>
             </div>
 
@@ -86,9 +86,10 @@ export default {
           wjh:{
               one: {one: '10010',two: 'kZkCCukLd3CHWMWZ'},
               two:'',
-                three:{one:''}
+                three:{one:''},
+            four: ''
               },
-              four: ''
+
         }
     },
     created() {
