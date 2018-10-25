@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>app_for_api</title>
+    <script>
+      let Xinchao = {}
+       Xinchao.Web ={}
+       const callAppRouter=(method, params={}, callback)=>{
+        let req = {
+            'Method': method,
+            'Data': params
+        },cbName = `CB_${Date.now()}_${Math.ceil(Math.random() * 10)}`;
+        req=JSON.stringify(req);
+        Xinchao.Web[cbName] =  (err, result) => {
+            if(callback){
+                callback(err, result);
+            }
+            delete Xinchao.Web[cbName];
+        };
+        if (/(iPhone|iPad|iPod)/i.test(navigator.userAgent)) {
+            window.webkit.messageHandlers.XinchaoApp.postMessage({req, cbName});
+        } else {
+            XinchaoApp.callRouter(req, cbName);
+        }
+      }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vConsole/3.2.0/vconsole.min.js"></script>
+    <script>
+      // init vConsole
+      var vConsole = new VConsole();
+      console.log('Hello world');
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
