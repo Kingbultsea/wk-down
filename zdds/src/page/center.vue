@@ -19,15 +19,15 @@
 
             <div v-if="item.code_number == 10010" class="wjh">
               <div class="wjh-outer">
-                <input v-model="wjh.one.one" placeholder="code" style="width: 100%;background-color: #eee" />
-                <input v-model="wjh.one.two" placeholder="music" style="width: 100%;background-color: #eee" />
+                <input  @click.stop="showId" v-model="wjh.one.one" placeholder="code" style="width: 100%;background-color: #eee" />
+                <input  @click.stop="showId" v-model="wjh.one.two" placeholder="music" style="width: 100%;background-color: #eee" />
                 <button @click.stop="one" type="info">提交</button>
               </div>
             </div>
 
             <div v-if="item.code_number == 1026" class="wjh">
               <div class="wjh-outer">
-                <input v-model="wjh.three.one" placeholder="tag_id" style="width: 100%;background-color: #eee" />
+                <input  @click.stop="showId" v-model="wjh.three.one" placeholder="tag_id" style="width: 100%;background-color: #eee" />
                 <button @click.stop="three" type="info">提交</button>
               </div>
             </div>
