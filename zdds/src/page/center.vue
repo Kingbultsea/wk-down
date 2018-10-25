@@ -27,7 +27,6 @@
 
             <div v-if="item.code_number == 1026" class="wjh">
               <div class="wjh-outer">
-                <p>氛围脑波页面，如果有传tag_id，则跳特定类别(1026)</p>
                 <input v-model="wjh.three.one" placeholder="tag_id" style="width: 100%;background-color: #eee" />
                 <button @click="three" type="info">提交</button>
               </div>
