@@ -87,6 +87,7 @@ input{
 .button_active{
     height: 35px;
     @include lc-row-center();
+    background: #04be02;
     color:#fff;
     line-height: 1;
     font-size: 1.07692308em;
@@ -98,7 +99,6 @@ input{
 .code_list{
 	@include lc-wrap-start();
 	li{
-    overflow: hidden;
 		display: block;
 		color: #333;
 		width: 100%;
