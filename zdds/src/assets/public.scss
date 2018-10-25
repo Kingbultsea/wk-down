@@ -23,7 +23,7 @@ a:hover {
 input{
     background:none;
     outline:none;
-    border:0px;
+    border:2px #333333 solid;
     -webkit-appearance: none;
 }
 // 布局
@@ -123,7 +123,7 @@ input{
 		margin-right: 10px;
 	}
 	input{
-		background: #fff;
+		background: #0000000f;
 		height: 30px;
 		margin-right: px2rem(16);
 		width: px2rem(200);

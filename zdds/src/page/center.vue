@@ -32,6 +32,13 @@
               </div>
             </div>
 
+            <div v-if="item.code_number == 1017" class="wjh">
+              <div class="wjh-outer">
+                <input  @click.stop="showId" v-model="wjh.four" placeholder="tag_id" style="width: 100%;background-color: #eee" />
+                <button @click.stop="four(item)" type="info">提交</button>
+              </div>
+            </div>
+
 
               <div v-if="item.code_number == 10007" class="input_container">
                   <span>tag_id:</span>
@@ -76,10 +83,12 @@ export default {
     data (){
         return{
             codeArr:[],
-          wjh:{one: {one: '10010',two: 'kZkCCukLd3CHWMWZ'},
-          two:'',
-            three:{one:''}
-          }
+          wjh:{
+              one: {one: '10010',two: 'kZkCCukLd3CHWMWZ'},
+              two:'',
+                three:{one:''}
+              },
+              four: ''
         }
     },
     created() {
@@ -233,6 +242,16 @@ export default {
          if(this.wjh.three.one){
            pre.tag_id = this.wjh.three.one
          }
+        callAppRouter('Redirect',pre,function(err, result){})
+      },
+
+      four(){
+        let pre = {
+          "code":1017
+        }
+        if(this.wjh.four){
+          pre.article_id = this.wjh.four
+        }
         callAppRouter('Redirect',pre,function(err, result){})
       }
 
