@@ -39,6 +39,13 @@
               </div>
             </div>
 
+            <div v-if="item.code_number == 10012" class="wjh">
+              <div class="wjh-outer">
+                <input  @click.stop="showId" v-model="wjh.five" placeholder="tag_id" style="width: 100%;background-color: #eee" />
+                <button @click.stop="five" type="info">提交</button>
+              </div>
+            </div>
+
 
               <div v-if="item.code_number == 10007" class="input_container">
                   <span>tag_id:</span>
@@ -67,6 +74,7 @@
                   <input type="text"  @click.stop="showId">
                   <div class="jump_to" @click.stop="wx_jump(item.code_number,activity_link)">跳转</div>
               </div>
+
 
               <div v-if="item.code_number == 1053" class="input_container" @click.stop="showId">
                   (暂时不做处理)
@@ -252,6 +260,16 @@ export default {
         }
         if(this.wjh.four){
           pre.article_id = this.wjh.four
+        }
+        callAppRouter('Redirect',pre,function(err, result){})
+      },
+
+      five(){
+        let pre = {
+          "code":10012
+        }
+        if(this.wjh.five){
+          pre.broadcast_id = this.wjh.five
         }
         callAppRouter('Redirect',pre,function(err, result){})
       }
