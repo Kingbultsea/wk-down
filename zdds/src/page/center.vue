@@ -41,7 +41,7 @@
 
             <div v-if="item.code_number == 10012" class="wjh">
               <div class="wjh-outer">
-                <input  @click.stop="showId" v-model="wjh.five" placeholder="tag_id" style="width: 100%;background-color: #eee" />
+                <input  @click.stop="showId" v-model="wjh.five" placeholder="broadcast_id" style="width: 100%;background-color: #eee" />
                 <button @click.stop="five" type="info">提交</button>
               </div>
             </div>
@@ -95,7 +95,8 @@ export default {
               one: {one: '10010',two: 'kZkCCukLd3CHWMWZ'},
               two:'',
                 three:{one:''},
-            four: ''
+            four: '',
+            five:''
               },
 
         }
