@@ -49,7 +49,7 @@
 
               <div v-if="item.code_number == 10007" class="input_container">
                   <span>tag_id:</span>
-                  <input type="text" v-model="dab" @click.stop="showId">
+                  <input type="text" v-model="dsb" @click.stop="showId">
                   <div class="jump_to" @click.stop="reTag_jump(item.code_number,tag_id)">跳转</div>
               </div>
 
