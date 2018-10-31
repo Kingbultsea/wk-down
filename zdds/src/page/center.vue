@@ -141,6 +141,7 @@ export default {
                 "code":code,
                 "userName":userName,
                 "path": path
+
             },function(err, result){})
         },
         wx_jump: function(code,activity_link){
