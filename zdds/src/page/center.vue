@@ -55,23 +55,23 @@
 
               <div v-if="item.code_number == 1051" class="input_container">
                   <span>topic_id:</span>
-                  <input type="text"  @click.stop="showId">
+                  <input type="text" v-model="A" @click.stop="showId">
                   <div class="jump_to" @click.stop="redirectCtrl_jump(item.code_number,topic_id)">跳转</div>
               </div>
 
               <div v-if="item.code_number == 10009" class="input_container">
                   <span>userName:</span>
-                  <input type="text"  @click.stop="showId">
+                  <input type="text"  v-model="B" @click.stop="showId">
 
                   <span>path:</span>
-                  <input type="text"  @click.stop="showId">
+                  <input type="text" v-model="C" @click.stop="showId">
 
                   <div class="jump_to" @click.stop="xcx_jump(item.code_number,userName,path)">跳转</div>
               </div>
 
               <div v-if="item.code_number == 10008" class="input_container">
                   <span>activity_link:</span>
-                  <input type="text"  @click.stop="showId">
+                  <input type="text" v-model="D" @click.stop="showId">
                   <div class="jump_to" @click.stop="wx_jump(item.code_number,activity_link)">跳转</div>
               </div>
 
@@ -98,7 +98,12 @@ export default {
             four: '',
             five:''
               },
-          dsb:''
+          dsb:'',
+          A:'',
+          B:'',
+          C:'',
+          D:'',
+          E:''
 
         }
     },
@@ -126,7 +131,7 @@ export default {
         redirectCtrl_jump: function(code,topic){
             callAppRouter('Redirect',{
                 "code":code,
-                "topic_id":topic
+                "topic_id":this.A
             },function(err, result){})
         },
         reTag_jump: function(code,tag_id){
@@ -139,15 +144,15 @@ export default {
         xcx_jump: function(code,userName,path){
             callAppRouter('Redirect',{
                 "code":code,
-                "userName":userName,
-                "path": path
+                "userName":this.B,
+                "path": this.C
 
             },function(err, result){})
         },
         wx_jump: function(code,activity_link){
             callAppRouter('Redirect',{
                 "code":code,
-                "activity_link":activity_link
+                "activity_link":this.D
             },function(err, result){})
         },
       topic_id(){
