@@ -49,7 +49,7 @@
 
               <div v-if="item.code_number == 10007" class="input_container">
                   <span>tag_id:</span>
-                  <input type="text"  @click.stop="showId">
+                  <input type="text" v-model="dab" @click.stop="showId">
                   <div class="jump_to" @click.stop="reTag_jump(item.code_number,tag_id)">跳转</div>
               </div>
 
@@ -98,6 +98,7 @@ export default {
             four: '',
             five:''
               },
+          dsb:''
 
         }
     },
@@ -131,7 +132,7 @@ export default {
         reTag_jump: function(code,tag_id){
             callAppRouter('Redirect',{
                 "code":code,
-                "tag_id":tag_id
+                "tag_id":this.dsb
             },function(err, result){})
         },
 
