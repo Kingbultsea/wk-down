@@ -1,5 +1,5 @@
 module.exports = {
-    baseUrl: './',///cosleep/teacher/
+    baseUrl: 'https://webres.psy-1.com/sgy/dist',///cosleep/teacher/    ./
     assetsDir: './',
     css: {
         loaderOptions: {
