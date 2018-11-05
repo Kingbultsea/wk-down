@@ -92,7 +92,7 @@ export default {
             func_id:getQueryString('func_id'),
             func_type:getQueryString('func_type'),
             sharecode:getQueryString('sharecode'),
-            url:'https://api.psy-1.com',
+            url:'https://api.debug.psy-1.com',
             get_danmu_data: '',
             end: false,
             share_title:'',
@@ -300,7 +300,7 @@ export default {
         }
     },
     created(){
-        this.apiDianZan('https://api.psy-1.com')
+        this.apiDianZan('https://api.debug.psy-1.com')
     },
   mounted(){
 
