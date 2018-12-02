@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/js/about.e3532e52.js"
   },
   {
-    "revision": "0c65bd67edd25578ac0d5fdca91a9ae3",
+    "revision": "52c94037f5d7b1d10001dfe854d2cf9c",
     "url": "https://webres.psy-1.com/sgy/dist/index.html"
   },
   {
