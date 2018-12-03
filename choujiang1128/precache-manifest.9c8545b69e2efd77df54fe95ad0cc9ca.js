@@ -1,42 +1,42 @@
 self.__precacheManifest = [
   {
-    "revision": "0760361e3ea6f44e7419800724dcfd06",
-    "url": "https://webres.psy-1.com/sgy/dist/img/prize_default@2x.0760361e.png"
+    "revision": "4afa5cf6eb8a5a5dace4ed23bfaca79c",
+    "url": "https://webres.psy-1.com/sgy/dist/img/cloud_bg@2x.4afa5cf6.png"
   },
   {
     "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
     "url": "https://webres.psy-1.com/sgy/dist/robots.txt"
   },
   {
-    "revision": "3142726c92486782ff57615036aff95f",
-    "url": "https://webres.psy-1.com/sgy/dist/img/prize_box_no_bg.3142726c.png"
+    "revision": "240805ff153a8ab45f7609086876d945",
+    "url": "https://webres.psy-1.com/sgy/dist/img/myprize.240805ff.png"
   },
   {
-    "revision": "b86f16ef053717732e70",
-    "url": "https://webres.psy-1.com/sgy/dist/js/app.2d62ce42.js"
+    "revision": "fec643f807ca12a939a6",
+    "url": "https://webres.psy-1.com/sgy/dist/js/app.6af28bd1.js"
   },
   {
     "revision": "acf37751e3cbeada34f9",
     "url": "https://webres.psy-1.com/sgy/dist/js/chunk-vendors.abdcff93.js"
   },
   {
-    "revision": "c5bac3a40f72e5142f01b720eca577d9",
-    "url": "https://webres.psy-1.com/sgy/dist/img/go@2x.c5bac3a4.png"
+    "revision": "3142726c92486782ff57615036aff95f",
+    "url": "https://webres.psy-1.com/sgy/dist/img/prize_box_no_bg.3142726c.png"
   },
   {
     "revision": "413856e3d99a35f599ef",
     "url": "https://webres.psy-1.com/sgy/dist/js/about.b4a4cb96.js"
   },
   {
-    "revision": "4afa5cf6eb8a5a5dace4ed23bfaca79c",
-    "url": "https://webres.psy-1.com/sgy/dist/img/cloud_bg@2x.4afa5cf6.png"
+    "revision": "c5bac3a40f72e5142f01b720eca577d9",
+    "url": "https://webres.psy-1.com/sgy/dist/img/go@2x.c5bac3a4.png"
   },
   {
     "revision": "14a7450b0011a47d7f2977b44669ca9d",
     "url": "https://webres.psy-1.com/sgy/dist/img/prize_no2.14a7450b.png"
   },
   {
-    "revision": "87c1b44d16d0c987a1b9c23812e79732",
+    "revision": "a30b7ccbdedaff286c48af98001723ba",
     "url": "https://webres.psy-1.com/sgy/dist/index.html"
   },
   {
@@ -64,6 +64,10 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/img/prize_muji.b7f31290.png"
   },
   {
+    "revision": "0760361e3ea6f44e7419800724dcfd06",
+    "url": "https://webres.psy-1.com/sgy/dist/img/prize_default@2x.0760361e.png"
+  },
+  {
     "revision": "ce148efa49043a30185dc84b711f564b",
     "url": "https://webres.psy-1.com/sgy/dist/img/prize_box_bg.ce148efa.png"
   },
@@ -80,15 +84,11 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/img/notice.872cb8b5.png"
   },
   {
-    "revision": "240805ff153a8ab45f7609086876d945",
-    "url": "https://webres.psy-1.com/sgy/dist/img/myprize.240805ff.png"
-  },
-  {
     "revision": "ca26038a4af429adc43c6c3137785453",
     "url": "https://webres.psy-1.com/sgy/dist/img/explain.ca26038a.png"
   },
   {
-    "revision": "b86f16ef053717732e70",
-    "url": "https://webres.psy-1.com/sgy/dist/css/app.d2fb7954.css"
+    "revision": "fec643f807ca12a939a6",
+    "url": "https://webres.psy-1.com/sgy/dist/css/app.60b5a8b2.css"
   }
 ];
