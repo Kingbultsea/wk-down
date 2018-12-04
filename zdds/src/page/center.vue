@@ -292,7 +292,7 @@ export default {
 
       six() {
           let pre = {
-              "code":10013
+              "code":10016
           }
           if(this.wjh.six){
               pre.prepare_id = this.wjh.six
