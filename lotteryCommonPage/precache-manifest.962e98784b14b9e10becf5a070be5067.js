@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "228e15395054252b8a100ef3b7f19ed8",
-    "url": "https://webres.psy-1.com/sgy/dist/fonts/iconfont.228e1539.ttf"
+    "revision": "bb5a5624ad9d19092681412ac8332e70",
+    "url": "https://webres.psy-1.com/sgy/dist/fonts/iconfont.bb5a5624.eot"
   },
   {
     "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
@@ -12,8 +12,8 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/img/iconfont.6523f059.svg"
   },
   {
-    "revision": "ac40742e69479df3f945",
-    "url": "https://webres.psy-1.com/sgy/dist/js/app.d0fbe809.js"
+    "revision": "cc405353b92c0a6df03e",
+    "url": "https://webres.psy-1.com/sgy/dist/js/app.ee6a7402.js"
   },
   {
     "revision": "b78bb1c9c65c6a4d6c69",
@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/js/about.e3532e52.js"
   },
   {
-    "revision": "2c7d49c9bf9e6bfa713e4ba0eb813556",
+    "revision": "04f20f9c13a2cb4d667f66e8567c5bf1",
     "url": "https://webres.psy-1.com/sgy/dist/index.html"
   },
   {
@@ -52,15 +52,15 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/img/Cosleep_Login-in_image_cat1@2x.418d4881.png"
   },
   {
-    "revision": "bb5a5624ad9d19092681412ac8332e70",
-    "url": "https://webres.psy-1.com/sgy/dist/fonts/iconfont.bb5a5624.eot"
-  },
-  {
     "revision": "32e9154a1e0d0047d6494dc71e0a33eb",
     "url": "https://webres.psy-1.com/sgy/dist/fonts/iconfont.32e9154a.woff"
   },
   {
-    "revision": "ac40742e69479df3f945",
-    "url": "https://webres.psy-1.com/sgy/dist/css/app.f5920e8f.css"
+    "revision": "228e15395054252b8a100ef3b7f19ed8",
+    "url": "https://webres.psy-1.com/sgy/dist/fonts/iconfont.228e1539.ttf"
+  },
+  {
+    "revision": "cc405353b92c0a6df03e",
+    "url": "https://webres.psy-1.com/sgy/dist/css/app.4d7b6e44.css"
   }
 ];
