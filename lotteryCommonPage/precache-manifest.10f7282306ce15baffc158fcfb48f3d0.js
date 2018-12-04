@@ -1,43 +1,39 @@
 self.__precacheManifest = [
   {
-    "revision": "32e9154a1e0d0047d6494dc71e0a33eb",
-    "url": "https://webres.psy-1.com/sgy/dist/fonts/iconfont.32e9154a.woff"
+    "revision": "228e15395054252b8a100ef3b7f19ed8",
+    "url": "https://webres.psy-1.com/sgy/dist/fonts/iconfont.228e1539.ttf"
   },
   {
     "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
     "url": "https://webres.psy-1.com/sgy/dist/robots.txt"
   },
   {
-    "revision": "228e15395054252b8a100ef3b7f19ed8",
-    "url": "https://webres.psy-1.com/sgy/dist/fonts/iconfont.228e1539.ttf"
+    "revision": "6523f0594ad6fa4fdfa11f579db32603",
+    "url": "https://webres.psy-1.com/sgy/dist/img/iconfont.6523f059.svg"
   },
   {
-    "revision": "2d83dcf223635902844f",
-    "url": "https://webres.psy-1.com/sgy/dist/js/app.b5a9b9d8.js"
+    "revision": "ac40742e69479df3f945",
+    "url": "https://webres.psy-1.com/sgy/dist/js/app.d0fbe809.js"
   },
   {
     "revision": "b78bb1c9c65c6a4d6c69",
     "url": "https://webres.psy-1.com/sgy/dist/js/chunk-vendors.c375141d.js"
   },
   {
-    "revision": "6523f0594ad6fa4fdfa11f579db32603",
-    "url": "https://webres.psy-1.com/sgy/dist/img/iconfont.6523f059.svg"
+    "revision": "15b0f673a6c6ee531b6a0df0b23c0caa",
+    "url": "https://webres.psy-1.com/sgy/dist/img/cosleep_window_img_fail@2x.15b0f673.png"
   },
   {
     "revision": "d365addf498a375b35f7",
     "url": "https://webres.psy-1.com/sgy/dist/js/about.e3532e52.js"
   },
   {
-    "revision": "83613ef248ab3f38a6b8e84be99c3169",
+    "revision": "2c7d49c9bf9e6bfa713e4ba0eb813556",
     "url": "https://webres.psy-1.com/sgy/dist/index.html"
   },
   {
     "revision": "7da7fc491809d838646773a92fb305a6",
     "url": "https://webres.psy-1.com/sgy/dist/img/cosleep_window_img_login@2x.7da7fc49.png"
-  },
-  {
-    "revision": "15b0f673a6c6ee531b6a0df0b23c0caa",
-    "url": "https://webres.psy-1.com/sgy/dist/img/cosleep_window_img_fail@2x.15b0f673.png"
   },
   {
     "revision": "e225be0255664864ff3bdd2c056f882b",
@@ -60,7 +56,11 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/fonts/iconfont.bb5a5624.eot"
   },
   {
-    "revision": "2d83dcf223635902844f",
-    "url": "https://webres.psy-1.com/sgy/dist/css/app.f02dd640.css"
+    "revision": "32e9154a1e0d0047d6494dc71e0a33eb",
+    "url": "https://webres.psy-1.com/sgy/dist/fonts/iconfont.32e9154a.woff"
+  },
+  {
+    "revision": "ac40742e69479df3f945",
+    "url": "https://webres.psy-1.com/sgy/dist/css/app.f5920e8f.css"
   }
 ];
