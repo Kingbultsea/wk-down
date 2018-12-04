@@ -46,6 +46,13 @@
               </div>
             </div>
 
+              <div v-if="item.code_number == 10013" class="wjh">
+                  <div class="wjh-outer">
+                      <input  @click.stop="showId" v-model="wjh.six" placeholder="broadcast_id" style="width: 100%;background-color: #eee" />
+                      <button @click.stop="six" type="info">提交</button>
+                  </div>
+              </div>
+
 
               <div v-if="item.code_number == 10007" class="input_container">
                   <span>tag_id:</span>
@@ -95,8 +102,9 @@ export default {
               one: {one: '10010',two: 'kZkCCukLd3CHWMWZ'},
               two:'',
                 three:{one:''},
-            four: '',
-            five:''
+              four: '',
+              five: '',
+              six: ''
               },
           dsb:'',
           A:'',
@@ -280,6 +288,16 @@ export default {
           pre.broadcast_id = this.wjh.five
         }
         callAppRouter('Redirect',pre,function(err, result){})
+      },
+
+      six() {
+          let pre = {
+              "code":10013
+          }
+          if(this.wjh.six){
+              pre.prepare_id = this.wjh.six
+          }
+          callAppRouter('Redirect',pre,function(err, result){})
       }
 
 
@@ -295,26 +313,28 @@ export default {
     @import "../assets/public.css";
 </style>
 
-<style lang="scss" scoped>
+<style scoped>
   .wjh{
-    *{
-      box-sizing: border-box;
-    }
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
     align-items: center;
-    .wjh-outer{
+
+    margin-bottom:10px;
+  }
+  .wjh-outer{
       width:90vw;
       border:1px solid #eee;
       padding:3px;
-    }
-    input{
+  }
+  .wjh input{
       padding-left:20px;
       padding-right:20px;
-    }
-    margin-bottom:10px;
+  }
+  *{
+      box-sizing: border-box;
   }
 </style>
 
