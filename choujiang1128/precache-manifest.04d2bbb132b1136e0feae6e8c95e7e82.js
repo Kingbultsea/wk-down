@@ -12,12 +12,12 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/img/cloud_bg@2x.4afa5cf6.png"
   },
   {
-    "revision": "c56305277b12566f0f6f",
-    "url": "https://webres.psy-1.com/sgy/dist/js/app.df537247.js"
+    "revision": "eb66b5ec99044d3a0370",
+    "url": "https://webres.psy-1.com/sgy/dist/js/app.03c38453.js"
   },
   {
-    "revision": "acf37751e3cbeada34f9",
-    "url": "https://webres.psy-1.com/sgy/dist/js/chunk-vendors.abdcff93.js"
+    "revision": "f325d65796fe3b917711",
+    "url": "https://webres.psy-1.com/sgy/dist/js/chunk-vendors.f2f4d23e.js"
   },
   {
     "revision": "84afc59f63961a4a6752766654a12415",
@@ -44,7 +44,7 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/img/prize_no.a555b83f.png"
   },
   {
-    "revision": "69c5189af7c26be8eaf8dffec7eb1814",
+    "revision": "c773ccb91fd9e6844bbbb36a20ced81a",
     "url": "https://webres.psy-1.com/sgy/dist/index.html"
   },
   {
@@ -88,7 +88,7 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/img/go@2x.c5bac3a4.png"
   },
   {
-    "revision": "c56305277b12566f0f6f",
+    "revision": "eb66b5ec99044d3a0370",
     "url": "https://webres.psy-1.com/sgy/dist/css/app.9c69ba7d.css"
   }
 ];

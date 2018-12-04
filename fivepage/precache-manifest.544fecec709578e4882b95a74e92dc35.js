@@ -12,12 +12,12 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/img/cosleep_guidance_img_subscribe3_cn@3x.e8310f20.png"
   },
   {
-    "revision": "d01f461d3f68ff506524",
-    "url": "https://webres.psy-1.com/sgy/dist/js/app.9f8f805c.js"
+    "revision": "31c1fb3147da2967075e",
+    "url": "https://webres.psy-1.com/sgy/dist/js/app.772c5e97.js"
   },
   {
-    "revision": "382bb3ab437a3292584c",
-    "url": "https://webres.psy-1.com/sgy/dist/js/chunk-vendors.9cd6037c.js"
+    "revision": "dee0020c37442daa3b71",
+    "url": "https://webres.psy-1.com/sgy/dist/js/chunk-vendors.3b13cdb9.js"
   },
   {
     "revision": "51479425ec19b9d75f25bda79e458a78",
@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/js/about.e3532e52.js"
   },
   {
-    "revision": "db335f95035c92f1f85c6a71867b76c3",
+    "revision": "23ac3b94d41d42a16ade6a8cf51ecc58",
     "url": "https://webres.psy-1.com/sgy/dist/index.html"
   },
   {
@@ -64,7 +64,7 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/img/cosleep_guidance_img_subscribe-wechat3_cn@3x.2646a842.png"
   },
   {
-    "revision": "d01f461d3f68ff506524",
+    "revision": "31c1fb3147da2967075e",
     "url": "https://webres.psy-1.com/sgy/dist/css/app.d0bb4112.css"
   }
 ];
