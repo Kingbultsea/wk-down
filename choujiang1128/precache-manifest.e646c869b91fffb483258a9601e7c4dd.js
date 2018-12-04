@@ -12,8 +12,8 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/img/cloud_bg@2x.4afa5cf6.png"
   },
   {
-    "revision": "1590b390a7d612da42ac",
-    "url": "https://webres.psy-1.com/sgy/dist/js/app.f30dacbb.js"
+    "revision": "176aa896b6043d2f9886",
+    "url": "https://webres.psy-1.com/sgy/dist/js/app.c0f17a31.js"
   },
   {
     "revision": "f325d65796fe3b917711",
@@ -28,8 +28,8 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/js/about.b4a4cb96.js"
   },
   {
-    "revision": "c5bac3a40f72e5142f01b720eca577d9",
-    "url": "https://webres.psy-1.com/sgy/dist/img/go@2x.c5bac3a4.png"
+    "revision": "ce148efa49043a30185dc84b711f564b",
+    "url": "https://webres.psy-1.com/sgy/dist/img/prize_box_bg.ce148efa.png"
   },
   {
     "revision": "b7f3129034cd686d9a4b34837e5d2fe6",
@@ -44,7 +44,7 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/img/prize_no.a555b83f.png"
   },
   {
-    "revision": "83ad2d0987d9b01aae52c287c8262744",
+    "revision": "5ff1928d66cce7fe7189c6f3e4b1733c",
     "url": "https://webres.psy-1.com/sgy/dist/index.html"
   },
   {
@@ -68,10 +68,6 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/img/prize_box_no_bg.3142726c.png"
   },
   {
-    "revision": "ce148efa49043a30185dc84b711f564b",
-    "url": "https://webres.psy-1.com/sgy/dist/img/prize_box_bg.ce148efa.png"
-  },
-  {
     "revision": "5e4ce0b85868124c9d1225c6c629d88d",
     "url": "https://webres.psy-1.com/sgy/dist/img/prize_bose@2x.5e4ce0b8.png"
   },
@@ -84,11 +80,15 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/img/myprize.240805ff.png"
   },
   {
+    "revision": "c5bac3a40f72e5142f01b720eca577d9",
+    "url": "https://webres.psy-1.com/sgy/dist/img/go@2x.c5bac3a4.png"
+  },
+  {
     "revision": "ca26038a4af429adc43c6c3137785453",
     "url": "https://webres.psy-1.com/sgy/dist/img/explain.ca26038a.png"
   },
   {
-    "revision": "1590b390a7d612da42ac",
-    "url": "https://webres.psy-1.com/sgy/dist/css/app.58802b3f.css"
+    "revision": "176aa896b6043d2f9886",
+    "url": "https://webres.psy-1.com/sgy/dist/css/app.5b84d95c.css"
   }
 ];
