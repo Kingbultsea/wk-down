@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "228e15395054252b8a100ef3b7f19ed8",
-    "url": "https://webres.psy-1.com/sgy/dist/fonts/iconfont.228e1539.ttf"
+    "revision": "6523f0594ad6fa4fdfa11f579db32603",
+    "url": "https://webres.psy-1.com/sgy/dist/img/iconfont.6523f059.svg"
   },
   {
     "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
     "url": "https://webres.psy-1.com/sgy/dist/robots.txt"
   },
   {
-    "revision": "6523f0594ad6fa4fdfa11f579db32603",
-    "url": "https://webres.psy-1.com/sgy/dist/img/iconfont.6523f059.svg"
+    "revision": "418d488127259273ce2fcc28f5094e57",
+    "url": "https://webres.psy-1.com/sgy/dist/img/Cosleep_Login-in_image_cat1@2x.418d4881.png"
   },
   {
-    "revision": "bf248af5345780d232e4",
-    "url": "https://webres.psy-1.com/sgy/dist/js/app.eb3570cc.js"
+    "revision": "bed3bebcbeb9fbb158a2",
+    "url": "https://webres.psy-1.com/sgy/dist/js/app.9ad64358.js"
   },
   {
     "revision": "b78bb1c9c65c6a4d6c69",
@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/js/about.e3532e52.js"
   },
   {
-    "revision": "55b12d81badb2206542da28608b90c88",
+    "revision": "362329b2f0aeb346f41e1b90ead4a488",
     "url": "https://webres.psy-1.com/sgy/dist/index.html"
   },
   {
@@ -48,10 +48,6 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/img/Cosleep_Login-in_image_cat2@2x.47a0ff8b.png"
   },
   {
-    "revision": "418d488127259273ce2fcc28f5094e57",
-    "url": "https://webres.psy-1.com/sgy/dist/img/Cosleep_Login-in_image_cat1@2x.418d4881.png"
-  },
-  {
     "revision": "bb5a5624ad9d19092681412ac8332e70",
     "url": "https://webres.psy-1.com/sgy/dist/fonts/iconfont.bb5a5624.eot"
   },
@@ -60,7 +56,11 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/fonts/iconfont.32e9154a.woff"
   },
   {
-    "revision": "bf248af5345780d232e4",
-    "url": "https://webres.psy-1.com/sgy/dist/css/app.ba56a00d.css"
+    "revision": "228e15395054252b8a100ef3b7f19ed8",
+    "url": "https://webres.psy-1.com/sgy/dist/fonts/iconfont.228e1539.ttf"
+  },
+  {
+    "revision": "bed3bebcbeb9fbb158a2",
+    "url": "https://webres.psy-1.com/sgy/dist/css/app.de17578b.css"
   }
 ];
