@@ -12,12 +12,12 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/img/Cosleep_Login-in_image_cat1@2x.418d4881.png"
   },
   {
-    "revision": "bed3bebcbeb9fbb158a2",
-    "url": "https://webres.psy-1.com/sgy/dist/js/app.9ad64358.js"
+    "revision": "aa0aa0de68151b95288e",
+    "url": "https://webres.psy-1.com/sgy/dist/js/app.2dcadb33.js"
   },
   {
-    "revision": "b78bb1c9c65c6a4d6c69",
-    "url": "https://webres.psy-1.com/sgy/dist/js/chunk-vendors.c375141d.js"
+    "revision": "36afaa28858e6b684d30",
+    "url": "https://webres.psy-1.com/sgy/dist/js/chunk-vendors.a371db61.js"
   },
   {
     "revision": "15b0f673a6c6ee531b6a0df0b23c0caa",
@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/js/about.e3532e52.js"
   },
   {
-    "revision": "362329b2f0aeb346f41e1b90ead4a488",
+    "revision": "ba5d28ccb41e8e42bb422ee6a6e14bbe",
     "url": "https://webres.psy-1.com/sgy/dist/index.html"
   },
   {
@@ -60,7 +60,7 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/fonts/iconfont.228e1539.ttf"
   },
   {
-    "revision": "bed3bebcbeb9fbb158a2",
+    "revision": "aa0aa0de68151b95288e",
     "url": "https://webres.psy-1.com/sgy/dist/css/app.de17578b.css"
   }
 ];
