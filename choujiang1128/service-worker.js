@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "https://webres.psy-1.com/sgy/dist/precache-manifest.2276cc7757cc6e52c6334fae9ac370d5.js"
+  "https://webres.psy-1.com/sgy/dist/precache-manifest.cb82c9fbfa4465c10ffc4776ab06b5c9.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "pwa-common"});
