@@ -46,9 +46,9 @@
               </div>
             </div>
 
-              <div v-if="item.code_number == 10013" class="wjh">
+              <div v-if="item.code_number == 10016" class="wjh">
                   <div class="wjh-outer">
-                      <input  @click.stop="showId" v-model="wjh.six" placeholder="broadcast_id" style="width: 100%;background-color: #eee" />
+                      <input  @click.stop="showId" v-model="wjh.six" placeholder="prepare_id" style="width: 100%;background-color: #eee" />
                       <button @click.stop="six" type="info">提交</button>
                   </div>
               </div>
