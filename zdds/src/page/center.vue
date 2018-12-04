@@ -53,6 +53,13 @@
                   </div>
               </div>
 
+              <div v-if="item.code_number == 1052" class="wjh">
+                  <div class="wjh-outer">
+                      <input  @click.stop="showId" v-model="wjh.seven" placeholder="category_id" style="width: 100%;background-color: #eee" />
+                      <button @click.stop="seven" type="info">提交</button>
+                  </div>
+              </div>
+
 
               <div v-if="item.code_number == 10007" class="input_container">
                   <span>tag_id:</span>
@@ -290,12 +297,22 @@ export default {
         callAppRouter('Redirect',pre,function(err, result){})
       },
 
-      six() {
+      six () {
           let pre = {
               "code":10016
           }
           if(this.wjh.six){
               pre.prepare_id = this.wjh.six
+          }
+          callAppRouter('Redirect',pre,function(err, result){})
+      },
+
+      seven () {
+          let pre = {
+              "code":1052
+          }
+          if(this.wjh.six){
+              pre.category_id = this.wjh.six
           }
           callAppRouter('Redirect',pre,function(err, result){})
       }
