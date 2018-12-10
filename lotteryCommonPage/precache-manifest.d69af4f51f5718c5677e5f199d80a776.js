@@ -8,12 +8,12 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/robots.txt"
   },
   {
-    "revision": "7da7fc491809d838646773a92fb305a6",
-    "url": "https://webres.psy-1.com/sgy/dist/img/cosleep_window_img_login@2x.7da7fc49.png"
+    "revision": "32e9154a1e0d0047d6494dc71e0a33eb",
+    "url": "https://webres.psy-1.com/sgy/dist/fonts/iconfont.32e9154a.woff"
   },
   {
-    "revision": "3ad47647f29e9909d0ff",
-    "url": "https://webres.psy-1.com/sgy/dist/js/app.5ea16e67.js"
+    "revision": "6976a320abe55e4bc23d",
+    "url": "https://webres.psy-1.com/sgy/dist/js/app.0b521c5a.js"
   },
   {
     "revision": "a10328bb98e8acb1a4ba",
@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/js/about.e3532e52.js"
   },
   {
-    "revision": "f9e7f4b22cf8b5d53d2df76aa8d28009",
+    "revision": "8515be75eb58e24e3d093a34721e6e06",
     "url": "https://webres.psy-1.com/sgy/dist/index.html"
   },
   {
@@ -40,6 +40,10 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/img/iconfont.6523f059.svg"
   },
   {
+    "revision": "7da7fc491809d838646773a92fb305a6",
+    "url": "https://webres.psy-1.com/sgy/dist/img/cosleep_window_img_login@2x.7da7fc49.png"
+  },
+  {
     "revision": "15b0f673a6c6ee531b6a0df0b23c0caa",
     "url": "https://webres.psy-1.com/sgy/dist/img/cosleep_window_img_fail@2x.15b0f673.png"
   },
@@ -48,15 +52,11 @@ self.__precacheManifest = [
     "url": "https://webres.psy-1.com/sgy/dist/fonts/iconfont.bb5a5624.eot"
   },
   {
-    "revision": "32e9154a1e0d0047d6494dc71e0a33eb",
-    "url": "https://webres.psy-1.com/sgy/dist/fonts/iconfont.32e9154a.woff"
-  },
-  {
     "revision": "228e15395054252b8a100ef3b7f19ed8",
     "url": "https://webres.psy-1.com/sgy/dist/fonts/iconfont.228e1539.ttf"
   },
   {
-    "revision": "3ad47647f29e9909d0ff",
-    "url": "https://webres.psy-1.com/sgy/dist/css/app.7139b8a7.css"
+    "revision": "6976a320abe55e4bc23d",
+    "url": "https://webres.psy-1.com/sgy/dist/css/app.afa6ad88.css"
   }
 ];
