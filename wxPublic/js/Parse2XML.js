@@ -5,13 +5,13 @@ class Parse2XML {
 
     message (toUser, mesg = '', createTime = null) {
         const timeStamp = createTime || Math.floor(Date.now() / 1000)
-        return `<xml>
-                    <ToUserName>< ![CDATA[${toUser}] ]></ToUserName>
-                    <FromUserName>< ![CDATA[${this.fromUser}] ]></FromUserName>
-                    <CreateTime>${timeStamp}</CreateTime>
-                    <MsgType>< ![CDATA[text] ]></MsgType>
-                    <Content>< ![CDATA[${mesg}] ]></Content>
-                </xml>`.replace(/(\s*)/g, '')
+        return '<xml>'+
+                    '<ToUserName><![CDATA['+ toUser +']]></ToUserName>' +
+                    '<FromUserName><![CDATA['+ this.fromUser +']]></FromUserName>' +
+                    '<CreateTime>'+timeStamp+'</CreateTime>' +
+                    '<MsgType><![CDATA[text]]></MsgType>' +
+                    '<Content><![CDATA['+ mesg +']]></Content>' +
+                '</xml>'
     }
 
     messageAndPic (toUser, list = [{title: '', desc: '', picUrl: ''},{}], createTime = null) {
