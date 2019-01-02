@@ -10,11 +10,17 @@
   "license": "ISC",
   "dependencies": {
     "ali-rds": "^3.3.0",
+    "co-wechat": "^2.3.0",
+    "crypto": "^1.0.1",
+    "debug": "^4.1.1",
     "koa": "^2.6.2",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "koa-xml-body": "^2.1.0",
     "media-typer": "^1.0.1",
+    "superagent": "^4.0.0",
+    "thunkify": "^2.1.2",
+    "wechat": "^2.1.0",
     "xml2js": "^0.4.19"
   }
 }

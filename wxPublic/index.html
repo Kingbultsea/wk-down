@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="submit()">授权按钮</button>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js" async></script>
+<script>
+    let authorization_code = null
+    try {
+        if (window.location.href.includes('auth_code')) {
+            let url_string = window.location.href
+            let url = new URL(url_string)
+            let c = url.searchParams.get("auth_code")
+            console.log(c)
+            authorization_code = c
+            $.get(`/wechat_open_platform/submitac?ac=${c}`, (res, asd) => {
+                pre_auth_code = res
+                console.log(res)
+            })
+        }
+
+    } catch (e){
+
+    }
+
+
+    let pre_auth_code = null
+    window.addEventListener('load', () => {
+        getComponentAccessToken()
+    })
+
+    function getComponentAccessToken () {
+        $.get('/wechat_open_platform/preauthcode', (res, asd) => {
+            pre_auth_code = res
+            console.log(res)
+        })
+    }
+    function submit() {
+        const baseURL = `https://mp.weixin.qq.com/cgi-bin/componentloginpage?
+        &auth_type=3
+        &no_scan=1
+        &component_appid=wxbaf03b7acb3c993a
+        &pre_auth_code=${pre_auth_code}
+        &redirect_uri=http://dev.wop.heartide.com
+        &auth_type=3
+        #wechat_redirect`.replace(/(\s*)/g, "")
+        console.log(baseURL)
+        window.location.href = baseURL
+    }
+</script>
+
+</body>
+</html>
