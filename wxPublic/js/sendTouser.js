@@ -98,6 +98,9 @@ class Send {
             return eval('(' + dbData[0].session + ')')[0]// es 是第一次step = 0的时候 保留的东西哦
         }
     }
+    static async saveLeaveMessage (uid, data) {
+        await db.update('user_session', { message_leave: data[0] }, { where: { uid } })
+    }
 }
 
 module.exports = Send

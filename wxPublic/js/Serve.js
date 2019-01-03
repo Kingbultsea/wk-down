@@ -27,7 +27,7 @@ let ticket = 'glC91P1tjzm0GybMWqhztjfL+QR0AI7r6c0k0Jb+4ZFfLuTzrg68T2JhaJznGTML4+
 let enctypeTicket = null
 let pre_auth_code = null
 let componentAccessToken = '17_9LcclBuiv_VkZq9hEIXwaS7GbT7tTuaPkYJnQs_74bO2k8gufyxPvXkcPVR66kRFyQhjNP8U6JzAwlbUvmxVGNBpHxJXCCasvB84_r5Hv1AeW1qkUhkPVrofIHSlHyRw0ks_e6MHcL8xSfBaSTVdAEABCE'
-let serveAccessToken = '17_abXWDUBgSbfLNoRdJJ1yVXMvDZa9sDBsl1loyoh0F4vUzlxplu4Z4w3vh5Siqn_VGCoD4bE3N1Tv1L6Qtn5JYmgKuMTn2CXgs_XTPqLwlBAznzq5Qa6aGHNcnr0z21jyo4qdFCb9gnY03J0KPXQeAIDEMF' // 这是调用第三方的时候 需要的
+let serveAccessToken = '17_SNr4DlDyvTsqny2Mg87-xo1hTFQY8nyzUnQkTr2swz5BguxqLPOloBG9nB0f-BJ0HM5y_IU1ZhmZ47-P-W6bPJQmkdFF3fZmm2LxK7Gi4oHspCGOBWDtFqGNPxFYmhSeH-ICXGjZ0An8Mo4tMJXcAEDHES' // 这是调用第三方的时候 需要的
 let savePreAccessToken = 'refreshtoken@@@Xf_pWjheyA6S72KhSkcLwsBazP_W6_FlSz36qT5VD1g' // 第一次的时候跳转Url 可以获得 以后就需要refleash了
 const encrypt = new Encrypt({
     appId: appid_value,
@@ -141,14 +141,24 @@ router.post(`/wechat_open_platform/wxd99a3002f523a899/message`, async (ctx) => {
                     }
                 }
             }
-            if (result[index + 1].type === 'correspondence') {
-                if (result[index + 1].msgtype !== dataParse.xml.MsgType[0] || dataParse.xml.MsgType[0].indexOf('收到不支持的消息类型，暂无法显示') >= 0) {
+            /* if (i.type === 'correspondence') {
+                console.log('当前i呀')
+                if (i.msgtype !== dataParse.xml.MsgType[0] || dataParse.xml.MsgType[0].indexOf('收到不支持的消息类型，暂无法显示') >= 0) {
                     await sendTouser.sendMessage(userId, result[index + 1].error,serveAccessToken)
                 }
-            }
+            } */
             break
-        } else {
+        }
 
+        if (step === result.length) { // 最后一步的操作
+            if (i.type === 'correspondence') {
+                if (i.msgType !== dataParse.xml.MsgType[0] || dataParse.xml.MsgType[0].indexOf('收到不支持的消息类型，暂无法显示') >= 0) {
+                    await sendTouser.sendMessage(userId, i.error,serveAccessToken)
+                } else {
+                    await sendTouser.sendMessage(userId, '好了，我们已经把你的故事保存下来啦。',serveAccessToken)
+                    await sendTouser.saveLeaveMessage(userId, dataParse.xml.Content)
+                }
+            }
         }
     }
 
@@ -239,7 +249,7 @@ app.listen('8080')
 
 function getServiceAccessToken (ac) {
     let sdas = componentAccessToken
-    sdas = '17_P8FZ3WYsL_3_1mxMatblwPWVRjn1geo6WWYw0ktGtSNm51VP21JCPvtgSAoK0HpqqQXu-GTuJB1Y37hawU24IaqauXm56CNpdecVAq6T_WAXktcCWiuQ441P7FvHYoy3BPbHJvzgPhjYLPQaQSWjAIAXZD'
+    sdas = '17_wTs-O5nTKAhVGeAJatblwPWVRjn1geo6WWYw0hvVL-u5Z8b6eafFJFeFMDAgzXxLcBQZkgZ59tT4-rfs0W-L7plemcBE23vlKNLq7jZRJocroXlzozNqYMH0qMSv5zAc41qiZ1qnz3IzmBD6BNQfAGAXJM'
     if (!componentAccessToken) {
         console.log('服务器还没有满9分钟 或者猜中ticket时间~  无效本次接入')
         return
@@ -247,7 +257,7 @@ function getServiceAccessToken (ac) {
     console.log('??')
     superAgent.post(`https://api.weixin.qq.com/cgi-bin/component/api_query_auth?component_access_token=${sdas}`).send({
         "component_appid": appid_value ,
-        "authorization_code": 'queryauthcode@@@kiUFvBpAw13w-zwE0iin9NdwrtJUoR-u9l5GrwS3E6iktM7JzIMkr1nOdVBEbJ-nxRx0f1Q8HugDngAQ6FDsvA'//ac // 'queryauthcode@@@Rbk3GSiOB8WReuyRDwwXQJzWusqmZYyKW5xfvnPi3RTttMQ3XVOjilS18YUZ4hGtBiZdB-qtShMaBpDQHrF5cg'  // refreshtoken@@@Xf_pWjheyA6S72KhSkcLwsBazP_W6_FlSz36qT5VD1g
+        "authorization_code": 'queryauthcode@@@2l7sBPRYRaAkl5ps573zpDljJqT8XqnZm3BBAi4MvUnSMibO6m-c6i6hfQzCcx9x7SnJ47oZgiNs-oZY5dfYVg'//ac // 'queryauthcode@@@Rbk3GSiOB8WReuyRDwwXQJzWusqmZYyKW5xfvnPi3RTttMQ3XVOjilS18YUZ4hGtBiZdB-qtShMaBpDQHrF5cg'  // refreshtoken@@@Xf_pWjheyA6S72KhSkcLwsBazP_W6_FlSz36qT5VD1g
     }).end(async (err, res) => {
         console.log(res.body)
         if (!res.body.authorization_info.authorizer_access_token) {
@@ -276,7 +286,7 @@ async function refleashAuthorizerAccessToken () {
     sdas = '17_P8FZ3WYsL_3_1mxMatblwPWVRjn1geo6WWYw0ktGtSNm51VP21JCPvtgSAoK0HpqqQXu-GTuJB1Y37hawU24IaqauXm56CNpdecVAq6T_WAXktcCWiuQ441P7FvHYoy3BPbHJvzgPhjYLPQaQSWjAIAXZD'
     for (let i of getData) {
         const mintime = new Date().getTime() - parseInt(i.update)
-        const time = 1// 1000 * 60 * 60
+        const time = 1000 * 60 * 60
         console.log('??')
         if (mintime <= time) {
             console.log(mintime)
@@ -297,7 +307,10 @@ async function refleashAuthorizerAccessToken () {
                     console.log('??asdasdasdad')
                     return
                 }
-                await db.delete(`appid_platform`, {
+
+                await db.update('user_session', { authorization_code: res.body.authorizer_refresh_token, authorization_access_token: res.body.authorizer_access_token }, { where: { appid: i.appid } })
+
+                /* await db.delete(`appid_platform`, {
                     appid: i.appid
                 }).then((res) => {
                     console.log(res)
@@ -307,7 +320,7 @@ async function refleashAuthorizerAccessToken () {
                     authorization_code: res.body.authorizer_refresh_token,
                     authorization_access_token: res.body.authorizer_access_token,
                     update: new Date().getTime()
-                })
+                }) */
             })
         }
     }
