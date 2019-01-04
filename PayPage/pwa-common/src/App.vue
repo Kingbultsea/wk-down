@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import Share from '@/js/shareAndGetName'
 export default {
   data () {
     return {
@@ -16,6 +17,8 @@ export default {
   methods: {
   },
   mounted () {
+    const share = new Share({ pic: 'http://wx3.sinaimg.cn/mw690/006Zdy2vgy1fxj0dtbn29j302o02nmx1.jpg', url: 'https://sleep.heartide.com/', title: '小睡眠', desc: '给你婴儿般好小睡眠' })
+    share.appShare()
   }
 }
 </script>
