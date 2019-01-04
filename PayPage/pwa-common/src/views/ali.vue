@@ -1,0 +1,106 @@
+<template>
+  <div class="ali">
+    <div class="template">
+      <p>1. 打开 App Store，滑到【App】页面底部</p>
+      <img src="../assets/绑定支付宝_slices/cosleep_guidance_img_subscribe1_cn@3x.png">
+    </div>
+    <div class="template">
+      <p>2. 选择【绑定支付宝、微信支付宝或银联卡】</p>
+      <img src="../assets/绑定支付宝_slices/cosleep_guidance_img_pay-1@3x.png">
+    </div>
+    <div class="template">
+      <p>3. 勾选【支付宝Alipay】填写你的支付宝信息，然后点击【完成】</p>
+      <img src="../assets/绑定支付宝_slices/cosleep_guidance_img_alipay@3x.png">
+    </div>
+    <div class="template">
+      <p>4. 绑定完成后，回到【小睡眠】App-【充值中心】，点击你想要充值的金额充值即可</p>
+      <img src="../assets/绑定支付宝_slices/cosleep_guidance_img_pay-2@3x.png">
+    </div>
+    <div class="template">
+      <p >注意事项: </p>
+      <p class="remove-p">1.充值前请确保你的App内购买项目访问限制为【开启】状态(在【设置】-【通用】-【访问限制】中进行设置)； </p>
+      <p class="remove-p">2.请确认你的苹果设备未越狱； 3.若绑定不成功，请确认你的支付宝信息填写无误，确认后再次进行绑定； </p>
+      <p class="remove-p">4.绑定支付宝帐号时，会验证你的手机号码，请按提示填写信息； </p>
+      <p class="remove-p">5.海外用户如遇充值问题，可以到【小睡眠】微信公众号或者到QQ群【小睡眠官方交流群】向我们反馈你的问题，我们会为你解决。</p>
+    </div>
+    <div class="button">
+      <div class="inner" @click="toAppStore">前往 App Store 设置</div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'ali',
+  methods: {
+    toAppStore () {
+      window.open('itms-apps://itunes.apple.com/')
+    }
+  }
+}
+</script>
+
+<style scoped lang="scss">
+.ali {
+  margin-top: px2html(20px);
+  .template {
+    margin-left: px2html(25px);
+    margin-bottom: px2html(30px);
+    text-align: left;
+    p {
+      margin-bottom: px2html(15px);
+      font-size: px2html(14px);
+      max-width: px2html(310px);
+      color: rgba(0, 0, 0, 0.6);
+    }
+    p:first-letter {
+      color: rgba(63, 168, 244, 1);
+      font-weight: 900;
+    }
+    img {
+      margin-left: px2html(10px);
+    }
+  }
+  .template:nth-child(1){
+    img {
+      height: px2html(60px);
+    }
+  }
+  .template:nth-child(2), .template:nth-child(3), .template:nth-child(4){
+    img {
+      height: px2html(231px);
+    }
+  }
+  .template:nth-child(5) {
+    p:nth-child(1){
+      color: rgba(63, 168, 244, 1);
+    }
+  }
+  .remove-p:first-letter{
+    color: rgba(0, 0, 0, 0.6) !important;
+    font-weight: 400 !important;
+  }
+  .button {
+    width: 100%;
+    height: px2html(75px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(251, 250, 245, 1);
+
+    .inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: px2html(255px);
+      height: px2html(35px);
+      background: rgba(74, 144, 226, 1);
+      color: rgba(255, 255, 255, 1);
+      font-size: px2html(15px);
+      border-radius: px2html(20px);
+      font-weight: 600;
+    }
+  }
+}
+</style>
