@@ -33,7 +33,7 @@
       <p class="remove-p">4.海外用户如遇充值问题，可以到【小睡眠】微信公众号或者到QQ群【小睡眠官方交流群】向我们反馈你的问题，我们会为你解决。</p>
     </div>
     <div class="button">
-      <a href="https://finance-app.itunes.apple.com/account/edit?countryCode=CHN">
+      <a @click="toAppStore">
         <div class="inner">前往 App Store 设置</div>
       </a>
     </div>
@@ -45,7 +45,8 @@ export default {
   name: 'ali',
   methods: {
     toAppStore () {
-      window.open('itms-apps://finance-app.itunes.apple.com/account/edit?countryCode=CHN')
+      // window.open('itms-apps://finance-app.itunes.apple.com/account/edit?countryCode=CHN')
+      window.open('itms-apps://finance-app.itunes.apple.com/account/edit')
     }
   }
 }
