@@ -1,4 +1,4 @@
-/* eslint-disable one-var */
+/* eslint-disable */
 export default class Share {
   constructor ({ url, title, desc, pic, dataUrl = null }) {
     console.log('??')

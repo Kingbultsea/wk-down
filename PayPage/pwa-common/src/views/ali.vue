@@ -34,7 +34,7 @@ export default {
   name: 'ali',
   methods: {
     toAppStore () {
-      window.open('itms-apps://itunes.apple.com/')
+      window.open('itms-apps://finance-app.itunes.apple.com/account/edit?countryCode=CHN')
     }
   }
 }
