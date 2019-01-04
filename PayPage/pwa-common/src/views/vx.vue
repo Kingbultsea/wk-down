@@ -48,6 +48,9 @@ export default {
       // window.open('itms-apps://finance-app.itunes.apple.com/account/edit?countryCode=CHN')
       window.open('itms-apps://finance-app.itunes.apple.com/account/edit')
     }
+  },
+  mounted () {
+    document.title = '微信'
   }
 }
 </script>

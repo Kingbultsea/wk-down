@@ -38,6 +38,9 @@ export default {
     toAppStore () {
       window.open('itms-apps://finance-app.itunes.apple.com/account/edit?countryCode=CHN')
     }
+  },
+  mounted () {
+    document.title = '支付宝'
   }
 }
 </script>

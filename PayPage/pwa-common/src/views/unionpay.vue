@@ -39,6 +39,9 @@ export default {
     toAppStore () {
       window.open('itms-apps://finance-app.itunes.apple.com/account/edit?countryCode=CHN')
     }
+  },
+  mounted () {
+    document.title = '银联'
   }
 }
 </script>

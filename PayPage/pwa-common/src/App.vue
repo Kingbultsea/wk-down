@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <div class="app-template">
-      <router-view/>
-    </div>
+    <router-view/>
   </div>
 </template>
 
@@ -30,15 +28,7 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    overflow: hidden;
-    width: 100vw;
-    height:100vh;
     font-size: px2html(12px);
-    .app-template {
-      width: 100vw;
-      height: 100vh;
-      overflow: scroll;
-    }
   }
 </style>
 
