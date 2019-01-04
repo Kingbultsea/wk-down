@@ -9,27 +9,32 @@
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js" async></script>
 <script>
     let authorization_code = null
-    try {
-        if (window.location.href.includes('auth_code')) {
-            let url_string = window.location.href
-            let url = new URL(url_string)
-            let c = url.searchParams.get("auth_code")
-            console.log(c)
-            authorization_code = c
-            $.get(`/wechat_open_platform/submitac?ac=${c}`, (res, asd) => {
-                pre_auth_code = res
-                console.log(res)
-            })
-        }
-
-    } catch (e){
-
-    }
 
 
     let pre_auth_code = null
     window.addEventListener('load', () => {
         getComponentAccessToken()
+
+        setTimeout(() => {
+            try {
+                if (window.location.href.includes('auth_code')) {
+                    let url_string = window.location.href
+                    let url = new URL(url_string)
+                    let c = url.searchParams.get("auth_code")
+                    console.log(c)
+                    authorization_code = c
+                    console.log('??')
+                    $.get(`/wechat_open_platform/submitac?ac=${c}`, (res, asd) => {
+                        console.log(res)
+                    })
+                }
+
+            } catch (e){
+
+            }
+
+        }, 1000)
+
     })
 
     function getComponentAccessToken () {

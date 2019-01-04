@@ -20,6 +20,7 @@ class Send {
             })
         })
     }
+
     static async getSubject (key) {
         const subjectList = await db.select('subject_list', {
             where: {
@@ -35,9 +36,8 @@ class Send {
             return false
         }
     }
+
     static async getCorrespondence (title) {
-        console.log(title)
-        console.log('奇怪？')
         const dbData = await db.select('subject_list', {
             where: {
                 title: title // dataParse.xml.Content[0]
@@ -46,20 +46,19 @@ class Send {
         // console.log(dbData[0].correspondence)
         return dbData[0].correspondence
     }
+
     static async saveSession (uid, data) {
-        console.log('??好奇怪为什么会是2呢？')
         const dbData = await db.select('user_session', {
             where: {
                 uid: uid // dataParse.xml.Content[0]
             }
         })
-        console.log(dbData[0].session)
         const z =  eval('(' + dbData[0].session + ')')
         let arr = eval('(' + dbData[0].session + ')')
         arr.push(data[0])
-        console.log(arr)
         await db.update('user_session', { session: JSON.stringify(arr) }, { where: { uid: uid } })
     }
+
     static async addUser (uid, subject) {
         console.log(subject)
         const a = await db.insert(`user_session`, {
@@ -70,6 +69,13 @@ class Send {
         })
         console.log(a)
     }
+
+    static async deleteUser (uid) {
+        await db.delete('table-name', {
+            uid
+        })
+    }
+
     static async getSesssion (uid) {
         const data = await db.select('user_session', {
             where: {
@@ -77,15 +83,25 @@ class Send {
             }
         })
         console.log(data.length)
+
         if (data.length === 0) {
             return 0
         } else {
+            const mintime = new Date().getTime() - parseInt(data[0].update)
+            const time = 1000 * 60 * 3
+            if (mintime >= time) {
+                await Send.deleteUser(uid)
+                return 0
+            }
+
+
             console.log(eval('(' + data[0].session + ')').length)
             return eval('(' + data[0].session + ')').length
         }
 
 
     }
+
     static async getUserSubject (uid, es) {
         const dbData = await db.select('user_session', {
             where: {
@@ -98,9 +114,24 @@ class Send {
             return eval('(' + dbData[0].session + ')')[0]// es 是第一次step = 0的时候 保留的东西哦
         }
     }
+
     static async saveLeaveMessage (uid, data) {
         await db.update('user_session', { message_leave: data[0] }, { where: { uid } })
     }
+
+    static async hasLeaveMessage (uid) {
+        const dbData = await db.select('user_session', {
+            where: {
+                uid: uid // dataParse.xml.Content[0]
+            }
+        })
+        if (dbData[0].message_leave) {
+            return true
+        } else {
+            return false
+        }
+    }
+
 }
 
 module.exports = Send

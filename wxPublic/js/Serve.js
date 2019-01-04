@@ -26,7 +26,7 @@ app.use(router.routes())
 let ticket = 'glC91P1tjzm0GybMWqhztjfL+QR0AI7r6c0k0Jb+4ZFfLuTzrg68T2JhaJznGTML4+Q+qFbr68QUX2HbvCTuoc8vhRxmD/gRWpKY+DZ1k0cDTIYeJ9HlGi96oSznsFqnh4xMtsaaUmyZsndJ6e0qZAkOB5aJN56NQEwPsKAtJE3RsELB7XvY2pUFxrichAxC57XXWfDBz/8bw3g2eHQRE2Wz7t1y3/aIvKpKuk2ilo//WIlWVwI75EbuaUBkJjUFvRRJptaZFMCy+ox7G10DyOl6g+/uBva+bqMm5pZCcRqriLgDeWmqBXu1QkMVvYTYYZpVZUMHPYT5rzkAEe0AhOBD6tgtIiD8p/SDpl0OoyVZpifvjxPPwWq/p528DlRZKmqFnveesj3ijcfTS1WEiiPfxBJpOE0jS39MKQd16kNIlasFfYU07rA6jyR4R3gYYpM26hLxbebNrAE6EinE0Q==' // component_verify_ticket
 let enctypeTicket = null
 let pre_auth_code = null
-let componentAccessToken = '17_9LcclBuiv_VkZq9hEIXwaS7GbT7tTuaPkYJnQs_74bO2k8gufyxPvXkcPVR66kRFyQhjNP8U6JzAwlbUvmxVGNBpHxJXCCasvB84_r5Hv1AeW1qkUhkPVrofIHSlHyRw0ks_e6MHcL8xSfBaSTVdAEABCE'
+let componentAccessToken = ''
 let serveAccessToken = '17_SNr4DlDyvTsqny2Mg87-xo1hTFQY8nyzUnQkTr2swz5BguxqLPOloBG9nB0f-BJ0HM5y_IU1ZhmZ47-P-W6bPJQmkdFF3fZmm2LxK7Gi4oHspCGOBWDtFqGNPxFYmhSeH-ICXGjZ0An8Mo4tMJXcAEDHES' // 这是调用第三方的时候 需要的
 let savePreAccessToken = 'refreshtoken@@@Xf_pWjheyA6S72KhSkcLwsBazP_W6_FlSz36qT5VD1g' // 第一次的时候跳转Url 可以获得 以后就需要refleash了
 const encrypt = new Encrypt({
@@ -52,13 +52,11 @@ router.post(`/wechat_open_platform/auth/callback`, async (ctx) => { // ticket �
     const xmlMsg = encrypt.decode(ticket)
     const rs = Parse2Data.parseMessage(xmlMsg)
     enctypeTicket = rs.xml.ComponentVerifyTicket[0]
-    console.log(enctypeTicket)
     await new Promise((resolve) => {
         setTimeout(() => {
             resolve()
         }, 5000)
     })
-    console.log('twice')
     ctx.response.body = 'success'
 })
 
@@ -109,11 +107,12 @@ router.post(`/wechat_open_platform/wxd99a3002f523a899/message`, async (ctx) => {
         if (index === step) { // 符合当前阶段
             if (step === 0) {
                 const key = await sendTouser.getCorrespondence(subjRequire)
-                console.log(key)
+                console.log("" + key)
+                console.log(JSON.stringify(key).replace(/\\r\\n/g, '\r\n').replace(/^\"|\"$/g, ''))
                 console.log('上面是Key哦')
-                await sendTouser.sendMessage(userId, key, serveAccessToken)
+                await sendTouser.sendMessage(userId, JSON.stringify(key).replace(/\\r\\n/g, '\r\n').replace(/^\"|\"$/g, ''), serveAccessToken)
                 await sendTouser.addUser(userId, dataParse.xml.Content) // 第一次要添加用户
-                await sendTouser.sendMessage(userId, i.title, serveAccessToken) // 发送是要发送当前题的 但是判断呢 就要判断上一个题目了~！
+                await sendTouser.sendMessage(userId, JSON.stringify(i.title).replace(/\\r\\n/g, '\r\n').replace(/^\"|\"$/g, ''), serveAccessToken) // 发送是要发送当前题的 但是判断呢 就要判断上一个题目了~！
             }
 
             if (index === 0) {
@@ -131,7 +130,7 @@ router.post(`/wechat_open_platform/wxd99a3002f523a899/message`, async (ctx) => {
                            // await sendTouser.addUser(userId, dataParse.xml.Content)
                         } else {
                             // await sendTouser.sendMessage(userId, result[index + 1].title, serveAccessToken) // 发送题目
-                            await sendTouser.sendMessage(userId, i.title, serveAccessToken) // 发送是要发送当前题的 但是判断呢 就要判断上一个题目了~！
+                            await sendTouser.sendMessage(userId, JSON.stringify(i.title).replace(/\\r\\n/g, '\r\n').replace(/^\"|\"$/g, ''), serveAccessToken) // 发送是要发送当前题的 但是判断呢 就要判断上一个题目了~！
                             await sendTouser.saveSession(userId, dataParse.xml.Content)// 存进数据库吧
                         }
                         break
@@ -151,6 +150,10 @@ router.post(`/wechat_open_platform/wxd99a3002f523a899/message`, async (ctx) => {
         }
 
         if (step === result.length) { // 最后一步的操作
+            const have = await sendTouser.hasLeaveMessage(userId)
+            if (have) {
+                break
+            }
             if (i.type === 'correspondence') {
                 if (i.msgType !== dataParse.xml.MsgType[0] || dataParse.xml.MsgType[0].indexOf('收到不支持的消息类型，暂无法显示') >= 0) {
                     await sendTouser.sendMessage(userId, i.error,serveAccessToken)
@@ -213,6 +216,7 @@ function getComponentAccessToken () {
         console.log('拥有')
     } else {
         console.log('没有')
+        return
     }
     const params = {
         component_appid: appid_value,
@@ -221,8 +225,6 @@ function getComponentAccessToken () {
     }
     console.log(enctypeTicket)
     superAgent.post(`https://api.weixin.qq.com/cgi-bin/component/api_component_token`).send(params).end((err, res) => {
-        console.log('??token')
-        console.log(res.body)
         console.log(res.body.component_access_token)
         componentAccessToken = res.body.component_access_token
         superAgent.post(`https:// api.weixin.qq.com /cgi-bin/component/api_authorizer_token?component_access_token=${componentAccessToken}`).send(params).end((err, res) => {
@@ -244,12 +246,13 @@ function getPreAuthCode (cat) {
 }
 
 setInterval(getComponentAccessToken, 9 * 60 * 1000)
+setInterval(refleashAuthorizerAccessToken, 60 * 60 * 1000) // 60分钟刷新一次哦
 // getComponentAccessToken()
 app.listen('8080')
 
 function getServiceAccessToken (ac) {
     let sdas = componentAccessToken
-    sdas = '17_wTs-O5nTKAhVGeAJatblwPWVRjn1geo6WWYw0hvVL-u5Z8b6eafFJFeFMDAgzXxLcBQZkgZ59tT4-rfs0W-L7plemcBE23vlKNLq7jZRJocroXlzozNqYMH0qMSv5zAc41qiZ1qnz3IzmBD6BNQfAGAXJM'
+    // sdas = '17_wTs-O5nTKAhVGeAJatblwPWVRjn1geo6WWYw0hvVL-u5Z8b6eafFJFeFMDAgzXxLcBQZkgZ59tT4-rfs0W-L7plemcBE23vlKNLq7jZRJocroXlzozNqYMH0qMSv5zAc41qiZ1qnz3IzmBD6BNQfAGAXJM'
     if (!componentAccessToken) {
         console.log('服务器还没有满9分钟 或者猜中ticket时间~  无效本次接入')
         return
@@ -257,12 +260,17 @@ function getServiceAccessToken (ac) {
     console.log('??')
     superAgent.post(`https://api.weixin.qq.com/cgi-bin/component/api_query_auth?component_access_token=${sdas}`).send({
         "component_appid": appid_value ,
-        "authorization_code": 'queryauthcode@@@2l7sBPRYRaAkl5ps573zpDljJqT8XqnZm3BBAi4MvUnSMibO6m-c6i6hfQzCcx9x7SnJ47oZgiNs-oZY5dfYVg'//ac // 'queryauthcode@@@Rbk3GSiOB8WReuyRDwwXQJzWusqmZYyKW5xfvnPi3RTttMQ3XVOjilS18YUZ4hGtBiZdB-qtShMaBpDQHrF5cg'  // refreshtoken@@@Xf_pWjheyA6S72KhSkcLwsBazP_W6_FlSz36qT5VD1g
+        "authorization_code": ac // 'queryauthcode@@@Rbk3GSiOB8WReuyRDwwXQJzWusqmZYyKW5xfvnPi3RTttMQ3XVOjilS18YUZ4hGtBiZdB-qtShMaBpDQHrF5cg'  // refreshtoken@@@Xf_pWjheyA6S72KhSkcLwsBazP_W6_FlSz36qT5VD1g
     }).end(async (err, res) => {
         console.log(res.body)
-        if (!res.body.authorization_info.authorizer_access_token) {
-            return
+        try {
+            if (res.body.errcode) {
+                return
+            }
+        } catch (e) {
+
         }
+
         serveAccessToken = res.body.authorization_info.authorizer_access_token
         savePreAccessToken = res.body.authorization_info.authorizer_refresh_token
         await db.delete(`appid_platform`, {
@@ -270,20 +278,21 @@ function getServiceAccessToken (ac) {
         }).then((res) => {
             console.log(res)
         })
-        db.insert(`appid_platform`, {
+        await db.insert(`appid_platform`, {
             appid: `${res.body.authorization_info.authorizer_appid}`,
             authorization_code: res.body.authorization_info.authorizer_refresh_token,
             authorization_access_token: res.body.authorization_info.authorizer_access_token,
             update: new Date().getTime()
         })
-        console.log('???')
     })
 }
 
 async function refleashAuthorizerAccessToken () {
     const getData = await db.select('appid_platform')
     let sdas = componentAccessToken
-    sdas = '17_P8FZ3WYsL_3_1mxMatblwPWVRjn1geo6WWYw0ktGtSNm51VP21JCPvtgSAoK0HpqqQXu-GTuJB1Y37hawU24IaqauXm56CNpdecVAq6T_WAXktcCWiuQ441P7FvHYoy3BPbHJvzgPhjYLPQaQSWjAIAXZD'
+    if (!sdas) {
+        return
+    }
     for (let i of getData) {
         const mintime = new Date().getTime() - parseInt(i.update)
         const time = 1000 * 60 * 60
@@ -297,7 +306,7 @@ async function refleashAuthorizerAccessToken () {
             const params = {
                 component_appid: appid_value,
                 authorizer_appid: i.appid, // 授权方的appid
-                authorizer_refresh_token: 'queryauthcode@@@kiUFvBpAw13w-zwE0iin9NdwrtJUoR-u9l5GrwS3E6iktM7JzIMkr1nOdVBEbJ-nxRx0f1Q8HugDngAQ6FDsvA' // 授权方的刷新令牌
+                authorizer_refresh_token: i.authorization_code // 授权方的刷新令牌
             }
             superAgent.post(`https://api.weixin.qq.com/cgi-bin/component/api_authorizer_token?component_access_token=${sdas}`).send(params).end(async (err, res) => {
                 console.log(res.body)
@@ -308,7 +317,7 @@ async function refleashAuthorizerAccessToken () {
                     return
                 }
 
-                await db.update('user_session', { authorization_code: res.body.authorizer_refresh_token, authorization_access_token: res.body.authorizer_access_token }, { where: { appid: i.appid } })
+                await db.update('appid_platform', { authorization_code: res.body.authorizer_refresh_token, authorization_access_token: res.body.authorizer_access_token }, { where: { appid: i.appid } })
 
                 /* await db.delete(`appid_platform`, {
                     appid: i.appid

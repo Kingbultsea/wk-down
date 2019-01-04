@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "ali-rds": "^3.3.0",
+    "canvas": "^2.2.0",
     "co-wechat": "^2.3.0",
     "crypto": "^1.0.1",
     "debug": "^4.1.1",
