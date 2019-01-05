@@ -129,6 +129,7 @@ export default {
     },
     created() {
        this.getCode();
+       console.log('11:30!~')
     },
     methods: {
        getCode(){
