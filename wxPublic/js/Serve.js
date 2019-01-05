@@ -76,140 +76,149 @@ router.get(`/wechat_open_platform/preauthcode`, async (ctx) => { // 发送pre_au
 })
 
 
-router.post(`/wechat_open_platform/wxd99a3002f523a899/message`, async (ctx) => {
-    const xml = ctx.request.body.xml.Encrypt[0]
-    const data = encrypt.decode(xml)
-    const dataParse = Parse2Data.parseMessage(data)
-    const userId = dataParse.xml.FromUserName[0]
-    // dataParse.xml.CreateTime
-    // dataParse.toUserName  dataParse.FromUserName dataParse.CreateTime  dataParse.MsgType dataParse.Content
-    /* 首先假如我是拿到那个id了 那么我现在就要把id给存在数据库了...  就用一个数据来记录吧[1,1,1,1,1,1] 初始化是 0 00 0 0 0  这个0 0 00 0的个数是
-     * 根据题目的数量而变化的 这个也简单
-     * 那说一下路程： 1. 用户访问 假如用户正确选择中题目的话 ctx.body = 'xml的相关题目'  然后这个时候记录用户的openid 还有选择的题目 2.用户回答问题 这个时候调用用户的openid 提取数据库的数据
-     * 然后再次根据题目 还有题号出下一题 3. 最后假如判断出该题目的题数和回答数量相等 那么就直接得出结果 返回结果 结果需要用node canvas处理 我记得paperjs也是可以进行处理的
-     * 返回完结果后 就根据openid 删除该openid 即使用户重新来过
-     *
-     *
-     */
-    // 查询题目库 没有就返回回复false 什么的
-    const step = await sendTouser.getSesssion(userId) // 先查询用户哪个阶段了
-    const subjRequire = await sendTouser.getUserSubject(userId, dataParse.xml.Content)
-    const result = await sendTouser.getSubject(subjRequire)
-    console.log(result)
-    if (!result) {
-        console.log("/???sdasdas")
-        ctx.response.body = 'success'
-        return
-    }
-    console.log('gogo')
-    for (let [index, i] of new Map( result.map( ( item, i ) => [ i, item ] ) )) {
-        console.log(step + '-- 下面 -- 是index' + index)
-        if (index === step) { // 符合当前阶段
-            if (step === 0) {
-                const key = await sendTouser.getCorrespondence(subjRequire)
-                console.log("" + key)
-                console.log(JSON.stringify(key).replace(/\\r\\n/g, '\r\n').replace(/^\"|\"$/g, ''))
-                console.log('上面是Key哦')
-                await sendTouser.sendMessage(userId, JSON.stringify(key).replace(/\\r\\n/g, '\r\n').replace(/^\"|\"$/g, ''), serveAccessToken)
-                await sendTouser.addUser(userId, dataParse.xml.Content) // 第一次要添加用户
-                await sendTouser.sendMessage(userId, JSON.stringify(i.title).replace(/\\r\\n/g, '\r\n').replace(/^\"|\"$/g, ''), serveAccessToken) // 发送是要发送当前题的 但是判断呢 就要判断上一个题目了~！
-            }
+function runMessage (id) {
+    router.post(`/wechat_open_platform/${id}/message`, async (ctx) => {
+        const xml = ctx.request.body.xml.Encrypt[0]
+        const data = encrypt.decode(xml)
+        const dataParse = Parse2Data.parseMessage(data)
+        const userId = dataParse.xml.FromUserName[0]
+        /* dataParse.xml.CreateTime
+         * dataParse.toUserName  dataParse.FromUserName dataParse.CreateTime  dataParse.MsgType dataParse.Content
+         *
+         *
+         *
+         *
+         *
+         *
+         *
+         */
 
-            if (index === 0) {
-                break // 第一题不判断！
-            }
-            if (result[index - 1].type === 'common') {
-                if (result[index - 1].regulation.type === 'scope') {
-                    if (parseInt(dataParse.xml.Content).toString() === 'NaN' || result[index - 1].msgType !== dataParse.xml.MsgType[0]) { // 错误输出
-                        await sendTouser.sendMessage(userId, result[index - 1].error,serveAccessToken)
-                        break
-                    }
-                    if (parseInt(dataParse.xml.Content) >= result[index - 1].regulation.one && parseInt(dataParse.xml.Content) <= result[index - 1].regulation.two) {
-                        // 这里是符合规则的 所以是可以插入的
-                        if (step === 0) { // 第一阶段应该insert 进用户
-                           // await sendTouser.addUser(userId, dataParse.xml.Content)
-                        } else {
-                            // await sendTouser.sendMessage(userId, result[index + 1].title, serveAccessToken) // 发送题目
-                            await sendTouser.sendMessage(userId, JSON.stringify(i.title).replace(/\\r\\n/g, '\r\n').replace(/^\"|\"$/g, ''), serveAccessToken) // 发送是要发送当前题的 但是判断呢 就要判断上一个题目了~！
-                            await sendTouser.saveSession(userId, dataParse.xml.Content)// 存进数据库吧
-                        }
-                        break
-                    } else {
-                        await sendTouser.sendMessage(userId, result[index - 1].error,serveAccessToken)
-                        break
-                    }
-                }
-            }
-            /* if (i.type === 'correspondence') {
-                console.log('当前i呀')
-                if (i.msgtype !== dataParse.xml.MsgType[0] || dataParse.xml.MsgType[0].indexOf('收到不支持的消息类型，暂无法显示') >= 0) {
-                    await sendTouser.sendMessage(userId, result[index + 1].error,serveAccessToken)
-                }
-            } */
-            break
+        const step = await sendTouser.getSesssion(userId) // 先查询用户哪个阶段了
+        const subjRequire = await sendTouser.getUserSubject(userId, dataParse.xml.Content) // 封装处理
+        const result = await sendTouser.getSubject(subjRequire)
+
+        if (!result) { // 如果没有题的情况下
+            ctx.response.body = 'success'
+            return
         }
-
-        if (step === result.length) { // 最后一步的操作
-            const have = await sendTouser.hasLeaveMessage(userId)
-            if (have) {
+        for (let [index, i] of new Map( result.map( ( item, i ) => [ i, item ] ) )) {
+            console.log(step + '-- 下面 -- 是index' + index)
+            if (!await sendTouser.limitTimes()) { // 时间冲突
+                await sendTouser.addUser(userId, '你输入得太频繁啦~')
                 break
             }
-            if (i.type === 'correspondence') {
-                if (i.msgType !== dataParse.xml.MsgType[0] || dataParse.xml.MsgType[0].indexOf('收到不支持的消息类型，暂无法显示') >= 0) {
-                    await sendTouser.sendMessage(userId, i.error,serveAccessToken)
-                } else {
-                    await sendTouser.sendMessage(userId, '好了，我们已经把你的故事保存下来啦。',serveAccessToken)
-                    await sendTouser.saveLeaveMessage(userId, dataParse.xml.Content)
+            if (index === step) { // 符合当前阶段
+                if (step === 0) {
+                    const key = await sendTouser.getCorrespondence(subjRequire)
+                    console.log("" + key)
+                    const { name } = sendTouser.getUseData(serveAccessToken, userId)
+                    console.log(JSON.stringify(key).replace(/\\r\\n/g, '\r\n').replace(/^\"|\"$/g, '').replace(/REPLACE/, name))
+                    console.log('上面是Key哦')
+                    await sendTouser.sendMessage(userId, JSON.stringify(key).replace(/\\r\\n/g, '\r\n').replace(/^\"|\"$/g, ''), serveAccessToken)
+                    await sendTouser.addUser(userId, dataParse.xml.Content) // 第一次要添加用户
+                    await sendTouser.sendMessage(userId, JSON.stringify(i.title).replace(/\\r\\n/g, '\r\n').replace(/^\"|\"$/g, ''), serveAccessToken) // 发送是要发送当前题的 但是判断呢 就要判断上一个题目了~！
+                }
+
+                if (index === 0) {
+                    break // 第一题不判断！
+                }
+                if (result[index - 1].type === 'common') {
+                    if (result[index - 1].regulation.type === 'scope') {
+                        if (parseInt(dataParse.xml.Content).toString() === 'NaN' || result[index - 1].msgType !== dataParse.xml.MsgType[0]) { // 错误输出
+                            await sendTouser.sendMessage(userId, result[index - 1].error,serveAccessToken)
+                            break
+                        }
+                        if (parseInt(dataParse.xml.Content) >= result[index - 1].regulation.one && parseInt(dataParse.xml.Content) <= result[index - 1].regulation.two) {
+                            // 这里是符合规则的 所以是可以插入的
+                            if (step === 0) { // 第一阶段应该insert 进用户
+                                // await sendTouser.addUser(userId, dataParse.xml.Content)
+                            } else {
+                                // await sendTouser.sendMessage(userId, result[index + 1].title, serveAccessToken) // 发送题目
+                                await sendTouser.sendMessage(userId, JSON.stringify(i.title).replace(/\\r\\n/g, '\r\n').replace(/^\"|\"$/g, ''), serveAccessToken) // 发送是要发送当前题的 但是判断呢 就要判断上一个题目了~！
+                                await sendTouser.saveSession(userId, dataParse.xml.Content)// 存进数据库吧
+                            }
+                            break
+                        } else {
+                            await sendTouser.sendMessage(userId, result[index - 1].error,serveAccessToken)
+                            break
+                        }
+                    }
+                }
+
+                break
+            }
+
+            if (step === result.length) { // 最后一步的操作
+                const have = await sendTouser.hasLeaveMessage(userId) // 查看有没有留言
+                if (have) {
+                    break
+                }
+                if (i.type === 'correspondence') {
+                    if (i.msgType !== dataParse.xml.MsgType[0] || dataParse.xml.MsgType[0].indexOf('收到不支持的消息类型，暂无法显示') >= 0) {
+                        await sendTouser.sendMessage(userId, i.error,serveAccessToken)
+                    } else {
+                        await sendTouser.sendMessage(userId, '好了，我们已经把你的故事保存下来啦。',serveAccessToken)
+                        await sendTouser.saveLeaveMessage(userId, dataParse.xml.Content)
+                        const tag = sendTouser.count(userId, subjRequire)
+                        await sendTouser.getMediaPic(tag, serveAccessToken, userId)
+                    }
                 }
             }
         }
+
+
+        const serviceData = {
+            'touser': dataParse.xml.FromUserName[0],
+            'msgtype': 'text',
+            'text':
+                {
+                    'content': 'Hello World'
+                },
+            'appid': 'wxbaf03b7acb3c993a' // appid_value
+        }
+        console.log(serviceData)
+        console.log(componentAccessToken)
+        console.log('shangm nagerwjiushi')
+        /* superAgent.post(`https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=${serveAccessToken}`).send(serviceData).end((err, res) => {
+            console.log('???')
+            console.log(res.body)
+        }) */
+
+        const msgType = dataParse.xml.MsgType[0]
+        const parse2XML = new Parse2XML(dataParse.xml.ToUserName)
+        let err = null
+        let encryptedXML = null
+        console.log(dataParse)
+        if (msgType === 'text') {
+            const sendToData = parse2XML.message(dataParse.xml.FromUserName, dataParse.xml.Content, dataParse.xml.CreateTime)
+            let [o, t] = wx.encrypt(sendToData, ctx.query.timestamp, ctx.query.nonce)
+            err = o
+            encryptedXML = t
+        } else
+        if (msgType === 'image') {
+            /* const sendToData = parse2XML.messageAndPic(dataParse.xml.FromUserName, [{title: 'halo', desc: 'config', picUrl: 'http://wx4.sinaimg.cn/mw690/006Zdy2vgy1fwqjcett54j30go0i40th.jpg'}], dataParse.xml.CreateTime)
+            console.log(sendToData)
+            let [o, t] = wx.encrypt(sendToData, ctx.query.timestamp, ctx.query.nonce)
+            err = o
+            encryptedXML = t */
+            encryptedXML = 'success'
+        } else {
+            encryptedXML = 'success'
+        }
+
+        console.log(err)
+
+        ctx.response.type = 'xml'
+        ctx.response.body = 'success' // encryptedXML
+    })
+}
+// runMessage('wxd99a3002f523a899')
+async function getPlatFormId () {
+    const dbData = await db.select('appid_platform')
+    for (let i of dbData) {
+        runMessage(i.appid)
     }
-
-
-    const serviceData = {
-        'touser': dataParse.xml.FromUserName[0],
-        'msgtype': 'text',
-        'text':
-            {
-                'content': 'Hello World'
-            },
-        'appid': 'wxbaf03b7acb3c993a' // appid_value
-    }
-    console.log(serviceData)
-    console.log(componentAccessToken)
-    console.log('shangm nagerwjiushi')
-    /* superAgent.post(`https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=${serveAccessToken}`).send(serviceData).end((err, res) => {
-        console.log('???')
-        console.log(res.body)
-    }) */
-
-    const msgType = dataParse.xml.MsgType[0]
-    const parse2XML = new Parse2XML(dataParse.xml.ToUserName)
-    let err = null
-    let encryptedXML = null
-    console.log(dataParse)
-    if (msgType === 'text') {
-        const sendToData = parse2XML.message(dataParse.xml.FromUserName, dataParse.xml.Content, dataParse.xml.CreateTime)
-        let [o, t] = wx.encrypt(sendToData, ctx.query.timestamp, ctx.query.nonce)
-        err = o
-        encryptedXML = t
-    } else
-    if (msgType === 'image') {
-        /* const sendToData = parse2XML.messageAndPic(dataParse.xml.FromUserName, [{title: 'halo', desc: 'config', picUrl: 'http://wx4.sinaimg.cn/mw690/006Zdy2vgy1fwqjcett54j30go0i40th.jpg'}], dataParse.xml.CreateTime)
-        console.log(sendToData)
-        let [o, t] = wx.encrypt(sendToData, ctx.query.timestamp, ctx.query.nonce)
-        err = o
-        encryptedXML = t */
-        encryptedXML = 'success'
-    } else {
-        encryptedXML = 'success'
-    }
-
-    console.log(err)
-
-    ctx.response.type = 'xml'
-    ctx.response.body = 'success' // encryptedXML
-})
+}
 
 function getComponentAccessToken () {
     if (enctypeTicket) {
@@ -226,6 +235,7 @@ function getComponentAccessToken () {
     console.log(enctypeTicket)
     superAgent.post(`https://api.weixin.qq.com/cgi-bin/component/api_component_token`).send(params).end((err, res) => {
         console.log(res.body.component_access_token)
+        console.log(res.body)
         componentAccessToken = res.body.component_access_token
         superAgent.post(`https:// api.weixin.qq.com /cgi-bin/component/api_authorizer_token?component_access_token=${componentAccessToken}`).send(params).end((err, res) => {
 
@@ -240,6 +250,7 @@ function getPreAuthCode (cat) {
     }
     superAgent.post(`https://api.weixin.qq.com/cgi-bin/component/api_create_preauthcode?component_access_token=${cat}`).send(params).end((err, res) => {
         console.log('每九分钟获取一次预授权码')
+        console.log(res.body)
         console.log(res.body.pre_auth_code)
         pre_auth_code = res.body.pre_auth_code
     })
@@ -247,8 +258,10 @@ function getPreAuthCode (cat) {
 
 setInterval(getComponentAccessToken, 9 * 60 * 1000)
 setInterval(refleashAuthorizerAccessToken, 60 * 60 * 1000) // 60分钟刷新一次哦
+getPlatFormId() // 这个是询问公众号 启动
 // getComponentAccessToken()
 app.listen('8080')
+
 
 function getServiceAccessToken (ac) {
     let sdas = componentAccessToken
@@ -263,12 +276,8 @@ function getServiceAccessToken (ac) {
         "authorization_code": ac // 'queryauthcode@@@Rbk3GSiOB8WReuyRDwwXQJzWusqmZYyKW5xfvnPi3RTttMQ3XVOjilS18YUZ4hGtBiZdB-qtShMaBpDQHrF5cg'  // refreshtoken@@@Xf_pWjheyA6S72KhSkcLwsBazP_W6_FlSz36qT5VD1g
     }).end(async (err, res) => {
         console.log(res.body)
-        try {
-            if (res.body.errcode) {
-                return
-            }
-        } catch (e) {
-
+        if (res.body.hasOwnProperty('errcode')) {
+            return
         }
 
         serveAccessToken = res.body.authorization_info.authorizer_access_token
@@ -284,6 +293,18 @@ function getServiceAccessToken (ac) {
             authorization_access_token: res.body.authorization_info.authorizer_access_token,
             update: new Date().getTime()
         })
+
+        const dbData = await db.select('appid_platform')
+        let w = true
+        for (let i of dbData) {
+            if (i.appid === res.body.authorization_info.authorizer_appid) {
+                w = false
+            }
+        }
+        if (w) {
+            runMessage(res.body.authorization_info.authorizer_appid)
+        }
+
     })
 }
 

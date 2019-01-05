@@ -6,7 +6,7 @@ const width = 397
 const height = 758
 
 
-async function start () {
+async function start (designation, name, picUrl) {
     const canvas = createCanvas(width, height)
     const ctx = canvas.getContext('2d')
 
@@ -23,13 +23,13 @@ async function start () {
 
 
     ctx.font = '50px "Comic Sans"'
-    ctx.fillText('强力舵手', 50, 450) // 绘制称号
+    ctx.fillText(designation, 50, 450) // 绘制称号
 
     await loadImage(path.join(__dirname, '../img/logo区域.png')).then((image) => {
         ctx.drawImage(image, 0, 0, width, height)
     })
 
-    await loadImage('http://wx4.sinaimg.cn/small/006Zdy2vgy1frycow7z4oj304804gt9r.jpg').then((image) => {
+    await loadImage(picUrl).then((image) => {
 
 
 
@@ -59,12 +59,14 @@ async function start () {
     }) // 绘制头像
 
     ctx.font = '20px "Comic Sans"'
-    ctx.fillText('hodor', 230, 330) // 绘制文字
+    ctx.fillText(name, 230, 330) // 绘制文字
 
 
     await loadImage(path.join(__dirname, '../img/blockCode.png')).then((image) => {
         ctx.drawImage(image, width - 131, height - 140, 100, 100)
     }) // 绘制二维码
+
+    return canvas.toDataURL('image/jpeg', { quality: 0.8}, (err, jpeg) => {})  // canvas.toBuffer('image/jpeg', { quality: 0.8 })
 
     fs.writeFile(path.join(__dirname, '../img/bbc.png'), canvas.toBuffer('image/jpeg', { quality: 0.8 }), (err) => {
         if (err) {
@@ -73,4 +75,4 @@ async function start () {
     })
 }
 
-start()
+module.exports = start

@@ -23,8 +23,7 @@
                     let c = url.searchParams.get("auth_code")
                     console.log(c)
                     authorization_code = c
-                    console.log('??')
-                    $.get(`/wechat_open_platform/submitac?ac=${c}`, (res, asd) => {
+                    $.get(`/wechat_open_platform/submitac?ac=${c}`, (res) => {
                         console.log(res)
                     })
                 }

@@ -56,9 +56,12 @@
               <div v-if="item.code_number == 1052" class="wjh">
                   <div class="wjh-outer">
                       <input  @click.stop="showId" v-model="wjh.seven" placeholder="category_id" style="width: 100%;background-color: #eee" />
+                      <input  @click.stop="showId" v-model="wjh.eight" placeholder="voice_id" style="width: 100%;background-color: #eee" />
                       <button @click.stop="seven" type="info">提交</button>
                   </div>
               </div>
+
+
 
 
               <div v-if="item.code_number == 10007" class="input_container">
@@ -111,7 +114,9 @@ export default {
                 three:{one:''},
               four: '',
               five: '',
-              six: ''
+              six: '',
+              seven: '',
+              eight: ''
               },
           dsb:'',
           A:'',
@@ -311,10 +316,13 @@ export default {
           let pre = {
               "code":1052
           }
-          if(this.wjh.six){
-              pre.category_id = this.wjh.six
+          if(this.wjh.seven){
+              pre.category_id = this.wjh.seven
           }
-          callAppRouter('Redirect',pre,function(err, result){})
+          if (this.wjh.eight) {
+              pre.voice_id = this.wjh.eight
+          }
+          callAppRouter('Redirect', pre, function(err, result){})
       }
 
 
