@@ -10,10 +10,13 @@
   "license": "ISC",
   "dependencies": {
     "ali-rds": "^3.3.0",
+    "blob": "^0.0.5",
+    "blob-util": "^2.0.2",
     "canvas": "^2.2.0",
     "co-wechat": "^2.3.0",
     "crypto": "^1.0.1",
     "debug": "^4.1.1",
+    "form-data": "^2.3.3",
     "koa": "^2.6.2",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",

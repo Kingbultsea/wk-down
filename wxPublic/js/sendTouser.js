@@ -1,6 +1,12 @@
 const db = require('./DataBase.js')
 const superAgent = require('superagent')
 const outputPic = require('./parseImg.js')
+const FormData = require('form-data')
+const fs = require('fs')
+const path = require("path")
+const request = require('request')
+const Blob = require('blob')
+const { canvasToBlob } = require('blob-util')
 
 class Send {
     static sendMessage (toUser, content, serveAccessToken) {
@@ -15,23 +21,26 @@ class Send {
         }
         return new Promise (resolve => {
             superAgent.post(`https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=${serveAccessToken}`).send(serviceData).end((err, res) => {
+                console.log(res.body)
                 resolve()
             })
         })
     }
 
     static sendPic (toUser, mediaId, serveAccessToken) {
+        console.log(serveAccessToken)
         const serviceData = {
             'touser': toUser, // dataParse.xml.FromUserName[0]
-            'msgtype': 'mpnews',
-            'mpnews':
+            'msgtype': 'image',
+            'image':
                 {
                     'media_id': mediaId
-                },
-            'appid': 'wxbaf03b7acb3c993a' // appid_value
+                }
         }
+        console.log(serviceData)
         return new Promise (resolve => {
             superAgent.post(`https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=${serveAccessToken}`).send(serviceData).end((err, res) => {
+                console.log(res.body)
                 resolve()
             })
         })
@@ -71,7 +80,8 @@ class Send {
         const z =  eval('(' + dbData[0].session + ')')
         let arr = eval('(' + dbData[0].session + ')')
         arr.push(data[0])
-        await db.update('user_session', { session: JSON.stringify(arr) }, { where: { uid: uid } })
+        console.log('update bug 检测更新')
+        await db.update('user_session', { session: JSON.stringify(arr), update: new Date().getTime()}, { where: { uid: uid } })
     }
 
     static async addUser (uid, subject) {
@@ -86,7 +96,7 @@ class Send {
     }
 
     static async deleteUser (uid) {
-        await db.delete('table-name', {
+        await db.delete('user_session', {
             uid
         })
     }
@@ -104,7 +114,8 @@ class Send {
         } else {
             const mintime = new Date().getTime() - parseInt(data[0].update)
             const time = 1000 * 60 * 3
-            if (mintime >= time) {
+            if (mintime >= time && !data[0].message_leave) {
+                console.log('用户太久没有回复了.. 三分钟')
                 await Send.deleteUser(uid)
                 return 0
             }
@@ -125,7 +136,8 @@ class Send {
             return true // true 是可以进行下去
         }
         const mintime = new Date().getTime() - parseInt(data[0].update)
-        const time = 4000
+        const time = 1000 * 5
+        console.log(mintime)
         if (mintime <= time) {
             return false
         } else {
@@ -166,6 +178,7 @@ class Send {
     static getUseData (token, openid) {
         return new Promise((resolve) => {
             superAgent.get(`https://api.weixin.qq.com/cgi-bin/user/info?access_token=${token}&openid=${openid}&lang=zh_CN`).end((err, res) => {
+                console.log(res.body)
                 const data = { name: res.body.nickname, picUrl: res.body.headimgurl }
                 resolve(data)
             })
@@ -174,16 +187,33 @@ class Send {
 
     static async getMediaPic (designation, token, openid) {
         const { name, picUrl } = await Send.getUseData(token, openid)
-        const picBuffer = await outputPic(designation, name, picUrl)
-        let form = new FormData()
-        form.append('file', dataURLToBlob(picBuffer), 'avatar.png')
+        const hashPicName = await outputPic(designation, name, picUrl)
+
         return new Promise((resolve) => {
-            superAgent.post(`https://api.weixin.qq.com/cgi-bin/media/upload?access_token=${token}&type=image`).send(form).end(async function(err, res) {
+            /* superAgent.post(`https://api.weixin.qq.com/cgi-bin/media/upload?access_token=${token}&type=image`).send(form).end(async function(err, res) {
+                console.log(res.body)
                 if (res.hasOwnProperty('errcode')) {
                     resolve()
                     return
                 }
                 await Send.sendPic(openid, res.media_id, openid)
+                resolve()
+            }) */
+            console.log(hashPicName)
+            let formData = {
+                my_field: 'my_value',
+                my_file:  fs.createReadStream(path.join(__dirname, `../img/${hashPicName}.png`))
+            }
+
+            request.post({url:`https://api.weixin.qq.com/cgi-bin/media/upload?access_token=${token}&type=image`, formData: formData}, async function(err, httpResponse, body) {
+                if (err) {
+                    return console.error('upload failed:', err)
+                }
+                console.log(JSON.parse(body))
+                console.log(body)
+                console.log(JSON.parse(body).media_id)
+                console.log('Upload successful!  Server responded with:', body)
+                await Send.sendPic(openid, JSON.parse(body).media_id, token)
                 resolve()
             })
         })
@@ -206,17 +236,22 @@ class Send {
         const tags = eval('(' + subjectData[0].tags + ')')
         let countTemplate = new Array(tags.length).fill(0)
         let userCount = []
-        for (let i = 1; i < count.length + 1; i++) {
-            const session = eval('(' + dbData[0].count + ')')
+        for (let i = 2; i < count.length + 2; i++) {
+            const session = eval('(' + dbData[0].session + ')')
             userCount.push(session[i])
         }
-        for (let i = 0; i < userCount; i++) {
-            const tap = count[i][userCount[i]]
+        console.log(userCount)
+        console.log(count)
+        console.log('上面那两就是你想要的撒')
+        for (let i = 0; i < userCount.length; i++) {
+            const tap = count[i]
+            console.log(tap)
             for (let z in tap) {
                 countTemplate[z] += tap[z]
             }
         }
         let copy = []
+        console.log(countTemplate)
         countTemplate.forEach((z) => {
             copy.push(z)
         })
@@ -224,33 +259,24 @@ class Send {
 
         })
         const maxNum = countTemplate.sort()[countTemplate.length - 1]
-        return tags[copy.indexOf(maxNum)]
+        console.log(tags[copy.indexOf(maxNum) + 1])
+        return tags[copy.indexOf(maxNum) + 1]
     }
 }
 
-function dataURLToBlob(dataURL) { // 我不太确定...  所以干脆转换成64再去转换了 我知道性能不好... 先凑合用着先吧
-    let BASE64_MARKER = ';base64,';
-    if (dataURL.indexOf(BASE64_MARKER) == -1) {
-        let parts = dataURL.split(',');
-        let contentType = parts[0].split(':')[1];
-        let raw = parts[1];
+function dataURIToBlob(dataURI) {
+    dataURI = dataURI.replace(/^data:/, '');
 
-        return new Blob([raw], {type: contentType});
+    const type = dataURI.match(/image\/[^;]+/);
+    const base64 = dataURI.replace(/^[^,]+,/, '');
+    const arrayBuffer = new ArrayBuffer(base64.length);
+    const typedArray = new Uint8Array(arrayBuffer);
+
+    for (let i = 0; i < base64.length; i++) {
+        typedArray[i] = base64.charCodeAt(i);
     }
-    else {
-        let parts = dataURL.split(BASE64_MARKER);
-        let contentType = parts[0].split(':')[1];
-        let raw = window.atob(parts[1]);
-        let rawLength = raw.length;
 
-        let uInt8Array = new Uint8Array(rawLength);
-
-        for (let i = 0; i < rawLength; ++i) {
-            uInt8Array[i] = raw.charCodeAt(i);
-        }
-
-        return new Blob([uInt8Array], {type: contentType});
-    }
+    return new Blob([arrayBuffer], {type})
 }
 
 module.exports = Send

@@ -66,13 +66,28 @@ async function start (designation, name, picUrl) {
         ctx.drawImage(image, width - 131, height - 140, 100, 100)
     }) // 绘制二维码
 
-    return canvas.toDataURL('image/jpeg', { quality: 0.8}, (err, jpeg) => {})  // canvas.toBuffer('image/jpeg', { quality: 0.8 })
+    // return canvas // canvas.toBuffer('image/jpeg', { quality: 0.8 })// canvas.toDataURL('image/jpeg', { quality: 0.8}, (err, jpeg) => {})  // canvas.toBuffer('image/jpeg', { quality: 0.8 })
 
-    fs.writeFile(path.join(__dirname, '../img/bbc.png'), canvas.toBuffer('image/jpeg', { quality: 0.8 }), (err) => {
-        if (err) {
-            console.log(err)
-        }
+    return new Promise((resolve) => {
+        const hash = randomString(10)
+        fs.writeFile(path.join(__dirname, '../img/'+ hash +'.png'), canvas.toBuffer('image/jpeg', { quality: 0.8 }), (err) => {
+            if (err) {
+                console.log(err)
+            }
+            resolve(hash)
+        })
     })
+}
+
+function randomString(len) {
+    len = len || 32;
+    var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+    var maxPos = $chars.length;
+    var pwd = '';
+    for (i = 0; i < len; i++) {
+        pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+    }
+    return pwd;
 }
 
 module.exports = start

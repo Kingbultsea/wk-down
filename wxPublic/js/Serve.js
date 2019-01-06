@@ -27,7 +27,7 @@ let ticket = 'glC91P1tjzm0GybMWqhztjfL+QR0AI7r6c0k0Jb+4ZFfLuTzrg68T2JhaJznGTML4+
 let enctypeTicket = null
 let pre_auth_code = null
 let componentAccessToken = ''
-let serveAccessToken = '17_SNr4DlDyvTsqny2Mg87-xo1hTFQY8nyzUnQkTr2swz5BguxqLPOloBG9nB0f-BJ0HM5y_IU1ZhmZ47-P-W6bPJQmkdFF3fZmm2LxK7Gi4oHspCGOBWDtFqGNPxFYmhSeH-ICXGjZ0An8Mo4tMJXcAEDHES' // 这是调用第三方的时候 需要的
+let serveAccessToken = '17_JJQGhkZPsIiIIM-J2Qjd2xYa5wweWW9YPogGKmh3XG4h_u3yUzlq_sF_ZMH_G6VVg3AD-LB1pNeP8_6n_9H-_OBg_7JKDfjY53RYaz6NwToHJtDiv5hJvedRM1vfxPtB0nmaDakcvpzgOiKkUJUaAEDDSD' // 这是调用第三方的时候 需要的
 let savePreAccessToken = 'refreshtoken@@@Xf_pWjheyA6S72KhSkcLwsBazP_W6_FlSz36qT5VD1g' // 第一次的时候跳转Url 可以获得 以后就需要refleash了
 const encrypt = new Encrypt({
     appId: appid_value,
@@ -76,7 +76,8 @@ router.get(`/wechat_open_platform/preauthcode`, async (ctx) => { // 发送pre_au
 })
 
 
-function runMessage (id) {
+function runMessage (id, tk) {
+    let serveAccessToken = tk
     router.post(`/wechat_open_platform/${id}/message`, async (ctx) => {
         const xml = ctx.request.body.xml.Encrypt[0]
         const data = encrypt.decode(xml)
@@ -101,25 +102,28 @@ function runMessage (id) {
             ctx.response.body = 'success'
             return
         }
+        if (!await sendTouser.limitTimes(userId)) { // 时间冲突
+            console.log('时间冲突')
+            await sendTouser.sendMessage(userId, '你输入得太频繁啦~', serveAccessToken)
+            ctx.response.body = 'success'
+            return
+        }
         for (let [index, i] of new Map( result.map( ( item, i ) => [ i, item ] ) )) {
             console.log(step + '-- 下面 -- 是index' + index)
-            if (!await sendTouser.limitTimes()) { // 时间冲突
-                await sendTouser.addUser(userId, '你输入得太频繁啦~')
-                break
-            }
             if (index === step) { // 符合当前阶段
                 if (step === 0) {
                     const key = await sendTouser.getCorrespondence(subjRequire)
                     console.log("" + key)
-                    const { name } = sendTouser.getUseData(serveAccessToken, userId)
-                    console.log(JSON.stringify(key).replace(/\\r\\n/g, '\r\n').replace(/^\"|\"$/g, '').replace(/REPLACE/, name))
+                    const { name } =await sendTouser.getUseData(serveAccessToken, userId)
+                    console.log(JSON.stringify(key).replace(/rrrr/g, '\r\n').replace(/^\"|\"$/g, '').replace(/REPLACE/, name))
                     console.log('上面是Key哦')
-                    await sendTouser.sendMessage(userId, JSON.stringify(key).replace(/\\r\\n/g, '\r\n').replace(/^\"|\"$/g, ''), serveAccessToken)
+                    await sendTouser.sendMessage(userId, JSON.stringify(key).replace(/rrrr/g, '\r\n').replace(/^\"|\"$/g, '').replace(/REPLACE/, name), serveAccessToken)
                     await sendTouser.addUser(userId, dataParse.xml.Content) // 第一次要添加用户
-                    await sendTouser.sendMessage(userId, JSON.stringify(i.title).replace(/\\r\\n/g, '\r\n').replace(/^\"|\"$/g, ''), serveAccessToken) // 发送是要发送当前题的 但是判断呢 就要判断上一个题目了~！
+                    await sendTouser.sendMessage(userId, JSON.stringify(i.title).replace(/rrrr/g, '\r\n').replace(/^\"|\"$/g, ''), serveAccessToken) // 发送是要发送当前题的 但是判断呢 就要判断上一个题目了~！
                 }
 
                 if (index === 0) {
+                    console.log('?第一t不判断')
                     break // 第一题不判断！
                 }
                 if (result[index - 1].type === 'common') {
@@ -134,7 +138,7 @@ function runMessage (id) {
                                 // await sendTouser.addUser(userId, dataParse.xml.Content)
                             } else {
                                 // await sendTouser.sendMessage(userId, result[index + 1].title, serveAccessToken) // 发送题目
-                                await sendTouser.sendMessage(userId, JSON.stringify(i.title).replace(/\\r\\n/g, '\r\n').replace(/^\"|\"$/g, ''), serveAccessToken) // 发送是要发送当前题的 但是判断呢 就要判断上一个题目了~！
+                                await sendTouser.sendMessage(userId, JSON.stringify(i.title).replace(/rrrr/g, '\r\n').replace(/^\"|\"$/g, ''), serveAccessToken) // 发送是要发送当前题的 但是判断呢 就要判断上一个题目了~！
                                 await sendTouser.saveSession(userId, dataParse.xml.Content)// 存进数据库吧
                             }
                             break
@@ -157,9 +161,10 @@ function runMessage (id) {
                     if (i.msgType !== dataParse.xml.MsgType[0] || dataParse.xml.MsgType[0].indexOf('收到不支持的消息类型，暂无法显示') >= 0) {
                         await sendTouser.sendMessage(userId, i.error,serveAccessToken)
                     } else {
+                        console.log('???神奇？')
                         await sendTouser.sendMessage(userId, '好了，我们已经把你的故事保存下来啦。',serveAccessToken)
                         await sendTouser.saveLeaveMessage(userId, dataParse.xml.Content)
-                        const tag = sendTouser.count(userId, subjRequire)
+                        const tag = await sendTouser.count(userId, subjRequire)
                         await sendTouser.getMediaPic(tag, serveAccessToken, userId)
                     }
                 }
@@ -216,7 +221,7 @@ function runMessage (id) {
 async function getPlatFormId () {
     const dbData = await db.select('appid_platform')
     for (let i of dbData) {
-        runMessage(i.appid)
+        runMessage(i.appid, i.authorization_access_token)
     }
 }
 
@@ -333,8 +338,8 @@ async function refleashAuthorizerAccessToken () {
                 console.log(res.body)
                 // res.body.authorizer_access_token
                 // res.body.authorizer_refresh_token // 刷新码 这里就要去更数据库拉
-                if (res.body.errcode) {
-                    console.log('??asdasdasdad')
+                if (res.body.hasOwnProperty('errcode')) {
+                    console.log('获取刷新码的时候错误')
                     return
                 }
 
