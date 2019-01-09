@@ -2,11 +2,12 @@ const { createCanvas, loadImage } = require('canvas')
 const fs = require('fs')
 const path = require("path")
 
-const width = 397
-const height = 758
 
 
-async function start (designation, name, picUrl) {
+async function outputPic (designation, name, picUrl) {
+    const width = 397
+    const height = 758
+
     const canvas = createCanvas(width, height)
     const ctx = canvas.getContext('2d')
 
@@ -69,7 +70,7 @@ async function start (designation, name, picUrl) {
     // return canvas // canvas.toBuffer('image/jpeg', { quality: 0.8 })// canvas.toDataURL('image/jpeg', { quality: 0.8}, (err, jpeg) => {})  // canvas.toBuffer('image/jpeg', { quality: 0.8 })
 
     return new Promise((resolve) => {
-        const hash = randomString(10)
+        const hash = randomString(1)
         fs.writeFile(path.join(__dirname, '../img/'+ hash +'.png'), canvas.toBuffer('image/jpeg', { quality: 0.8 }), (err) => {
             if (err) {
                 console.log(err)
@@ -77,6 +78,39 @@ async function start (designation, name, picUrl) {
             resolve(hash)
         })
     })
+}
+
+async function outputPicShare (designation, name, picUrl, qrCodeUrl, platFormId) {
+    const width = 400
+    const height = 400
+    const canvas = createCanvas(width, height)
+    const ctx = canvas.getContext('2d')
+
+    ctx.font = '14px "Comic Sans"'
+    ctx.fillText(designation, 10, 200) // 绘制文字
+
+    await loadImage(qrCodeUrl).then((image) => {
+        ctx.drawImage(image, width - 100 - 150, height - 100, 100, 100)
+    }) // 绘制二维码
+
+    return new Promise((resolve) => {
+        const hash = platFormId
+
+        fs.exists(path.join(__dirname, '../img/'+ hash +'.png'), (exists) => {
+            if (exists) {
+                console.log('存在')
+                resolve(hash)
+            } else {
+                fs.writeFile(path.join(__dirname, '../img/'+ hash +'.png'), canvas.toBuffer('image/jpeg', { quality: 0.8 }), (err) => {
+                    if (err) {
+                        console.log(err)
+                    }
+                    resolve(hash)
+                })
+            }
+        })
+    })
+
 }
 
 function randomString(len) {
@@ -90,4 +124,4 @@ function randomString(len) {
     return pwd;
 }
 
-module.exports = start
+module.exports = { outputPic, outputPicShare }

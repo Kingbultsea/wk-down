@@ -1,6 +1,6 @@
 const db = require('./DataBase.js')
 const superAgent = require('superagent')
-const outputPic = require('./parseImg.js')
+const { outputPic, outputPicShare } = require('./parseImg.js')
 const FormData = require('form-data')
 const fs = require('fs')
 const path = require("path")
@@ -21,6 +21,9 @@ class Send {
         }
         return new Promise (resolve => {
             superAgent.post(`https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=${serveAccessToken}`).send(serviceData).end((err, res) => {
+                if (res.body.hasOwnProperty('errcode')) {
+                    console.log(serveAccessToken)
+                }
                 console.log(res.body)
                 resolve()
             })
@@ -127,9 +130,9 @@ class Send {
     }
 
     static async limitTimes (uid) {
-        const data = await db.select('user_session', {
+        const data = await db.select('owner', {
             where: {
-                uid: uid // dataParse.xml.Content[0]
+                unionid: uid // dataParse.xml.Content[0]
             }
         })
         if (data.length === 0) {
@@ -179,15 +182,16 @@ class Send {
         return new Promise((resolve) => {
             superAgent.get(`https://api.weixin.qq.com/cgi-bin/user/info?access_token=${token}&openid=${openid}&lang=zh_CN`).end((err, res) => {
                 console.log(res.body)
-                const data = { name: res.body.nickname, picUrl: res.body.headimgurl }
+                const data = { name: res.body.nickname, picUrl: res.body.headimgurl, unionid: res.body.unionid }
                 resolve(data)
             })
         })
     }
 
-    static async getMediaPic (designation, token, openid) {
+    static async getMediaPic (designation, token, openid, qrCodeUrl = null, platFormId = null) {
         const { name, picUrl } = await Send.getUseData(token, openid)
-        const hashPicName = await outputPic(designation, name, picUrl)
+        // const hashPicName = await outputPic(designation, name, picUrl)  这个是第一次活动的图片生成
+        const hashPicName = await outputPicShare(designation, name, picUrl, qrCodeUrl, platFormId) // 这是分裂 分享活动生成的图片
 
         return new Promise((resolve) => {
             /* superAgent.post(`https://api.weixin.qq.com/cgi-bin/media/upload?access_token=${token}&type=image`).send(form).end(async function(err, res) {
@@ -261,6 +265,37 @@ class Send {
         console.log(maxNum)
         console.log(tags[copy.indexOf(maxNum) + 1])
         return tags[copy.indexOf(maxNum) + 1]
+    }
+
+    static async getQRcodePicUrl (serveAccessToken) {
+        const dataProps = {
+            expire_seconds: 2592000,
+            action_name: 'QR_STR_SCENE',
+            action_info: {
+                'invitation_code': 123
+            }
+        }
+        console.log(JSON.stringify(dataProps))
+        return new Promise((resolve, reject) => {
+            console.log(serveAccessToken)
+            superAgent.post(`https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=${serveAccessToken}`).send(JSON.stringify(dataProps)).end((err, res) => {
+                if (err) {
+                    console.log('获取ticket的时候出错了(QRcode)')
+                    reject()
+                }
+                if (res.body.hasOwnProperty('errcode')) {
+                    console.log('出错了')
+                    console.log(res.body)
+                    resolve()
+                }
+                superAgent.post(`https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=${res.body.ticket}`).end((err, res) => {
+                    if (err) reject()
+                    console.log(res.body)
+                    console.log(res.files)
+                    resolve()
+                })
+            })
+        })
     }
 }
 
