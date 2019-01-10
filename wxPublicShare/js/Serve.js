@@ -42,7 +42,7 @@ const config = {
     token: 'LnrDkrmurYPe3yPgziYAdwaTuk2obn7s',
     appid:  appid_value,
     encodingAESKey: 'eUbVREqK4jh9XHeYTZPHRTCzFz8PDWL2nieCZzganJv'
-};
+}
 
 var WXCrypto = require('./wxcrypto')
 var wx = new WXCrypto('LnrDkrmurYPe3yPgziYAdwaTuk2obn7s', 'eUbVREqK4jh9XHeYTZPHRTCzFz8PDWL2nieCZzganJv', appid_value)

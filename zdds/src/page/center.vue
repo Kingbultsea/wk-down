@@ -28,6 +28,7 @@
             <div v-if="item.code_number == 1026" class="wjh">
               <div class="wjh-outer">
                 <input  @click.stop="showId" v-model="wjh.three.one" placeholder="tag_id" style="width: 100%;background-color: #eee" />
+                  <input  @click.stop="showId" v-model="wjh.three.two" placeholder="id" style="width: 100%;background-color: #eee" />
                 <button @click.stop="three" type="info">提交</button>
               </div>
             </div>
@@ -120,7 +121,7 @@ export default {
           wjh:{
               one: {one: '10010',two: 'kZkCCukLd3CHWMWZ'},
               two:'',
-                three:{one:''},
+                three:{one:'', two:''},
               four: '',
               five: '',
               six: '',
@@ -294,6 +295,9 @@ export default {
          if(this.wjh.three.one){
            pre.tag_id = this.wjh.three.one
          }
+          if(this.wjh.three.two){
+              pre.id = this.wjh.three.two
+          }
         callAppRouter('Redirect',pre,function(err, result){})
       },
 
