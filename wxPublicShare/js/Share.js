@@ -171,6 +171,8 @@ class Share {
             }
         })
 
+        console.log(this.unionId)
+
         if (data.length === 0) {
             console.log('用户还没有接受任务')
             return
@@ -186,13 +188,11 @@ class Share {
                 break
             }
         }
-        await sendTouser.sendMessage(this.userId, `您已成功邀请${data[0].invitation_count}位用户，邀请数排名第${ranking}位。`, this.accessToken)
 
         if (parseInt(data[0].invitation_count) >= parseInt(platFormdata[0].max_people_count)) {
-            await sendTouser.sendMessage(this.userId, `恭喜您成功解锁【小睡眠15天会员】。\r\n邀请排名前10可获得价值58元的热敷眼罩。\r\n活动截止至2019年2月12日24:00。`, this.accessToken)
-            await sendTouser.sendMessage(this.userId, `您的15天会员兑换码为：XXXXXX\r\n会员兑换说明：\r\n1.会员有效期为15天，兑换需在一周内进行兑换，逾期失效。\r\n2.此次活动，不允许兑换多次。\r\n3.兑换步骤：\r\n（1）打开【小睡眠App】；\r\n（2）点击左上角【头像按钮】，点击【会员中心】；\r\n（3）点击右上角【…】，点击【礼品中心】，输入“兑换码”即可。`, this.accessToken)
+            await sendTouser.sendMessage(this.userId, `您已成功邀请${data[0].invitation_count}位用户，邀请数排名第${ranking}位。\r\n \r\n恭喜您成功解锁【小睡眠15天会员】。\r\n邀请排名前10可获得价值58元的热敷眼罩。\r\n活动截止至2019年2月12日24:00。\r\n \r\n您的15天会员兑换码为：XXXXXX\r\n会员兑换说明：\r\n1.会员有效期为15天，兑换需在一周内进行兑换，逾期失效。\r\n2.此次活动，不允许兑换多次。\r\n3.兑换步骤：\r\n（1）打开【小睡眠App】；\r\n（2）点击左上角【头像按钮】，点击【会员中心】；\r\n（3）点击右上角【…】，点击【礼品中心】，输入“兑换码”即可。`, this.accessToken)
         } else {
-            await sendTouser.sendMessage(this.userId, `再邀请${parseInt(platFormdata[0].max_people_count) - parseInt(data[0].invitation_count)}位，就能成功解锁【小睡眠15天会员】。\r\n邀请排名前10可获得价值58元的热敷眼罩。\r\n活动截止至2019年2月12日24:00。`, this.accessToken)
+            await sendTouser.sendMessage(this.userId, `您已成功邀请${data[0].invitation_count}位用户，邀请数排名第${ranking}位。\r\n \r\n再邀请${parseInt(platFormdata[0].max_people_count) - parseInt(data[0].invitation_count)}位，就能成功解锁【小睡眠15天会员】。\r\n邀请排名前10可获得价值58元的热敷眼罩。\r\n活动截止至2019年2月12日24:00。`, this.accessToken)
         }
 
     }

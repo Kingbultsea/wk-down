@@ -82,7 +82,7 @@ function runMessage (id, tk) {
     setInterval(async () => {
         serveAccessToken = await refleashSelfAccessToken(id)
         console.log('内部刷新token')
-    }, 20 * 60 * 1000)
+    }, 5 * 60 * 1000)
 
     router.post(`/wechat_open_platform/${id}/message`, async (ctx) => {
         const xml = ctx.request.body.xml.Encrypt[0]
@@ -92,22 +92,100 @@ function runMessage (id, tk) {
         const userId = dataParse.xml.FromUserName[0]
         const { name, unionid } = await sendTouser.getUseData(serveAccessToken, userId)
         /* dataParse.xml.CreateTime
-         * dataParse.toUserName  dataParse.FromUserName dataParse.CreateTime  dataParse.MsgType dataParse.Content
-         *
-         *
-         *
-         *
-         *
-         *
-         *
-         */
+           dataParse.toUserName  dataParse.FromUserName dataParse.CreateTime  dataParse.MsgType dataParse.Content */
+
+        const step = await sendTouser.getSesssion(unionid, userId, serveAccessToken) // 先查询用户哪个阶段了
+        if (step >= 99) {
+            ctx.response.body = 'success'
+            return
+        }
+        const subjRequire = await sendTouser.getUserSubject(unionid, dataParse.xml.Content) // 封装处理
+        const result = await sendTouser.getSubject(subjRequire)
+
+        if (!result) { // 如果没有题的情况下
+            ctx.response.body = 'success'
+            console.log('没有题')
+            return
+        }
+        if (!await sendTouser.limitTimes(unionid)) { // 时间冲突
+            console.log('时间冲突')
+            await sendTouser.sendMessage(userId, '你输入得太频繁啦~', serveAccessToken)
+            ctx.response.body = 'success'
+            return
+        }
+        for (let [index, i] of new Map( result.map( ( item, i ) => [ i, item ] ) )) {
+            console.log(step + '-- 下面 -- 是index' + index)
+            if (index === step) { // 符合当前阶段
+                if (step === 0) {
+                    const key = await sendTouser.getCorrespondence(subjRequire)
+                    // await sendTouser.sendMessage(userId, JSON.stringify(key).replace(/rrrr/g, '\r\n').replace(/^\"|\"$/g, '').replace(/REPLACE/, name), serveAccessToken)
+                    await sendTouser.sendMessage(userId, JSON.stringify(key + 'rrrr rrrr' + i.title).replace(/rrrr/g, '\r\n').replace(/^\"|\"$/g, '').replace(/REPLACE/, name), serveAccessToken) // 发送是要发送当前题的 但是判断呢 就要判断上一个题目了~！
+                    await sendTouser.addUser(unionid, dataParse.xml.Content, name) // 第一次要添加用户
+                    ctx.response.body = 'success'
+                    return
+                }
+
+                if (index === 0) {
+                    console.log('?第一t不判断')
+                    break // 第一题不判断！
+                }
+                if (result[index - 1].type === 'common') {
+                    if (result[index - 1].regulation.type === 'scope') {
+                        if (parseInt(dataParse.xml.Content).toString() === 'NaN' || result[index - 1].msgType !== dataParse.xml.MsgType[0]) { // 错误输出
+                            await sendTouser.sendMessage(userId, result[index - 1].error,serveAccessToken)
+                            break
+                        }
+                        if (parseInt(dataParse.xml.Content) >= result[index - 1].regulation.one && parseInt(dataParse.xml.Content) <= result[index - 1].regulation.two) {
+                            // 这里是符合规则的 所以是可以插入的
+                            if (step === 0) { // 第一阶段应该insert 进用户
+                                // await sendTouser.addUser(userId, dataParse.xml.Content)
+                            } else {
+                                // await sendTouser.sendMessage(userId, result[index + 1].title, serveAccessToken) // 发送题目
+                                await sendTouser.sendMessage(userId, JSON.stringify(i.title).replace(/rrrr/g, '\r\n').replace(/^\"|\"$/g, ''), serveAccessToken) // 发送是要发送当前题的 但是判断呢 就要判断上一个题目了~！
+                                await sendTouser.saveSession(unionid, dataParse.xml.Content)// 存进数据库吧
+                            }
+                            break
+                        } else {
+                            await sendTouser.sendMessage(userId, result[index - 1].error,serveAccessToken)
+                            break
+                        }
+                    }
+                }
+
+                break
+            }
+
+            if (step === result.length) { // 最后一步的操作
+                const have = await sendTouser.hasLeaveMessage(unionid) // 查看有没有留言
+                console.log('最后一步操作')
+                if (have) {
+                    console.log('拥有最后一次留言')
+                    ctx.response.type = 'xml'
+                    ctx.response.body = 'success'
+                    break
+                }
+                if (i.type === 'correspondence') {
+                    if (i.msgType !== dataParse.xml.MsgType[0] || dataParse.xml.MsgType[0].indexOf('收到不支持的消息类型，暂无法显示') >= 0) {
+                        await sendTouser.sendMessage(userId, i.error,serveAccessToken)
+                    } else {
+                        console.log('???神奇？')
+                        await sendTouser.sendMessage(userId, '好了，我们已经把你的故事保存下来啦。',serveAccessToken)
+                        await sendTouser.saveLeaveMessage(unionid, dataParse.xml.Content)
+                        const tag = await sendTouser.count(unionid, subjRequire)
+                        await sendTouser.getMediaPic(tag, serveAccessToken, userId, null/* 二维码链接 */, null/*平台id*/, 1/*类型*/)
+                    }
+                }
+                ctx.response.type = 'xml'
+                ctx.response.body = 'success'
+            }
+        }
+
         if (!await sendTouser.limitTimes(unionid)) { // 时间冲突
             console.log('时间冲突')
             // await sendTouser.sendMessage(userId, '你输入得太频繁啦~', serveAccessToken)
             ctx.response.body = 'success'
             return
         }
-
         const share = new Share(userId, serveAccessToken, id, unionid, name)
         const ctn = dataParse.xml.Content[0]
         if (await share.end()) {
@@ -192,7 +270,7 @@ function getPreAuthCode (cat) {
 }
 
 setInterval(getComponentAccessToken, 9 * 60 * 1000)
-setInterval(refleashAuthorizerAccessToken, 60 * 60 * 1000) // 60分钟刷新一次哦
+setInterval(refleashAuthorizerAccessToken, 60 * 60 * 1000) // 60分钟刷新一次哦 5:58
 getPlatFormId() // 这个是询问公众号 启动
 // getComponentAccessToken()
 app.listen('8080')
@@ -250,8 +328,6 @@ function getServiceAccessToken (ac) {
             update: new Date().getTime(),
             qrcode_url: qrCodeUrl
         })
-
-
 
     })
 }

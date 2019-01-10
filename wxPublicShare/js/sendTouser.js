@@ -77,37 +77,43 @@ class Send {
     static async saveSession (uid, data) {
         const dbData = await db.select('user_session', {
             where: {
-                uid: uid // dataParse.xml.Content[0]
+                unionid: uid // dataParse.xml.Content[0]
             }
         })
         const z =  eval('(' + dbData[0].session + ')')
         let arr = eval('(' + dbData[0].session + ')')
         arr.push(data[0])
         console.log('update bug 检测更新')
-        await db.update('user_session', { session: JSON.stringify(arr), update: new Date().getTime()}, { where: { uid: uid } })
+        await db.update('user_session', { session: JSON.stringify(arr), update: new Date().getTime()}, { where: { unionid: uid } })
     }
 
-    static async addUser (uid, subject) {
+    static async addUser (uid, subject, name) {
         console.log(subject)
         const a = await db.insert(`user_session`, {
-            uid: uid,
+            unionid: uid,
             session: JSON.stringify([subject[0]]),
             'message_leave': '',
-            update: new Date().getTime()
+            update: new Date().getTime(),
+            user_name: name
         })
         console.log(a)
     }
 
-    static async deleteUser (uid) {
-        await db.delete('user_session', {
-            uid
+    static async deleteUser (uid, session) {
+        await db.update('user_session', {
+            save_session: session,
+            session: ''
+        }, {
+            where: {
+                unionid: uid
+            }
         })
     }
 
-    static async getSesssion (uid) {
+    static async getSesssion (uid, openid, accessToken) {
         const data = await db.select('user_session', {
             where: {
-                uid: uid // dataParse.xml.Content[0]
+                unionid: uid // dataParse.xml.Content[0]
             }
         })
         console.log(data.length)
@@ -115,12 +121,17 @@ class Send {
         if (data.length === 0) {
             return 0
         } else {
+            if (data[0].save_session) {
+                return 9999
+            }
+
             const mintime = new Date().getTime() - parseInt(data[0].update)
             const time = 1000 * 60 * 3
             if (mintime >= time && !data[0].message_leave) {
                 console.log('用户太久没有回复了.. 三分钟')
-                await Send.deleteUser(uid)
-                return 0
+                Send.sendMessage(openid, '很遗憾，你的操作已超时，现已结束流程，期待下次活动见', accessToken)
+                await Send.deleteUser(uid, data[0].session)
+                return 9999
             }
 
 
@@ -129,8 +140,21 @@ class Send {
         }
     }
 
-    static async limitTimes (uid) {
-        const data = await db.select('owner', {
+    static async limitTimes (uid, type = 2) {
+        let table = null
+
+        switch (true) {
+            case (type === 1): {
+                table = 'user_session'
+            }
+                break;
+            case (type === 2): {
+                table = 'owner'
+            }
+                break;
+        }
+
+        const data = await db.select(table, {
             where: {
                 unionid: uid // dataParse.xml.Content[0]
             }
@@ -149,11 +173,13 @@ class Send {
     }
 
     static async getUserSubject (uid, es) {
+        console.log(uid)
         const dbData = await db.select('user_session', {
             where: {
-                uid: uid // dataParse.xml.Content[0]
+                unionid: uid // dataParse.xml.Content[0]
             }
         })
+        console.log(dbData)
         if (dbData.length === 0) {
             return es
         } else {
@@ -162,13 +188,13 @@ class Send {
     }
 
     static async saveLeaveMessage (uid, data) {
-        await db.update('user_session', { message_leave: data[0] }, { where: { uid } })
+        await db.update('user_session', { message_leave: data[0] }, { where: { unionid: uid } })
     }
 
     static async hasLeaveMessage (uid) {
         const dbData = await db.select('user_session', {
             where: {
-                uid: uid // dataParse.xml.Content[0]
+                unionid: uid // dataParse.xml.Content[0]
             }
         })
         if (dbData[0].message_leave) {
@@ -188,10 +214,16 @@ class Send {
         })
     }
 
-    static async getMediaPic (designation, token, openid, qrCodeUrl = null, platFormId = null) {
+    static async getMediaPic (designation, token, openid, qrCodeUrl = null, platFormId = null, type = 2) { // 1是第一套活动 2是会员裂变活动
         const { name, picUrl } = await Send.getUseData(token, openid)
-        // const hashPicName = await outputPic(designation, name, picUrl)  这个是第一次活动的图片生成
-        const hashPicName = await outputPicShare(designation, name, picUrl, qrCodeUrl, platFormId) // 这是分裂 分享活动生成的图片
+
+        let hashPicName = null
+        if (type === 1) {
+            hashPicName = await outputPic(designation, name, picUrl)  // 这个是第一次活动的图片生成
+        } else
+        if (type === 2) {
+            hashPicName = await outputPicShare(designation, name, picUrl, qrCodeUrl, platFormId) // 这是分裂 分享活动生成的图片
+        }
 
         return new Promise((resolve) => {
             /* superAgent.post(`https://api.weixin.qq.com/cgi-bin/media/upload?access_token=${token}&type=image`).send(form).end(async function(err, res) {
@@ -226,7 +258,7 @@ class Send {
     static async count (uid, title) {
         const dbData = await db.select('user_session', {
             where: {
-                uid // dataParse.xml.Content[0]
+                unionid: uid // dataParse.xml.Content[0]
             }
         })
 
@@ -250,8 +282,9 @@ class Send {
         for (let i = 0; i < userCount.length; i++) {
             const tap = count[i]
             console.log(tap)
-            for (let z in tap) {
-                countTemplate[parseInt(z) - 1] += tap[z]
+            for (let z in tap[i]) {
+                console.log(z)
+                countTemplate[parseInt(z) - 1] += tap[parseInt(z)]
             }
         }
         let copy = []
