@@ -214,8 +214,7 @@ class Send {
         })
     }
 
-    static async getMediaPic (designation, token, openid, qrCodeUrl = null, platFormId = null, type = 2) { // 1是第一套活动 2是会员裂变活动
-        const { name, picUrl } = await Send.getUseData(token, openid)
+    static async getMediaPic (designation, token, openid, qrCodeUrl = null, platFormId = null, type = 2, name, picUrl) { // 1是第一套活动 2是会员裂变活动
 
         let hashPicName = null
         if (type === 1) {
@@ -245,11 +244,8 @@ class Send {
                 if (err) {
                     return console.error('upload failed:', err)
                 }
-                console.log(JSON.parse(body))
-                console.log(body)
-                console.log(JSON.parse(body).media_id)
-                console.log('Upload successful!  Server responded with:', body)
-                await Send.sendPic(openid, JSON.parse(body).media_id, token)
+                console.log('上传成功')
+                Send.sendPic(openid, JSON.parse(body).media_id, token)
                 resolve()
             })
         })

@@ -2,10 +2,11 @@ const db = require('./DataBase.js')
 const sendTouser = require('./sendTouser.js')
 
 class Share {
-    constructor (userId, accessToken, platFormId, unionid, nickName) {
+    constructor (userId, accessToken, platFormId, unionid, nickName, picUrl) {
         this.userId = userId
         this.unionId = unionid
         this.nickName = nickName
+        this.picUrl = picUrl
 
         this.accessToken = accessToken
         this.platFormId = platFormId
@@ -30,15 +31,15 @@ class Share {
 
         const resList = eval('(' + data[0].res_list + ')') // 发送裂变的相关句子
         for (let i of resList) {
-            await sendTouser.sendMessage(this.userId, i, this.accessToken)
+            sendTouser.sendMessage(this.userId, i, this.accessToken)
         }
 
         await this.addOwner('old') // 添加用户进owner 这部分我是考虑到 用户是通过直接参与任务的 就不需要邀请了...
         const hash = await this.getOwnerHash()  // 获取用户的hash
         const qrCode = await this.getQRCodeUrl() // 获取平台的二维码url
         console.log(this.accessToken)
-        await this.annotation(`☟您已成功参与【小睡眠-小年】活动。\r\n\r\n`) // 活动说明
-        await sendTouser.getMediaPic(hash, this.accessToken, this.userId, qrCode, this.platFormId) // 发送用户海报
+        this.annotation(`☟您已成功参与【小睡眠-小年】活动。\r\n\r\n`) // 活动说明
+        sendTouser.getMediaPic(hash, this.accessToken, this.userId, qrCode, this.platFormId, 2, this.nickName, this.picUrl) // 发送用户海报
     }
 
     // owner  id  user_name   hash   accept_hash invitation_count || 0  update
@@ -114,7 +115,7 @@ class Share {
             console.log('此邀请码你已经使用过了')
 
             if (originData[0].user_name === data[0].user_name) {
-                await this.annotation(`${originData[0].user_name}用户已成功邀请您参与【小睡眠-小年】活动。\r\n \r\n`)
+                this.annotation(`${originData[0].user_name}用户已成功邀请您参与【小睡眠-小年】活动。\r\n \r\n`)
                 return
             }
             this.annotation(`${originData[0].user_name}用户已成功邀请您参与【小睡眠-小年】活动。由于每个用户仅能邀请从未关注过【小睡眠】的新用户，${data[0].user_name}用户邀请失败。\r\n \r\n`)
@@ -123,22 +124,21 @@ class Share {
 
         if (userData[0].hash === content) {
             console.log('不能自己邀请自己哦')
-            await sendTouser.sendMessage(this.userId, '不能自己邀请自己哦~', this.accessToken)
+            sendTouser.sendMessage(this.userId, '不能自己邀请自己哦~', this.accessToken)
             return
         }
 
-        await sendTouser.sendMessage(this.userId, `${data[0].user_name}用户邀请您参与【小睡眠-小年】活动。`, this.accessToken)
-        await this.annotation()
+        this.annotation(`${data[0].user_name}用户邀请您参与【小睡眠-小年】活动。\r\n\r\n`)
 
         // 需要去更新那位用户的invitation_count
-        await db.update('owner',
+        db.update('owner',
             {
                 invitation_count: parseInt(data[0].invitation_count) + 1 ,
                 count_update: new Date().getTime()
             },
             { where: { unionid: data[0].unionid } })
 
-        await db.update('owner',
+        db.update('owner',
             {
                 accept_hash: content
             },
@@ -190,9 +190,9 @@ class Share {
         }
 
         if (parseInt(data[0].invitation_count) >= parseInt(platFormdata[0].max_people_count)) {
-            await sendTouser.sendMessage(this.userId, `您已成功邀请${data[0].invitation_count}位用户，邀请数排名第${ranking}位。\r\n \r\n恭喜您成功解锁【小睡眠15天会员】。\r\n邀请排名前10可获得价值58元的热敷眼罩。\r\n活动截止至2019年2月12日24:00。\r\n \r\n您的15天会员兑换码为：XXXXXX\r\n会员兑换说明：\r\n1.会员有效期为15天，兑换需在一周内进行兑换，逾期失效。\r\n2.此次活动，不允许兑换多次。\r\n3.兑换步骤：\r\n（1）打开【小睡眠App】；\r\n（2）点击左上角【头像按钮】，点击【会员中心】；\r\n（3）点击右上角【…】，点击【礼品中心】，输入“兑换码”即可。`, this.accessToken)
+            sendTouser.sendMessage(this.userId, `您已成功邀请${data[0].invitation_count}位用户，邀请数排名第${ranking}位。\r\n \r\n恭喜您成功解锁【小睡眠15天会员】。\r\n邀请排名前10可获得价值58元的热敷眼罩。\r\n活动截止至2019年2月12日24:00。\r\n \r\n您的15天会员兑换码为：XXXXXX\r\n会员兑换说明：\r\n1.会员有效期为15天，兑换需在一周内进行兑换，逾期失效。\r\n2.此次活动，不允许兑换多次。\r\n3.兑换步骤：\r\n（1）打开【小睡眠App】；\r\n（2）点击左上角【头像按钮】，点击【会员中心】；\r\n（3）点击右上角【…】，点击【礼品中心】，输入“兑换码”即可。`, this.accessToken)
         } else {
-            await sendTouser.sendMessage(this.userId, `您已成功邀请${data[0].invitation_count}位用户，邀请数排名第${ranking}位。\r\n \r\n再邀请${parseInt(platFormdata[0].max_people_count) - parseInt(data[0].invitation_count)}位，就能成功解锁【小睡眠15天会员】。\r\n邀请排名前10可获得价值58元的热敷眼罩。\r\n活动截止至2019年2月12日24:00。`, this.accessToken)
+            sendTouser.sendMessage(this.userId, `您已成功邀请${data[0].invitation_count}位用户，邀请数排名第${ranking}位。\r\n \r\n再邀请${parseInt(platFormdata[0].max_people_count) - parseInt(data[0].invitation_count)}位，就能成功解锁【小睡眠15天会员】。\r\n邀请排名前10可获得价值58元的热敷眼罩。\r\n活动截止至2019年2月12日24:00。`, this.accessToken)
         }
 
     }
@@ -207,16 +207,16 @@ class Share {
         })
 
         if (content) {
-            await sendTouser.sendMessage(this.userId, `${content}您的邀请码为：${data[0].hash}\r\n\ \r\n活动说明：\r\n1.成功邀请${platFormdata[0].max_people_count}位新用户，即可解锁【小睡眠15天会员】。\r\n2.邀请排名前10的用户，可以获得价值58元的热敷眼罩。\r\n3.回复【邀请数】可以实时查看自己参与活动的情况。\r\n4.本活动截止至2019年2月12日24:00。`, this.accessToken)
+            sendTouser.sendMessage(this.userId, `${content}您的邀请码为：${data[0].hash}\r\n\ \r\n活动说明：\r\n1.成功邀请${platFormdata[0].max_people_count}位新用户，即可解锁【小睡眠15天会员】。\r\n2.邀请排名前10的用户，可以获得价值58元的热敷眼罩。\r\n3.回复【邀请数】可以实时查看自己参与活动的情况。\r\n4.本活动截止至2019年2月12日24:00。`, this.accessToken)
         } else {
-            await sendTouser.sendMessage(this.userId, `您的邀请码为：${data[0].hash}\r\n\ \r\n活动说明：\r\n1.成功邀请${platFormdata[0].max_people_count}位新用户，即可解锁【小睡眠15天会员】。\r\n2.邀请排名前10的用户，可以获得价值58元的热敷眼罩。\r\n3.回复【邀请数】可以实时查看自己参与活动的情况。\r\n4.本活动截止至2019年2月12日24:00。`, this.accessToken)
+            sendTouser.sendMessage(this.userId, `您的邀请码为：${data[0].hash}\r\n\ \r\n活动说明：\r\n1.成功邀请${platFormdata[0].max_people_count}位新用户，即可解锁【小睡眠15天会员】。\r\n2.邀请排名前10的用户，可以获得价值58元的热敷眼罩。\r\n3.回复【邀请数】可以实时查看自己参与活动的情况。\r\n4.本活动截止至2019年2月12日24:00。`, this.accessToken)
         }
     }
 
     async end () { // 活动结束
         if (Math.round(new Date / 1000) >= this.endTime) {
             console.log('活动结束了')
-            await sendTouser.sendMessage(this.userId, `【小睡眠-小年】活动已结束，新一期活动即将上线，请关注我们近期的推送。`)
+            sendTouser.sendMessage(this.userId, `【小睡眠-小年】活动已结束，新一期活动即将上线，请关注我们近期的推送。`)
             return true // true 是活动结束了
         } else {
             console.log('活动还没有结束')
@@ -251,13 +251,13 @@ class Share {
 
     async updateMessageTimeStamp () {
         try {
-
-        } catch (e) {
-            await db.update('owner',
+            db.update('owner',
                 {
                     update: new Date().getTime()
                 },
                 { where: { unionid: this.unionId } })
+        } catch (e) {
+
         }
     }
 

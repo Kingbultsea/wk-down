@@ -61,14 +61,23 @@
                   </div>
               </div>
 
-
-
-
-              <div v-if="item.code_number == 10007" class="input_container">
-                  <span>tag_id:</span>
-                  <input type="text" v-model="dsb" @click.stop="showId">
-                  <div class="jump_to" @click.stop="reTag_jump(item.code_number,tag_id)">跳转</div>
+              <div v-if="item.code_number == 1047" class="wjh">
+                  <div class="wjh-outer">
+                      <input  @click.stop="showId" v-model="wjh.nine" placeholder="id" style="width: 100%;background-color: #eee" />
+                      <button @click.stop="nine" type="info">提交</button>
+                  </div>
               </div>
+
+              <div v-if="item.code_number == 10007" class="wjh">
+                  <div class="wjh-outer">
+                      <input  @click.stop="showId" v-model="wjh.ten.one" placeholder="tag_id" style="width: 100%;background-color: #eee" />
+                      <input  @click.stop="showId" v-model="wjh.ten.two" placeholder="recommend_id" style="width: 100%;background-color: #eee" />
+                      <button @click.stop="ten" type="info">提交</button>
+                  </div>
+              </div>
+
+
+
 
               <div v-if="item.code_number == 1051" class="input_container">
                   <span>topic_id:</span>
@@ -116,7 +125,12 @@ export default {
               five: '',
               six: '',
               seven: '',
-              eight: ''
+              eight: '',
+              nine: '',
+              ten: {
+                  one: '',
+                  two: ''
+              }
               },
           dsb:'',
           A:'',
@@ -324,8 +338,30 @@ export default {
               pre.voice_id = this.wjh.eight
           }
           callAppRouter('Redirect', pre, function(err, result){})
-      }
+      },
 
+      nine () {
+          let pre = {
+              "code": 1047
+          }
+          if(this.wjh.nine){
+              pre.id = this.wjh.nine
+          }
+          callAppRouter('Redirect',pre,function(err, result){})
+      },
+
+      ten () {
+          let pre = {
+              "code": 10007
+          }
+          if(this.wjh.ten.one){
+              pre.tag_id = this.wjh.ten.one
+          }
+          if (this.wjh.ten.two) {
+              pre.recommend_id = this.wjh.ten.two
+          }
+          callAppRouter('Redirect',pre,function(err, result){})
+      }
 
 
 

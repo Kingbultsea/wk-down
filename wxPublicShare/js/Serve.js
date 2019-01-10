@@ -88,66 +88,54 @@ function runMessage (id, tk) {
         const xml = ctx.request.body.xml.Encrypt[0]
         const data = encrypt.decode(xml)
         const dataParse = Parse2Data.parseMessage(data)
-        console.log(dataParse)
+
         const userId = dataParse.xml.FromUserName[0]
-        const { name, unionid } = await sendTouser.getUseData(serveAccessToken, userId)
+        const { name, unionid, picUrl } = await sendTouser.getUseData(serveAccessToken, userId)
         /* dataParse.xml.CreateTime
            dataParse.toUserName  dataParse.FromUserName dataParse.CreateTime  dataParse.MsgType dataParse.Content */
+        ctx.response.body = 'success'
 
         const step = await sendTouser.getSesssion(unionid, userId, serveAccessToken) // 先查询用户哪个阶段了
         if (step >= 99) {
-            ctx.response.body = 'success'
             return
         }
         const subjRequire = await sendTouser.getUserSubject(unionid, dataParse.xml.Content) // 封装处理
         const result = await sendTouser.getSubject(subjRequire)
 
         if (!result) { // 如果没有题的情况下
-            ctx.response.body = 'success'
             console.log('没有题')
             return
         }
-        if (!await sendTouser.limitTimes(unionid)) { // 时间冲突
-            console.log('时间冲突')
-            await sendTouser.sendMessage(userId, '你输入得太频繁啦~', serveAccessToken)
-            ctx.response.body = 'success'
+        if (!await sendTouser.limitTimes(unionid, 1)) { // 时间冲突
+            sendTouser.sendMessage(userId, '机会只有一次。\r\n希望你能好好珍惜。', serveAccessToken)
             return
         }
         for (let [index, i] of new Map( result.map( ( item, i ) => [ i, item ] ) )) {
-            console.log(step + '-- 下面 -- 是index' + index)
             if (index === step) { // 符合当前阶段
-                if (step === 0) {
+                if (step === 0) { // 用户的第一次
                     const key = await sendTouser.getCorrespondence(subjRequire)
-                    // await sendTouser.sendMessage(userId, JSON.stringify(key).replace(/rrrr/g, '\r\n').replace(/^\"|\"$/g, '').replace(/REPLACE/, name), serveAccessToken)
-                    await sendTouser.sendMessage(userId, JSON.stringify(key + 'rrrr rrrr' + i.title).replace(/rrrr/g, '\r\n').replace(/^\"|\"$/g, '').replace(/REPLACE/, name), serveAccessToken) // 发送是要发送当前题的 但是判断呢 就要判断上一个题目了~！
-                    await sendTouser.addUser(unionid, dataParse.xml.Content, name) // 第一次要添加用户
-                    ctx.response.body = 'success'
+                    sendTouser.sendMessage(userId, JSON.stringify(key + 'rrrr rrrr' + i.title).replace(/rrrr/g, '\r\n').replace(/^\"|\"$/g, '').replace(/REPLACE/, name), serveAccessToken) // 发送是要发送当前题的 但是判断呢 就要判断上一个题目了~！
+                    sendTouser.addUser(unionid, dataParse.xml.Content, name) // 第一次要添加用户
                     return
                 }
 
                 if (index === 0) {
-                    console.log('?第一t不判断')
                     break // 第一题不判断！
                 }
                 if (result[index - 1].type === 'common') {
                     if (result[index - 1].regulation.type === 'scope') {
                         if (parseInt(dataParse.xml.Content).toString() === 'NaN' || result[index - 1].msgType !== dataParse.xml.MsgType[0]) { // 错误输出
-                            await sendTouser.sendMessage(userId, result[index - 1].error,serveAccessToken)
-                            break
+                            sendTouser.sendMessage(userId, result[index - 1].error,serveAccessToken)
+                            return
                         }
                         if (parseInt(dataParse.xml.Content) >= result[index - 1].regulation.one && parseInt(dataParse.xml.Content) <= result[index - 1].regulation.two) {
                             // 这里是符合规则的 所以是可以插入的
-                            if (step === 0) { // 第一阶段应该insert 进用户
-                                // await sendTouser.addUser(userId, dataParse.xml.Content)
-                            } else {
-                                // await sendTouser.sendMessage(userId, result[index + 1].title, serveAccessToken) // 发送题目
-                                await sendTouser.sendMessage(userId, JSON.stringify(i.title).replace(/rrrr/g, '\r\n').replace(/^\"|\"$/g, ''), serveAccessToken) // 发送是要发送当前题的 但是判断呢 就要判断上一个题目了~！
-                                await sendTouser.saveSession(unionid, dataParse.xml.Content)// 存进数据库吧
-                            }
-                            break
-                        } else {
-                            await sendTouser.sendMessage(userId, result[index - 1].error,serveAccessToken)
-                            break
+                            sendTouser.sendMessage(userId, JSON.stringify(i.title).replace(/rrrr/g, '\r\n').replace(/^\"|\"$/g, ''), serveAccessToken) // 发送是要发送当前题的 但是判断呢 就要判断上一个题目了~！
+                            sendTouser.saveSession(unionid, dataParse.xml.Content)// 存进数据库吧
+                            return
+                        } else { // 不符合规则
+                            sendTouser.sendMessage(userId, result[index - 1].error,serveAccessToken)
+                            return
                         }
                     }
                 }
@@ -157,72 +145,37 @@ function runMessage (id, tk) {
 
             if (step === result.length) { // 最后一步的操作
                 const have = await sendTouser.hasLeaveMessage(unionid) // 查看有没有留言
-                console.log('最后一步操作')
                 if (have) {
                     console.log('拥有最后一次留言')
-                    ctx.response.type = 'xml'
-                    ctx.response.body = 'success'
                     break
                 }
                 if (i.type === 'correspondence') {
                     if (i.msgType !== dataParse.xml.MsgType[0] || dataParse.xml.MsgType[0].indexOf('收到不支持的消息类型，暂无法显示') >= 0) {
-                        await sendTouser.sendMessage(userId, i.error,serveAccessToken)
+                        sendTouser.sendMessage(userId, i.error,serveAccessToken)
                     } else {
-                        console.log('???神奇？')
-                        await sendTouser.sendMessage(userId, '好了，我们已经把你的故事保存下来啦。',serveAccessToken)
-                        await sendTouser.saveLeaveMessage(unionid, dataParse.xml.Content)
+                        sendTouser.sendMessage(userId, '好了，我们已经把你的故事保存下来啦。', serveAccessToken)
+                        sendTouser.saveLeaveMessage(unionid, dataParse.xml.Content)
                         const tag = await sendTouser.count(unionid, subjRequire)
-                        await sendTouser.getMediaPic(tag, serveAccessToken, userId, null/* 二维码链接 */, null/*平台id*/, 1/*类型*/)
+                        sendTouser.getMediaPic(tag, serveAccessToken, userId, null/* 二维码链接 */, null/*平台id*/, 1/*类型*/, name, picUrl)
                     }
                 }
-                ctx.response.type = 'xml'
-                ctx.response.body = 'success'
             }
         }
 
-        if (!await sendTouser.limitTimes(unionid)) { // 时间冲突
+        if (!await sendTouser.limitTimes(unionid, 2)) { // 时间冲突
             console.log('时间冲突')
-            // await sendTouser.sendMessage(userId, '你输入得太频繁啦~', serveAccessToken)
-            ctx.response.body = 'success'
             return
         }
         const share = new Share(userId, serveAccessToken, id, unionid, name)
         const ctn = dataParse.xml.Content[0]
         if (await share.end()) {
-            ctx.response.type = 'xml'
             ctx.response.body = 'success'
             return // 仅仅加个标记 别无他意
         }
-        await share.start(ctn)
-        await share.submitHash(ctn)
-        await share.getReward(ctn)
+        share.start(ctn)
+        share.submitHash(ctn)
+        share.getReward(ctn)
 
-        const msgType = dataParse.xml.MsgType[0]
-        const parse2XML = new Parse2XML(dataParse.xml.ToUserName)
-        let err = null
-        let encryptedXML = null
-        console.log(dataParse)
-        if (msgType === 'text') {
-            const sendToData = parse2XML.message(dataParse.xml.FromUserName, dataParse.xml.Content, dataParse.xml.CreateTime)
-            let [o, t] = wx.encrypt(sendToData, ctx.query.timestamp, ctx.query.nonce)
-            err = o
-            encryptedXML = t
-        } else
-        if (msgType === 'image') {
-            /* const sendToData = parse2XML.messageAndPic(dataParse.xml.FromUserName, [{title: 'halo', desc: 'config', picUrl: 'http://wx4.sinaimg.cn/mw690/006Zdy2vgy1fwqjcett54j30go0i40th.jpg'}], dataParse.xml.CreateTime)
-            console.log(sendToData)
-            let [o, t] = wx.encrypt(sendToData, ctx.query.timestamp, ctx.query.nonce)
-            err = o
-            encryptedXML = t */
-            encryptedXML = 'success'
-        } else {
-            encryptedXML = 'success'
-        }
-
-        console.log(err)
-
-        ctx.response.type = 'xml'
-        ctx.response.body = 'success' // encryptedXML
     })
 }
 // runMessage('wxd99a3002f523a899')
