@@ -9,7 +9,7 @@ Vue.use(Router)
 export default new Router({
     routes: [
         {
-            path: '/',
+            path: '/a',
             name: 'home',
             component: Home
         },
@@ -19,7 +19,7 @@ export default new Router({
             component: WangEditor
         },
         {
-            path: '/applycation',
+            path: '/a',
             name: 'applycation',
             component: ApplyCation
         },
