@@ -344,6 +344,14 @@ class SleepStation {
         if (time === 12 * 3 * 2) {
             console.log('找不到用户 我们使用机器人吧')
             sendTouser.sendMessage(this.open_id, `我们找不到用户哦 你不要玩了`, this.token)
+            db.update('sleep_station', {
+                exchange_unionid: 'robot',
+                step: '999'
+            }, {
+                where: {
+                    unionid: this.unionid
+                }
+            })
             return
         }
 
