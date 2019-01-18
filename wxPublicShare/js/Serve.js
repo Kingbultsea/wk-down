@@ -3,6 +3,7 @@ const Router = require('koa-router')
 const xmlParser = require('koa-xml-body')
 const bodyParser = require('koa-bodyparser')
 const fs = require('fs')
+const path = require("path")
 const superAgent = require('superagent')
 
 const db = require('./DataBase.js')
@@ -12,6 +13,7 @@ const Parse2XML = require('./Parse2XML.js')
 const Encrypt = require('./Encrypt.js')
 const sendTouser = require('./sendTouser.js')
 const Share = require('./Share')
+const SleepStation = require('./SleepStation')
 
 const app = new Koa()
 const router = new Router()
@@ -24,6 +26,7 @@ app.use(xmlParser())
 app.use(bodyParser())
 app.use(router.routes())
 
+
 let ticket = 'glC91P1tjzm0GybMWqhztjfL+QR0AI7r6c0k0Jb+4ZFfLuTzrg68T2JhaJznGTML4+Q+qFbr68QUX2HbvCTuoc8vhRxmD/gRWpKY+DZ1k0cDTIYeJ9HlGi96oSznsFqnh4xMtsaaUmyZsndJ6e0qZAkOB5aJN56NQEwPsKAtJE3RsELB7XvY2pUFxrichAxC57XXWfDBz/8bw3g2eHQRE2Wz7t1y3/aIvKpKuk2ilo//WIlWVwI75EbuaUBkJjUFvRRJptaZFMCy+ox7G10DyOl6g+/uBva+bqMm5pZCcRqriLgDeWmqBXu1QkMVvYTYYZpVZUMHPYT5rzkAEe0AhOBD6tgtIiD8p/SDpl0OoyVZpifvjxPPwWq/p528DlRZKmqFnveesj3ijcfTS1WEiiPfxBJpOE0jS39MKQd16kNIlasFfYU07rA6jyR4R3gYYpM26hLxbebNrAE6EinE0Q==' // component_verify_ticket
 let enctypeTicket = null
 let pre_auth_code = null
@@ -32,27 +35,23 @@ let serveAccessToken = '17_JJQGhkZPsIiIIM-J2Qjd2xYa5wweWW9YPogGKmh3XG4h_u3yUzlq_
 let savePreAccessToken = 'refreshtoken@@@Xf_pWjheyA6S72KhSkcLwsBazP_W6_FlSz36qT5VD1g' // 第一次的时候跳转Url 可以获得 以后就需要refleash了
 const encrypt = new Encrypt({
     appId: appid_value,
-    encodingAESKey: 'eUbVREqK4jh9XHeYTZPHRTCzFz8PDWL2nieCZzganJv',
-    token: 'LnrDkrmurYPe3yPgziYAdwaTuk2obn7s'
+    encodingAESKey: 'a7fk2zC8qdmEiHHPnt9bk2YqxaQQALBPAXnUq4WDu9H',
+    token: 'q9Uew7m97qnEo9Y3QhmNThfaC2ETMpNm'
 })
 
 const wechat = require('co-wechat')
 
-const config = {
-    token: 'LnrDkrmurYPe3yPgziYAdwaTuk2obn7s',
-    appid:  appid_value,
-    encodingAESKey: 'eUbVREqK4jh9XHeYTZPHRTCzFz8PDWL2nieCZzganJv'
-}
 
 var WXCrypto = require('./wxcrypto')
 var wx = new WXCrypto('LnrDkrmurYPe3yPgziYAdwaTuk2obn7s', 'eUbVREqK4jh9XHeYTZPHRTCzFz8PDWL2nieCZzganJv', appid_value)
-
 
 router.post(`/wechat_open_platform/auth/callback`, async (ctx) => { // ticket 的微信推送
     ticket = ctx.request.body.xml.Encrypt[0]
     const xmlMsg = encrypt.decode(ticket)
     const rs = Parse2Data.parseMessage(xmlMsg)
     enctypeTicket = rs.xml.ComponentVerifyTicket[0]
+    console.log(rs.xml)
+    console.log(enctypeTicket)
     await new Promise((resolve) => {
         setTimeout(() => {
             resolve()
@@ -64,6 +63,11 @@ router.post(`/wechat_open_platform/auth/callback`, async (ctx) => { // ticket �
 router.get(`/`, async (ctx) => { // 发送静态index资源
     ctx.response.type = 'html'
     ctx.response.body = fs.createReadStream('./index.html')
+})
+
+router.get(`/agEAIopm81.txt`, async (ctx) => { // 发送静态txt
+    ctx.response.type = 'html'
+    ctx.response.body = fs.createReadStream('./agEAIopm81.txt')
 })
 
 router.get(`/wechat_open_platform/submitac`, async (ctx) => { // 接收从前端页面跳转发来的authorization_code
@@ -82,26 +86,52 @@ function runMessage (id, tk) {
     setInterval(async () => {
         serveAccessToken = await refleashSelfAccessToken(id)
         console.log('内部刷新token')
-    }, 5 * 60 * 1000)
+    }, 4.5 * 60 * 1000)
 
     router.post(`/wechat_open_platform/${id}/message`, async (ctx) => {
+        console.log(serveAccessToken)
         const xml = ctx.request.body.xml.Encrypt[0]
         const data = encrypt.decode(xml)
         const dataParse = Parse2Data.parseMessage(data)
 
         const userId = dataParse.xml.FromUserName[0]
-        const { name, unionid, picUrl } = await sendTouser.getUseData(serveAccessToken, userId)
+        const { name, unionid, picUrl, sex } = await sendTouser.getUseData(serveAccessToken, userId)
         /* dataParse.xml.CreateTime
            dataParse.toUserName  dataParse.FromUserName dataParse.CreateTime  dataParse.MsgType dataParse.Content */
         ctx.response.body = 'success'
 
-        const step = await sendTouser.getSesssion(unionid, userId, serveAccessToken) // 先查询用户哪个阶段了
-        if (step >= 99) {
+        console.log(unionid + '这是用户的unionid！！！')
+        // 第二套代码
+        const sleepStation = new SleepStation({nickName: name, unionId: unionid, picUrl, openId: userId, platFormId: id, serveAccessToken, sex})
+        console.log(dataParse)
+        sleepStation.logicCall({content: dataParse.xml.Content ? dataParse.xml.Content[0] : dataParse.xml.PicUrl ? dataParse.xml.PicUrl[0] : 'none', contentType: dataParse.xml.MsgType[0], mediaId: dataParse.xml.MediaId ? dataParse.xml.MediaId[0] : 'none' })
+
+
+        // 裂变套题 逻辑
+        if (!await sendTouser.limitTimes(unionid, 2)) { // 时间冲突
+            console.log('时间冲突')
             return
         }
+        const share = new Share(userId, serveAccessToken, id, unionid, name, picUrl)
+        let ctn = dataParse.xml.Content ? dataParse.xml.Content[0] : 'none'
+        if (await share.end(ctn)) {
+            ctx.response.body = 'success'
+            return // 仅仅加个标记 别无他意
+        }
+        share.start(ctn)
+        share.submitHash(ctn)
+        share.getReward(ctn)
+        return
+
+
+
+
+
+
+        const step = await sendTouser.getSesssion(unionid, userId, serveAccessToken) // 先查询用户哪个阶段了
         const subjRequire = await sendTouser.getUserSubject(unionid, dataParse.xml.Content) // 封装处理
         const result = await sendTouser.getSubject(subjRequire)
-
+        // 第一套 回答题计算分数的
         if (!result) { // 如果没有题的情况下
             console.log('没有题')
             return
@@ -162,19 +192,9 @@ function runMessage (id, tk) {
             }
         }
 
-        if (!await sendTouser.limitTimes(unionid, 2)) { // 时间冲突
-            console.log('时间冲突')
-            return
-        }
-        const share = new Share(userId, serveAccessToken, id, unionid, name)
-        const ctn = dataParse.xml.Content[0]
-        if (await share.end()) {
-            ctx.response.body = 'success'
-            return // 仅仅加个标记 别无他意
-        }
-        share.start(ctn)
-        share.submitHash(ctn)
-        share.getReward(ctn)
+
+
+
 
     })
 }
@@ -200,6 +220,9 @@ function getComponentAccessToken () {
     }
     console.log(enctypeTicket)
     superAgent.post(`https://api.weixin.qq.com/cgi-bin/component/api_component_token`).send(params).end((err, res) => {
+        if (err) {
+            return
+        }
         console.log(res.body.component_access_token)
         console.log(res.body)
         componentAccessToken = res.body.component_access_token
@@ -223,7 +246,7 @@ function getPreAuthCode (cat) {
 }
 
 setInterval(getComponentAccessToken, 9 * 60 * 1000)
-setInterval(refleashAuthorizerAccessToken, 60 * 60 * 1000) // 60分钟刷新一次哦 5:58
+setInterval(refleashAuthorizerAccessToken, 10 * 60 * 1000) // 60分钟刷新一次哦 5:58
 getPlatFormId() // 这个是询问公众号 启动
 // getComponentAccessToken()
 app.listen('8080')
@@ -256,9 +279,9 @@ function getServiceAccessToken (ac) {
         })
 
         // 获取qrcode_url
-        const qrCodeUrl = await new Promise((resolve) => {
+        const platFormInfo = await new Promise((resolve) => {
             superAgent.post(`https://api.weixin.qq.com/cgi-bin/component/api_get_authorizer_info?component_access_token=${sdas}`).send({component_appid: appid_value, authorizer_appid: res.body.authorization_info.authorizer_appid}).then((err, res) => {
-                resolve(err.body.authorizer_info.qrcode_url)
+                resolve(err.body.authorizer_info)
                 console.log('获取qrcodeurl' + err.body.authorizer_info.qrcode_url)
             })
         })
@@ -279,7 +302,8 @@ function getServiceAccessToken (ac) {
             authorization_code: res.body.authorization_info.authorizer_refresh_token,
             authorization_access_token: res.body.authorization_info.authorizer_access_token,
             update: new Date().getTime(),
-            qrcode_url: qrCodeUrl
+            qrcode_url: platFormInfo.qrcode_url,
+            name: platFormInfo.principal_name
         })
 
     })

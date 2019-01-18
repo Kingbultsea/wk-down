@@ -20,10 +20,13 @@
     "koa": "^2.6.2",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
+    "koa-webpack-dev-middleware": "^2.0.2",
+    "koa-webpack-hot-middleware": "^1.0.3",
     "koa-xml-body": "^2.1.0",
     "media-typer": "^1.0.1",
     "superagent": "^4.0.0",
     "thunkify": "^2.1.2",
+    "webpack": "^4.28.4",
     "wechat": "^2.1.0",
     "xml2js": "^0.4.19"
   }

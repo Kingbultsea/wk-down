@@ -81,33 +81,44 @@ async function outputPic (designation, name, picUrl) {
 }
 
 async function outputPicShare (designation, name, picUrl, qrCodeUrl, platFormId) {
-    const width = 400
-    const height = 400
+    const width = 612
+    const height = 920
     const canvas = createCanvas(width, height)
     const ctx = canvas.getContext('2d')
 
-    ctx.font = '14px "Comic Sans"'
-    ctx.fillText(designation, 10, 200) // 绘制文字
+    console.log('获取不了picUrl??' + picUrl)
 
-    await loadImage(qrCodeUrl).then((image) => {
-        ctx.drawImage(image, width - 100 - 150, height - 100, 100, 100)
-    }) // 绘制二维码
+    await loadImage(path.join(__dirname, '../img/share_template_one.png')).then((image) => {
+        ctx.drawImage(image, 0, 0, width, height)
+    }) // 绘制背景
+
+    ctx.font = '24px "Noto Sans CJK SC Bold"'
+    ctx.fillStyle = 'rgb(19, 129, 229)'
+    ctx.fillText(designation, 197, 809) // 绘制文字
+
+    ctx.font = '24px "Noto Sans CJK SC Bold"'
+    ctx.fillStyle = "rgb(255, 255, 255)"
+    ctx.fillText(name, 141, 149) // 绘制名称
+
+    await loadImage(picUrl).then((image) => {
+        ctx.drawImage(image, 37, 102, 80, 80)
+    }) // 绘制头像
+
 
     return new Promise((resolve) => {
-        const hash = platFormId
+        const hash = randomString(2)// platFormId
 
         fs.exists(path.join(__dirname, '../img/'+ hash +'.png'), (exists) => {
-            if (exists) {
-                console.log('存在')
-                resolve(hash)
-            } else {
-                fs.writeFile(path.join(__dirname, '../img/'+ hash +'.png'), canvas.toBuffer('image/jpeg', { quality: 0.8 }), (err) => {
+
+                console.log('???')
+                fs.writeFile(path.join(__dirname, '../img/'+ hash +'.png'), canvas.toBuffer('image/jpeg', { quality: 1 }), (err) => {
+                    console.log('??')
                     if (err) {
                         console.log(err)
                     }
                     resolve(hash)
                 })
-            }
+
         })
     })
 
@@ -122,6 +133,17 @@ function randomString(len) {
         pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
     }
     return pwd;
+}
+
+function circleImg (ctx, img, x, y, r) {
+    ctx.save()
+    let d =2 * r
+    let cx = x + r
+    let cy = y + r
+    ctx.arc(cx, cy, r, 0, 2 * Math.PI)
+    ctx.clip()
+    ctx.drawImage(img, x, y, d, d)
+    ctx.restore()
 }
 
 module.exports = { outputPic, outputPicShare }
