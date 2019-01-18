@@ -4,6 +4,17 @@
   </div>
 </template>
 
+<script>
+    import Share from '@/js/shareAndGetName'
+    export default {
+        mounted() {
+            console.log('?ss')
+            const share = new Share({ pic: 'http://wx3.sinaimg.cn/mw690/006Zdy2vgy1fxj0dtbn29j302o02nmx1.jpg', url: document.URL, title: '七天睡眠瘦身', desc: '小睡眠'})
+            share.appShare()
+        }
+    }
+</script>
+
 <style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

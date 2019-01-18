@@ -2,14 +2,14 @@
     <div>
     <div class="applycation" v-html="rawHtmlData">
     </div>
-        <div class="bottom">
+        <div class="bottom" v-if="appOutside">
             <a   target="view_window" href="https://a.app.qq.com/o/simple.jsp?pkgname=com.psyone.brainmusic" >
                 <div class="bottom-img">
                     <img  class='bottom-hehe' src="../assets/a.png"/>
                 </div>
             </a>
             <a   target="view_window" href="https://a.app.qq.com/o/simple.jsp?pkgname=com.psyone.brainmusic" >
-                <div class="bottom-center">下载小睡眠App</div>
+                <div class="bottom-center">点击下载小睡眠App</div>
             </a>
             <a class="dl"  target="view_window" href="https://a.app.qq.com/o/simple.jsp?pkgname=com.psyone.brainmusic" >
                 <div class="bottom-dl">下&nbsp;&nbsp;载</div>
@@ -20,10 +20,13 @@
 
 <script>
     import axios from 'axios'
+    import Tool from '../js/tool.js'
+
     export default {
         name: "ApplyCation",
         data () {
             return {
+                appOutside: false,
                 saveFont: 1,
                 title: '七天睡眠瘦身',
                 rawHtmlData: `<h3><b><span>配套知识<span lang="EN-US"> - </span>最好的瘦身教练</span></b></h3><p class="MsoNormal"><span>你好，欢迎加入心潮睡眠瘦身计划，以下是第一天练习的配套知识，非常的重要，希望你仔细阅读完，再开始今晚的音频练习。<span lang="EN-US"><o:p></o:p></span></span></p><p class="MsoNormal"><span>许多人在瘦身这件事上，常常会感到很孤单。你是一个人在战斗吗？我们很高兴来做你的战友。<span lang="EN-US"><o:p></o:p></span></span></p><p class="MsoNormal"><span>这套课程设计在<b>睡前</b>——这个特殊的时间练习<b style="mso-bidi-font-weight:
@@ -46,6 +49,11 @@ normal">，</b>是因为首先，身体和潜意识是非常精妙的，在我�
             }
         },
         mounted () {
+            const isCosleep = Tool.is_cosleep()
+            if (!isCosleep) {
+                this.appOutside = true
+            }
+
             const that = this
             function setSizeRem () {
                 let width = document.documentElement.clientWidth
@@ -88,6 +96,7 @@ normal">，</b>是因为首先，身体和潜意识是非常精妙的，在我�
         padding-right: px2html(25px);
         box-sizing: border-box;
         margin: 0 auto;
+        padding-bottom: px2html(30px);
         h1 {
             font-size: px2html(32px);
         }
