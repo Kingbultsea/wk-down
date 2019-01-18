@@ -19,7 +19,7 @@ export default new Router({
             component: WangEditor
         },
         {
-            path: '/a',
+            path: '/',
             name: 'applycation',
             component: ApplyCation
         },
