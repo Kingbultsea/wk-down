@@ -342,6 +342,7 @@ class SleepStation {
         }
 
         if (time === 12 * 3 * 2) {
+
             console.log('找不到用户 我们使用机器人吧')
             sendTouser.sendMessage(this.open_id, `我们找不到用户哦 你不要玩了`, this.token)
             db.update('sleep_station', {
@@ -630,6 +631,23 @@ async function sendMediaData (openid, token, type = 'iamge', hashPicName) { // 4
         let formData = {
             my_field: 'my_value',
             my_file:  fs.createReadStream(path.join(__dirname, `../userExchangeSleepStation/${hashPicName}.${type == 'image' ? 'jpeg' : 'mp3' }`))
+        }
+        request.post({url:`https://api.weixin.qq.com/cgi-bin/media/upload?access_token=${token}&type=${type}`, formData: formData}, async function(err, httpResponse, body) {
+            if (err) {
+                return console.error('upload failed:', err)
+            }
+            console.log('上传成功')
+            await sendTouser.sendMediaContent(openid, JSON.parse(body).media_id, token, type)
+            resolve()
+        })
+    })
+}
+
+async function sendRawMediaData (openid, token, type = 'iamge', hashPicName) { // 含有Path的
+    return new Promise((resolve) => {
+        let formData = {
+            my_field: 'my_value',
+            my_file:  fs.createReadStream(path.join(__dirname, `../robot/${hashPicName}.${type == 'image' ? 'jpg' : 'mp3' }`))
         }
         request.post({url:`https://api.weixin.qq.com/cgi-bin/media/upload?access_token=${token}&type=${type}`, formData: formData}, async function(err, httpResponse, body) {
             if (err) {
