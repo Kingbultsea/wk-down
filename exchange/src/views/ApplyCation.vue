@@ -98,10 +98,7 @@ normal">把身体瘦下来，同时更喜欢自己，也更加健康。</b><span
                 }
                     break;
                 case 7: {  // 7
-                    this.rawHtmlData = `<p class="MsoNormal"><b><span>配套知识 <span lang="EN-US">- </span>睡觉减重<span lang="EN-US"><o:p></o:p></span></span></b></p><p class="MsoNormal"><span>晚上好，欢迎回到第七天的心潮睡眠瘦身计划。<span lang="EN-US"><o:p></o:p></span></span></p><p class="MsoNormal"><span>今天是最后一天了，你觉得时间过得快吗？今晚，我们选择以睡眠作为知识的结束，因为，睡个好觉，是最简单的瘦身技巧。<span lang="EN-US"><o:p></o:p></span></span></p><p class="MsoNormal"><span>首先，<b style="mso-bidi-font-weight:
-normal">睡觉可以稳定基础代谢率，更快地瘦身</b>。<b><span lang="EN-US"><o:p></o:p></span></b></span></p><p class="MsoNormal"><span>其次，饥饿感是由体内两种激素协同产生，一种叫做“瘦素”，控制我们饱的感觉；另一种是“胃饥饿素”，控制饿的感觉。两种激素协同作用调节我们的饥饿感。在入睡之后，这两种激素会趋于平衡，让身体感觉不到饿，至少可以承受<span lang="EN-US">8</span>小时断食。<span lang="EN-US"><o:p></o:p></span></span></p><p class="MsoNormal"><span>美国斯坦福大学曾做过实验：实验者被分成两组，一组睡<span lang="EN-US">8</span>个小时，另一组睡<span lang="EN-US">5</span>个小时。结果，<span lang="EN-US">5</span>小时睡眠组，胃饥饿素分泌增加了约<span lang="EN-US">15%</span>，而瘦素的分泌量降低了<span lang="EN-US">15.5%</span>。两者综合的结果，就是食欲升高。<span lang="EN-US"><o:p></o:p></span></span></p><p class="MsoNormal"><span>另外，瑞典乌普萨拉大学的研究者发现，通宵不睡，会使食欲相关脑区的神经元被激活到最活跃的状态，这也证明了睡眠不足的人会更渴望食物。<span lang="EN-US"><o:p></o:p></span></span></p><p class="MsoNormal"><span>所以，睡不好的时候，你的胃饥饿素会更多的分泌，自然地想吃更多东西。而这些想吃的东西，并不是你身体真的需要，只是因为睡眠不好，产生的假性饥饿。<b>由于假性饥饿而吃进去的东西，只会紊乱你的基础代谢。而夜间的代谢率本来就慢，从宵夜摄取的热量，如果没有被消耗就会转变成脂肪，储存在身体里。</b>除此之外，熬夜的人还更容易吃高糖、高脂肪的食物。美国宾西法尼亚大学经过实验也发现，熬夜者比以往更喜欢吃高热量、高脂肪的食物。然而，在夜间进食高糖的食物，如米饭、面条等，会引起血糖浓度和胰岛素的急剧上升。另外，进食高脂肪食物，会导致血液中的甘油三酯水平显著升高。所以，熬夜或不佳的睡眠状况不仅妨碍瘦身，还会增加患糖尿病的风险。<span lang="EN-US"><o:p></o:p></span></span></p><p class="MsoNormal">因此，<span style="color: rgb(194, 79, 74);"><b style="mso-bidi-font-weight:
-normal"><span>对于想要健康瘦身的你来说，好好睡觉，是一个既简单又有效的科学办法</span></b>。</span>当然，我们理解很多时候好好睡觉并不是说到就能做到的事情。首先，你可以结合小睡眠<span lang="EN-US">APP</span>的<b>睡眠记录功能，</b>培养按时睡觉的身体规律。另外，也可以尝试我们针对不同睡眠困扰的解决方案。<span lang="EN-US"><o:p></o:p></span></p><p class="MsoNormal"><span>我们的睡眠瘦身知识到这里就结束了，<b>课程的结束不代表瘦身行动的结束。</b>如果你需要的话，可以回来反复学习；如果你已经掌握了，坚持音频练习的部分即可。
-<span lang="EN-US"><o:p></o:p></span></span></p><p>`
+                    this.rawHtmlData = `<h3><b>配套知识&nbsp;<span lang="EN-US">-&nbsp;</span>睡觉减重</b></h3><p>晚上好，欢迎回到第七天的心潮睡眠瘦身计划。<span lang="EN-US"><o:p></o:p></span></p><p>今天是最后一天了，你觉得时间过得快吗？今晚，我们选择以睡眠作为知识的结束，因为，睡个好觉，是最简单的瘦身技巧。<span lang="EN-US"><o:p></o:p></span></p><p>首先，<b>睡觉可以稳定基础代谢率，更快地瘦身</b>。<b><span lang="EN-US"><o:p></o:p></span></b></p><p>其次，饥饿感是由体内两种激素协同产生，一种叫做“瘦素”，控制我们饱的感觉；另一种是“胃饥饿素”，控制饿的感觉。两种激素协同作用调节我们的饥饿感。在入睡之后，这两种激素会趋于平衡，让身体感觉不到饿，至少可以承受<span lang="EN-US">8</span>小时断食。<span lang="EN-US"><o:p></o:p></span></p><p>美国斯坦福大学曾做过实验：实验者被分成两组，一组睡<span lang="EN-US">8</span>个小时，另一组睡<span lang="EN-US">5</span>个小时。结果，<span lang="EN-US">5</span>小时睡眠组，胃饥饿素分泌增加了约<span lang="EN-US">15%</span>，而瘦素的分泌量降低了<span lang="EN-US">15.5%</span>。两者综合的结果，就是食欲升高。<span lang="EN-US"><o:p></o:p></span></p><p>另外，瑞典乌普萨拉大学的研究者发现，通宵不睡，会使食欲相关脑区的神经元被激活到最活跃的状态，这也证明了睡眠不足的人会更渴望食物。<span lang="EN-US"><o:p></o:p></span></p><p>所以，睡不好的时候，你的胃饥饿素会更多的分泌，自然地想吃更多东西。而这些想吃的东西，并不是你身体真的需要，只是因为睡眠不好，产生的假性饥饿。<b>由于假性饥饿而吃进去的东西，只会紊乱你的基础代谢。而夜间的代谢率本来就慢，从宵夜摄取的热量，如果没有被消耗就会转变成脂肪，储存在身体里。</b>除此之外，熬夜的人还更容易吃高糖、高脂肪的食物。美国宾西法尼亚大学经过实验也发现，熬夜者比以往更喜欢吃高热量、高脂肪的食物。然而，在夜间进食高糖的食物，如米饭、面条等，会引起血糖浓度和胰岛素的急剧上升。另外，进食高脂肪食物，会导致血液中的甘油三酯水平显著升高。所以，熬夜或不佳的睡眠状况不仅妨碍瘦身，还会增加患糖尿病的风险。<span lang="EN-US"><o:p></o:p></span></p><p>因此，<span style="color: rgb(194, 79, 74);"><b>对于想要健康瘦身的你来说，好好睡觉，是一个既简单又有效的科学办法</b>。</span>当然，我们理解很多时候好好睡觉并不是说到就能做到的事情。首先，你可以结合小睡眠<span lang="EN-US">APP</span>的<b>睡眠记录功能，</b>培养按时睡觉的身体规律。另外，也可以尝试我们针对不同睡眠困扰的解决方案。<span lang="EN-US"><o:p></o:p></span></p><p>我们的睡眠瘦身知识到这里就结束了，<b>课程的结束不代表瘦身行动的结束。</b>如果你需要的话，可以回来反复学习；如果你已经掌握了，坚持音频练习的部分即可。</p>`
                 }
                     break;
                 case 8: {  // 8
@@ -162,7 +159,7 @@ normal"><span>对于想要健康瘦身的你来说，好好睡觉，是一个既
         padding-right: px2html(25px);
         box-sizing: border-box;
         margin: 0 auto;
-        padding-bottom: px2html(40px);
+        padding-bottom: px2html(50px);
         h1 {
             font-size: px2html(32px);
         }
