@@ -1,0 +1,33 @@
+{
+  "name": "weixin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ali-rds": "^3.3.0",
+    "blob": "^0.0.5",
+    "blob-util": "^2.0.2",
+    "canvas": "^2.2.0",
+    "co-wechat": "^2.3.0",
+    "crypto": "^1.0.1",
+    "debug": "^4.1.1",
+    "form-data": "^2.3.3",
+    "koa": "^2.6.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "koa-webpack-dev-middleware": "^2.0.2",
+    "koa-webpack-hot-middleware": "^1.0.3",
+    "koa-xml-body": "^2.1.0",
+    "media-typer": "^1.0.1",
+    "superagent": "^4.0.0",
+    "thunkify": "^2.1.2",
+    "webpack": "^4.28.4",
+    "wechat": "^2.1.0",
+    "xml2js": "^0.4.19"
+  }
+}

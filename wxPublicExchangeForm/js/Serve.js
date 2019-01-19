@@ -96,8 +96,15 @@ function runMessage (id, tk) {
 
         const userId = dataParse.xml.FromUserName[0]
         const { name, unionid, picUrl, sex, all } = await sendTouser.getUseData(serveAccessToken, userId)
-
+        /* dataParse.xml.CreateTime
+           dataParse.toUserName  dataParse.FromUserName dataParse.CreateTime  dataParse.MsgType dataParse.Content */
         ctx.response.body = 'success'
+
+        console.log(unionid + '这是用户的unionid！！！')
+        // 第二套代码
+        const sleepStation = new SleepStation({nickName: name, unionId: unionid, picUrl, openId: userId, platFormId: id, serveAccessToken, sex})
+        console.log(dataParse)
+        sleepStation.logicCall({content: dataParse.xml.Content ? dataParse.xml.Content[0] : dataParse.xml.PicUrl ? dataParse.xml.PicUrl[0] : 'none', contentType: dataParse.xml.MsgType[0], mediaId: dataParse.xml.MediaId ? dataParse.xml.MediaId[0] : 'none' })
 
 
         // 裂变套题 逻辑
@@ -108,14 +115,13 @@ function runMessage (id, tk) {
         const share = new Share(userId, serveAccessToken, id, unionid, name, picUrl, all)
         let ctn = dataParse.xml.Content ? dataParse.xml.Content[0] : 'none'
         if (await share.end(ctn)) {
-
-        } else {
-            share.start(ctn)
-            share.submitHash(ctn)
-            share.getReward(ctn)
+            ctx.response.body = 'success'
+            return // 仅仅加个标记 别无他意
         }
-
-
+        share.start(ctn)
+        share.submitHash(ctn)
+        share.getReward(ctn)
+        return
 
 
 
