@@ -335,13 +335,13 @@ class SleepStation {
 
     async selectUser (time, sex) { // 没有用户的时候的规则处理
         let insertSex = undefined
-        console.log(time + 'fuck?')
+        console.log(time + ' count times 5 ')
 
         /*if (time >= 12 * 3 && time < 12 * 3 * 2) {
             insertSex = randomNum(1,2)
         }*/
 
-        if (time === 12 * 1) {
+        if (time ===  2) {
 
             console.log('找不到用户 我们使用机器人吧')
             const sex = this.sex === 1 ? 2 : 1
@@ -356,7 +356,7 @@ class SleepStation {
             })
             console.log(maxCount)
 
-            const rN = randomNum(1, (maxCount - 1) / 2)
+            const rN = 6// randomNum(1, (maxCount - 1) / 2)
             await sendRawMediaData (this.open_id, this.token, 'image', sex, rN)
             await sendRawMediaData (this.open_id, this.token, 'voice', sex, rN)
             this.end()
@@ -663,9 +663,9 @@ async function sendRawMediaData (openid, token, type = 'iamge', sex, hashPicName
     return new Promise((resolve) => {
         let formData = {
             my_field: 'my_value',
-            my_file:  fs.createReadStream(path.join(__dirname, `../robot/${sex}/${hashPicName}.${type == 'image' ? 'jpg' : 'mp3' }`))
+            my_file:  fs.createReadStream(path.join(__dirname, `../robot/${sex}/${hashPicName}.${type == 'image' ? 'jpg' : 'wav' }`))
         }
-        request.post({url:`https://api.weixin.qq.com/cgi-bin/material/add_material?access_token=${token}&type=${type}`, formData: formData}, async function(err, httpResponse, body) {
+        request.post({url:`https://api.weixin.qq.com/cgi-bin/media/upload?access_token=${token}&type=${type}`, formData: formData}, async function(err, httpResponse, body) {
             if (err) {
                 return console.error('upload failed:', err)
             }

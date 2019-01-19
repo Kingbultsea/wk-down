@@ -35,6 +35,7 @@
         methods: {
             getMessage() {
                 console.log(this.$route.query.id)
+                return
                 axios.get('url', {
                     params: {
                         id: this.$route.query
@@ -62,6 +63,7 @@
         },
         mounted () {
             const id = this.parseQuery(document.URL)
+            // this.$parent.darkMode = false
 
             switch (parseInt(id.article_id)) {
                 case 1: { // 1
@@ -154,6 +156,7 @@ normal"><span>对于想要健康瘦身的你来说，好好睡觉，是一个既
     }
     .applycation {
         text-align: left;
+        overflow: hidden;
         width: px2html(375px);
         padding-left: px2html(25px);
         padding-right: px2html(25px);
