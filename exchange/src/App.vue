@@ -16,6 +16,13 @@
 </script>
 
 <style lang="scss">
+  .dark {
+    background-color: rgba(38, 28, 44, 1);
+    font-color: rgba(255, 255, 255, 0.6) !important;
+    h3 {
+      font-color: rgba(255, 255, 255, 1) !important;
+    }
+  }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -159,7 +159,7 @@ normal"><span>对于想要健康瘦身的你来说，好好睡觉，是一个既
         padding-right: px2html(25px);
         box-sizing: border-box;
         margin: 0 auto;
-        padding-bottom: px2html(30px);
+        padding-bottom: px2html(40px);
         h1 {
             font-size: px2html(32px);
         }
