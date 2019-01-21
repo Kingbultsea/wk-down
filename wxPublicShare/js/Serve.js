@@ -101,10 +101,10 @@ function runMessage (id, tk) {
 
         console.log(unionid + '这是用户的unionid！！！')
         // 第二套代码
-        const sleepStation = new SleepStation({nickName: name, unionId: unionid, picUrl, openId: userId, platFormId: id, serveAccessToken, sex})
+        /* const sleepStation = new SleepStation({nickName: name, unionId: unionid, picUrl, openId: userId, platFormId: id, serveAccessToken, sex})
         console.log(dataParse)
         sleepStation.logicCall({content: dataParse.xml.Content ? dataParse.xml.Content[0] : dataParse.xml.PicUrl ? dataParse.xml.PicUrl[0] : 'none', contentType: dataParse.xml.MsgType[0], mediaId: dataParse.xml.MediaId ? dataParse.xml.MediaId[0] : 'none' })
-        return
+        return */
 
         // 裂变套题 逻辑
         if (!await sendTouser.limitTimes(unionid, 2)) { // 时间冲突
