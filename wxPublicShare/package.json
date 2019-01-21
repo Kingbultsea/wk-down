@@ -24,6 +24,7 @@
     "koa-webpack-hot-middleware": "^1.0.3",
     "koa-xml-body": "^2.1.0",
     "media-typer": "^1.0.1",
+    "request": "^2.88.0",
     "superagent": "^4.0.0",
     "thunkify": "^2.1.2",
     "webpack": "^4.28.4",
