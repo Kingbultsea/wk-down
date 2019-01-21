@@ -197,7 +197,7 @@ class SleepStation {
         })
 
         const initContent = `嘿，${this.nick_name}，我们一起来拯救失眠的世界吧\r\n` +
-            `这里是 <a href='https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI2MTQzMjAwMA==#wechat_redirect'>小睡眠</a> ${dataPlatForm[0].name} 用无数个失眠的夜晚联合打造的 晚安睡务局\r\n` +
+            `这里是 <a href='http://mp.weixin.qq.com/s?__biz=MzI2MTQzMjAwMA==&mid=100001424&idx=1&sn=b4150dfa72d5765e9907ff02989fe85b&chksm=6a5b313f5d2cb829cd5c5fe7b410a2cc7e64ddfae8a11b4cc667c1dfb2ce9f9274d9265a7d57#rd'>小睡眠</a> ${dataPlatForm[0].name} 用无数个失眠的夜晚联合打造的 晚安睡务局\r\n` +
             `每一个难眠的夜，一定会有无限的遐想出现，我们想征集一万位睡务员，一起去解决难熬的夜晚\r\n \r\n` +
             `当然这里有个小小的考核，希望你能说出你的一段小故事
 可以是你睡前的一次大脑的狂想，
@@ -337,11 +337,11 @@ class SleepStation {
         let insertSex = undefined
         console.log(time + ' count times 5 ')
 
-        /*if (time >= 12 * 3 && time < 12 * 3 * 2) {
+        if (time >= 12 * 3 && time < 12 * 3 * 2) {
             insertSex = randomNum(1,2)
-        }*/
+        }
 
-        if (time ===  2) {
+        if (time === 12 * 3 * 2) {
 
             console.log('找不到用户 我们使用机器人吧')
             const sex = this.sex === 1 ? 2 : 1
@@ -493,17 +493,22 @@ class SleepStation {
         this._oppsiteUnionId = data[0].unionid
 
         await sendTouser.sendMessage(this.open_id, `来 ${dataPlatForm[0].name} 的 @${data[0].nick_name}\r\n与你交换了一段语音和图片`, this.token)
-        if (this.platform_id !== data[0].appid) {
-            if (data[0].pic_mediaid) {
-                await sendMediaData(this.open_id, this.token, 'image', data[0].unionid)
-            }
-            await sendMediaData(this.open_id, this.token, 'voice', data[0].unionid)
+
+        /* if (this.platform_id !== data[0].appid) {
+
         } else {
+            console.log('同平台发送')
             if (data[0].pic_mediaid) {
                 await sendTouser.sendMediaContent(this.open_id, data[0].pic_mediaid, this.token, 'image')
             }
             await sendTouser.sendMediaContent(this.open_id, data[0].voice_mediaid, this.token, 'voice')
         }
+        console.log('不同平台的发送') */
+
+        if (data[0].pic_mediaid) {
+            await sendMediaData(this.open_id, this.token, 'image', data[0].unionid)
+        }
+        await sendMediaData(this.open_id, this.token, 'voice', data[0].unionid)
 
         await sendTouser.sendMessage(this.open_id, `（提示：如果对方的交换含有让你不悦的内容，或没有按规则参加，可回复“举报”）`, this.token)
         await sendTouser.sendMessage(this.open_id, `你有两次机会给@${this._oppsiteName}留言机会，请发送消息，对方将会收到`, this.token)
@@ -619,7 +624,7 @@ class SleepStation {
         })
 
         await sendTouser.getMediaPic('描述', this.token, this.open_id, null, this.platform_id, 3, this.nick_name, this.pic_url)
-        await sendTouser.sendMessage(this.open_id, `交换结束，职位申请成功，感谢你今晚的相伴\r\n\r\n恭喜你已获得 <a href='https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI2MTQzMjAwMA==#wechat_redirect'>晚安睡务局</a> 认证的睡务员一职，你的编号是${data[0].id}\r\n感谢参与本次活动，在下个星期，我们将会公布睡务员的具体任务，请妥善保存`, this.token)
+        await sendTouser.sendMessage(this.open_id, `交换结束，职位申请成功，感谢你今晚的相伴\r\n\r\n恭喜你已获得 <a href='http://mp.weixin.qq.com/s?__biz=MzI2MTQzMjAwMA==&mid=100001424&idx=1&sn=b4150dfa72d5765e9907ff02989fe85b&chksm=6a5b313f5d2cb829cd5c5fe7b410a2cc7e64ddfae8a11b4cc667c1dfb2ce9f9274d9265a7d57#rd'>晚安睡务局</a> 认证的睡务员一职，你的编号是${data[0].id}\r\n感谢参与本次活动，在下个星期，我们将会公布睡务员的具体任务，请妥善保存`, this.token)
         sendTouser.sendMessage(this.open_id, `本次活动将在明天晚上12点结束，希望你能帮忙把职务卡分享到朋友圈中，以便我们更快地找到合适的睡务员，一起去干掉失眠带来的焦虑、不安与孤独`, this.token)
     }
 
@@ -647,11 +652,11 @@ async function sendMediaData (openid, token, type = 'iamge', hashPicName) { // 4
             my_field: 'my_value',
             my_file:  fs.createReadStream(path.join(__dirname, `../userExchangeSleepStation/${hashPicName}.${type == 'image' ? 'jpeg' : 'mp3' }`))
         }
-        // https://api.weixin.qq.com/cgi-bin/media/upload?access_token=
         request.post({url:`https://api.weixin.qq.com/cgi-bin/media/upload?access_token=${token}&type=${type}`, formData: formData}, async function(err, httpResponse, body) {
             if (err) {
                 return console.error('upload failed:', err)
             }
+            console.log(body)
             console.log('上传成功')
             await sendTouser.sendMediaContent(openid, JSON.parse(body).media_id, token, type)
             resolve()
@@ -663,7 +668,7 @@ async function sendRawMediaData (openid, token, type = 'iamge', sex, hashPicName
     return new Promise((resolve) => {
         let formData = {
             my_field: 'my_value',
-            my_file:  fs.createReadStream(path.join(__dirname, `../robot/${sex}/${hashPicName}.${type == 'image' ? 'jpg' : 'wav' }`))
+            my_file:  fs.createReadStream(path.join(__dirname, `../robot/${sex}/${hashPicName}.${type == 'image' ? 'jpg' : 'mp3' }`))
         }
         request.post({url:`https://api.weixin.qq.com/cgi-bin/media/upload?access_token=${token}&type=${type}`, formData: formData}, async function(err, httpResponse, body) {
             if (err) {
