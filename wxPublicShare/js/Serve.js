@@ -80,7 +80,6 @@ router.get(`/wechat_open_platform/preauthcode`, async (ctx) => { // 发送pre_au
     ctx.response.body = pre_auth_code
 })
 
-
 function runMessage (id, tk) {
     let serveAccessToken = tk
     setInterval(async () => {
@@ -96,6 +95,32 @@ function runMessage (id, tk) {
 
         const userId = dataParse.xml.FromUserName[0]
         const { name, unionid, picUrl, sex, all } = await sendTouser.getUseData(serveAccessToken, userId)
+
+        // 这部分代码没有用了 现在是正式服那里了！
+        if (id == 'wx570bc396a51b8ff8') {
+            let err, encryptedXML
+            if (dataParse.xml.Content[0].includes('QUERY_AUTH_CODE')) {
+                ctx.response.body = 'success'
+                const sendMsg = /\$(.*)\$/.exec(dataParse.xml.Content[0])
+                superAgent.post(`https://api.weixin.qq.com/cgi-bin/component/api_query_auth?component_access_token=${componentAccessToken}`).send({
+                    "component_appid": appid_value ,
+                    "authorization_code": sendMsg // 'queryauthcode@@@Rbk3GSiOB8WReuyRDwwXQJzWusqmZYyKW5xfvnPi3RTttMQ3XVOjilS18YUZ4hGtBiZdB-qtShMaBpDQHrF5cg'  // refreshtoken@@@Xf_pWjheyA6S72KhSkcLwsBazP_W6_FlSz36qT5VD1g
+                }).end(async (err, res) => {
+                    sendTouser.sendMessage(userId, sendMsg + '_from_api', res.body.authorization_info.authorizer_access_token)
+                })
+            }
+
+            const sendToData = parse2XML.message(dataParse.xml.FromUserName, dataParse.xml.Content[0] + '_callback', dataParse.xml.CreateTime)
+            let [o, t] = wx.encrypt(sendToData, ctx.query.timestamp, ctx.query.nonce)
+            err = o
+            encryptedXML = t
+
+            console.log(err)
+            ctx.response.type = 'xml'
+            ctx.response.body = encryptedXML
+            return
+        }
+
 
         ctx.response.body = 'success'
 
