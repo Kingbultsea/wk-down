@@ -53,6 +53,7 @@ export default {
         this.$children[0].close = true
         if (parseInt(res.data.status) === 34) {
           this.$children[0].changeRepeat(res.data.msg)
+          return
         }
         parseInt(res.data.status) === 1 ? this.$children[0].changeSuccess(res.data.msg) : this.$children[0].changeFail(res.data.msg)
       })
