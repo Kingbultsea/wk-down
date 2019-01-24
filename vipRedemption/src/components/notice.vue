@@ -18,7 +18,7 @@ export default {
       imgSuccess: null,
       imgLogo: null,
       desc: '.',
-      close: true
+      close: false
     }
   },
   methods: {
