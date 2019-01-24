@@ -52,6 +52,7 @@ export default {
         console.log(res.data)
         this.$children[0].close = true
         if (res.data.msg.indexOf('重复')) {
+          console.log(res.data.msg.indexOf('重复'))
           console.log('重复了')
           this.$children[0].changeRepeat(res.data.msg)
           return
