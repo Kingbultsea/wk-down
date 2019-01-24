@@ -1,17 +1,22 @@
 <template>
   <div id="app">
-    <router-view/>
+    <!-- <router-view/> -->
+    <Home />
   </div>
 </template>
 
 <script>
 import Share from '@/js/shareAndGetName'
+import Home from './views/Home.vue'
 
 export default {
   data () {
     return {
       rootUrl: 'https://api.debug.psy-1.com'
     }
+  },
+  components: {
+    Home
   },
   methods: {
     test () {

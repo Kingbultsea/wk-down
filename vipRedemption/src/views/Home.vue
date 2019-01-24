@@ -51,7 +51,7 @@ export default {
       }).then((res) => {
         console.log(res.data)
         this.$children[0].close = true
-        if (parseInt(res.data.status) === 34) {
+        if (res.data.msg.indexOf('重复')) {
           this.$children[0].changeRepeat(res.data.msg)
           return
         }
