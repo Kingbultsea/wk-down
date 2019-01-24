@@ -5,12 +5,14 @@
       <img class="img-success" :src="imgSuccess">
       <img class="img-vip-logo" :src="imgLogo">
       <div class="font-desc">{{desc}}</div>
-      <img class="img-getin" src="../assets/getIn.png">
+      <img class="img-getin" @click="toMemberCenter" src="../assets/getIn.png">
     </div>
   </div>
 </template>
 
 <script>
+import { callAppRouter } from '@/js/tool'
+
 export default {
   name: 'notice',
   data () {
@@ -22,6 +24,12 @@ export default {
     }
   },
   methods: {
+    toMemberCenter () {
+      callAppRouter('Redirect', {
+        'code': 10017
+      }, (res, ed) => {
+      })
+    },
     changeFail (msg) {
       this.imgSuccess = require('../assets/fail.png')
       this.imgLogo = require('../assets/img@3x.png')
