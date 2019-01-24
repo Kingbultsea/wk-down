@@ -92,7 +92,14 @@ export default {
           console.log(mesg)
           console.log(ed)
           if (mesg.msg === '已登录') {
-            this.postData()
+            this.configData()
+            if (this.source_id && this.openid && this.activity_id) { // 因为这个并不是响应式的 就有点问题了
+              this.postData()
+            } else {
+              setTimeout(() => {
+                this.postData()
+              }, 500)
+            }
           } else {
             callAppRouter('Login', {}, (res, ed) => {
             })
