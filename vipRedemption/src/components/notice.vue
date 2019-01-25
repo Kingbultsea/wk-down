@@ -5,7 +5,7 @@
       <img class="img-success" :src="imgSuccess">
       <img class="img-vip-logo" :src="imgLogo">
       <div class="font-desc">{{desc}}</div>
-      <img class="img-getin" @click="toMemberCenter" src="../assets/getIn.png">
+      <img class="img-getin" v-if="show_button" @click="toMemberCenter" src="../assets/getIn.png">
     </div>
   </div>
 </template>
@@ -20,7 +20,8 @@ export default {
       imgSuccess: null,
       imgLogo: null,
       desc: '.',
-      close: false
+      close: false,
+      show_button: false
     }
   },
   methods: {
@@ -34,16 +35,19 @@ export default {
       this.imgSuccess = require('../assets/fail.png')
       this.imgLogo = require('../assets/img@3x.png')
       this.desc = msg
+      this.show_button = false
     },
     changeRepeat (msg) {
       this.imgSuccess = require('../assets/repeat.png')
       this.imgLogo = require('../assets/img@3x.png')
       this.desc = msg
+      this.show_button = true
     },
     changeSuccess (msg) {
       this.imgSuccess = require('../assets/success.png')
       this.imgLogo = require('../assets/vip@3x.png')
       this.desc = msg
+      this.show_button = true
     }
   },
   mounted () {
