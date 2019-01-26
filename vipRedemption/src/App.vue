@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     test () {
-      const share = new Share({ pic: 'http://wx3.sinaimg.cn/large/006Zdy2vgy1fxj0dtbn29j302o02nmx1.jpg', url: 'http://psy-1.com/'/* document.URL */, title: '小睡眠', desc: '小睡眠-app，给你一个婴儿般的好睡眠' })
+      const share = new Share({ pic: 'http://wx3.sinaimg.cn/large/006Zdy2vgy1fxj0dtbn29j302o02nmx1.jpg', url: 'http://psy-1.com/'/* document.URL */, title: '给失眠君一封告别信……', desc: '遇见小睡眠App，开启好睡眠' })
       share.appShare()
     }
   },
