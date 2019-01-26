@@ -30,7 +30,7 @@ export default {
   methods: {
     refleash () {
       callAppRouter('Redirect', {
-        'code': 10019
+        'code': 10020
       }, (res, ed) => {
       })
     },
