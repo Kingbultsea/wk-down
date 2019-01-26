@@ -27,8 +27,14 @@ export default {
   methods: {
     toMemberCenter () {
       callAppRouter('Redirect', {
-        'code': 10017
+        'code': 10020
       }, (res, ed) => {
+        setTimeout(() => {
+          callAppRouter('Redirect', {
+            'code': 10017
+          }, (res, ed) => {
+          })
+        }, 500)
       })
     },
     changeFail (msg) {

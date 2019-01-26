@@ -28,12 +28,6 @@ export default {
     Notice
   },
   methods: {
-    refleash () {
-      callAppRouter('Redirect', {
-        'code': 10020
-      }, (res, ed) => {
-      })
-    },
     postData () {
       console.log(`查看sourceid${this.source_id}  查看openid ${this.openid}  查看activity_id ${this.activity_id}`)
       axios({
@@ -64,7 +58,7 @@ export default {
           return
         }
         parseInt(res.data.status) === 1 ? this.$children[0].changeSuccess(res.data.msg) : this.$children[0].changeFail(res.data.msg)
-        this.refleash()
+        // this.refleash()
       })
     },
     configData () {
