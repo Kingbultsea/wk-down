@@ -1,4 +1,4 @@
-<template>
+n'p<template>
   <div id="app">
     <!-- <router-view/> -->
     <Home />

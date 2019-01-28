@@ -2,7 +2,7 @@
   <div class="home" :style="home_height">
     <img class="img-title" src="../assets/title@3x.png">
     <img class="img-desc" src="../assets/gift1@3x.png">
-    <img class="img-button" @click="submit()" src="../assets/buttn@3x.png">
+    <img class="img-button" @click="submit" src="../assets/buttn@3x.png">
     <transition name="fade"><Notice ref="Notice"/></transition>
   </div>
 </template>
