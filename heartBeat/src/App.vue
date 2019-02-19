@@ -47,6 +47,11 @@ export default {
         this.tips_toggle = true
       }
     },
+    toDownLoad () {
+      setTimeout(function () {
+        window.location.href = 'https://www.heartide.com/download/smallsleep'
+      }, 500)
+    },
     toCenter () {
       const that = this
       let createIframe = (function () {
