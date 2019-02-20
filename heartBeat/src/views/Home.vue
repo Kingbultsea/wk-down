@@ -64,6 +64,7 @@ export default {
       console.log(anim) // 这里可以看到 lottie 对象的全部属性
     },
     heartBeat () {
+      // this.rate = JSON.parse(this.heart.heart_audio) // 正式服的时候可以开启
       let i = 0
       setInterval(() => {
         const speed = 1 * (this.rate[i] / 60)
@@ -136,6 +137,7 @@ export default {
           console.log(response.data.data)
           this.heart = response.data.data
           this.number_list = ('' + this.heart.heart_password).split('')
+          this.heartBeat()
         })
         .catch(function (error) {
           console.log(error)
@@ -143,11 +145,8 @@ export default {
     }
   },
   mounted () {
-    this.heart_width = 100 // document.getElementsByClassName('img-heart-beat')[0].clientWidth
-    this.heart_height = 100 // document.getElementsByClassName('img-heart-beat')[0].clientHeight
     this.bScroll()
     this.getData()
-    this.heartBeat()
   }
 }
 </script>
