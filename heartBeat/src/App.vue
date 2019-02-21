@@ -53,6 +53,8 @@ export default {
       }, 500)
     },
     toCenter () {
+      const myCode = 10021
+
       const that = this
       let createIframe = (function () {
         let iframe
@@ -85,7 +87,7 @@ export default {
           // 判断是否是ios,具体的判断函数自行百度
           // alert("cosleep://deeplink?code=10010&music_detail_code="+that.code)
 
-          window.location.href = 'cosleep://deeplink?code=1034'
+          window.location.href = 'cosleep://deeplink?code=' + myCode
           that.toDownLoad()
 
           var loadDateTime = Date.now()
@@ -96,7 +98,7 @@ export default {
               // window.location.href = 'cosleep://deeplink?code=10010&music_detail_code=kZkCCukLd3CHWMWZ'
               // console.log(decodeURI("cosleep://deeplink?code=10010&music_detail_code="+that.code +"&"+ encodeURI( that.musicDetail() )))
 
-              window.location.href = 'cosleep://deeplink?code=1034'
+              window.location.href = 'cosleep://deeplink?code=' + myCode
               that.toDownLoad()
             }
           }, 25)
@@ -114,7 +116,7 @@ export default {
           setTimeout(function () {
             // alert("cosleep://deeplink?code=10010&music_detail_code="+this.code)
 
-            window.location.href = 'cosleep://deeplink?code=1034'
+            window.location.href = 'cosleep://deeplink?code=' + myCode
             that.toDownLoad()
 
             // window.location.href = 'cosleep://deeplink?code=10010&music_detail_code=kZkCCukLd3CHWMWZ'
