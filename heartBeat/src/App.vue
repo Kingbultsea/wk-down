@@ -11,6 +11,8 @@
         <a   target="view_window" href="https://a.app.qq.com/o/simple.jsp?pkgname=com.psyone.brainmusic" >
           <div class="bottom-img">
             <img  class='bottom-hehe' src="./assets/a.png"/>
+            <!--<img src="./assets/dd1.png">
+            <img src="./assets/dd2.jpg">-->
           </div>
         </a>
         <a   target="view_window" href="https://a.app.qq.com/o/simple.jsp?pkgname=com.psyone.brainmusic" >
