@@ -40,7 +40,7 @@ export default {
     test () {
       const share = new Share({ pic: 'http://wx1.sinaimg.cn/mw690/006Zdy2vgy1fz52y1mnfnj309x09adg6.jpg', url: window.location.href.split('#')[0], title: '心声房间', desc: '心动时刻' })
       share.appShare()
-      share.rawWeiXinShare('https://api.psy-1.com')
+      share.rawWeiXinShare(this.url)
     },
     judgeWeiXin () {
       if (!/micromessenger/.test(navigator.userAgent.toLowerCase())) {
