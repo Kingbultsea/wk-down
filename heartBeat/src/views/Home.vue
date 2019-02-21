@@ -229,6 +229,7 @@ export default {
       font-family: "Noto Sans CJK SC";
       color: rgba(255, 255, 255, 0.6);
       font-size: px2html(12px);
+      word-wrap: break-word;
     }
     .template-asign {
       margin-top: px2html(15px);
