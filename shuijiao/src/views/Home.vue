@@ -301,8 +301,10 @@ export default {
     },
     created(){
         this.apiDianZan('https://api.debug.psy-1.com')
+        this.shuaXinZan('https://api.debug.psy-1.com')
     },
   mounted(){
+
 
       localStorage.removeItem('mark')
 

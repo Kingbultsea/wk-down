@@ -114,7 +114,7 @@
     }
 </style>
 
-<style>
+<style lang="scss">
     .rotate{
        // animation: rotate 7s infinite linear;
     }
