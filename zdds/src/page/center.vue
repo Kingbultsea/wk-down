@@ -77,6 +77,12 @@
                   </div>
               </div>
 
+              <div v-if="item.code_number == 10021" class="wjh">
+                  <div class="wjh-outer">
+                      <button @click.stop="toDeepLink(10021)" type="info">提交</button>
+                  </div>
+              </div>
+
 
 
 
@@ -209,6 +215,87 @@ export default {
 
 
       //另起炉灶
+      toDeepLink (code, tg) {
+           console.log(code)
+          const myCode = code
+
+          const that = this
+          let createIframe = (function () {
+              let iframe
+              return function () {
+                  if (iframe) {
+                      return iframe
+                  } else {
+                      iframe = document.createElement('iframe')
+                      iframe.style.display = 'none'
+                      document.body.appendChild(iframe)
+                      return iframe
+                  }
+              }
+          })()
+
+          let baseScheme = 'cosleep://'
+          let createScheme = function (options) {
+              let urlScheme = baseScheme
+              for (let item in options) {
+                  urlScheme = urlScheme + item + '=' + encodeURIComponent(options[item]) + '&'
+              }
+              urlScheme = urlScheme.substring(0, urlScheme.length - 1)
+              return encodeURIComponent(urlScheme)
+          }
+
+          let openApp = function () {
+              var localUrl = createScheme()
+              var openIframe = createIframe()
+              if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+                  // 判断是否是ios,具体的判断函数自行百度
+                  // alert("cosleep://deeplink?code=10010&music_detail_code="+that.code)
+
+                  window.location.href = 'cosleep://deeplink?code=' + myCode
+                  that.toDownLoad()
+
+                  var loadDateTime = Date.now()
+                  setTimeout(function () {
+                      var timeOutDateTime = Date.now()
+                      if (timeOutDateTime - loadDateTime < 1000) {
+                          // window.location.href = "cosleep://deeplink?code=10010&music_detail_code="+that.code
+                          // window.location.href = 'cosleep://deeplink?code=10010&music_detail_code=kZkCCukLd3CHWMWZ'
+                          // console.log(decodeURI("cosleep://deeplink?code=10010&music_detail_code="+that.code +"&"+ encodeURI( that.musicDetail() )))
+
+                          window.location.href = 'cosleep://deeplink?code=' + myCode
+                          that.toDownLoad()
+                      }
+                  }, 25)
+              } else if (!/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+                  // 判断是否是android，具体的判断函数自行百度
+                  /* if (false) {
+                    // chrome浏览器用iframe打不开得直接去打开，算一个坑
+                    window.location.href = localUrl
+                  } else {
+                    // 抛出你的scheme
+                    openIframe.src = localUrl
+                  } */
+                  // 抛出你的scheme
+                  openIframe.src = localUrl
+                  setTimeout(function () {
+                      // alert("cosleep://deeplink?code=10010&music_detail_code="+this.code)
+
+                      window.location.href = 'cosleep://deeplink?code=' + myCode
+                      that.toDownLoad()
+
+                      // window.location.href = 'cosleep://deeplink?code=10010&music_detail_code=kZkCCukLd3CHWMWZ'
+                  }, 500)
+              } else {
+                  // 主要是给winphone的用户准备的,实际都没测过，现在winphone不好找啊
+                  openIframe.src = localUrl
+                  setTimeout(function () {
+                      // window.location.href = 'https://www.heartide.com/download/smallsleep'
+                  }, 500)
+              }
+          }
+          openApp()
+      },
+
       //氛围脑波 播放音频组合
       one(){
 
