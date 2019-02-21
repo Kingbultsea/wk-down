@@ -92,7 +92,7 @@ export default {
             func_id:getQueryString('func_id'),
             func_type:getQueryString('func_type'),
             sharecode:getQueryString('sharecode'),
-            url:'https://api.debug.psy-1.com',
+            url:'https://api.psy-1.com',
             get_danmu_data: '',
             end: false,
             share_title:'',
@@ -155,7 +155,7 @@ export default {
 
               //share
               const share = new shareTool({pic:this.share_img, url:window.location.href.split('#')[0], title:this.share_title, desc:this.share_desc})
-              share.rawWeiXinShare('https://api.debug.psy-1.com')
+              share.rawWeiXinShare(this.url)
               if(this.$store.getters.isApp)  share.appInit()
 
 
@@ -300,11 +300,10 @@ export default {
         }
     },
     created(){
-        this.apiDianZan('https://api.debug.psy-1.com')
-        this.shuaXinZan('https://api.debug.psy-1.com')
     },
   mounted(){
-
+      this.apiDianZan(this.url)
+      this.shuaXinZan(this.url)
 
       localStorage.removeItem('mark')
 
