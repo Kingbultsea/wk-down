@@ -17,8 +17,8 @@
       </div>
     </div>
     <div class="content">
-      <!--{{heart.heart_content}}-->
-      夜色琉璃，浮生倥偬你凭栏垂眸，眼里荡漾开漫天灯火。你说星星拥抱月光，你说烟花亲吻沉云，你把深夜的钟声谱写成歌，温柔荡漾成眼底闪烁比秋天短，比世界长“为你，千千万万遍”晚安。哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+      {{heart.heart_content}}
+      <!-- 夜色琉璃，浮生倥偬你凭栏垂眸，眼里荡漾开漫天灯火。你说星星拥抱月光，你说烟花亲吻沉云，你把深夜的钟声谱写成歌，温柔荡漾成眼底闪烁比秋天短，比世界长“为你，千千万万遍”晚安。哈哈哈哈哈哈哈哈哈哈哈哈哈哈 -->
     </div>
     <div class="template-asign">
       <p class="asign">——— 小睡眠</p>
@@ -64,7 +64,7 @@ export default {
       console.log(anim) // 这里可以看到 lottie 对象的全部属性
     },
     heartBeat () {
-      // this.rate = JSON.parse(this.heart.heart_audio) // 正式服的时候可以开启
+      this.rate = JSON.parse(this.heart.heart_audio) // 正式服的时候可以开启
       let i = 0
       setInterval(() => {
         const speed = 1 * (this.rate[i] / 60)
