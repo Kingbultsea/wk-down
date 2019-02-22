@@ -128,6 +128,7 @@ export default {
       this.$parent.judgeWeiXin()
     },
     getData () {
+      this.$parent.password = this.parseQuery(document.URL).password
       axios.get(this.$parent.url + '/web/v1/cosleep/lab/heart/detail', {
         params: {
           password: this.parseQuery(document.URL).password || 88243482
