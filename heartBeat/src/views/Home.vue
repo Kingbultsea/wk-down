@@ -21,7 +21,7 @@
       <!-- 夜色琉璃，浮生倥偬你凭栏垂眸，眼里荡漾开漫天灯火。你说星星拥抱月光，你说烟花亲吻沉云，你把深夜的钟声谱写成歌，温柔荡漾成眼底闪烁比秋天短，比世界长“为你，千千万万遍”晚安。哈哈哈哈哈哈哈哈哈哈哈哈哈哈 -->
     </div>
     <div class="template-asign">
-      <p class="asign">——— 小睡眠</p>
+      <p class="asign">——— {{heart.name}}</p>
       <p class="asign2">{{date}}</p>
     </div>
     <div @click="toCenter" class="openToCenter">打开小睡眠体验</div>
@@ -45,7 +45,7 @@ export default {
       music_path: require('../assets/Heart.mp3'),
       number_list: ['', '', '', '', '', '', '', ''],
       date: WJH.dateFormat(new Date().getTime(), 'yyyy-MM-dd'),
-      heart: { heart_content: '', heart_audio: '', heart_password: '' },
+      heart: { heart_content: '', heart_audio: '', heart_password: '', name: '' },
       init_touch: false,
       rate: [60, 60, 60, 60, 120],
       defaultOptions: { animationData: Trophy, autoplay: false, loop: true },
@@ -137,6 +137,7 @@ export default {
         .then((response) => {
           console.log(response.data.data)
           this.heart = response.data.data
+          this.heart.name = response.data.data.heart_user_info.name
           this.number_list = ('' + this.heart.heart_password).split('')
           this.heartBeat()
           this.$parent.test(this.heart.heart_content)
