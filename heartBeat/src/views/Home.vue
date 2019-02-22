@@ -139,6 +139,7 @@ export default {
           this.heart = response.data.data
           this.number_list = ('' + this.heart.heart_password).split('')
           this.heartBeat()
+          this.$parent.test(this.heart.heart_content)
         })
         .catch(function (error) {
           console.log(error)

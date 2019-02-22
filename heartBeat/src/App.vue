@@ -38,8 +38,8 @@ export default {
     }
   },
   methods: {
-    test () {
-      const share = new Share({ pic: 'http://wx1.sinaimg.cn/mw690/006Zdy2vgy1fz52y1mnfnj309x09adg6.jpg', url: window.location.href.split('#')[0], title: '心声房间', desc: '心动时刻' })
+    test (desc) {
+      const share = new Share({ pic: 'http://wx1.sinaimg.cn/large/006Zdy2vgy1g0fd9no3cyj305f05fmwz.jpg', url: window.location.href.split('#')[0], title: '嘘~悄悄把心告诉你', desc: desc })
       share.appShare()
       share.rawWeiXinShare(this.url)
     },
@@ -139,7 +139,6 @@ export default {
     }
   },
   mounted () {
-    this.test()
   }
 }
 </script>
