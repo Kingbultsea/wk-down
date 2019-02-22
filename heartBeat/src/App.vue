@@ -90,7 +90,7 @@ export default {
           // 判断是否是ios,具体的判断函数自行百度
           // alert("cosleep://deeplink?code=10010&music_detail_code="+that.code)
 
-          window.location.href = 'cosleep://deeplink?code=' + myCode + '&password=' + this.password
+          window.location.href = 'cosleep://deeplink?code=' + myCode + '&password=' + that.password
           that.toDownLoad()
 
           var loadDateTime = Date.now()
@@ -101,7 +101,7 @@ export default {
               // window.location.href = 'cosleep://deeplink?code=10010&music_detail_code=kZkCCukLd3CHWMWZ'
               // console.log(decodeURI("cosleep://deeplink?code=10010&music_detail_code="+that.code +"&"+ encodeURI( that.musicDetail() )))
 
-              window.location.href = 'cosleep://deeplink?code=' + myCode + '&password=' + this.password
+              window.location.href = 'cosleep://deeplink?code=' + myCode + '&password=' + that.password
               that.toDownLoad()
             }
           }, 25)
@@ -119,7 +119,7 @@ export default {
           setTimeout(function () {
             // alert("cosleep://deeplink?code=10010&music_detail_code="+this.code)
 
-            window.location.href = 'cosleep://deeplink?code=' + + myCode + '&password=' + this.password
+            window.location.href = 'cosleep://deeplink?code=' + myCode + '&password=' + that.password
             that.toDownLoad()
 
             // window.location.href = 'cosleep://deeplink?code=10010&music_detail_code=kZkCCukLd3CHWMWZ'
@@ -128,6 +128,7 @@ export default {
           // 主要是给winphone的用户准备的,实际都没测过，现在winphone不好找啊
           openIframe.src = localUrl
           setTimeout(function () {
+            console.log('cosleep://deeplink?code=' + myCode + '&password=' + that.password)
             window.location.href = 'https://www.heartide.com/download/smallsleep'
           }, 500)
         }
