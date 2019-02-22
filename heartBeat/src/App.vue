@@ -44,7 +44,11 @@ export default {
       share.rawWeiXinShare(this.url)
     },
     judgeWeiXin () {
-      if (!/micromessenger/.test(navigator.userAgent.toLowerCase())) {
+      let z = null
+      if (window.navigator.userAgent.toLowerCase().match(/QQ/i)) {
+        z = window.navigator.userAgent.toLowerCase().match(/QQ/i)[0]
+      }
+      if (!/micromessenger/.test(navigator.userAgent.toLowerCase()) && z !== 'qq') {
         this.toCenter()
       } else {
         this.tips_toggle = true
