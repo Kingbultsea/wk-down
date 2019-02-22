@@ -79,6 +79,7 @@
 
               <div v-if="item.code_number == 10021" class="wjh">
                   <div class="wjh-outer">
+                      <input  @click.stop="showId" v-model="wjh.eleven" placeholder="password" style="width: 100%;background-color: #eee" />
                       <button @click.stop="toDeepLink(10021)" type="info">提交</button>
                   </div>
               </div>
@@ -137,7 +138,8 @@ export default {
               ten: {
                   one: '',
                   two: ''
-              }
+              },
+              eleven: ''
               },
           dsb:'',
           A:'',
@@ -217,6 +219,9 @@ export default {
       //另起炉灶
       toDeepLink (code, tg) {
            console.log(code)
+          if (this.wjh.eleven) {
+              code += '&password=' + this.wjh.eleven
+          }
           const myCode = code
 
           const that = this

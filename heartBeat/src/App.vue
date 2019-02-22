@@ -50,8 +50,11 @@ export default {
         this.tips_toggle = true
       }
     },
-    toDownLoad () {
+    toDownLoad (z) {
       setTimeout(function () {
+        if (z) {
+          console.log(z)
+        }
         window.location.href = 'https://www.heartide.com/download/smallsleep'
       }, 500)
     },
@@ -102,7 +105,7 @@ export default {
               // console.log(decodeURI("cosleep://deeplink?code=10010&music_detail_code="+that.code +"&"+ encodeURI( that.musicDetail() )))
 
               window.location.href = 'cosleep://deeplink?code=' + myCode + '&password=' + that.password
-              that.toDownLoad()
+              that.toDownLoad('cosleep://deeplink?code=' + myCode + '&password=' + that.password)
             }
           }, 25)
         } else if (!/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
@@ -120,7 +123,7 @@ export default {
             // alert("cosleep://deeplink?code=10010&music_detail_code="+this.code)
 
             window.location.href = 'cosleep://deeplink?code=' + myCode + '&password=' + that.password
-            that.toDownLoad()
+            that.toDownLoad('cosleep://deeplink?code=' + myCode + '&password=' + that.password)
 
             // window.location.href = 'cosleep://deeplink?code=10010&music_detail_code=kZkCCukLd3CHWMWZ'
           }, 500)
@@ -128,7 +131,6 @@ export default {
           // 主要是给winphone的用户准备的,实际都没测过，现在winphone不好找啊
           openIframe.src = localUrl
           setTimeout(function () {
-            console.log('cosleep://deeplink?code=' + myCode + '&password=' + that.password)
             window.location.href = 'https://www.heartide.com/download/smallsleep'
           }, 500)
         }
