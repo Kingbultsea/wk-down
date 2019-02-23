@@ -4,12 +4,15 @@
       <source  :src="music_path" type="audio/mpeg" >
     </audio>
     <img class="bg" src="../assets/cosleep_lab-heart_bg_bedroom@3x.png">
+    <img class="right-logic" src="../assets/rightLogic.png">
+    <div class="block-name">{{heart.name}}</div>
+    <div class="block-name-desc">录下一段迷人的心跳音，快来听听</div>
     <!-- <img class="img-heart-beat" src="../assets/cosleep_lab-heart_img_heart@3x.png" /> -->
     <div class="img-heart-beat">
       <lottie class="animation" :width="300" :height="300" :options="defaultOptions" v-on:animCreated="handleAnimation"/>
     </div>
     <div class="template-password">
-      <p class="title">· 我的专属心动密码 ·</p>
+      <p class="title">· 偷听密码 ·</p>
       <div class="template-number">
         <div class="number none-bg">-</div>
         <div class="number" v-for="(li, index) in number_list" :key="index">{{li}}</div>
@@ -21,8 +24,8 @@
       <!-- 夜色琉璃，浮生倥偬你凭栏垂眸，眼里荡漾开漫天灯火。你说星星拥抱月光，你说烟花亲吻沉云，你把深夜的钟声谱写成歌，温柔荡漾成眼底闪烁比秋天短，比世界长“为你，千千万万遍”晚安。哈哈哈哈哈哈哈哈哈哈哈哈哈哈 -->
     </div>
     <div class="template-asign">
-      <p class="asign">——— {{heart.name}}</p>
-      <p class="asign2">{{date}}</p>
+      <p class="asign">—— {{date}}</p>
+      <!-- <p class="asign2">—— {{date}}</p> -->
     </div>
     <div @click="toCenter" class="openToCenter">打开小睡眠体验</div>
   </div>
@@ -164,6 +167,28 @@ export default {
     align-items: center;
     z-index: 1;
     flex-direction: column;
+    .block-name {
+      position: absolute;
+      top: px2html(377px);
+      font-family: 'Noto Sans CJK SC Medium';
+      color: rgba(255, 255, 255, 0.8);
+      font-size: px2html(16px);
+      font-weight: 900;
+    }
+    .block-name-desc {
+      position: absolute;
+      top: px2html(411px);
+      font-family: 'Noto Sans CJK SC Medium';
+      color: rgba(255, 255, 255, 0.4);
+      font-size: px2html(14px);
+    }
+    .right-logic {
+      position: absolute;
+      right: px2html(15px);
+      top: px2html(15px);
+      width: px2html(45px);
+      height: px2html(105px);
+    }
     .bg {
       position: absolute;
       width: px2html(375px);
@@ -172,10 +197,12 @@ export default {
       z-index: -1;
     }
     .img-heart-beat {
-      padding-top: px2html(91px);
+      padding-top: px2html(51px);
       padding-left: px2html(4px);
-      width: px2html(120px);
-      height: px2html(120px);
+      width: px2html(160px);
+      height: px2html(160px);
+      position: relative;
+      top: px2html(-10px);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -241,6 +268,9 @@ export default {
       text-align: right;
       font-size: px2html(12px);
       width: px2html(295px);
+      .asign2 {
+        font-family: "Noto Sans CJK SC";
+      }
     }
     .openToCenter {
       opacity: 0.5;
