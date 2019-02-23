@@ -140,6 +140,10 @@ export default {
         .then((response) => {
           console.log(response.data.data)
           this.heart = response.data.data
+          if (parseInt(response.data.data.heart_user_info.sex) === 2) {
+            this.music_path = require('../assets/Heart2.mp3')
+            console.log(2)
+          }
           this.heart.name = response.data.data.heart_user_info.name
           this.number_list = ('' + this.heart.heart_password).split('')
           this.heartBeat()
