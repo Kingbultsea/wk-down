@@ -1,5 +1,5 @@
 <template>
-  <div class="home" :style="home_height">
+  <div @click="fm" class="home" :style="home_height">
     <audio  :src="music_path" ref="zz" id="myaudio" controls hidden>
       <source  :src="music_path" type="audio/mpeg" >
     </audio>
@@ -55,13 +55,24 @@ export default {
       animationSpeed: 1,
       anim: null,
       heart_width: 200,
-      heart_height: 200
+      heart_height: 200,
+      init_weibo: false
     }
   },
   components: {
     'lottie': Lottie
   },
   methods: {
+    fm () {
+      if (window.navigator.userAgent.toLowerCase().match(/weibo/i)) {
+        if (this.init_weibo) return
+        document.getElementById('myaudio').play()
+        if (!document.getElementById('myaudio').paused) {
+          this.anim.play()
+        }
+        this.init_weibo = true
+      }
+    },
     handleAnimation (anim) {
       this.anim = anim
       console.log(anim) // 这里可以看到 lottie 对象的全部属性
