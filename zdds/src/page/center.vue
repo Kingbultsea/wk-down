@@ -3,7 +3,12 @@
         <!-- <div class="all_code button_active" @click="getCode">
             点击获取
         </div> -->
-
+        <div  class="wjh">
+            <div class="wjh-outer">
+                <input   v-model="wjh.twelve" placeholder="跳转链接" style="width: 100%;background-color: #eee" />
+                <a :href="wjh.twelve"><button @click.stop="twelve" type="info">提交</button></a>
+            </div>
+        </div>
 
 
 
@@ -87,6 +92,10 @@
 
 
 
+
+
+
+
               <div v-if="item.code_number == 1051" class="input_container">
                   <span>topic_id:</span>
                   <input type="text" v-model="A" @click.stop="showId">
@@ -139,7 +148,8 @@ export default {
                   one: '',
                   two: ''
               },
-              eleven: ''
+              eleven: '',
+              twelve: ''
               },
           dsb:'',
           A:'',
@@ -457,7 +467,12 @@ export default {
               pre.recommend_id = this.wjh.ten.two
           }
           callAppRouter('Redirect',pre,function(err, result){})
-      }
+      },
+
+        twelve () {
+
+        }
+
 
 
 
