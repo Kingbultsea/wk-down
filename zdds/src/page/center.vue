@@ -5,6 +5,7 @@
         </div> -->
         <div  class="wjh">
             <div class="wjh-outer">
+                链接跳转
                 <input   v-model="wjh.twelve" placeholder="跳转链接" style="width: 100%;background-color: #eee" />
                 <a :href="wjh.twelve"><button @click.stop="twelve" type="info">提交</button></a>
             </div>
