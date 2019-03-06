@@ -90,6 +90,12 @@
                   </div>
               </div>
 
+              <div v-if="item.code_number == 10023" class="wjh">
+                  <div class="wjh-outer">
+                      <input  @click.stop="showId" v-model="wjh.twelve" placeholder="id" style="width: 100%;background-color: #eee" />
+                      <button @click.stop="twelve" type="info">提交</button>
+                  </div>
+              </div>
 
 
 
@@ -471,7 +477,13 @@ export default {
       },
 
         twelve () {
-
+            let pre = {
+                "code": 10023
+            }
+            if(this.wjh.twelve){
+                pre.id = this.wjh.twelve
+            }
+            callAppRouter('Redirect',pre,function(err, result){})
         }
 
 
