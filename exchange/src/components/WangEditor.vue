@@ -31,6 +31,7 @@
         },
         postData () {
             console.log(this.editorContent)
+            alert(this.editorContent)
             return
             this.loading = true
             axios.post('url', {
