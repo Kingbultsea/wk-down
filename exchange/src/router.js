@@ -14,7 +14,7 @@ export default new Router({
             component: Home
         },
         {
-            path: '/editor',
+            path: '/c',
             name: 'wangeditor',
             component: WangEditor
         },
