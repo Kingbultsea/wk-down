@@ -3,14 +3,19 @@
     <div class="title">报名成功</div>
     <div class="desc">请添加微信进入报名审核群审核成功后我们将 会在3月21日前通过电话或微信（yoning-wu） 的方式进行通知</div>
     <img class="QRblock" src="../assets/二维码.png">
-    <div class="more">更多详情</div>
+    <div class="more" @click="toDeatil">更多详情</div>
     <img class="bg" src="../assets/背景.png">
   </div>
 </template>
 
 <script>
 export default {
-  name: 'success'
+  name: 'success',
+  methods: {
+    toDeatil () {
+      this.$router.push('/detail')
+    }
+  }
 }
 </script>
 
