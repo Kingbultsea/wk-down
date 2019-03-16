@@ -47,11 +47,13 @@
 
 <script>
 // @ is an alias to /src
+import axios from 'axios'
 
 export default {
   name: 'home',
   data () {
     return {
+      url: 'https://api.debug.psy-1.com/',
       warning_show: false,
       warning_title: '重复报名',
       warning_desc: '你已经参与过报名了请耐心等待审核通知',
@@ -145,7 +147,29 @@ export default {
       }
     },
     dispatchData () {
-      this.$router.push('./success')
+      const data = {
+        mobile: this.user.phone,
+        name: this.user.name,
+        city: this.user.place,
+        wechat: this.user.weixin,
+        reason: this.user.desc
+      }
+      axios.post(this.url + 'web/v1/cosleep/activity/apply', data)
+        .then((res) => {
+          if (res.data.status === 1) {
+            this.$router.push('./success')
+          }
+          if (res.data.status === 34) {
+            this.warning_title = '重复报名'
+            this.warning_desc = '你已经参与过报名了请耐心等待审核通知'
+            this.warning_show = true
+          }
+        })
+        .catch(() => {
+          this.warning_title = '报名失败'
+          this.warning_desc = '遇上了一点点网络阻塞重试一下吧'
+          this.warning_show = true
+        })
     },
     checkPhone (e) {
     }
