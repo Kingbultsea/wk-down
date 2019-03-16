@@ -54,7 +54,7 @@ export default {
   name: 'home',
   data () {
     return {
-      url: 'https://api.debug.psy-1.com/',
+      url: 'https://api.psy-1.com/',
       warning_show: false,
       warning_title: '重复报名',
       warning_desc: '你已经参与过报名了请耐心等待审核通知',
