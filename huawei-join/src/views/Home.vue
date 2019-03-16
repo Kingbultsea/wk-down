@@ -48,6 +48,7 @@
 <script>
 // @ is an alias to /src
 import axios from 'axios'
+import Share from '@/js/shareAndGetName'
 
 export default {
   name: 'home',
@@ -113,6 +114,11 @@ export default {
   components: {
   },
   methods: {
+    test () {
+      const share = new Share({ pic: 'http://wx2.sinaimg.cn/mw690/006Zdy2vgy1fxj17qoz6gj30ds0eawer.jpg', url: window.location.href.split('#')[0], title: '华为应用市场&小睡眠 招募邀请', desc: '' })
+      share.appShare()
+      share.rawWeiXinShare(this.url)
+    },
     checkNull () {
       let canThough = true
       for (let i in this.user) {
@@ -175,6 +181,7 @@ export default {
     }
   },
   mounted () {
+    this.test()
     // this.$router.push('./success')
   }
 }

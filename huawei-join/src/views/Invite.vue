@@ -30,8 +30,8 @@ export default {
       width: px2html(71px);
       position: fixed;
       right: 0;
-      top: 50%;
-      transform: translateY(50%);
+      top: 90%;
+      transform: translateY(-100%);
     }
     .to-detail {
       position: absolute;
