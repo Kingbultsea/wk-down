@@ -131,11 +131,53 @@ normal">把身体瘦下来，同时更喜欢自己，也更加健康。</b><span
                 }
                     break;
                 case 14: {  // 超脑计划  --- 6
+                    this.title = '7天超脑计划'
                     this.rawHtmlData = `<h3><b>配套知识 - 脑力与情绪、心态</b></h3><p>前面提到过，过度紧张或者悲伤的时候，大脑常常无法思考问题，所以在介绍了提高大脑本身能力的方法之后，<b>今晚我们谈谈脑力与情绪、心态。某种程度上，它的重要性超过了提高脑力本身的方法，因为它决定了你是否可以在需要的时候正常发挥你的脑力。</b>想象一下，一个人抱着郁闷、疲累的心态，多么高的脑力也很难发挥出来，而另一个人是喜悦、活跃的心态，相信你能感觉出这是很不同的。因此，适度的放松，调节心情是有利于脑力发挥的，调节情绪的方法比如小睡眠<span>APP</span>内的治疗音乐、氛围音乐、放松引导，郊游或者运动都是不错的方式。</p><p>此外，<b>大脑的可塑性是双向的</b>，比如我有一次自卑的体验，然后在生活中不断地去强化这个体验，它在大脑中的区域也会不断地被强化，甚至可能扩大。相反，如果我的生活中不断地强化的是一次自信的体验，那么大脑中被强化的就是自信区域。更有趣是，头脑的可塑性是竞争的。也就是说，自信占据的区域越大，自卑能够占领的空间就会相应缩小，反之亦然。这并不意味盲目地自信就可以改变头脑的区域。自信是一种体验，不是一个目标，需要自然而然地发生。说得更明白点，自信不是指忽略掉自己的缺点，认为自己都是对的，比别人都好。而是指我能真实地看到自己的缺点，接受自己的缺点，也能看到自己的优点，并且有信心自己能变得更好。这样的自信带着一种走向希望的色彩。</p><p>但是，去改变已经习惯的思维模式是需要额外的意志力和行动力的，因为是要将大脑中不常用的区域激活并且不断去占领常用区域的领地。这个过程需要时不时停下来奖励自己。而大脑其实是有自己的两个奖励系统，第一个奖励系统与兴奋的快乐有关，这种兴奋的快乐通常是指<span>“</span>胃口<span>”</span>的快乐，当我们想象到某些想要的东西或者食物时，这个系统就会活化起来，它的神经传导物质都是跟多巴胺有关的生化物质。</p><p><b>另外一个奖励系统与满足的快乐有关，是一种完成的快乐，是得到了那个东西或是吃完了食物所带来的平静与满足感。它的生化物质是大脑中所分泌的脑内啡，给人宁静的感觉。</b></p><p>两个系统都是大脑的本能，但是当今的社会节奏，过多地活化了胃口的兴奋系统，忽略了完成的满足系统。所以我们会一直忙着从一个目标到下一个目标，而当每一个目标完成时，感觉好像心里就空了，然后马上投入到下一个目标，分泌更多的多巴胺让自己维持快乐，这样就很少会停下来体会满足感。所以，<span style="color: rgb(194, 79, 74);"><b>我会建议你在自己提高脑力的路程上，完成了一些小目标后，停下来体会一下头脑的满足快乐系统，这样的停顿不只会让你感到满足，也会鼓励你继续努力。形成一个正向循环，从而自我认同会越来越高，脑力也会越来越高。</b></span></p><p>今晚和明晚的练习就让我们来体会满足的快乐系统。在进入音频练习之前，请先准备两张<span>A4</span>的白纸，分别在纸上写上<span>“</span>过去<span>”</span>、<span>“</span>现在<span>”</span>。每张纸上只需要写一个词就行。今晚需要找一个无人打扰的私密空间，可以容纳你来回走一下的大小，然后把两张纸放在地上，两张纸间隔至少<span>1</span>米，空间足够的话<span>1.5</span>米至<span>2</span>米左右最好，按照图<span>6.1</span>摆放。准备好了就进入今晚的音频练习。</p><p><img src="http://wx4.sinaimg.cn/mw690/006Zdy2vgy1g12e3p1y7aj30p00e3q32.jpg" style="max-width:100%;"><br></p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; min-height: 14.0px}p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 12.0px Times; min-height: 14.0px}p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 12.0px Times}li.li1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}span.s1 {font: 12.0px Times}span.s2 {color: #ff2600}span.s3 {font: 12.0px 'Songti SC'}ul.ul1 {list-style-type: disc}</style></p><p style="text-align: center;">图 6.1</p>`
                 }
                     break;
                 case 15: {  // 超脑计划  --- 7
+                    this.title = '7天超脑计划'
                     this.rawHtmlData = `<h3><b>配套知识 - 超脑旅程</b></h3><p>今天是心潮睡眠超脑计划的最后一天，在前面的六天里，我们聊了好几个方面的知识，今天会把它们重新整理，让你看看它们之间的联系。</p><p>简单地说，如果提高脑力是一个目标，在走向这个目标的过程中，就好像一个人走路从起点到终点。这个人需要做些什么呢？首先肯定是备好能源，然后了解地图上起点和终点的位置，接着决定行走的最优路线，在行走过程中调整心态，还有允许自己获得充足的休息。</p><p><b>能源方面：</b>多吃有营养，尤其是对头脑有益的食物，以保证我们的头脑有足够的能量来源。比如三文鱼，核桃，黑巧克力等。</p><p><b>地图方面：</b>对于记忆力和创造力，熟悉它们相对应的脑区，有意识地想象自己的脑区点亮。</p><p><b>路线方面：</b>一是通过冥想与可视化练习来活跃相应的脑区；二是通过改变日常行为模式（换手刷牙等）来激活新的神经元，增强相关的脑力。</p><p><b>行走过程中的心态：</b>这个路程中，自己要站在自己的一边，时不时地停下来鼓励自己。实际生活中，我们很多人的心里都有一位法官或教练似的声音，不断地评判自己，打压自己，让自己变得更低。这样的陪伴很容易让自己变得更无力。有高标准不是件坏事，只是它不一定要以苦痛的方式，也能以爱和温柔的方式来实现。</p><p><b>睡眠和休息：</b>允许自己放松休息与足够的睡眠也是很重要的元素。头脑一方面要通过睡眠，尤其是深度睡眠，来巩固白天学到的知识和记忆；另一方面，在睡眠时神经胶质会将一天中累积的废弃物和毒素通过脑脊液排出大脑。</p><p><span>说了这么多知识，</span><span style="color: rgb(194, 79, 74);"><b>其实最重要就是一个基础</b><span><b>——</b></span><b>你和自己的关系要铁，会愿意正向地滋养自己。</b></span></p><p>在<span>“</span>自我<span>”</span>怀疑自己的时候，好友地对<span>“</span>自我<span>”</span>说<span>:“</span><b>就算全世界都不认同，你也要站在自己的感受身边</b>。<span>”</span>今晚的练习就让我们继续体验滋养自己。在进入今晚的音频之前，请先准备两张<span>A4</span>的白纸，分别在纸上写上<span>“</span>现在<span>”</span>、<span>“</span>将来<span>”</span>。每张纸上只需要写一个词就行，分别代表现在的时间点和将来的时间点。和昨晚一样找一个无人打扰的私密空间，可以容纳你来回走一下的大小，然后把两张纸放在地上，两张纸间隔至少<span>1</span>米，空间足够的话<span>1.5</span>米至<span>2</span>米左右最好，按照图<span>7.1</span>摆放。准备好了就进入今晚的音频练习。</p><p><img src="http://wx4.sinaimg.cn/mw690/006Zdy2vgy1g12e3seh9nj30p00e3dfz.jpg" style="max-width:100%;"><br></p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; min-height: 14.0px}p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'; color: #ff2600}p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 12.0px Times; min-height: 14.0px}p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 12.0px Times}li.li1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}span.s1 {font: 12.0px Times}span.s2 {color: #000000}span.s3 {font: 12.0px 'Songti SC'}ul.ul1 {list-style-type: disc}</style></p><p style="text-align: center;">图 7.1</p>`
+                }
+                    break;
+                case 16: {  // 涌泉穴
+                    this.title = ''
+                    this.rawHtmlData = `<h3>配套知识 - 涌泉穴</h3><p><img src="http://wx3.sinaimg.cn/mw690/006Zdy2vgy1g176p60k7xj30p00e3wel.jpg" style="max-width:100%;"><br></p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000}p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000; min-height: 12.0px}</style></p><p>涌泉穴位于脚底前半部凹陷处，大概在整个脚掌前三分之一处。</p>`
+                }
+                    break;
+                case 17: {  // 涌泉穴 --- 1
+                    this.title = '第一天 入门'
+                    this.rawHtmlData = `<h3>配套知识 - 感受腹部</h3><p><img src="http://wx1.sinaimg.cn/mw690/006Zdy2vgy1g176p8wuqcj30p00e3ab9.jpg" style="max-width:100%;"><br></p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000}p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000; min-height: 12.0px}</style></p><p>练习过程中需将双手放在腹部肚脐两侧。</p>`
+                }
+                    break;
+                case 18: {  // 涌泉穴 --- 2
+                    this.title = '第二天 - 睡姿'
+                    this.rawHtmlData = `<h3>配套知识 - 髋部</h3><p><img src="http://wx3.sinaimg.cn/mw690/006Zdy2vgy1g176pcgsxwj30p00e374o.jpg" style="max-width:100%;"><br></p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000}p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000; min-height: 12.0px}</style></p><p>练习过程中需将双腿弯曲，脚掌轻轻放在床面，双腿间距与髋部同宽。</p>`
+                }
+                    break;
+                case 19: {  // 涌泉穴 --- 3
+                    this.title = '第三天 - 呼吸的流动'
+                    this.rawHtmlData = `<h3>配套知识 - 胸腔</h3><p><img src="http://wx2.sinaimg.cn/mw690/006Zdy2vgy1g176peqp6cj30p00e3abp.jpg" style="max-width:100%;"><br></p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000}p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000; min-height: 12.0px}</style></p><p>练习过程中需将整个手掌都接触胸口，体会呼吸胸腔中发生。</p>`
+                }
+                    break;
+                case 20: {  // 涌泉穴 --- 4
+                    this.title = '第四天 - 抚触呼吸横膈膜'
+                    this.rawHtmlData = `<h3>配套知识 - 横膈膜</h3><p><img src="http://wx1.sinaimg.cn/mw690/006Zdy2vgy1g176ph6jrej30p00e3wg8.jpg" style="max-width:100%;"><br></p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000}p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000; min-height: 12.0px}</style></p><p>横膈膜在胸腔与腹腔之间，是一块薄薄的，形状像一顶帽子的肌肉组织，实际抚触定位在肋骨底部的两侧就好。</p>`
+                }
+                    break;
+                case 21: {  // 涌泉穴 --- 5
+                    this.title = '第五天 - 骨盆的休息'
+                    this.rawHtmlData = `<h3>配套知识 - 骨盆</h3><p><img src="http://wx3.sinaimg.cn/mw690/006Zdy2vgy1g176pqg44ej30p00e3taq.jpg" style="max-width:100%;"><br></p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000}p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000; min-height: 12.0px}</style></p><p>在本节练习中，骨盆所指的区域不仅是髋关节之间的骨头，而是小腹和大腿之间的整个范围。</p>`
+                }
+                    break;
+                case 22: {  // 涌泉穴 --- 6
+                    this.title = '第六天 - 肾脏的休息'
+                    this.rawHtmlData = `<h3>配套知识 - 肾脏</h3><p><img src="http://wx2.sinaimg.cn/mw690/006Zdy2vgy1g176pu0qrvj30p00e3aby.jpg" style="max-width:100%;"><br></p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000}p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000; min-height: 12.0px}</style></p><p>在本节练习中，这个部位是指后腰的两块区域，分别连结我们的左肾和右肾。</p>`
+                }
+                    break;
+                case 23: {  // 涌泉穴 --- 7
+                    this.title = '第七天 - 眼睛的休息'
+                    this.rawHtmlData = `<h3>配套知识 - 眼睛</h3><p><img src="http://wx4.sinaimg.cn/mw690/006Zdy2vgy1g176pwm28sj30p00e3wfq.jpg" style="max-width:100%;"><br></p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000}p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000; min-height: 12.0px}</style></p><p>练习过程中需将手掌盖住眼睛，手指在前额，掌心遮住眼睛，但并不接触。调整手掌以遮住尽可能多的光。</p>`
                 }
                     break;
 
