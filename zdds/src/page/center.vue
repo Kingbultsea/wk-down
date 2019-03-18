@@ -97,6 +97,13 @@
                   </div>
               </div>
 
+              <div v-if="item.code_number == 10024" class="wjh">
+                  <div class="wjh-outer">
+                      <input  @click.stop="showId" v-model="wjh.thirteen" placeholder="category_id" style="width: 100%;background-color: #eee" />
+                      <button @click.stop="thirteen" type="info">提交</button>
+                  </div>
+              </div>
+
 
 
 
@@ -156,7 +163,8 @@ export default {
                   two: ''
               },
               eleven: '',
-              twelve: ''
+              twelve: '',
+              thirteen: ''
               },
           dsb:'',
           A:'',
@@ -484,7 +492,18 @@ export default {
                 pre.id = this.wjh.twelve
             }
             callAppRouter('Redirect',pre,function(err, result){})
+        },
+
+        thirteen () {
+            let pre = {
+                "code": 10024
+            }
+            if(this.wjh.thirteen){
+                pre.category_id = this.wjh.thirteen
+            }
+            callAppRouter('Redirect',pre,function(err, result){})
         }
+
 
 
 
