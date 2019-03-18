@@ -7,15 +7,20 @@
 </template>
 
 <script>
+import Share from '@/js/shareAndGetName'
+
 export default {
   data () {
     return {
-      a: ''
+      a: '',
+      url: 'https://api.psy-1.com/'
     }
   },
   methods: {
     test () {
-      console.log('?????')
+      const share = new Share({ pic: 'http://wx2.sinaimg.cn/mw690/006Zdy2vgy1fxj17qoz6gj30ds0eawer.jpg', url: window.location.href.split('#')[0], title: '小睡眠线下交流会 招募邀请', desc: '' })
+      share.appShare()
+      share.rawWeiXinShare(this.url)
     }
   },
   mounted () {
