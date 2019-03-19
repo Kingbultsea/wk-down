@@ -15,6 +15,7 @@
                 <div class="bottom-dl">下&nbsp;&nbsp;载</div>
             </a>
         </div>
+        <!-- <img src="../assets/7天深度睡眠第二天配图.png"> -->
     </div>
 </template>
 
@@ -152,7 +153,7 @@ normal">把身体瘦下来，同时更喜欢自己，也更加健康。</b><span
                     break;
                 case 18: {  // 涌泉穴 --- 2
                     this.title = '第二天 - 睡姿'
-                    this.rawHtmlData = `<h3>配套知识 - 髋部</h3><p><img src="http://wx3.sinaimg.cn/mw690/006Zdy2vgy1g176pcgsxwj30p00e374o.jpg" style="max-width:100%;"><br></p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000}p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000; min-height: 12.0px}</style></p><p>练习过程中需将双腿弯曲，脚掌轻轻放在床面，双腿间距与髋部同宽。</p>`
+                    this.rawHtmlData = `<h3>配套知识 - 髋部</h3><p><img src="https://webres.psy-1.com/sgy/dist/img/7%E5%A4%A9%E6%B7%B1%E5%BA%A6%E7%9D%A1%E7%9C%A0%E7%AC%AC%E4%BA%8C%E5%A4%A9%E9%85%8D%E5%9B%BE.68452378.png" style="max-width:100%;"><br></p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000}p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000; min-height: 12.0px}</style></p><p>练习过程中需将双腿弯曲，脚掌轻轻放在床面，双腿间距与髋部同宽。</p>`
                 }
                     break;
                 case 19: {  // 涌泉穴 --- 3
