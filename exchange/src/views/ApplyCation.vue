@@ -157,7 +157,7 @@ normal">把身体瘦下来，同时更喜欢自己，也更加健康。</b><span
                     break;
                 case 19: {  // 涌泉穴 --- 3
                     this.title = '第三天 - 呼吸的流动'
-                    this.rawHtmlData = `<h3>配套知识 - 胸腔</h3><p><img src="http://wx2.sinaimg.cn/mw690/006Zdy2vgy1g176peqp6cj30p00e3abp.jpg" style="max-width:100%;"><br></p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000}p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000; min-height: 12.0px}</style></p><p>练习过程中需将整个手掌都接触胸口，体会呼吸胸腔中发生。</p>`
+                    this.rawHtmlData = `<h3>配套知识 - 胸腔</h3><p><img src="http://wx1.sinaimg.cn/mw690/006Zdy2vgy1g181fwclisj30p00e3abp.jpg" style="max-width:100%;"><br></p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000}p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000; min-height: 12.0px}</style></p><p>练习过程中需将整个手掌都接触胸口，体会呼吸胸腔中发生。</p>`
                 }
                     break;
                 case 20: {  // 涌泉穴 --- 4
