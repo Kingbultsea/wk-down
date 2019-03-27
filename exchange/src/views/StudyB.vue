@@ -127,7 +127,7 @@ export default {
         let onmove = false
         document.addEventListener('scroll', () => {
             let sTop = document.body.scrollTop + document.documentElement.scrollTop
-            if ((sTop / (document.body.clientHeight - document.documentElement.clientWidth)) >= 0.7) {
+            if ((sTop / (document.body.clientHeight - document.documentElement.clientWidth)) >= 0.44) {
                 // window.scrollTo(0, document.body.clientHeight / 2.3)
                 console.log('??')
                 if (onmove) {
@@ -216,7 +216,7 @@ export default {
         @return ($px / $rem) + rem;
     }
 .studyB {
-    padding-bottom: px2html(200px);
+    padding-bottom: px2html(900px);
     width: px2html(375px);
     box-sizing: border-box;
     padding-left: px2html(25px);
