@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import WangEditor from './components/WangEditor.vue'
 import ApplyCation from './views/ApplyCation.vue'
+import StudyB from './views/StudyB'
+import Result from './views/Result'
 
 Vue.use(Router)
 
@@ -12,6 +14,16 @@ export default new Router({
             path: '/a',
             name: 'home',
             component: Home
+        },
+        {
+            path: '/studyB',
+            name: 'studyB',
+            component: StudyB
+        },
+        {
+            path: '/result',
+            name: 'result',
+            component: Result
         },
         {
             path: '/c',
