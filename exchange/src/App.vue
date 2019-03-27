@@ -14,7 +14,7 @@
         },
         mounted() {
             console.log('?ss')
-            const share = new Share({ pic: 'http://wx3.sinaimg.cn/mw690/006Zdy2vgy1fzb9ms2vx4j30dr0drtaf.jpg', url: document.URL, title: '七天睡眠瘦身', desc: '小睡眠'})
+            const share = new Share({ pic: 'http://wx2.sinaimg.cn/mw690/006Zdy2vgy1fxj17qoz6gj30ds0eawer.jpg', url: 'https://a.app.qq.com/o/simple.jsp?pkgname=com.psyone.brainmusic', title: '小睡眠', desc: '小睡眠'})
             share.appShare()
         }
     }

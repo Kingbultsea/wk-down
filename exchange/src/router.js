@@ -16,7 +16,7 @@ export default new Router({
             component: Home
         },
         {
-            path: '/studyB',
+            path: '/studyb',
             name: 'studyB',
             component: StudyB
         },
