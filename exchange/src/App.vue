@@ -10,7 +10,7 @@
         data() {
             return {
                 darkMode: false,
-                url: 'https://api.debug.psy-1.com'
+                url: 'https://api.psy-1.com'
             }
         },
         mounted() {
