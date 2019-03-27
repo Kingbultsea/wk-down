@@ -15,7 +15,7 @@
         },
         mounted() {
             console.log('?ss')
-            const share = new Share({ pic: 'http://wx2.sinaimg.cn/mw690/006Zdy2vgy1fxj17qoz6gj30ds0eawer.jpg', url: document.URL, title: '学霸测评', desc: '如何唤醒内在学霸能力？'})
+            const share = new Share({ pic: 'http://wx4.sinaimg.cn/mw690/006Zdy2vly1g1hrv60ywyj30dr0drdfr.jpg', url: document.URL, title: '学霸测评', desc: '如何唤醒内在学霸能力？'})
             share.appShare()
             share.rawWeiXinShare(this.url)
         }
