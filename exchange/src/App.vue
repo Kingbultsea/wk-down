@@ -9,13 +9,15 @@
     export default {
         data() {
             return {
-                darkMode: false
+                darkMode: false,
+                url: 'https://api.debug.psy-1.com'
             }
         },
         mounted() {
             console.log('?ss')
-            const share = new Share({ pic: 'http://wx2.sinaimg.cn/mw690/006Zdy2vgy1fxj17qoz6gj30ds0eawer.jpg', url: 'https://a.app.qq.com/o/simple.jsp?pkgname=com.psyone.brainmusic', title: '小睡眠', desc: '小睡眠'})
+            const share = new Share({ pic: 'http://wx2.sinaimg.cn/mw690/006Zdy2vgy1fxj17qoz6gj30ds0eawer.jpg', url: document.URL, title: '学霸测评', desc: '如何唤醒内在学霸能力？'})
             share.appShare()
+            share.rawWeiXinShare(this.url)
         }
     }
 </script>

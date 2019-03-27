@@ -124,7 +124,87 @@ export default {
         /*if (window.localStorage.getItem('result')) {
             this.$router.push('/result')
         } */
+        let onmove = false
+        document.addEventListener('scroll', () => {
+            let sTop = document.body.scrollTop + document.documentElement.scrollTop
+            if ((sTop / (document.body.clientHeight - document.documentElement.clientWidth)) >= 0.48) {
+                // window.scrollTo(0, document.body.clientHeight / 2.3)
+                console.log('??')
+                if (onmove) {
+                    return
+                }
+                document.querySelector('body').style.overflowY = 'hidden'
+            } else {
+                onmove = false
+            }
+            console.log(document.body.clientHeight - document.documentElement.clientWidth)
+
+        })
+
+        var startx, starty;
+        //获得角度
+        function getAngle(angx, angy) {
+            return Math.atan2(angy, angx) * 180 / Math.PI;
+        };
+
+        //根据起点终点返回方向 1向上 2向下 3向左 4向右 0未滑动
+        function getDirection(startx, starty, endx, endy) {
+            var angx = endx - startx;
+            var angy = endy - starty;
+            var result = 0;
+
+            //如果滑动距离太短
+            if (Math.abs(angx) < 2 && Math.abs(angy) < 2) {
+                return result;
+            }
+
+            var angle = getAngle(angx, angy);
+            if (angle >= -135 && angle <= -45) {
+                result = 1;
+            } else if (angle > 45 && angle < 135) {
+                result = 2;
+            } else if ((angle >= 135 && angle <= 180) || (angle >= -180 && angle < -135)) {
+                result = 3;
+            } else if (angle >= -45 && angle <= 45) {
+                result = 4;
+            }
+
+            return result;
+        }
+        //手指接触屏幕
+        document.addEventListener("touchstart", function(e) {
+            startx = e.touches[0].pageX;
+            starty = e.touches[0].pageY;
+        }, false);
+        //手指离开屏幕
+        document.addEventListener("touchend", function(e) {
+            var endx, endy;
+            endx = e.changedTouches[0].pageX;
+            endy = e.changedTouches[0].pageY;
+            var direction = getDirection(startx, starty, endx, endy);
+            switch (direction) {
+                case 0:
+
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    onmove = true
+                    document.querySelector('body').style.overflowY = 'scroll'
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+                default:
+            }
+        }, false);
+
         this.setSizeRem()
+        // document.querySelector('#app').style.overflow = 'hidden'
+        // document.querySelector('#app').style.height = '100Vh'
     }
 
 }
@@ -136,7 +216,7 @@ export default {
         @return ($px / $rem) + rem;
     }
 .studyB {
-    padding-bottom: px2html(400px);
+    padding-bottom: px2html(700px);
     width: px2html(375px);
     box-sizing: border-box;
     padding-left: px2html(25px);
