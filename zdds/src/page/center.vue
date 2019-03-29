@@ -104,10 +104,19 @@
                   </div>
               </div>
 
-              <div v-if="item.code_number == 10024" class="wjh">
+              <div v-if="item.code_number == 10025" class="wjh">
                   <div class="wjh-outer">
-                      <input  @click.stop="showId" v-model="wjh.thirteen" placeholder="category_id" style="width: 100%;background-color: #eee" />
-                      <button @click.stop="thirteen" type="info">提交</button>
+                      <input  @click.stop="showId" v-model="wjh.fourteen.one" placeholder="goods_id" style="width: 100%;background-color: #eee" />
+                      <input  @click.stop="showId" v-model="wjh.fourteen.two" placeholder="goods_badge_text" style="width: 100%;background-color: #eee" />
+                      <button @click.stop="fourteen" type="info">提交</button>
+                  </div>
+              </div>
+
+              <div v-if="item.code_number == 10017" class="wjh">
+                  <div class="wjh-outer">
+                      <input  @click.stop="showId" v-model="wjh.fifteen.one" placeholder="goods_id" style="width: 100%;background-color: #eee" />
+                      <input  @click.stop="showId" v-model="wjh.fifteen.two" placeholder="goods_badge_text" style="width: 100%;background-color: #eee" />
+                      <button @click.stop="fifteen" type="info">提交</button>
                   </div>
               </div>
 
@@ -171,7 +180,15 @@ export default {
               },
               eleven: '',
               twelve: '',
-              thirteen: ''
+              thirteen: '',
+              fourteen: {
+                  one: '',
+                  two: ''
+              },
+              fifteen: {
+                  one: '',
+                  two: ''
+              }
               },
           dsb:'',
           A:'',
@@ -507,6 +524,32 @@ export default {
             }
             if(this.wjh.thirteen){
                 pre.category_id = this.wjh.thirteen
+            }
+            callAppRouter('Redirect',pre,function(err, result){})
+        },
+
+        fourteen () {
+            let pre = {
+                "code": 10025
+            }
+            if(this.wjh.fourteen.one){
+                pre.goods_id = this.wjh.fourteen.one
+            }
+            if (this.wjh.fourteen.two) {
+                pre.goods_badge_text = this.wjh.fourteen.two
+            }
+            callAppRouter('Redirect',pre,function(err, result){})
+        },
+
+        fifteen () {
+            let pre = {
+                "code": 10017
+            }
+            if(this.wjh.fifteen.one){
+                pre.goods_id = this.wjh.fifteen.one
+            }
+            if (this.wjh.fifteen.two) {
+                pre.goods_badge_text = this.wjh.fifteen.two
             }
             callAppRouter('Redirect',pre,function(err, result){})
         }
