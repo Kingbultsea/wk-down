@@ -104,6 +104,13 @@
                   </div>
               </div>
 
+              <div v-if="item.code_number == 10024" class="wjh">
+                  <div class="wjh-outer">
+                      <input  @click.stop="showId" v-model="wjh.thirteen" placeholder="category_id" style="width: 100%;background-color: #eee" />
+                      <button @click.stop="thirteen" type="info">提交</button>
+                  </div>
+              </div>
+
 
 
 
