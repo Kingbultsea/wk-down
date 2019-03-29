@@ -15,7 +15,10 @@
                 <div class="bottom-dl">下&nbsp;&nbsp;载</div>
             </a>
         </div>
-        <!-- <img src="../assets/7天深度睡眠第二天配图.png"> -->
+        <!-- <img src="../assets/小睡眠课程专题配图_碎片化睡眠改善-01.png">
+        <img src="../assets/02f.png">
+        <img src="../assets/小睡眠课程专题配图_碎片化睡眠改善-03.png">
+        <img src="../assets/小睡眠课程专题配图_碎片化睡眠改善-04.png"> -->
     </div>
 </template>
 
@@ -179,6 +182,11 @@ normal">把身体瘦下来，同时更喜欢自己，也更加健康。</b><span
                 case 23: {  // 涌泉穴 --- 7
                     this.title = '第七天 - 眼睛的休息'
                     this.rawHtmlData = `<h3>配套知识 - 眼睛</h3><p><img src="http://wx4.sinaimg.cn/mw690/006Zdy2vgy1g176pwm28sj30p00e3wfq.jpg" style="max-width:100%;"><br></p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000}p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 16.0px; font: 11.0px 'Helvetica Neue'; color: #000000; min-height: 12.0px}</style></p><p>练习过程中需将手掌盖住眼睛，手指在前额，掌心遮住眼睛，但并不接触。调整手掌以遮住尽可能多的光。</p>`
+                }
+                    break;
+                case 24: {  // 碎片化睡眠改善 --- 配套知识 - 调整睡姿练习
+                    this.title = '配套知识 - 调整睡姿练习'
+                    this.rawHtmlData = `<h3>配套知识 -&nbsp;调整睡姿练习</h3><p>请仔细阅读以下图文内容，先了解练习过程中需要掌握的睡姿，以便获得更好的练习效果。</p><p>姿势1&nbsp;-&nbsp;起始姿势</p><p>首先拿走你的枕头，平躺在床上，双膝弯曲，脚掌自然轻轻放在床面。脸部先正对天花板。</p><p><img src="https://webres.psy-1.com/sgy/dist/img/%E5%B0%8F%E7%9D%A1%E7%9C%A0%E8%AF%BE%E7%A8%8B%E4%B8%93%E9%A2%98%E9%85%8D%E5%9B%BE_%E7%A2%8E%E7%89%87%E5%8C%96%E7%9D%A1%E7%9C%A0%E6%94%B9%E5%96%84-01.27be89fd.png" style="max-width:100%;"><br></p><p style="text-align: center;">图1</p><p>姿势2 -&nbsp;把下巴往下压的姿势</p><p>缓缓地把下巴往下压，头可以随之抬起，到眼睛能够看到放在胸口的手为止。</p><p><img src="http://wx4.sinaimg.cn/mw690/006Zdy2vly1g1jtsjtg63j30p00e3gmc.jpg" style="max-width:100%;"><br></p><p style="text-align: center;">图2</p><p>姿势3&nbsp;-&nbsp;抬起下巴的姿势</p><p>再慢慢抬起下巴到起始的位置。接着继续把下巴往上抬，你的脖子下面会形成一个弯弓的空间。</p><p><img src="https://webres.psy-1.com/sgy/dist/img/小睡眠课程专题配图_碎片化睡眠改善-03.00966e83.png" style="max-width:100%;"><br></p><p style="text-align: center;">图3</p><p>姿势4&nbsp;-&nbsp;身体内部感觉练习的姿势</p><p>邀请你把右手手掌朝下，一部分放在左腋下，其余自然搭在胸口上；然后左手手掌朝下，绕过胸口，抱住你的右手上臂。</p><p><img src="https://webres.psy-1.com/sgy/dist/img/%E5%B0%8F%E7%9D%A1%E7%9C%A0%E8%AF%BE%E7%A8%8B%E4%B8%93%E9%A2%98%E9%85%8D%E5%9B%BE_%E7%A2%8E%E7%89%87%E5%8C%96%E7%9D%A1%E7%9C%A0%E6%94%B9%E5%96%84-04.d098932f.png" style="max-width:100%;"><br></p><p style="text-align: center;">图4</p>`
                 }
                     break;
 
