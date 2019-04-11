@@ -40,17 +40,17 @@ export default {
     }
     >.open-remeber {
       position: absolute;
-      top: px2html(580px);
-      width: px2html(140px);
-      height: px2html(30px);
+      top: px2html(585px);
+      width: px2html(170px);
+      height: px2html(40px);
       right: 50%;
       transform: translateX(50%);
     }
     >.get-in {
       position: absolute;
-      top: px2html(870px);
-      width: px2html(140px);
-      height: px2html(30px);
+      top: px2html(890px);
+      width: px2html(170px);
+      height: px2html(40px);
       right: 50%;
       transform: translateX(50%);
     }
