@@ -19,9 +19,9 @@ export default {
   },
   methods: {
     test (desc) {
-      const share = new Share({ pic: 'http://wx1.sinaimg.cn/large/006Zdy2vgy1g0fd9no3cyj305f05fmwz.jpg', url: window.location.href.split('#')[0], title: '嘘~悄悄把心告诉你', desc: desc })
-      share.appShare()
-      share.rawWeiXinShare(this.url)
+      // const share = new Share({ pic: 'http://wx1.sinaimg.cn/large/006Zdy2vgy1g0fd9no3cyj305f05fmwz.jpg', url: window.location.href.split('#')[0], title: '嘘~悄悄把心告诉你', desc: desc })
+      // share.appShare()
+      // share.rawWeiXinShare(this.url)
     }
   },
   mounted () {
