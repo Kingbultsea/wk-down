@@ -938,3 +938,4 @@ $traceurRuntime.ModuleStore.getAnonymousModule(function() {
     return {};
 });
 //# sourceURL=traceured.js
+console.log('??')
