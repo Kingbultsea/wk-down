@@ -15,24 +15,34 @@
     background:rgba(0,0,0,0)!important;
   }</style>
 <script>
-    var Xinchao = {}
-    Xinchao.Web ={}
-    var callAppRouter= function (method, params, callback) {
+    console.log('???ff');
+    var Xinchao = {};
+    Xinchao.Web = {};
+
+    var callAppRouter = function callAppRouter(method, params, callback) {
         var req = {
-            'Method': method,
-            'Data': params
-        },cbName = `CB_1555658277186_5`;
-        req=JSON.stringify(req);
-        Xinchao.Web[cbName] =  function(err, result) {
-            if(callback){
+                'Method': method,
+                'Data': params
+            },
+            cbName = "CB_1555658277186_5";
+        req = JSON.stringify(req);
+
+        Xinchao.Web[cbName] = function (err, result) {
+            if (callback) {
                 callback(err, result);
             }
+
             delete Xinchao.Web[cbName];
         };
+
         if (/(iPhone|iPad|iPod)/i.test(navigator.userAgent)) {
-            window.webkit.messageHandlers.XinchaoApp.postMessage({req, cbName});
+            window.webkit.messageHandlers.XinchaoApp.postMessage({
+                req: req,
+                cbName: cbName
+            });
         } else {
             XinchaoApp.callRouter(req, cbName);
         }
-    }</script>
+    };
+</script>
 </html>
