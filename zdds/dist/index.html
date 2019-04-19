@@ -1,34 +1,6 @@
 <!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,user-scalable=no"><title>app_for_api</title><script>
-    var Xinchao = {};
-    Xinchao.Web = {};
-
-    var callAppRouter = function callAppRouter(method) {
-        var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-        var callback = arguments.length > 2 ? arguments[2] : undefined;
-        var req = {
-                'Method': method,
-                'Data': params
-            },
-            cbName = "CB_1555660311077_8";
-        req = JSON.stringify(req);
-
-        Xinchao.Web[cbName] = function (err, result) {
-            if (callback) {
-                callback(err, result);
-            }
-
-            delete Xinchao.Web[cbName];
-        };
-
-        if (/(iPhone|iPad|iPod)/i.test(navigator.userAgent)) {
-            window.webkit.messageHandlers.XinchaoApp.postMessage({
-                req: req,
-                cbName: cbName
-            });
-        } else {
-            XinchaoApp.callRouter(req, cbName);
-        }
-    };
+    console.log('ssd33')
+    
 console.log('ssd33')
 </script><script src=https://cdnjs.cloudflare.com/ajax/libs/vConsole/3.2.0/vconsole.min.js></script><script>// init vConsole
       var vConsole = new VConsole();
