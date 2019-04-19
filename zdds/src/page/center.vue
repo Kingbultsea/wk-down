@@ -206,11 +206,11 @@ export default {
     methods: {
        getCode(){
            var _this = this;
-           codeList().then(response => {
+           /* codeList().then(response => {
                console.log(response)
                _this.codeArr = response.data.data
                console.log(_this.codeArr)
-           })
+           }) */
        },
        redirectCtrl: function(code){
             callAppRouter('Redirect',{
