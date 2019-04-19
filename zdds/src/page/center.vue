@@ -159,6 +159,7 @@
 
 <script>
 import {codeList} from '../api/music.js'
+import axios from 'axios'
 export default {
     name: 'Center',
     data (){
@@ -206,10 +207,16 @@ export default {
     methods: {
        getCode(){
            var _this = this;
-           /* codeList().then(response => {
-               console.log(response)
-               _this.codeArr = response.data.data
-               console.log(_this.codeArr)
+           const Http = new XMLHttpRequest()
+           Http.open('GET', 'https://api.psy-1.com/web/v1/cosleep/func/code')
+           Http.send()
+           Http.onreadystatechange = function(e) {
+               console.log(JSON.parse(e.currentTarget.response))
+               _this.codeArr = JSON.parse(e.currentTarget.response).data
+           }
+           /* axios.get('https://api.psy-1.com/web/v1/cosleep/func/code').then((data) => {
+               console.log(data)
+               this.codeArr = data.data.data
            }) */
        },
        redirectCtrl: function(code){
