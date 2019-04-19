@@ -538,6 +538,7 @@ export default {
             if (this.wjh.fourteen.two) {
                 pre.goods_badge_text = this.wjh.fourteen.two
             }
+            console.log('s')
             callAppRouter('Redirect',pre,function(err, result){})
         },
 

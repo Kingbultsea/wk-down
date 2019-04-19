@@ -40,7 +40,7 @@ module.exports = {
   },
   module: {
     rules: [
-      // ...(config.dev.useEslint ? [createLintingRule()] : []), 
+      // ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -48,8 +48,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+        loader: 'babel-loader'
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
