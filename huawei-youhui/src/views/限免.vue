@@ -1,8 +1,10 @@
 <template>
   <div class="xm" :style="home_height">
     <img class="ig" src="../assets/H5限时免费.jpg" />
-    <div @click="oo" class="open-remeber"></div>
-    <div @click="ooo" class="get-in"></div>
+    <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=521'"  class="open-remeber"></div>
+    <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=522'"  class="get-in"></div>
+    <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=523'" class="t"></div>
+    <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=518'" class="f"></div>
   </div>
 </template>
 
@@ -41,7 +43,7 @@ export default {
     }
     >.open-remeber {
       position: absolute;
-      top: px2html(585px);
+      top: px2html(385px);
       width: px2html(170px);
       height: px2html(40px);
       right: 50%;
@@ -49,7 +51,23 @@ export default {
     }
     >.get-in {
       position: absolute;
-      top: px2html(890px);
+      top: px2html(715px);
+      width: px2html(170px);
+      height: px2html(40px);
+      right: 50%;
+      transform: translateX(50%);
+    }
+    >.t {
+      position: absolute;
+      top: px2html(1050px);
+      width: px2html(170px);
+      height: px2html(40px);
+      right: 50%;
+      transform: translateX(50%);
+    }
+    >.f {
+      position: absolute;
+      top: px2html(1305px);
       width: px2html(170px);
       height: px2html(40px);
       right: 50%;
