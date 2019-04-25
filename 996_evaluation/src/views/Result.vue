@@ -15,7 +15,7 @@
           <img class="img" src="../assets/profile.jpg"/>
         </div>
         <img src="../assets/profile.jpg" class="QRblock">
-        <img class="title-img" src="../assets/结果页_slices/headline@3x.png"/>
+        <img class="title-img" src="../assets/tick@3x.png"/>
         <img v-show="tickOnePosition === 0" class="tick t1" src="../assets/tick@3x.png" />
         <img v-show="tickOnePosition === 1" class="tick t2" src="../assets/tick@3x.png" />
         <img v-show="tickOnePosition === 2" class="tick t3" src="../assets/tick@3x.png" />
