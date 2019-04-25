@@ -29,6 +29,7 @@ export default {
     }
   },
   mounted () {
+    document.title = '小睡眠每周限免活动'
   }
 }
 </script>
