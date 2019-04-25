@@ -2,6 +2,7 @@
   <div class="result">
     <div class="template" id="canvas">
       <div class="block"></div>
+      <img class="title-img" src="../assets/结果页_slices/headline@3x.png"/>
       <div class="content">
         <img src="../assets/frame@3x.png" style="width: 100%;height: 100%;position: absolute;left: 0px;top: 0px;">
         <div class="user-name">大白兔兔兔npm r</div>
@@ -15,7 +16,6 @@
           <img class="img" src="../assets/profile.jpg"/>
         </div>
         <img src="../assets/profile.jpg" class="QRblock">
-        <img class="title-img" src="../assets/tick@3x.png"/>
         <img v-show="tickOnePosition === 0" class="tick t1" src="../assets/tick@3x.png" />
         <img v-show="tickOnePosition === 1" class="tick t2" src="../assets/tick@3x.png" />
         <img v-show="tickOnePosition === 2" class="tick t3" src="../assets/tick@3x.png" />
@@ -124,7 +124,7 @@ export default {
       const dom = document.querySelector('#canvas')
       html2canvas(dom, { onclone: (document) => {
           document.querySelector('#canvas').style.visibility = 'initial'
-        } }).then((canvas) => {
+        }, useCORS: true }).then((canvas) => {
         const img = new Image()
         img.src = canvas.toDataURL()
         img.style.width = '113%'
@@ -235,7 +235,7 @@ export default {
       right: px2html(0px);
     }
     >.template {
-      // visibility: hidden;
+      visibility: hidden;
       position: relative;
       margin-top: px2html(11px);
       width: px2html(340px);
