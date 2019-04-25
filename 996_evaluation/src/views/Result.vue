@@ -196,8 +196,8 @@ export default {
     }
   },
   mounted () {
-    setTimeout()
     // this.parseToPic()
+    console.log(WJH.dateFormat(new Date(), 'yy年M月d日hh时m分s秒'))
     setTimeout(() => {
       this.parseToPic()
     }, 1000)
