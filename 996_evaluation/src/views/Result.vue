@@ -196,7 +196,11 @@ export default {
     }
   },
   mounted () {
+    setTimeout()
     // this.parseToPic()
+    setTimeout(() => {
+      this.parseToPic()
+    }, 1000)
     const r = JSON.parse(this.result)
     if (!r) {
       conosle.log('???')
@@ -231,7 +235,7 @@ export default {
       right: px2html(0px);
     }
     >.template {
-      // visibility: hidden;
+      visibility: hidden;
       position: relative;
       margin-top: px2html(11px);
       width: px2html(340px);
