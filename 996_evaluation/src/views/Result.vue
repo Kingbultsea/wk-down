@@ -199,7 +199,7 @@ export default {
     // this.parseToPic()
     console.log(WJH.dateFormat(new Date(), 'yy年M月d日hh时m分s秒'))
     setTimeout(() => {
-      // this.parseToPic()
+      this.parseToPic()
     }, 6000)
     const r = JSON.parse(this.result)
     if (!r) {
