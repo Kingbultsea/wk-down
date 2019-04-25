@@ -2,9 +2,8 @@
   <div class="result">
     <div class="template" id="canvas">
       <div class="block"></div>
-      <img class="title-img" src="../assets/结果页_slices/headline@3x.png"/>
       <div class="content">
-        <img src="https://webres.psy-1.com/sgy/dist/img/wireframe@3x.e481c880.png" style="width: 100%;height: 100%;position: absolute;left: 0px;top: 0px;">
+        <img src="../assets/frame@3x.png" style="width: 100%;height: 100%;position: absolute;left: 0px;top: 0px;">
         <div class="user-name">大白兔兔兔npm r</div>
         <div class="date">{{date}}</div>
         <div class="authenticate" v-for="(li, index) in authenticate" :key="index + 3">{{ li }}</div>
@@ -16,6 +15,7 @@
           <img class="img" src="../assets/profile.jpg"/>
         </div>
         <img src="../assets/profile.jpg" class="QRblock">
+        <img class="title-img" src="../assets/结果页_slices/headline@3x.png"/>
         <img v-show="tickOnePosition === 0" class="tick t1" src="../assets/tick@3x.png" />
         <img v-show="tickOnePosition === 1" class="tick t2" src="../assets/tick@3x.png" />
         <img v-show="tickOnePosition === 2" class="tick t3" src="../assets/tick@3x.png" />
