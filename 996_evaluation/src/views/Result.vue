@@ -5,7 +5,7 @@
       <img class="title-img" src="../assets/结果页_slices/headline@3x.png"/>
       <div class="content">
         <img src="../assets/frame@3x.png" style="width: 100%;height: 100%;position: absolute;left: 0px;top: 0px;">
-        <div class="user-name">大白兔兔兔兔</div>
+        <div class="user-name">大白兔兔兔npm r</div>
         <div class="date">{{date}}</div>
         <div class="authenticate" v-for="(li, index) in authenticate" :key="index + 3">{{ li }}</div>
         <div class="debt">你已经欠下了<span style="color: red">{{ time }}</span>小时的睡眠债</div>
