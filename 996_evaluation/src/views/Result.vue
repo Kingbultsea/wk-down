@@ -4,7 +4,7 @@
       <div class="block"></div>
       <img class="title-img" src="../assets/结果页_slices/headline@3x.png"/>
       <div class="content">
-        <img src="../assets/frame@3x.png" style="width: 100%;height: 100%;position: absolute;left: 0px;top: 0px;">
+        <img src="https://webres.psy-1.com/sgy/dist/img/wireframe@3x.e481c880.png" style="width: 100%;height: 100%;position: absolute;left: 0px;top: 0px;">
         <div class="user-name">大白兔兔兔npm r</div>
         <div class="date">{{date}}</div>
         <div class="authenticate" v-for="(li, index) in authenticate" :key="index + 3">{{ li }}</div>
@@ -199,7 +199,7 @@ export default {
     // this.parseToPic()
     console.log(WJH.dateFormat(new Date(), 'yy年M月d日hh时m分s秒'))
     setTimeout(() => {
-      this.parseToPic()
+      // this.parseToPic()
     }, 6000)
     const r = JSON.parse(this.result)
     if (!r) {
