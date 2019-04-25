@@ -9,6 +9,7 @@
 <script>
 import Share from '@/js/shareAndGetName'
 import '../node_modules/animate.css/animate.css'
+import Tool from './js/tool.js'
 
 export default {
   data () {
@@ -21,7 +22,9 @@ export default {
     test (desc) {
       const share = new Share({ pic: 'http://wx1.sinaimg.cn/large/006Zdy2vgy1g0fd9no3cyj305f05fmwz.jpg', url: window.location.href.split('#')[0], title: '嘘~悄悄把心告诉你', desc: desc })
       share.appShare()
-      share.appGetName()
+      if (Tool.is_cosleep()) {
+        share.appGetName()
+      }
       share.rawWeiXinShare(this.url)
       if (/micromessenger/.test(navigator.userAgent.toLowerCase())) {
         share.weatherCode()
