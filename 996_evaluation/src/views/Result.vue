@@ -25,7 +25,7 @@
           <img v-show="tickTwoPosition === 2" class="tick t6" src="../assets/tick@3x.png" />
         </div>
       </div>
-      <div class="button">安慰苦逼的你</div>
+      <div class="button" @click="toDownLoad">安慰苦逼的你</div>
     </div>
   </transition>
 </template>
@@ -41,7 +41,7 @@ export default {
   name: 'result',
   data () {
     return {
-      avatar: 'https://images.weserv.nl/?url=' + sessionStorage.getItem('avatar') || '',
+      avatar: 'https://images.weserv.nl/?url=' + sessionStorage.getItem('avatar') || 'http://thirdwx.qlogo.cn/mmopen/vi_32/jZK1ylHMa1ZkdgoNl5j05SokNt8FYRxwvB5hW319o8X7INiat8GyLiahEytvnNzM8CbtDca6nfgdl8xVIt1OXyCw/132',
       userName: sessionStorage.getItem('name') || '无名同学',
       time: 0,
       tickOnePosition: 0,
@@ -124,6 +124,9 @@ export default {
 
   },
   methods: {
+    toDownLoad () {
+      this.$router.push('./download')
+    },
     parseToPic () {
       const dom = document.querySelector('#canvas')
       html2canvas(dom, { onclone: (document) => {
@@ -252,7 +255,7 @@ export default {
       right: px2html(0px);
     }
     >.template {
-      // visibility: hidden;
+      visibility: hidden;
       position: relative;
       margin-top: px2html(11px);
       width: px2html(340px);

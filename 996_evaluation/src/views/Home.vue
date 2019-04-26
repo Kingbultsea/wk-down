@@ -6,7 +6,9 @@
       <img src="../assets/03.gif"/>
       <span>开始测试</span>
     </div>
-    <img class="btn-tocosleep" src="../assets/首页/btn_tocosleep.gif">
+    <a target="view_window" href="https://a.app.qq.com/o/simple.jsp?pkgname=com.psyone.brainmusic">
+      <img class="btn-tocosleep" src="../assets/首页/btn_tocosleep.gif">
+    </a>
   </div>
 </template>
 
@@ -88,7 +90,7 @@ export default {
         font-size: px2html(13px);
       }
     }
-    >.btn-tocosleep {
+    .btn-tocosleep {
       padding-top: px2html(10px);
       width: px2html(100px);
       height: px2html(25px);
