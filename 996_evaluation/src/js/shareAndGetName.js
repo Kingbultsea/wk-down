@@ -138,9 +138,10 @@ export default class Share {
       const code = sessionStorage.getItem('code').replace(/code=/, '').replace(/\&.+/, '')
 
       $.get(url + '/web/v1/wechat/user', { code }, (data) => {
-        console.log('jq都不行？'); console.log(data)
-        sessionStorage.setItem('avatar', data.headimgurl)
-        sessionStorage.setItem('name', data.data.nickname)
+        if (data.hasOwnProperty('data')) {
+          sessionStorage.setItem('avatar', data.data.headimgurl)
+          sessionStorage.setItem('name', data.data.nickname)
+        }
       })
     }
   }
