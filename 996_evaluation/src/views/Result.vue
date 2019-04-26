@@ -41,7 +41,7 @@ export default {
   name: 'result',
   data () {
     return {
-      avatar: 'https://images.weserv.nl/?url='+ sessionStorage.getItem('avatar') || '',
+      avatar: 'https://images.weserv.nl/?url=http://thirdwx.qlogo.cn/mmopen/vi_32/jZK1ylHMa1ZkdgoNl5j05SokNt8FYRxwvB5hW319o8X7INiat8GyLiahEytvnNzM8CbtDca6nfgdl8xVIt1OXyCw/132' || '',
       userName: sessionStorage.getItem('name') || '无名同学',
       time: 0,
       tickOnePosition: 0,
@@ -343,11 +343,11 @@ export default {
           >.img {
             position: relative;
             z-index: 99;
-            margin-left: px2html(-5px);
-            width: px2html(43px);
-            height: px2html(43px);
-            margin-top: px2html(4px);
-            border-radius: px2html(10px);
+            margin-left: px2html(-4px);
+            width: px2html(40px);
+            height: px2html(40px);
+            margin-top: px2html(5px);
+            border-radius: px2html(8px);
           }
         }
         >.tick {
