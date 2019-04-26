@@ -139,6 +139,7 @@ export default class Share {
 
       $.get(url + '/web/v1/wechat/user', { code }, (data) => {
         if (data.hasOwnProperty('data')) {
+          console.log(data)
           sessionStorage.setItem('avatar', data.data.headimgurl)
           sessionStorage.setItem('name', data.data.nickname)
         }
