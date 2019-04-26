@@ -16,7 +16,7 @@
             <img class="bg" style="width: 100%;height: 100%;position: absolute" src="../assets/z/frame@3x.png">
             <img class="img" ref="myImg" :src="avatar"/>
           </div>
-          <img src="../assets/profile.jpg" class="QRblock">
+          <img src="../assets/block.png" class="QRblock">
           <img v-show="tickOnePosition === 0" class="tick t1" src="../assets/tick@3x.png" />
           <img v-show="tickOnePosition === 1" class="tick t2" src="../assets/tick@3x.png" />
           <img v-show="tickOnePosition === 2" class="tick t3" src="../assets/tick@3x.png" />
@@ -41,7 +41,7 @@ export default {
   name: 'result',
   data () {
     return {
-      avatar: 'https://images.weserv.nl/?url=' + sessionStorage.getItem('avatar') || 'http://thirdwx.qlogo.cn/mmopen/vi_32/jZK1ylHMa1ZkdgoNl5j05SokNt8FYRxwvB5hW319o8X7INiat8GyLiahEytvnNzM8CbtDca6nfgdl8xVIt1OXyCw/132',
+      avatar: 'https://images.weserv.nl/?url=' + (sessionStorage.getItem('avatar') || 'http://thirdwx.qlogo.cn/mmopen/vi_32/jZK1ylHMa1ZkdgoNl5j05SokNt8FYRxwvB5hW319o8X7INiat8GyLiahEytvnNzM8CbtDca6nfgdl8xVIt1OXyCw/132'),
       userName: sessionStorage.getItem('name') || '无名同学',
       time: 0,
       tickOnePosition: 0,
