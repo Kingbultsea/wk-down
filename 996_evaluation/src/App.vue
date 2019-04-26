@@ -15,28 +15,30 @@ export default {
   data () {
     return {
       a: '',
-      url: 'https://api.debug.psy-1.com'
+      url: 'https://api.debug.psy-1.com',
+      share: ''
     }
   },
   methods: {
-    share (title, desc) {
+    shareM (title, desc) {
       const share = new Share({ pic: 'http://wx1.sinaimg.cn/large/006Zdy2vgy1g0fd9no3cyj305f05fmwz.jpg', url: window.location.href.split('#')[0], title: title, desc: desc })
+      this.share = share
       share.appShare()
       share.rawWeiXinShare(this.url)
     },
     test () {
       if (Tool.is_cosleep()) {
-        share.appGetName()
+        this.share.appGetName()
       }
       if (/micromessenger/.test(navigator.userAgent.toLowerCase())) {
-        share.weiXinInit(this.url)
-        share.weatherCode()
-        share.weiXinGetName(this.url)
+        this.share.weiXinInit(this.url)
+        this.share.weatherCode()
+        this.share.weiXinGetName(this.url)
       }
     }
   },
   mounted () {
-    this.share('有种工伤叫"熬夜"', '测一测你是几级工伤')
+    this.shareM('有种工伤叫"熬夜"', '测一测你是几级工伤')
     this.test()
   }
 }

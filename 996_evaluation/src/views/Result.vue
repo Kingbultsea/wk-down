@@ -232,7 +232,7 @@ export default {
     )
     let changeToLuoMa = ['I', 'II', 'III']
     let type = ['报复性熬夜', '被迫式熬夜', '习惯性熬夜']
-    this.$parent.share(`我是${changeToLuoMa[this.tickTwoPosition]}级工伤，属于${type[this.tickOnePosition]}，你呢？`, '和我一起PK，看看谁伤得更重')
+    this.$parent.shareM(`我是${changeToLuoMa[this.tickTwoPosition]}级工伤，属于${type[this.tickOnePosition]}，你呢？`, '和我一起PK，看看谁伤得更重')
   }
 }
 </script>
