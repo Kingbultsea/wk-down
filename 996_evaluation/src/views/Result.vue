@@ -41,7 +41,7 @@ export default {
   name: 'result',
   data () {
     return {
-      avatar: sessionStorage.getItem('avatar') || '',
+      avatar: 'https://images.weserv.nl/?url='+ sessionStorage.getItem('avatar') || '',
       userName: sessionStorage.getItem('name') || '无名同学',
       time: 0,
       tickOnePosition: 0,
