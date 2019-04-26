@@ -26,11 +26,11 @@ export default {
         share.appGetName()
       }
       share.rawWeiXinShare(this.url)
-      /* if (/micromessenger/.test(navigator.userAgent.toLowerCase())) {
+      if (/micromessenger/.test(navigator.userAgent.toLowerCase())) {
         share.weiXinInit(this.url)
         share.weatherCode()
         share.weiXinGetName(this.url)
-      } */
+      }
     }
   },
   mounted () {
