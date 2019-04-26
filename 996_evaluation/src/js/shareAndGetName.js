@@ -62,10 +62,10 @@ export default class Share {
         this.callAppRouter('Login', {}, (err, result) => {
           try {
             const r = JSON.parse(result)
-            localStorage.setItem('name', r.data.name)
+            sessionStorage.setItem('name', r.data.name)
             console.log(r.data.name)
           } catch (e) {
-            localStorage.setItem('name', result.data.name)
+            sessionStorage.setItem('name', result.data.name)
             console.log(result.data.name)
           }
         })
@@ -108,8 +108,8 @@ export default class Share {
         console.log(getSDK.data.wechat_config)
         getSDK.data.wechat_config.debug = false
 
-        if (bl && !localStorage.getItem('name')) window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx632d4c99bd681cf3&redirect_uri=' + encodeURI(location.href.split('#')[0]) +'&response_type=code&scope=snsapi_userinfo#wechart_redirect'
-        if (!bl || localStorage.getItem('name')) {
+        if (bl && !sessionStorage.getItem('name')) window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx632d4c99bd681cf3&redirect_uri=' + encodeURI(location.href.split('#')[0]) +'&response_type=code&scope=snsapi_userinfo#wechart_redirect'
+        if (!bl || sessionStorage.getItem('name')) {
           wx.config(getSDK.data.wechat_config)
           that.weiXinShare()
           that.weiXinGetName(url)
@@ -129,13 +129,13 @@ export default class Share {
   }
 
   weiXinGetName (url) {
-    if (!localStorage.getItem('name')) {
+    if (!sessionStorage.getItem('name')) {
       console.log(code + 'asd你想要的' + sessionStorage.getItem('code'))
       const code = sessionStorage.getItem('code').replace(/code=/, '').replace(/\&.+/, '')
 
       $.get(url + '/web/v1/wechat/user', { code }, (data) => {
         console.log('jq都不行？'); console.log(data.data.nickname)
-        localStorage.setItem('name', data.data.nickname)
+        sessionStorage.setItem('name', data.data.nickname)
       })
     }
   }
@@ -169,13 +169,13 @@ export default class Share {
   }
 
   rawGetName () {
-    if (!localStorage.getItem('name')) {
+    if (!sessionStorage.getItem('name')) {
       console.log(code + 'asd你想要的' + sessionStorage.getItem('code'))
       const code = sessionStorage.getItem('code').replace(/code=/, '').replace(/\&.+/, '')
 
       $.get(url + '/web/v1/wechat/user', { code }, (data) => {
         console.log('jq都不行？'); console.log(data.data.nickname)
-        localStorage.setItem('name', data.data.nickname)
+        sessionStorage.setItem('name', data.data.nickname)
       })
     }
   }
