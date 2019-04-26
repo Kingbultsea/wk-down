@@ -25,7 +25,7 @@
           <img v-show="tickTwoPosition === 2" class="tick t6" src="../assets/tick@3x.png" />
         </div>
       </div>
-      <div class="button">蔡徐坤</div>
+      <div class="button">安慰苦逼的你</div>
     </div>
   </transition>
 </template>
@@ -371,6 +371,7 @@ export default {
       background-image: url("../assets/button@3x.png");
       background-size: 100% 100%;
       text-align: center;
+      font-size: px2html(15px);
       color: rgba(43, 43, 43, 1);
       font-size: px2html(15px);
       display: flex;
