@@ -41,7 +41,7 @@ export default {
   name: 'result',
   data () {
     return {
-      avatar: 'http://thirdwx.qlogo.cn/mmopen/vi_32/VqC3Eew7BqibIWdhEebibLeia34UL5egYy3niaoFppicdDYZ23XNxvyNnKCPBHAHgTz1QuLeEKEicBwgEzQPN8a1Dy3Q/132', // sessionStorage.getItem('avatar') || '',
+      avatar: sessionStorage.getItem('avatar') || '',
       userName: sessionStorage.getItem('name') || '无名同学',
       time: 0,
       tickOnePosition: 0,
@@ -215,15 +215,8 @@ export default {
     }
   },
   mounted () {
-    this.toBase64(this.avatar, (base64) => {
-      console.log(base64)
-    })
-
     console.log(sessionStorage.getItem('avatar'), '头像link', this.avatar)
-    setTimeout(() => {
-      this.parseToPic()
-    }, 4000)
-    // this.parseToPic()
+    this.parseToPic()
     console.log(WJH.dateFormat(new Date(), 'yy年M月d日hh时m分s秒'))
     const r = JSON.parse(this.result)
     if (!r) {
