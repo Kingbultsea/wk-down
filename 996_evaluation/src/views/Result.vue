@@ -25,7 +25,7 @@
           <img v-show="tickTwoPosition === 2" class="tick t6" src="../assets/tick@3x.png" />
         </div>
       </div>
-      <div class="button" @click="toDownLoad">安慰苦逼的你</div>
+      <div class="button" @click="toDownLoad">领取工伤补贴</div>
     </div>
   </transition>
 </template>
@@ -230,7 +230,9 @@ export default {
     console.log(
       this.tickOnePosition = this.occupationalInjuryType(r), r, this.tickTwoPosition = this.lv(r), this.authenticateAndAdvance(r)
     )
-    console.log(this.tickTwoPosition, '威海市呢么是是his222啊')
+    let changeToLuoMa = ['I', 'II', 'III']
+    let type = ['报复性熬夜', '被迫式熬夜', '习惯性熬夜']
+    this.$parent.share(`我是${changeToLuoMa[this.tickTwoPosition]}级工伤，属于${type[this.tickOnePosition]}，你呢？`, '和我一起PK，看看谁伤得更重')
   }
 }
 </script>

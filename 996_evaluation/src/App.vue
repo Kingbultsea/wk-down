@@ -19,13 +19,15 @@ export default {
     }
   },
   methods: {
-    test (desc) {
-      const share = new Share({ pic: 'http://wx1.sinaimg.cn/large/006Zdy2vgy1g0fd9no3cyj305f05fmwz.jpg', url: window.location.href.split('#')[0], title: '嘘~悄悄把心告诉你', desc: desc })
+    share (title, desc) {
+      const share = new Share({ pic: 'http://wx1.sinaimg.cn/large/006Zdy2vgy1g0fd9no3cyj305f05fmwz.jpg', url: window.location.href.split('#')[0], title: title, desc: desc })
       share.appShare()
+      share.rawWeiXinShare(this.url)
+    },
+    test () {
       if (Tool.is_cosleep()) {
         share.appGetName()
       }
-      share.rawWeiXinShare(this.url)
       if (/micromessenger/.test(navigator.userAgent.toLowerCase())) {
         share.weiXinInit(this.url)
         share.weatherCode()
@@ -34,6 +36,7 @@ export default {
     }
   },
   mounted () {
+    this.share('有种工伤叫"熬夜"', '测一测你是几级工伤')
     this.test()
   }
 }
