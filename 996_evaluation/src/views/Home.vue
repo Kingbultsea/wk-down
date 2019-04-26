@@ -29,9 +29,16 @@ export default {
     start () {
       if (sessionStorage.getItem('name')) {  //又是上面的失误 看来这个情况挺严重的呀
         this.$router.push( {path:'/e'} )
-      } else {
-        alert('???缺没有' + sessionStorage.getItem('name'))
-        this.$router.push( {path:'/input'} )
+      }
+
+      if (!sessionStorage.getItem('name')) {
+        setTimeout(() => {
+          if (sessionStorage.getItem('name')) {  //又是上面的失误 看来这个情况挺严重的呀
+            this.$router.push( {path:'/e'} )
+          } else {
+            this.$router.push( {path:'/input'} )
+          }
+        }, 1000)
       }
     }
   },
