@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Evaluation from './views/Evaluation.vue'
 import Result from './views/Result.vue'
+import Input from './views/input.vue'
 
 Vue.use(Router)
 
@@ -12,6 +13,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/input',
+      name: 'input',
+      component: Input
     },
     {
       path: '/e',

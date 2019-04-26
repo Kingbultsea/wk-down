@@ -1,4 +1,5 @@
 <template>
+  <transition enter-active-class="animated fadeIn">
   <div class="evaluation">
     <div class="title">
       <div class="desc">{{tDesc}}</div>
@@ -9,6 +10,7 @@
       <div class="list" v-for="(li, index) in choice" :index="index" @click="clickEvent" :key="index">{{li}}</div>
     </div>
   </div>
+  </transition>
 </template>
 
 <script>

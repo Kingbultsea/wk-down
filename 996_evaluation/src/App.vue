@@ -24,7 +24,6 @@ export default {
       share.appShare()
       if (Tool.is_cosleep()) {
         share.appGetName()
-        console.log('????')
       }
       share.rawWeiXinShare(this.url)
       if (/micromessenger/.test(navigator.userAgent.toLowerCase())) {

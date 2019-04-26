@@ -1,31 +1,33 @@
 <template>
-  <div class="result">
-    <div class="template" id="canvas">
-      <div class="block"></div>
-      <img class="title-img" src="../assets/结果页_slices/headline@3x.png"/>
-      <div class="content">
-        <img src="../assets/frame@3x.png" style="width: 100%;height: 100%;position: absolute;left: 0px;top: 0px;">
-        <div class="user-name">大白兔兔兔npm r</div>
-        <div class="date">{{date}}</div>
-        <div class="authenticate" v-for="(li, index) in authenticate" :key="index + 3">{{ li }}</div>
-        <div class="debt">你已经欠下了<span style="color: red">{{ time }}</span>小时的睡眠债</div>
-        <div class="advance" v-for="(li, index) in advance" :key="index">{{ li }}</div>
-        <div class="advance">此人耐操,无需休息,建议997</div>
-        <div class="profile">
-          <img class="bg" style="width: 100%;height: 100%;position: absolute" src="../assets/z/frame@3x.png">
-          <img class="img" src="../assets/profile.jpg"/>
+  <transition enter-active-class="animated fadeIn">
+    <div class="result">
+      <div class="template" id="canvas">
+        <div class="block"></div>
+        <img class="title-img" src="../assets/结果页_slices/headline@3x.png"/>
+        <div class="content">
+          <img src="../assets/frame@3x.png" style="width: 100%;height: 100%;position: absolute;left: 0px;top: 0px;">
+          <div class="user-name">{{ userName }}</div>
+          <div class="date">{{date}}</div>
+          <div class="authenticate" v-for="(li, index) in authenticate" :key="index + 3">{{ li }}</div>
+          <div class="debt">你已经欠下了<span style="color: red">{{ time }}</span>小时的睡眠债</div>
+          <div class="advance" v-for="(li, index) in advance" :key="index">{{ li }}</div>
+          <div class="advance">此人耐操,无需休息,建议997</div>
+          <div class="profile">
+            <img class="bg" style="width: 100%;height: 100%;position: absolute" src="../assets/z/frame@3x.png">
+            <img class="img" src="../assets/profile.jpg"/>
+          </div>
+          <img src="../assets/profile.jpg" class="QRblock">
+          <img v-show="tickOnePosition === 0" class="tick t1" src="../assets/tick@3x.png" />
+          <img v-show="tickOnePosition === 1" class="tick t2" src="../assets/tick@3x.png" />
+          <img v-show="tickOnePosition === 2" class="tick t3" src="../assets/tick@3x.png" />
+          <img v-show="tickTwoPosition === 0" class="tick t4" src="../assets/tick@3x.png" />
+          <img v-show="tickTwoPosition === 1" class="tick t5" src="../assets/tick@3x.png" />
+          <img v-show="tickTwoPosition === 2" class="tick t6" src="../assets/tick@3x.png" />
         </div>
-        <img src="../assets/profile.jpg" class="QRblock">
-        <img v-show="tickOnePosition === 0" class="tick t1" src="../assets/tick@3x.png" />
-        <img v-show="tickOnePosition === 1" class="tick t2" src="../assets/tick@3x.png" />
-        <img v-show="tickOnePosition === 2" class="tick t3" src="../assets/tick@3x.png" />
-        <img v-show="tickTwoPosition === 0" class="tick t4" src="../assets/tick@3x.png" />
-        <img v-show="tickTwoPosition === 1" class="tick t5" src="../assets/tick@3x.png" />
-        <img v-show="tickTwoPosition === 2" class="tick t6" src="../assets/tick@3x.png" />
       </div>
+      <div class="button">蔡徐坤</div>
     </div>
-    <div class="button">蔡徐坤</div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -39,6 +41,7 @@ export default {
   name: 'result',
   data () {
     return {
+      userName: sessionStorage.getItem('name') || '无名同学',
       time: 0,
       tickOnePosition: 0,
       tickTwoPosition: 0,
@@ -196,11 +199,8 @@ export default {
     }
   },
   mounted () {
-    // this.parseToPic()
+    this.parseToPic()
     console.log(WJH.dateFormat(new Date(), 'yy年M月d日hh时m分s秒'))
-    setTimeout(() => {
-      this.parseToPic()
-    }, 6000)
     const r = JSON.parse(this.result)
     if (!r) {
       conosle.log('???')
