@@ -30,6 +30,7 @@ export default {
       if (sessionStorage.getItem('name')) {  //又是上面的失误 看来这个情况挺严重的呀
         this.$router.push( {path:'/e'} )
       } else {
+        alert('???缺没有')
         this.$router.push( {path:'/input'} )
       }
     }
