@@ -63,8 +63,12 @@ export default class Share {
           try {
             const r = JSON.parse(result)
             sessionStorage.setItem('name', r.data.name)
-            console.log(r.data.name)
+            sessionStorage.setItem('avatar', r.data.avatar)
+            console.log(r, 'hkjhkhk')
+            console.log(r.data.name, 'fgjhfjhfj')
           } catch (e) {
+            console.log(result.data.avatar)
+            sessionStorage.setItem('avatar', result.data.avatar)
             sessionStorage.setItem('name', result.data.name)
             console.log(result.data.name)
           }

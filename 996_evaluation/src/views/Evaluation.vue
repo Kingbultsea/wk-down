@@ -95,7 +95,7 @@ export default {
         this.tDesc = this.evData[this.index].title
         this.choice = this.evData[this.index].choice
         this.tBg = this.evData[this.index].bg
-      }, 500)
+      }, 100)
     }
   },
   mounted () {

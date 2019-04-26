@@ -14,7 +14,7 @@
           <div class="advance">此人耐操,无需休息,建议997</div>
           <div class="profile">
             <img class="bg" style="width: 100%;height: 100%;position: absolute" src="../assets/z/frame@3x.png">
-            <img class="img" src="../assets/profile.jpg"/>
+            <img class="img" :src="avatar"/>
           </div>
           <img src="../assets/profile.jpg" class="QRblock">
           <img v-show="tickOnePosition === 0" class="tick t1" src="../assets/tick@3x.png" />
@@ -41,6 +41,7 @@ export default {
   name: 'result',
   data () {
     return {
+      avatar: sessionStorage.getItem('avatar') || '',
       userName: sessionStorage.getItem('name') || '无名同学',
       time: 0,
       tickOnePosition: 0,
@@ -199,6 +200,7 @@ export default {
     }
   },
   mounted () {
+    console.log(sessionStorage.getItem('avatar'), '头像link', this.avatar)
     this.parseToPic()
     console.log(WJH.dateFormat(new Date(), 'yy年M月d日hh时m分s秒'))
     const r = JSON.parse(this.result)
