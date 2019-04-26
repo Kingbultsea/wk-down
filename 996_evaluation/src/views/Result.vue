@@ -14,7 +14,7 @@
           <div class="advance">此人耐操,无需休息,建议997</div>
           <div class="profile">
             <img class="bg" style="width: 100%;height: 100%;position: absolute" src="../assets/z/frame@3x.png">
-            <img class="img" :src="avatar"/>
+            <img class="img" ref="myImg" :src="avatar"/>
           </div>
           <img src="../assets/profile.jpg" class="QRblock">
           <img v-show="tickOnePosition === 0" class="tick t1" src="../assets/tick@3x.png" />
@@ -41,7 +41,7 @@ export default {
   name: 'result',
   data () {
     return {
-      avatar: sessionStorage.getItem('avatar') || '',
+      avatar: 'http://thirdwx.qlogo.cn/mmopen/vi_32/VqC3Eew7BqibIWdhEebibLeia34UL5egYy3niaoFppicdDYZ23XNxvyNnKCPBHAHgTz1QuLeEKEicBwgEzQPN8a1Dy3Q/132', // sessionStorage.getItem('avatar') || '',
       userName: sessionStorage.getItem('name') || '无名同学',
       time: 0,
       tickOnePosition: 0,
@@ -180,6 +180,21 @@ export default {
       this.time = WJH.randomNum(0, 400)
       return 2
     },
+    toBase64 (url, callback, outputFormat = 'image/png') {
+      let canvas = document.createElement('canvas')
+      let ctx = canvas.getContext('2d')
+      const img = new Image()
+      img.crossOrigin = 'Anonymous'
+      img.onload = () => {
+        canvas.height = img.height
+        canvas.width = img.width
+        ctx.drawImage(img, 0, 0)
+        const dataURL = canvas.toDataURL(outputFormat)
+        callback.call(this, dataURL)
+        canvas = null
+      }
+      img.src = url
+    },
     occupationalInjuryType (d) {
       for (let i of this.A) {
         if (i[2] === d[1] && i[3] === d[2]) {
@@ -200,8 +215,15 @@ export default {
     }
   },
   mounted () {
+    this.toBase64(this.avatar, (base64) => {
+      console.log(base64)
+    })
+
     console.log(sessionStorage.getItem('avatar'), '头像link', this.avatar)
-    this.parseToPic()
+    setTimeout(() => {
+      this.parseToPic()
+    }, 4000)
+    // this.parseToPic()
     console.log(WJH.dateFormat(new Date(), 'yy年M月d日hh时m分s秒'))
     const r = JSON.parse(this.result)
     if (!r) {
@@ -237,7 +259,7 @@ export default {
       right: px2html(0px);
     }
     >.template {
-      visibility: hidden;
+      // visibility: hidden;
       position: relative;
       margin-top: px2html(11px);
       width: px2html(340px);
