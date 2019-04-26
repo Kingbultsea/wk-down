@@ -41,7 +41,7 @@ export default {
   name: 'result',
   data () {
     return {
-      avatar: 'https://images.weserv.nl/?url=http://thirdwx.qlogo.cn/mmopen/vi_32/jZK1ylHMa1ZkdgoNl5j05SokNt8FYRxwvB5hW319o8X7INiat8GyLiahEytvnNzM8CbtDca6nfgdl8xVIt1OXyCw/132' || '',
+      avatar: 'https://images.weserv.nl/?url=' + sessionStorage.getItem('avatar') || '',
       userName: sessionStorage.getItem('name') || '无名同学',
       time: 0,
       tickOnePosition: 0,

@@ -126,7 +126,7 @@ export default class Share {
   weatherCode () {
     const QRblock = /code=(.+?)&/
     const code = window.location.href.match(QRblock)
-    sessionStorage.setItem('code', code)
+    localStorage.setItem('code', code)
     if (code) { return code } else {
       return false
     }
@@ -135,7 +135,7 @@ export default class Share {
   weiXinGetName (url) {
     if (!sessionStorage.getItem('name')) {
       console.log(code + 'asd你想要的' + sessionStorage.getItem('code'))
-      const code = sessionStorage.getItem('code').replace(/code=/, '').replace(/\&.+/, '')
+      const code = localStorage.getItem('code').replace(/code=/, '').replace(/\&.+/, '')
 
       $.get(url + '/web/v1/wechat/user', { code }, (data) => {
         if (data.hasOwnProperty('data')) {
