@@ -340,10 +340,10 @@ export default {
         }
         >.QRblock {
           position: absolute;
-          width: px2html(40px);
-          height: px2html(40px);
+          width: px2html(42px);
+          height: px2html(42px);
           bottom: px2html(30px);
-          left: px2html(26px);
+          left: px2html(25px);
         }
         >.profile {
           position: absolute;
