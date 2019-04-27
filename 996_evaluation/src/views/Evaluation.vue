@@ -112,7 +112,7 @@ export default {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    min-height: max-content;
+    min-height: px2html(550px);
     >.title {
       background: url("../assets/题目切图_slices/decorate@3x.png");
       width: px2html(307px);
