@@ -87,12 +87,12 @@ export default {
         font-weight: 900;
         position: relative;
         z-index: 100;
-        top: px2html(-10px);
+        top: px2html(-8px);
         font-size: px2html(13px);
       }
     }
     .btn-tocosleep {
-      padding-top: px2html(10px);
+      padding-top: px2html(0px);
       width: px2html(100px);
       height: px2html(25px);
     }

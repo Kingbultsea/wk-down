@@ -4,7 +4,8 @@
         <img class="ig" src="../assets/img_pic2@3x.png"/>
         <a target="view_window" href="https://a.app.qq.com/o/simple.jsp?pkgname=com.psyone.brainmusic">
             <!--<Button id="dl" class="button" >为老爸找回好梦</Button>-->
-            <img   id="dl" class="button"  src="../assets/btn_download@3x.png">
+          <div id="dl" class="button">立刻下载</div>
+
         </a>
 
     </div>
@@ -40,14 +41,18 @@ export default {
                 padding-top: px2html(52px);
             }
 
-        .button{
-            position: relative;
-            z-index:9999;
-            font-size:px2html(15px);
-            font-weight:700;
-            color: #381e12;
-            padding-top: px2html(40px);
-            height:px2html(39px);
+        .button {
+          width: px2html(209px);
+          height: px2html(52px);
+          background-image: url("../assets/03.gif");
+          background-size: 100% 100%;
+          text-align: center;
+          font-size: px2html(15px);
+          color: rgba(43, 43, 43, 1);
+          font-size: px2html(15px);
+          line-height: px2html(50px);
+          overflow: hidden;
+          font-weight: 700;
         }
     }
 </style>

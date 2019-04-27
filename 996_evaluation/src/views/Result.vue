@@ -43,7 +43,7 @@ export default {
   data () {
     return {
       serialNumber: WJH.randomNum(10000, 20000),
-      avatar: 'https://images.weserv.nl/?url=' + (sessionStorage.getItem('avatar') || 'http://thirdwx.qlogo.cn/mmopen/vi_32/jZK1ylHMa1ZkdgoNl5j05SokNt8FYRxwvB5hW319o8X7INiat8GyLiahEytvnNzM8CbtDca6nfgdl8xVIt1OXyCw/132'),
+      avatar: 'https://images.weserv.nl/?url=' + (sessionStorage.getItem('avatar') || 'http://wx3.sinaimg.cn/mw690/006Zdy2vgy1g2h2dk8qw2j30za0u0ain.jpg'),
       userName: sessionStorage.getItem('name') || '无名同学',
       time: 0,
       tickOnePosition: 0,
@@ -398,15 +398,14 @@ export default {
     >.button {
       width: px2html(209px);
       height: px2html(52px);
-      background-image: url("../assets/button@3x.png");
+      background-image: url("../assets/03.gif");
       background-size: 100% 100%;
       text-align: center;
       font-size: px2html(15px);
       color: rgba(43, 43, 43, 1);
       font-size: px2html(15px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      line-height: px2html(50px);
+      overflow: hidden;
       font-weight: 700;
     }
   }

@@ -1,6 +1,7 @@
 <template>
   <transition enter-active-class="animated fadeIn">
   <div class="evaluation">
+    <img :src="imgLink" style="opacity: 0;position: absolute">
     <div class="title">
       <div class="desc">{{tDesc}}</div>
       <div class="label">{{index + 1}}/7</div>
@@ -21,8 +22,9 @@ export default {
   name: 'evluation',
   data () {
     return {
+      imgLink: 'https://images.weserv.nl/?url=' + (sessionStorage.getItem('avatar') || 'http://wx3.sinaimg.cn/mw690/006Zdy2vgy1g2h2dk8qw2j30za0u0ain.jpg'),
       index: 0,
-      tDesc: '1.你目前是？',
+      tDesc: '你目前是？',
       tBg: require('../assets/题目切图_slices/first@3x.png'),
       choice: ['A.学生党', 'B.上班族', 'C.自由职业'],
       clickBg: require('../assets/题目切图_slices/click@3x.png'),
@@ -58,7 +60,7 @@ export default {
         {
           title: '仅用眼睛找出入口9对应的出口',
           bg: require('../assets/题目切图_slices/sixth@3x.png'),
-          choice: ['A.对于出口是A', 'B.对于出口是B', 'C.对于出口是C', 'D.对于出口是D']
+          choice: ['A.对应出口是A', 'B.对应出口是B', 'C.对应出口是C', 'D.对应出口是D']
         },
         {
           title: '对你来说，熬夜的资本是什么 ？',
@@ -143,8 +145,8 @@ export default {
     }
     >.choice {
       padding-top: px2html(10px);
-      flex-grow: 1;
       display: flex;
+      min-height: px2html(220px);
       justify-content: center;
       align-items: center;
       flex-direction: column;
