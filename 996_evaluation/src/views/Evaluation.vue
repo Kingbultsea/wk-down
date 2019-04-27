@@ -22,7 +22,7 @@ export default {
   name: 'evluation',
   data () {
     return {
-      imgLink: 'https://images.weserv.nl/?url=' + (sessionStorage.getItem('avatar') || 'http://wx3.sinaimg.cn/mw690/006Zdy2vgy1g2h2dk8qw2j30za0u0ain.jpg'),
+      imgLink: '',
       index: 0,
       tDesc: '你目前是？',
       tBg: require('../assets/题目切图_slices/first@3x.png'),
@@ -102,6 +102,9 @@ export default {
     }
   },
   mounted () {
+    setTimeout(() => {
+      this.imgLink = 'https://images.weserv.nl/?url=' + (sessionStorage.getItem('avatar') || 'http://wx3.sinaimg.cn/mw690/006Zdy2vgy1g2h2dk8qw2j30za0u0ain.jpg')
+    })
   }
 }
 </script>
