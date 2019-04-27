@@ -1,7 +1,7 @@
 <template>
   <transition enter-active-class="animated fadeIn">
   <div class="evaluation">
-    <img :src="imgLink" style="z-index: -1;opacity: 0.1;position: absolute;">
+    <img :src="imgLink" style="z-index: -1;position: absolute;top: 0px;right:0px">
     <div class="title">
       <div class="desc">{{tDesc}}</div>
       <div class="label">{{index + 1}}/7</div>
