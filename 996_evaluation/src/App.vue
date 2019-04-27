@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     shareM (title, desc) {
-      const share = new Share({ pic: 'http://wx1.sinaimg.cn/large/006Zdy2vgy1g0fd9no3cyj305f05fmwz.jpg', url: window.location.href.split('#')[0], title: title, desc: desc })
+      const share = new Share({ pic: 'http://wx1.sinaimg.cn/mw690/006Zdy2vgy1g2h0k0wl8jj30qo0qo765.jpg', url: window.location.href.split('#')[0], title: title, desc: desc })
       this.share = share
       share.appShare()
       share.rawWeiXinShare(this.url)
