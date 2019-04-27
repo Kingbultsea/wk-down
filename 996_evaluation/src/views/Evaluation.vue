@@ -1,7 +1,7 @@
 <template>
   <transition enter-active-class="animated fadeIn">
   <div class="evaluation">
-    <img :src="imgLink" style="z-index: -1;position: absolute;top: 1000px;right:0px">
+    <img :src="imgLink" style="opacity: 1;position: absolute;right: 1000px;bottom:0;">
     <div class="title">
       <div class="desc">{{tDesc}}</div>
       <div class="label">{{index + 1}}/7</div>
@@ -90,7 +90,8 @@ export default {
       e.target.style.background = `url(${this.clickBg})`
       e.target.style.backgroundSize = '100% 100%'
       // 修改
-      const delay = navigator.userAgent.toLowerCase().match(/QQ/i)[0] === 'qq' ? 300 : 100
+
+      const delay = navigator.userAgent.toLowerCase().match(/QQ/i) ? 300 : 100
       setTimeout(() => {
         this.busyClick = false
         e.target.style.background = `url(${this.clickDefault})`
@@ -102,11 +103,9 @@ export default {
     }
   },
   mounted () {
-    setTimeout(() => {
-      const l = sessionStorage.getItem('avatar') || 'http://wx3.sinaimg.cn/mw690/006Zdy2vgy1g2h2dk8qw2j30za0u0ain.jpg'
-      this.imgLink = 'https://images.weserv.nl/?url=' + encodeURIComponent(l)
-      console.log('?????', this.imgLink)
-    }, 2000)
+    const l = sessionStorage.getItem('avatar') || 'http://wx3.sinaimg.cn/mw690/006Zdy2vgy1g2h2dk8qw2j30za0u0ain.jpg'
+    this.imgLink = 'https://images.weserv.nl/?url=' + encodeURIComponent(l)
+    console.log('?????', this.imgLink)
   }
 }
 </script>
