@@ -221,7 +221,6 @@ export default {
     console.log(WJH.dateFormat(new Date(), 'yy年M月d日hh时m分s秒'))
     const r = JSON.parse(this.result)
     if (!r) {
-      conosle.log('???')
       this.$router.push('./')
       return
     }

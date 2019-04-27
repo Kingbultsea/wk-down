@@ -84,7 +84,7 @@ export default {
       if (this.index === 7) {
         this.index--
         sessionStorage.setItem('result', JSON.stringify(this.resultC))
-        this.$router.push('./r')
+        this.$router.push('./')
         return
       }
       e.target.style.background = `url(${this.clickBg})`
