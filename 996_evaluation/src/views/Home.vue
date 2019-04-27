@@ -45,6 +45,7 @@ export default {
     }
   },
   mounted () {
+    console.log('Home')
   }
 }
 </script>
