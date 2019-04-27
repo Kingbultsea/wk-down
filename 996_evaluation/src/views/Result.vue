@@ -318,13 +318,20 @@ export default {
           left: px2html(65px);
           width: px2html(500px);
           text-align: left;
-
+        }
+        >.debt {
+          position: relative;
+          color: rgba(45, 45, 45, 1);
+          top: px2html(177px);
+          font-size: px2html(15px);
+          left: px2html(65px);
+          text-align: left;
         }
         >.advance {
           width: px2html(220px);
           position: relative;
           color: rgba(45, 45, 45, 1);
-          top: px2html(210px);
+          top: px2html(192px);
           font-size: px2html(15px);
           text-align: left;
           left: px2html(65px);
@@ -332,14 +339,6 @@ export default {
           display: flex;
           justify-content: flex-start;
           align-items: center;
-        }
-        >.debt {
-
-          position: absolute;
-          color: rgba(45, 45, 45, 1);
-          top: px2html(224px);
-          font-size: px2html(15px);
-          left: px2html(65px);
         }
         >.QRblock {
           position: absolute;
