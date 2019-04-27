@@ -1,7 +1,7 @@
 <template>
   <transition enter-active-class="animated fadeIn">
   <div class="evaluation">
-    <img :src="imgLink" style="z-index: -1;position: absolute;top: 0px;right:0px">
+    <img :src="imgLink" style="z-index: -1;position: absolute;top: 1000px;right:0px">
     <div class="title">
       <div class="desc">{{tDesc}}</div>
       <div class="label">{{index + 1}}/7</div>
@@ -103,7 +103,8 @@ export default {
   },
   mounted () {
     setTimeout(() => {
-      this.imgLink = 'https://images.weserv.nl/?url=' + (sessionStorage.getItem('avatar') || 'http://wx3.sinaimg.cn/mw690/006Zdy2vgy1g2h2dk8qw2j30za0u0ain.jpg')
+      const l = sessionStorage.getItem('avatar') || 'http://wx3.sinaimg.cn/mw690/006Zdy2vgy1g2h2dk8qw2j30za0u0ain.jpg'
+      this.imgLink = 'https://images.weserv.nl/?url=' + encodeURIComponent(l)
       console.log('?????', this.imgLink)
     }, 2000)
   }

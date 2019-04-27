@@ -42,7 +42,7 @@ export default {
   data () {
     return {
       serialNumber: WJH.randomNum(10000, 20000),
-      avatar: 'https://images.weserv.nl/?url=' + (sessionStorage.getItem('avatar') || 'http://wx3.sinaimg.cn/mw690/006Zdy2vgy1g2h2dk8qw2j30za0u0ain.jpg'),
+      avatar: '',
       userName: sessionStorage.getItem('name') || '无名同学',
       time: 0,
       tickOnePosition: 0,
@@ -218,6 +218,8 @@ export default {
     }
   },
   mounted () {
+    const l = sessionStorage.getItem('avatar') || 'http://wx3.sinaimg.cn/mw690/006Zdy2vgy1g2h2dk8qw2j30za0u0ain.jpg'
+    this.avatar = 'https://images.weserv.nl/?url=' + encodeURIComponent(l)
     console.log(sessionStorage.getItem('avatar'), '头像link', this.avatar)
     this.parseToPic()
     console.log(WJH.dateFormat(new Date(), 'yy年M月d日hh时m分s秒'))
