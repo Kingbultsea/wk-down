@@ -4,6 +4,7 @@
       <div class="template" id="canvas">
         <div class="block"></div>
         <img class="title-img" src="../assets/结果页_slices/headline@3x.png"/>
+        <div class="serial-number">编号：{{ serialNumber }}</div>
         <div class="content">
           <img src="../assets/frame@3x.png" style="width: 100%;height: 100%;position: absolute;left: 0px;top: 0px;">
           <div class="user-name">{{ userName }}</div>
@@ -41,6 +42,7 @@ export default {
   name: 'result',
   data () {
     return {
+      serialNumber: WJH.randomNum(10000, 20000),
       avatar: 'https://images.weserv.nl/?url=' + (sessionStorage.getItem('avatar') || 'http://thirdwx.qlogo.cn/mmopen/vi_32/jZK1ylHMa1ZkdgoNl5j05SokNt8FYRxwvB5hW319o8X7INiat8GyLiahEytvnNzM8CbtDca6nfgdl8xVIt1OXyCw/132'),
       userName: sessionStorage.getItem('name') || '无名同学',
       time: 0,
@@ -264,6 +266,7 @@ export default {
       height: px2html(494px);
       background-size: 100% 100%;
       background-image: url("../assets/结果页_slices/wireframe@3x.png");
+      background-position: px2html(-2px) 0px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -279,7 +282,14 @@ export default {
       >.title-img {
         width: px2html(242px);
         height: px2html(47px);
-        padding-top: px2html(25px);
+        padding-top: px2html(12px);
+      }
+      >.serial-number {
+        color: rgba(45, 45, 45, 1);
+        font-size: px2html(8px);
+        text-align: right;
+        height: px2html(4px);
+        width: px2html(280px);
       }
       >.content {
         width: px2html(301px);
@@ -338,7 +348,7 @@ export default {
         >.profile {
           position: absolute;
           right: px2html(17px);
-          top: px2html(10px);
+          top: px2html(15px);
           width: px2html(57px);
           height: px2html(54px);
           background-size: 100% 100%;
