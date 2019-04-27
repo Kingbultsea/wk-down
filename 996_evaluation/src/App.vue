@@ -31,6 +31,7 @@ export default {
         this.share.appGetName()
       }
       if (/micromessenger/.test(navigator.userAgent.toLowerCase())) {
+        console.log('?????QQ')
         this.share.weiXinInit(this.url)
         this.share.weatherCode()
         this.share.weiXinGetName(this.url)
