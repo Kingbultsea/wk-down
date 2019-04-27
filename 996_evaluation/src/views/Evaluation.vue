@@ -1,7 +1,7 @@
 <template>
   <transition enter-active-class="animated fadeIn">
   <div class="evaluation">
-    <img :src="imgLink" style="opacity: 0;position: absolute;right: 1000px;bottom:0;">
+    <img :src="imgLink" style="opacity: 0.1;position: absolute;right: 1000px;bottom: 0px;">
     <div class="title">
       <div class="desc">{{tDesc}}</div>
       <div class="label">{{index + 1}}/7</div>
@@ -90,6 +90,7 @@ export default {
       e.target.style.background = `url(${this.clickBg})`
       e.target.style.backgroundSize = '100% 100%'
       // 修改
+      const delay = navigator.userAgent.toLowerCase().match(/QQ/i)[0] === 'qq' ? 300 : 100
       setTimeout(() => {
         this.busyClick = false
         e.target.style.background = `url(${this.clickDefault})`
@@ -97,7 +98,7 @@ export default {
         this.tDesc = this.evData[this.index].title
         this.choice = this.evData[this.index].choice
         this.tBg = this.evData[this.index].bg
-      }, 100)
+      }, delay)
     }
   },
   mounted () {
