@@ -10,9 +10,8 @@
           <div class="user-name">{{ userName }}</div>
           <div class="date">{{date}}</div>
           <div class="authenticate" v-for="(li, index) in authenticate" :key="index + 3">{{ li }}</div>
-          <div class="debt">你已经欠下了<span style="color: red">{{ time }}</span>小时的睡眠债</div>
+          <div class="debt">你已经欠下<span style="color: red">{{ time }}</span>小时的睡眠债。</div>
           <div class="advance" v-for="(li, index) in advance" :key="index">{{ li }}</div>
-          <div class="advance">此人耐操,无需休息,建议997</div>
           <div class="profile">
             <img class="bg" style="width: 100%;height: 100%;position: absolute" src="../assets/z/frame@3x.png">
             <img class="img" ref="myImg" :src="avatar"/>
@@ -71,52 +70,52 @@ export default {
       desc: {
         student: [
           [
-            { authenticate: ['把习题册当枕头，用单词书提神的勇士。', '刷题堪比打印机，通宵不过打点滴。', '通宵最大的好处是不用早起。'], advance: ['前一百名确诊没救的同学，额外送一套《五三》。'] },
-            { authenticate: ['考试如此多娇，引来无数学生熬夜通宵。', '与书作伴，与题共眠，毕竟梦中能拿满分！', '通宵学习不是兴趣使然，一切全凭信念！'], advance: ['说困肯定是装的，起来学习！'] },
-            { authenticate: ['拜室友所赐，被熬熟了。', '别人以为我靠天分，其实熬夜刷题才是常态。', '老师作业布置少了，爸妈添砖加瓦。'], advance: ['熬夜会传染，请进行深度隔离。'] }],
+            { authenticate: ['把习题当枕头，用单词来提神。', '刷题更要紧，通宵不过打点滴。', '通宵最大的好处是不用早起。'], advance: ['前一百名确诊没救的同学，额外送一套《五三》。'] },
+            { authenticate: ['考试多娇，引来学生熬夜通宵。', '我愿与题共眠，在梦中拿满分！', '通宵学习，一切全凭信念！'], advance: ['说困肯定是装的，起来学习！'] },
+            { authenticate: ['拜室友所赐，被熬熟了。', '天才如我，也免不了熬夜刷题。', '作业布置少，爸妈添砖加瓦。'], advance: ['熬夜会传染，请进行深度隔离。'] }],
           [
-            { authenticate: ['深夜，脑袋里的不良情绪循环播放。', '明明没有出国留学，硬把北京时间过成纽约时间。', '为了告别失眠，我选择直接通宵。'], advance: ['请就近办理本地三甲医院ICU贵宾卡。'] },
-            { authenticate: ['晚上不想睡，白天不想醒。', '熬夜的人，上辈子都是折翼的天使。', '每天都靠咖啡提神续命。'], advance: ['把表调慢一点，这样一天怎么都不会过去了呢。'] },
+            { authenticate: ['深夜，脑袋不良情绪循环播放。', '硬把北京时间过成纽约时间。', '为了告别失眠，我选择通宵。'], advance: ['请就近办理本地三甲医院ICU贵宾卡。'] },
+            { authenticate: ['晚上不想睡，白天不想醒。', '晚睡的人，上辈子是折翼天使。', '每天都靠咖啡提神续命。'], advance: ['把表调慢一点，这样一天怎么都不会过去了呢。'] },
             { authenticate: ['最后再玩一盘，就一盘！', '明明该睡了，偏偏精神极好。', '晚上不睡，白天瞌睡。'], advance: ['别再立Flag了，毕竟你说的早睡早起，从没兑现。'] }
           ],
           [
-            { authenticate: ['熬夜到天亮，作业堆满房。', '觉可以不睡，游戏一定要打。', '白天困到灵魂出窍，晚上嗨到地动山摇。'], advance: ['扶我起来，还能再战3小时。'] },
-            { authenticate: ['白天上课犯困，晚上通宵上分。', '都说熬夜对身体不好，所以决定通宵。', '眼前的黑不是黑，你说的夜有多晚。'], advance: ['立刻加入掉分车队，断了王者的梦，吃鸡的命。'] },
-            { authenticate: ['人生苦短，越睡越晚。', '晚上尽力熬夜，白天拼命早起。', '“别熬夜了” “大胆，你竟敢浪费时间！”'], advance: ['罚抄10遍单词，反正你也不困。'] }
+            { authenticate: ['熬夜到天亮，作业堆满房。', '觉可以不睡，游戏一定要打。', '白天灵魂出窍，晚上带嗨全场。'], advance: ['扶我起来，还能再战3小时。'] },
+            { authenticate: ['白天上课犯困，晚上通宵上分。', '熬夜不好，所以我才决定通宵。', '眼前不太黑，你说的夜并不晚。'], advance: ['立刻加入掉分车队，断了王者的梦，吃鸡的命。'] },
+            { authenticate: ['人生苦短，越睡越晚。', '晚上尽力熬夜，白天拼命早起。', '不熬夜，难道要浪费时间吗？'], advance: ['罚抄10遍单词，反正你也不困。'] }
           ]
         ],
         worker: [
           [
-            { authenticate: ['深夜才思泉涌，夜晚效率迸发。', '我一点也不累，不过七天没睡。', '没什么是熬夜还做不好的，如果有，那就通宵。'], advance: ['请在工位常备心脏起搏器，以备不时之需。'] },
-            { authenticate: ['你见过凌晨四点的公司吗？', '熬夜后还要早起，没人心疼没人懂。', '与公司的电脑有了感情，只想拥它入眠。'], advance: ['加油，机会总留给有准备的人，但不一定是加班的人。'] },
-            { authenticate: ['身体在熬夜，灵魂在蹦迪。', '台灯是夜猫的光，熬夜是梦想者的倔强。', '我心里只有一件事，那就是工作。'], advance: ['请额外缴纳住宿费，以提高公司整体收益。'] }
+            { authenticate: ['深夜才思泉涌，夜晚效率迸发。', '我一点也不累，不过七天没睡。', '没有熬夜做不好的，有就通宵。'], advance: ['请在工位常备心脏起搏器，以备不时之需。'] },
+            { authenticate: ['你见过凌晨四点的公司吗？', '熬夜还要早起，没人疼没人懂。', '连爱情都不要，也要熬夜加班。'], advance: ['加油，机会总留给有准备的人，但不一定是加班的人。'] },
+            { authenticate: ['身体在熬夜，灵魂在蹦迪。', '台灯是光，熬是梦想者的倔强。', '我心里只有一件事，就是工作。'], advance: ['请额外缴纳住宿费，以提高公司整体收益。'] }
           ],
           [
-            { authenticate: ['白天是大家的，夜晚是我的。', '整个世界都睡了，我熬着夜想你。', '完全无法抵挡夜生活的诱惑。'], advance: ['时日不多，继续骄傲放纵。'] },
-            { authenticate: ['看看手机的剩余电量，像不像错过的加班费？', '你习惯熬夜，我也假装和你一样睡不着。', '躺下的一瞬间，下意识刷起朋友圈。'], advance: ['请搜索下“猝死”的新闻，如果害怕还有救。'] },
-            { authenticate: ['熬夜=不愿意结束美好的一天。', '我也不想熬夜，谁叫自由如此迷人。', '只有夜晚才真正属于自己。'], advance: ['熬夜能拉进你和医生的距离，如果TA是你暗恋对象，挺好。'] }
+            { authenticate: ['白天是大家的，夜晚是我的。', '整个世界都睡了，我熬夜想你。', '完全无法抵挡夜生活的诱惑。'], advance: ['时日不多，继续骄傲放纵。'] },
+            { authenticate: ['宁愿熬夜，也不愿拿加班费。', '你习惯熬夜，我也假装睡不着。', '躺下一瞬间，刷起朋友圈。'], advance: ['请搜索下“猝死”的新闻，如果害怕还有救。'] },
+            { authenticate: ['熬夜=不愿意结束美好的一天。', '我也不想熬，谁叫自由迷人。', '只有夜晚才真正属于自己。'], advance: ['熬夜能拉进你和医生的距离，如果TA是你暗恋对象，挺好。'] }
           ],
           [
-            { authenticate: ['除了睡觉，让我做什么都可以。', '晚上的你，在剧中堕落，在游戏中沉沦，视死如归。', '猫科动物转世，夜猫本尊！'], advance: ['赶快买份保险吧，反正受益人不是你。'] },
+            { authenticate: ['除了睡觉，让我做什么都可以。', '在剧中堕落，在游戏中沉沦。', '猫科动物转世，夜猫本尊！'], advance: ['赶快买份保险吧，反正受益人不是你。'] },
             { authenticate: ['年轻人不熬夜还是年轻人吗？', '习惯了晚睡，跟夜作对。', '我就是不想睡，别叫我停下来。'], advance: ['使用中老年套装：热水枸杞保温杯，熬夜续航更持久。'] },
-            { authenticate: ['明明困得不行，就是不想睡。', '每一个夜猫，都是有故事的人。', '睡觉就是做梦，但我更爱做白日梦。'], advance: ['强制打卡，晚睡扣工资，做老板该多为员工健康着想。'] }
+            { authenticate: ['明明困得不行，就是不想睡。', '每一个夜猫，都是有故事的人。', '不睡觉是因为更爱做白日梦。'], advance: ['强制打卡，晚睡扣工资，做老板该多为员工健康着想。'] }
           ]
         ],
         free: [
           [
-            { authenticate: ['深夜思绪放飞自我，抓都抓不住。', '通宵是唯一熬夜后还能早起的生活方式。', '熬夜加班赶进度，直到主机冒烟。'], advance: ['升官发财指日可待，但请别让自己英年早逝。'] },
-            { authenticate: ['钱没赚够，觉也没睡好。', '熬夜？我没有，我不是，别瞎说，只是跨时区工作而已。', '你的黑眼圈比黑洞都深邃。'], advance: ['看看存款有多少，再决定要不要熬夜，毕竟一晚ICU不便宜。'] },
-            { authenticate: ['革命尚未成功，同志仍需熬夜。', '创作灵感一上来，整个人都停不下来。', '沉迷于工作无法自拔。'], advance: ['别仗着漂亮帅气就熬夜，熬久了也会变胖变成变秃头。'] }
+            { authenticate: ['深夜思绪放飞，抓都抓不住。', '唯有通宵，能在熬夜后早起。', '熬夜加班，直到主机冒烟。'], advance: ['升官发财指日可待，但请别让自己英年早逝。'] },
+            { authenticate: ['钱没赚够，觉也没睡好。', '熬夜？没有，不是，别瞎说。', '你的黑眼圈比黑洞都深邃。'], advance: ['看看存款有多少，再决定要不要熬夜，毕竟一晚ICU不便宜。'] },
+            { authenticate: ['革命尚未成功，同志仍需熬夜。', '创作灵感一上来，难以停下来。', '沉迷于工作无法自拔。'], advance: ['别仗着漂亮帅气就熬夜，熬久了也会变胖变成变秃头。'] }
           ],
           [
-            { authenticate: ['情况过于惨烈，无法一一说明。', '假装快乐的人，都是熬夜的一把好手！', '这个夜，情绪起伏太过强烈。'], advance: ['此人已走火入魔，严重消耗后台数据，请先垫付下费用。'] },
-            { authenticate: ['熬夜伤身，不熬夜伤心。', '开着灯入睡，闭着眼思念。', '熬了一整晚，发了多少疯，只有自己懂。'], advance: ['扶他起来，也就只能再熬一会儿。'] },
-            { authenticate: ['孜孜不倦修仙，勤勤恳恳养生。', '想你不是熬夜的借口，却是难眠的理由！', '在世界清醒前，我独占夜的黑。'], advance: ['此人需要一个对象，组织安排一下,开启强制哄睡模式。'] }
+            { authenticate: ['情况过于惨烈，无法一一说明。', '假装快乐，都是熬夜的好手！', '这个夜，情绪起伏太过强烈。'], advance: ['此人已走火入魔，严重消耗后台数据，请先垫付下费用。'] },
+            { authenticate: ['熬夜伤身，不熬夜伤心。', '开着灯入睡，闭着眼思念。', '熬了整晚，发了多少疯自己懂。'], advance: ['扶他起来，也就只能再熬一会儿。'] },
+            { authenticate: ['孜孜不倦修仙，勤勤恳恳养生。', '想你的夜，实在难眠！', '在世界清醒前，我独占夜的黑。'], advance: ['此人需要一个对象，组织安排一下,开启强制哄睡模式。'] }
           ],
           [
-            { authenticate: ['熬得不是夜，是自由、孤独、灵魂。', '我欲成仙，快乐齐天。', '是谁，让我坠入夜的深渊！'], advance: ['此人耐操，无需休息，建议007。'] },
-            { authenticate: ['熬夜成瘾，等你一句晚安，戒不掉了。', '不是我睡得晚，是你们睡得太早。', '不想睡，阳光没出现怎么睡？'], advance: ['换个暗恋者，喜欢你的人舍不得你熬夜。'] },
-            { authenticate: ['一边熬夜一边蹦养生迪，怕死又反动。', '说好了要早睡，只是说说而已。', '长夜漫漫，无心入睡。'], advance: ['夜猫回头金不换，更衣早起做贤人。'] }
+            { authenticate: ['熬得不是夜，是自由孤独灵魂。', '我欲成仙，快乐齐天。', '是谁，让我坠入夜的深渊！'], advance: ['此人耐操，无需休息，建议007。'] },
+            { authenticate: ['熬夜成瘾，只为等你一句晚安。', '不是我睡得晚，是你们睡太早。', '不想睡，阳光没出现怎么睡？'], advance: ['换个暗恋者，喜欢你的人舍不得你熬夜。'] },
+            { authenticate: ['一边熬夜一边蹦养生迪。', '说好了要早睡，只是说说而已。', '长夜漫漫，无心入睡。'], advance: ['夜猫回头金不换，更衣早起做贤人。'] }
           ]
         ],
       }
@@ -160,9 +159,6 @@ export default {
       const df = this.desc[type][this.tickOnePosition][this.tickOnePosition].authenticate
       df.splice(WJH.randomNum(0, 2), 1)
       this.authenticate = df
-      this.advance.push(
-        this.desc[type][this.tickOnePosition][this.tickOnePosition].advance[0]
-      )
       this.advance.push(
         this.desc[type][this.tickOnePosition][this.tickOnePosition].advance[0]
       )
@@ -316,27 +312,31 @@ export default {
         >.authenticate {
           position: relative;
           color: rgba(45, 45, 45, 1);
-          top: px2html(182px);
-          font-size: px2html(11px);
-          left: px2html(70px);
+          top: px2html(177px);
+          font-size: px2html(15px);
+          left: px2html(65px);
           width: px2html(500px);
           text-align: left;
         }
         >.advance {
+          width: px2html(220px);
           position: relative;
           color: rgba(45, 45, 45, 1);
-          top: px2html(230px);
-          font-size: px2html(11px);
-          width: px2html(500px);
+          top: px2html(210px);
+          font-size: px2html(15px);
           text-align: left;
           left: px2html(65px);
+          height: px2html(50px);
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
         }
         >.debt {
           position: absolute;
           color: rgba(45, 45, 45, 1);
-          top: px2html(215px);
-          font-size: px2html(11px);
-          left: px2html(70px);
+          top: px2html(220px);
+          font-size: px2html(15px);
+          left: px2html(65px);
         }
         >.QRblock {
           position: absolute;
