@@ -64,7 +64,6 @@ export default {
       transform: translateX(50%);
     }
     >.a {
-      background-color: red;
       position: absolute;
       width: px2html(170px);
       height: px2html(40px);
