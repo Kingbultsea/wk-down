@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Xm from './views/限免.vue'
+import smbwz from './views/睡眠保卫战'
 
 Vue.use(Router)
 
@@ -16,6 +17,11 @@ export default new Router({
       path: '/xm',
       name: 'xm',
       component: Xm
+    },
+    {
+      path: '/smbwz',
+      name: 'smbwz',
+      component: smbwz
     },
     {
       path: '/about',
