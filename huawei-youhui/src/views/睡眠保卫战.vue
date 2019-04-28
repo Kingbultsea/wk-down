@@ -6,7 +6,7 @@
     <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=529'" class="a a3"></div>
     <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=530'" class="a a4"></div>
     <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=531'" class="a a5"></div>
-    <div onclick="window.location = ''" class="a a6"></div>
+    <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=538'" class="a a6"></div>
     <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=532'" class="a a7"></div>
   </div>
 </template>
@@ -32,7 +32,7 @@ export default {
     }
   },
   mounted () {
-    document.title = '小睡眠每周限免活动'
+    document.title = '小睡眠考生睡眠专题活动'
   }
 }
 </script>
@@ -71,25 +71,25 @@ export default {
       transform: translateX(50%);
     }
     >.a1 {
-      top: px2html(555px);
+      top: px2html(505px);
     }
     >.a2 {
-      top: px2html(820px);
+      top: px2html(760px);
     }
     >.a3 {
-      top: px2html(1085px);
+      top: px2html(1025px);
     }
     >.a4 {
-      top: px2html(1345px);
+      top: px2html(1295px);
     }
     >.a5 {
-      top: px2html(1615px);
+      top: px2html(1555px);
     }
     >.a6 {
-      top: px2html(1875px);
+      top: px2html(1815px);
     }
     >.a7 {
-      top: px2html(2169px);
+      top: px2html(2119px);
     }
   }
 </style>
