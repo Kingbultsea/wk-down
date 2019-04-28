@@ -258,6 +258,7 @@ export default {
             padding-bottom: px2html(1px);
             .content {
                 padding-bottom: px2html(10px);
+                line-height: px2html(18px);
             }
         }
         .button {
@@ -267,7 +268,6 @@ export default {
             border: 1px rgba(0, 0, 0, 0.2) solid;
             position: absolute;
             box-sizing: initial;
-            transform: translateY(5px) translateX(2px);
             display: flex;
             justify-content: center;
             align-items: center;
