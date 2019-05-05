@@ -27,6 +27,7 @@ export default {
     }
   },
   mounted () {
+    document.title = '小睡眠&华为返利活动'
   }
 }
 </script>
