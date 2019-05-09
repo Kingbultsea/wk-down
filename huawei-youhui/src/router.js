@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Xm from './views/限免.vue'
 import Xm2 from './views/限免2.vue'
 import smbwz from './views/睡眠保卫战'
+import atp from './views/AutoPhase'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/smbwz',
       name: 'smbwz',
       component: smbwz
+    },
+    {
+      path: '/atp',
+      name: 'atp',
+      component: atp
     },
     {
       path: '/about',

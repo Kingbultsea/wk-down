@@ -189,6 +189,18 @@ normal">把身体瘦下来，同时更喜欢自己，也更加健康。</b><span
                     this.rawHtmlData = `<h3>配套知识 -&nbsp;调整睡姿练习</h3><p>请仔细阅读以下图文内容，先了解练习过程中需要掌握的睡姿，以便获得更好的练习效果。</p><p>姿势1&nbsp;-&nbsp;起始姿势</p><p>首先拿走你的枕头，平躺在床上，双膝弯曲，脚掌自然轻轻放在床面。脸部先正对天花板。</p><p><img src="https://webres.psy-1.com/sgy/dist/img/%E5%B0%8F%E7%9D%A1%E7%9C%A0%E8%AF%BE%E7%A8%8B%E4%B8%93%E9%A2%98%E9%85%8D%E5%9B%BE_%E7%A2%8E%E7%89%87%E5%8C%96%E7%9D%A1%E7%9C%A0%E6%94%B9%E5%96%84-01.27be89fd.png" style="max-width:100%;"><br></p><p style="text-align: center;">图1</p><p>姿势2 -&nbsp;把下巴往下压的姿势</p><p>缓缓地把下巴往下压，头可以随之抬起，但是不离开床面，到眼睛能够看到放在胸口的手为止。</p><p><img src="http://wx4.sinaimg.cn/mw690/006Zdy2vly1g1jtsjtg63j30p00e3gmc.jpg" style="max-width:100%;"><br></p><p style="text-align: center;">图2</p><p>姿势3&nbsp;-&nbsp;抬起下巴的姿势</p><p>再慢慢抬起下巴到起始的位置。接着继续把下巴往上抬，你的脖子下面会形成一个弯弓的空间。</p><p><img src="https://webres.psy-1.com/sgy/dist/img/小睡眠课程专题配图_碎片化睡眠改善-03.00966e83.png" style="max-width:100%;"><br></p><p style="text-align: center;">图3</p><p>姿势4&nbsp;-&nbsp;身体内部感觉练习的姿势</p><p>邀请你把右手手掌朝下，一部分放在左腋下，其余自然搭在胸口上；然后左手手掌朝下，绕过胸口，抱住你的右手上臂。</p><p><img src="https://webres.psy-1.com/sgy/dist/img/%E5%B0%8F%E7%9D%A1%E7%9C%A0%E8%AF%BE%E7%A8%8B%E4%B8%93%E9%A2%98%E9%85%8D%E5%9B%BE_%E7%A2%8E%E7%89%87%E5%8C%96%E7%9D%A1%E7%9C%A0%E6%94%B9%E5%96%84-04.d098932f.png" style="max-width:100%;"><br></p><p style="text-align: center;">图4</p>`
                 }
                     break;
+                case 25: {  // 考试焦虑睡眠改善
+                    // this.title = '配套知识 - 认识焦虑'
+                    this.title = '第三天 走出焦虑的困境'
+                    this.rawHtmlData = `<p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: justify; font: 12.0px 'PingFang SC'; color: #000000; -webkit-text-stroke: #000000}span.s1 {font-kerning: none}span.s2 {font: 12.0px Helvetica; font-kerning: none}</style></p><h3><b>配套知识</b><b> – </b><b>认识焦虑</b></h3><div><img src="https://webres.psy-1.com/sgy/dist/img/%E7%AC%AC%E4%B8%89%E5%A4%A9%E7%9A%84%E9%85%8D%E5%9B%BE.491b83bb.png" style="max-width:100%;"><b><br></b></div><div><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: justify; font: 12.0px 'PingFang SC'; color: #000000; -webkit-text-stroke: #000000}span.s1 {font-kerning: none}span.s2 {font: 12.0px Helvetica; font-kerning: none}</style><p>焦虑，其实是一个对于未来的反应，害怕未来的结果不如意，甚至会很糟糕。这种无力感和失控感，会让人觉得不安全。这时候，我们的神经系统就会对这个</p><p>不安全的感觉做出反应——对我们的大脑下达逃跑的指令，这是物种存活下来的本能。</p><p>但实际上，我们现在的环境中并不存在真正的危险，而且未来也还未发生，所以收到逃跑指令的大脑和身体其实是无法逃开，也无处逃开的。这时候我们就会开始从身体里的感觉逃开。所以，有很多人会感觉，焦虑的时候，自己是飘着的，不太能感受到脚下的地面和自己的身体。今天我们要做的事，就是探索如何让你已经逃跑的注意力安全地回到当下的身体里，并踏实地住在身体里。这是走出焦虑困境重要的一步。</p><p>今晚的练习需要如图所示俯卧在床上，双手掌心朝下，自然放在头部两侧。</p></div>`
+                }
+                    break;
+                case 26: {  // 考试焦虑睡眠改善
+                    // this.title = '配套知识 - 认识焦虑'
+                    this.title = '第七天 改变焦虑的模式'
+                    this.rawHtmlData = `<p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: justify; font: 12.0px 'PingFang SC'; color: #000000; -webkit-text-stroke: #000000}span.s1 {font-kerning: none}span.s2 {font: 12.0px Helvetica; font-kerning: none}</style></p><h3><b>配套知识</b><b> – </b><b>准备物品</b></h3><div><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: justify; font: 12.0px 'PingFang SC'; color: #000000; -webkit-text-stroke: #000000}span.s1 {font-kerning: none}</style><p>今天的练习，在你本身要盖的被褥之外，需要再准备一个让你感到亲切的柔软的物品，可以是小毯子，小毛绒玩具，或者其他。把它放在一个你看得到，并且离你有一定距离，你需要伸手才能够得着的位置。准备好了就进入今晚的音频练习。</p></div>`
+                }
+                    break;
 
             }
 
