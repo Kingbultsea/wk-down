@@ -1,0 +1,24 @@
+@function px2html($px){
+  $rem: 37.5px;
+  @return ($px / $rem) + rem;
+}
+
+@mixin centerAlign {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin centerContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+@mixin absoluteCenter {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
