@@ -5,7 +5,7 @@
         <div class="img-bg">
           <img style="height: 100%" :src="background" />
         </div>
-        <div class="title">小睡眠官方测评</div>
+        <!-- <div class="title">小睡眠官方测评</div> -->
         <div class="desc-block">
           <!-- <div class="desc-block-title">标题少了一个字段</div> -->
           <div class="desc-block-desc">{{ desc }}</div> <!-- 夜色琉璃，浮生倥偬你凭栏垂眸，眼里荡漾开漫天灯火。你说星星拥抱月光，你说烟花亲吻沉云，你把深夜的钟声谱写成歌，温柔荡漾成眼底闪烁比秋天短，比世界长“为你，千千万万遍”晚安。 -->
@@ -152,7 +152,7 @@ export default {
         color: #fff;
         width: px2html(273px);
         padding: px2html(13px);
-        background-color: rgba(10, 86, 131, 1);
+        // background-color: rgba(10, 86, 131, 1);
         border-radius: px2html(9px);
         .desc-block-title {
           font-size: px2html(26px);
