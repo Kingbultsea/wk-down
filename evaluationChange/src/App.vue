@@ -24,7 +24,7 @@ export default {
       Share.callAppRouter('Share')
     },
     appShare () {
-      const share = new Share({ pic: 'http://wx4.sinaimg.cn/mw690/006Zdy2vgy1frycou5uzsj302l02b74g.jpg', url: window.location.href.split('#')[0], title: '小测评大测评超级测评', desc: '测评' })
+      const share = new Share({ pic: 'https://res.psy-1.com/FqFCiruUYEg-3f4T8aXuV4LqcC7X', url: window.location.href.split('#')[0], title: '小测评大测评超级测评', desc: '测评' })
       share.appShare()
       share.rawWeiXinShare(this.url)
     }
