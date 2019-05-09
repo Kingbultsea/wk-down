@@ -5,6 +5,7 @@ import store from './store'
 import './registerServiceWorker'
 import WJH from '@/js/wjhJS.js'
 import Axios from 'axios'
+import Share from '@/js/shareAndGetName'
 
 Vue.prototype.WJH = WJH
 Vue.config.productionTip = false

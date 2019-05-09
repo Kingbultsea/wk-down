@@ -17,7 +17,6 @@
 <script>
 import SinglePic from '@/components/picList'
 import SingleFont from '@/components/fontList'
-import Share from '@/js/shareAndGetName'
 
 export default {
   name: 'Subject',
