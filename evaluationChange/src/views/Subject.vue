@@ -39,6 +39,8 @@ export default {
       this.subjectADJ(this.savePreIndex.pop(), this.savePreScore.pop(), true)
     },
     subjectADJ (toId = 0, score = 0, lastMode = false) {
+      console.log(toId + '  ---  ')
+      isNaN(toId) ? '' : toId = parseInt(toId)
       try {
         navigator.vibrate(10)
       } catch {
@@ -73,6 +75,7 @@ export default {
       }
 
       this.score += score
+      console.log(this.index, '问题')
       const data = this.selections[this.index]
       this.currentComponentName = data.type
       this.title = data.title
