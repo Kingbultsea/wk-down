@@ -47,7 +47,7 @@ export default {
       for (let i of JSON.parse(list)) {
         if (score >= i.min && score <= i.max) {
           console.log(i.background)
-          this.background = i.background
+          i.background ? this.background = i.background : ''
           this.desc = i.desc // 还有一个backgoround 没有设置好
           return
         }
@@ -180,6 +180,7 @@ export default {
             font-size: px2html(6px);
             .img-outer {
               margin-top: px2html(3px);
+              margin-bottom: px2html(2px);
               width: px2html(32px);
               height: px2html(32px);
               position: relative;

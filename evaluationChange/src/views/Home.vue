@@ -97,7 +97,7 @@ export default {
     overflow: hidden;
     .title {
       width: px2html(318px);
-      height: px2html(80px);
+      height: max-content;
       font-size: px2html(30px);
       font-weight: bold;
       text-align: left;
