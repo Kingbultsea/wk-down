@@ -18,6 +18,11 @@ new Vue({
     }
   },
   methods: {
+    appShare (title = '', desc = '', picUrl = 'https://res.psy-1.com/FqFCiruUYEg-3f4T8aXuV4LqcC7X') {
+      const share = new Share({ pic: 'https://res.psy-1.com/FqFCiruUYEg-3f4T8aXuV4LqcC7X', url: window.location.href.split('#')[0], title: title, desc })
+      share.appShare()
+      share.rawWeiXinShare(this.url)
+    },
     getData () {
       const id = this.parseQuery(document.URL)
       Axios.get(this.url + '/evaluate-miniapp/question/find', { params: { id: id.article_id } }).then((res) => {
@@ -32,6 +37,7 @@ new Vue({
         }
         sessionStorage.setItem('haveLoad', 'true')
         this.amountData = res.data.data
+        this.appShare(this.amountData.weixinTitle, this.amountData .weixinDesc)
       })
     },
     parseQuery (url) {
