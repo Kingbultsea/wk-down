@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     preSelection () { // 上一题
-      this.subjectADJ(this.savePreIndex.pop(), this.savePreScore.pop(), true)
+      this.subjectADJ(this.savePreIndex.pop(), ~this.savePreScore.pop() + 1, true)
     },
     subjectADJ (toId = 0, score = 0, lastMode = false) {
       console.log(toId + '  ---  ')
