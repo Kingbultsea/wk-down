@@ -7,7 +7,7 @@
     <div class="template" v-for="(li, index) in list" :key="index">
       <div class="title">{{ li.detail.musicdesc }}</div>
       <div class="center">
-        <img class="c-img" :src="li.detail.category_info.category_icon" />
+        <img class="c-img" :src="li.cover_free" />
         <div class="desc" v-html="parseBR(li.detail.resdesc)"></div>
       </div>
       <div class="button" @click="toLink(li.detail.category_id)">
