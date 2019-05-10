@@ -4,7 +4,7 @@
     <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=561'"  class="open-remeber"></div>
     <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=562'"  class="get-in"></div>
     <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=563'" class="t"></div>
-    <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=518'" class="f"></div>
+    <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=558'" class="f"></div>
   </div>
 </template>
 
