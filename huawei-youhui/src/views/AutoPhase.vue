@@ -18,7 +18,7 @@
       启禀陛下娘娘<br/>限免内容每周更换<br/>开通会员无限畅享
     </div>
     <img class="logo" src="../assets/logo@3x.png" />
-    <img class="btn" src="../assets/xm/btn.png" />
+    <img class="btn" @click="toMember" src="../assets/xm/btn.png" />
   </div>
 </template>
 
@@ -41,6 +41,12 @@ export default {
   components: {
   },
   methods: {
+    toMember () {
+      let pre = {
+        "code": 10017
+      }
+      this.callAppRouter('Redirect', pre, function(err, result){})
+    },
     callAppRouter (method, params={}, callback) {
       let req = {
         'Method': method,
