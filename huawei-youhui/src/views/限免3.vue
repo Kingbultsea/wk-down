@@ -2,7 +2,7 @@
   <div class="xm" :style="home_height">
     <img class="ig" src="../assets/限免-第三期.png" />
     <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=561'"  class="open-remeber"></div>
-    <div onclick="window.location = 'https://www.heartide.com/app/redirect?code=1052&category_id=11&voice_id=10028'"  class="get-in"></div>
+    <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=566'"  class="get-in"></div>
     <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=563'" class="t"></div>
     <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=558'" class="f"></div>
   </div>
