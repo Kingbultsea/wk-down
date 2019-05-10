@@ -10,7 +10,7 @@
         <img class="c-img" :src="li.detail.category_info.category_icon" />
         <div class="desc" v-html="parseBR(li.detail.resdesc)"></div>
       </div>
-      <div class="button" @click="toLink(li.detail.category.id)">
+      <div class="button" @click="toLink(li.detail.category_id)">
         <div class="price">原价{{ li.detail.price }}元</div>
       </div>
     </div>
