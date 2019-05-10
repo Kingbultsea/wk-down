@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     preSelection () { // 上一题
-      this.subjectADJ(this.savePreIndex.pop(), ~this.savePreScore.pop() + 1, true)
+      this.subjectADJ(this.savePreIndex.pop(), this.savePreScore.pop(), true)
     },
     subjectADJ (toId = 0, score = 0, lastMode = false) {
       console.log(toId + '  ---  ')
@@ -74,7 +74,7 @@ export default {
         this.index = toId
       }
 
-      this.score += score
+      lastMode ? this.score = score : this.score += score
       console.log(this.index, '问题')
       const data = this.selections[this.index]
       this.currentComponentName = data.type
