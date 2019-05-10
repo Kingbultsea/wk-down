@@ -36,6 +36,9 @@ export default {
   .home {
     position: relative;
     width: px2html(375px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     >.ig {
       width: 100vw;
     }
