@@ -10,7 +10,7 @@
         <img class="c-img" :src="li.detail.category_info.category_icon" />
         <div class="desc" v-html="parseBR(li.detail.resdesc)"></div>
       </div>
-      <div class="button" @click="toLink(li.id)">
+      <div class="button" @click="toLink(li.detail.category.id)">
         <div class="price">原价{{ li.detail.price }}元</div>
       </div>
     </div>
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 // @ is an alias to /src
 import WJH from '../js/wjhJS.js'
 
@@ -40,6 +41,27 @@ export default {
   components: {
   },
   methods: {
+    callAppRouter (method, params={}, callback) {
+      let req = {
+        'Method': method,
+        'Data': params
+      }, cbName = `CB_${Date.now()}_${Math.ceil(Math.random() * 10)}`
+      req = JSON.stringify(req)
+      Xinchao.Web[cbName] = (err, result) => {
+        if (callback) {
+          callback(err, result)
+        }
+        delete Xinchao.Web[cbName]
+      }
+      if (/(iPhone|iPad|iPod)/i.test(navigator.userAgent)) {
+        window.webkit.messageHandlers.XinchaoApp.postMessage({
+          req,
+          cbName
+        })
+      } else {
+        XinchaoApp.callRouter(req, cbName)
+      }
+    },
     parseQuery (url) {
       let queryObj = {}
       let reg = /[?&]([^=&#]+)=([^&#]*)/g
@@ -55,6 +77,11 @@ export default {
       return queryObj
     },
     toLink (id) {
+      let pre = {
+        "code": 1052,
+        'category_id': id
+      }
+      this.callAppRouter('Redirect', pre, function(err, result){})
       window.location = 'https://www.heartide.com/statics/redirect?url=' + id
     },
     parseBR (data) {
@@ -74,6 +101,7 @@ export default {
     }
   },
   mounted () {
+    document.title = '小睡眠每周限免活动'
     this.getData()
   }
 }
