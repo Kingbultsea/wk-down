@@ -10,10 +10,15 @@
         <img class="c-img" :src="li.detail.category_info.category_icon" />
         <div class="desc" v-html="parseBR(li.detail.resdesc)"></div>
       </div>
-      <div class="button">
+      <div class="button" @click="toLink(li.id)">
         <div class="price">原价{{ li.detail.price }}元</div>
       </div>
     </div>
+    <div class="desc">
+      启禀陛下娘娘<br/>限免内容每周更换<br/>开通会员无限畅享
+    </div>
+    <img class="logo" src="../assets/logo@3x.png" />
+    <img class="btn" src="../assets/xm/btn.png" />
   </div>
 </template>
 
@@ -35,11 +40,29 @@ export default {
   components: {
   },
   methods: {
+    parseQuery (url) {
+      let queryObj = {}
+      let reg = /[?&]([^=&#]+)=([^&#]*)/g
+      let querys = url.match(reg)
+      if (querys) {
+        for (let i in querys) {
+          let query = querys[i].split('=')
+          let key = query[0].substr(1)
+          let value = query[1]
+          queryObj[key] ? queryObj[key] = [].concat(queryObj[key], value) : queryObj[key] = value
+        }
+      }
+      return queryObj
+    },
+    toLink (id) {
+      window.location = 'https://www.heartide.com/statics/redirect?url=' + id
+    },
     parseBR (data) {
       return data.replace(/\n/g, '<br/>')
     },
     getData () {
-      this.$axios.get('/web/v1/cosleep/week/free', { params: { free_id: 14 } }).then((res) => {
+      const params = this.parseQuery(document.URL)
+      this.$axios.get('/web/v1/cosleep/week/free', { params: { free_id: params.free_id } }).then((res) => {
         if (parseInt(res.data.status) !== 5) {
           const data = res.data.data
           this.startTime = WJH.dateFormat(+(data.free_start + '000'), 'yyyy年MM月dd日')
@@ -64,6 +87,8 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  background: url("../assets/xm/矩形@3x.png");
+  background-size: 100% 100%;
   .ig {
     position: absolute;
     top: 0px;
@@ -166,6 +191,28 @@ export default {
         background-size: 100% 100%;
       }
     }
+  }
+
+  >.desc {
+    line-height: px2html(21px);
+    font-weight: 700;
+    color: rgba(0, 0, 0, 1);
+    font-size: px2html(15px);
+    margin-top: px2html(4px);
+    position: relative;
+    z-index: 1;
+  }
+  >.btn {
+    margin-top: px2html(13px);
+    position: relative;
+    z-index: 1;
+    width: px2html(129px);
+  }
+  >.logo {
+    margin-top: px2html(16px);
+    position: relative;
+    z-index: 1;
+    width: px2html(57px);
   }
 }
 </style>
