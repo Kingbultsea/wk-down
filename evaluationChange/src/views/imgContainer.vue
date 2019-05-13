@@ -53,8 +53,9 @@ export default {
           i.background ? this.background = i.background : ''
           this.desc = i.desc.replace(/\$\{score\}/g, score).replace(/\$\{name\}/g, sessionStorage.getItem('name') || '') // 还有一个backgoround 没有设置好
           this.title = (i.title || '').replace(/\$\{score\}/g, score).replace(/\$\{name\}/g, sessionStorage.getItem('name') || '')
-          if (list.hasOwnProperty('shareTitle') && list.hasOwnProperty('shareDesc')) {
-            this.$root.shareM(list.shareTitle, list.shareDesc)
+          console.log(i.hasOwnProperty('shareTitle') && i.hasOwnProperty('shareDesc'), '')
+          if (i.hasOwnProperty('shareTitle') && i.hasOwnProperty('shareDesc')) {
+            this.$root.shareM(i.shareTitle, i.shareDesc)
           }
           return
         }
