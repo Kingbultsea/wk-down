@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["about"],{f820:function(t,e,n){"use strict";n.r(e);var c=function(){var t=this,e=t.$createElement;t._self._c;return t._m(0)},a=[function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("div",{staticClass:"about"},[n("h1",{attrs:{onclick:"window.location = 'https://www.heartide.com/cosleep/huawei/pay/coupon?free_id=15#/atp'"}},[t._v("点击完成跳转")])])}],o=n("17cc"),i={},s=Object(o["a"])(i,c,a,!1,null,null,null);e["default"]=s.exports}}]);
+//# sourceMappingURL=about.ae90af15.js.map
