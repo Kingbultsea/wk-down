@@ -48,7 +48,7 @@ export default {
         if (score >= i.min && score <= i.max) {
           console.log(i.background)
           i.background ? this.background = i.background : ''
-          this.desc = i.desc.replace(/\$\{score\}/g, score) // 还有一个backgoround 没有设置好
+          this.desc = i.desc.replace(/\$\{score\}/g, score).replace(/\$\{name\}/g, sessionStorage.getItem('name') || '你') // 还有一个backgoround 没有设置好
           this.title = i.title || ''
           return
         }
