@@ -21,6 +21,9 @@
         </div>
       </div>
       <div class="share-template"> <!-- @click="this.$parent.actionWeixinShare" -->
+        <a :href="this.$root.amountData.advertisementUrl">
+          <img class="adPic" :src="this.$root.amountData.advertisementPic" />
+        </a>
       </div>
     </div>
   </transition>
@@ -28,6 +31,7 @@
 
 <script>
 import html2canvas from 'html2canvas'
+import Axios from 'axios'
 const QRCode = require('qrcode')
 // 结果页面 本来想套一个出来的...  结果发现没有这个必要。
 export default {
@@ -57,6 +61,7 @@ export default {
           if (i.hasOwnProperty('shareTitle') && i.hasOwnProperty('shareDesc')) {
             this.$root.shareM(i.shareTitle, i.shareDesc)
           }
+          Axios.post(this.$root.url + '/evaluate-miniapp/question/increment/solve-count', { id: this.$root.id }).then(() => {})
           return
         }
       }
@@ -210,9 +215,19 @@ export default {
       margin-top: px2html(10px);
       background-color: #fff;
       box-shadow: px2html(0px) px2html(0px) px2html(14px) px2html(2px) rgba(0, 0, 0, 0.1);
-      height: px2html(100px);
+      height: max-content;
       width: px2html(340px);
       border-radius: px2html(10px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      a {
+        margin-bottom: px2html(-5px);
+      }
+      .adPic {
+        width: 100%;
+      }
     }
   }
 </style>

@@ -21,11 +21,13 @@ new Vue({
         bg: '', // 背景
         singleFont: '', // 单选文字的选框
         answerBg: '' // 问题的框框
-      } // 从服务器拉取的 样式数据
+      }, // 从服务器拉取的 样式数据
+      id: ''
     }
   },
   methods: {
-    shareM (title = '小睡眠官方测评', desc = '小睡眠', picUrl = 'https://res.psy-1.com/FqFCiruUYEg-3f4T8aXuV4LqcC7X') {
+    shareM (title = '小睡眠官方测评', desc = '小睡眠', picUrl) {
+      picUrl ? '' : picUrl = this.amountData.weixinPic
       const share = new Share({ pic: picUrl, url: window.location.href.split('#')[0], title: title, desc: desc })
       this.share = share
       share.appShare()
@@ -43,7 +45,7 @@ new Vue({
       }
     },
     appShare (title = '', desc = '', picUrl = 'https://res.psy-1.com/FqFCiruUYEg-3f4T8aXuV4LqcC7X') {
-      const share = new Share({ pic: 'https://res.psy-1.com/FqFCiruUYEg-3f4T8aXuV4LqcC7X', url: window.location.href.split('#')[0], title: title, desc })
+      const share = new Share({ pic: picUrl, url: window.location.href.split('#')[0], title: title, desc })
       share.appShare()
       share.rawWeiXinShare(this.url)
     },
@@ -58,6 +60,7 @@ new Vue({
     },
     getData () {
       const id = this.parseQuery(document.URL)
+      this.id = id.article_id
       Axios.get(this.url + '/evaluate-miniapp/question/find', { params: { id: id.article_id } }).then((res) => {
         // res.data.data // 预加载
         const reg = /"(https.+?)"/g
@@ -86,7 +89,7 @@ new Vue({
           }
         })
 
-        this.shareM(this.amountData.weixinTitle, this.amountData.weixinDesc)
+        this.shareM(this.amountData.weixinTitle, this.amountData.weixinDesc, this.amountData.weixinPic)
         this.test() // 获取微信名称
         // this.appShare(this.amountData.weixinTitle, this.amountData.weixinDesc)
       })
