@@ -83,7 +83,7 @@ export default class Share {
       title: that.title,
       desc: that.desc,
       link: that.url,
-      imgUrl: that.pic+'?imageView&thumbnail=400x0&quality=75&tostatic=0'
+      imgUrl: that.pic // +'?imageView&thumbnail=400x0&quality=75&tostatic=0'
     }
     if (this.dataUrl) {
       // message.type = 'music'
