@@ -23,23 +23,6 @@ export default {
   methods: {
     actionWeixinShare () {
       Share.callAppRouter('Share')
-    },
-    shareM (title = '小睡眠官方测评', desc = '小睡眠', picUrl = 'https://res.psy-1.com/FqFCiruUYEg-3f4T8aXuV4LqcC7X') {
-      const share = new Share({ pic: picUrl, url: window.location.href.split('#')[0], title: title, desc: desc })
-      this.share = share
-      share.appShare()
-      share.rawWeiXinShare(this.url)
-    },
-    test () {
-      if (Tool.is_cosleep()) {
-        this.share.appGetName()
-      }
-      if (/micromessenger/.test(navigator.userAgent.toLowerCase())) {
-        console.log('?????QQ')
-        this.share.weiXinInit(this.url)
-        this.share.weatherCode()
-        this.share.weiXinGetName(this.url)
-      }
     }
   },
   mounted () {

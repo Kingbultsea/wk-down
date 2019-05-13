@@ -42,6 +42,15 @@ new Vue({
       share.appShare()
       share.rawWeiXinShare(this.url)
     },
+    loadImage (url) {
+      return new Promise((resolve) => {
+        const myImage = new Image(100, 200)
+        myImage.src = url.replace(/\\$/, '')
+        myImage.onload = () => {
+          resolve()
+        }
+      })
+    },
     getData () {
       const id = this.parseQuery(document.URL)
       Axios.get(this.url + '/evaluate-miniapp/question/find', { params: { id: id.article_id } }).then((res) => {
@@ -49,13 +58,17 @@ new Vue({
         const reg = /"(https.+?)"/g
         const jsonString = JSON.stringify(res.data.data)
         let vancant = ''
+        let pr = []
         /* eslint-disable */
         while (vancant = reg.exec(jsonString)) {
           const myImage = new Image(100, 200)
-          console.log(vancant[1].replace(/\\$/, ''))
-          myImage.src = vancant[1].replace(/\\$/, '')
+          // console.log(vancant[1].replace(/\\$/, ''))
+          pr.push(this.loadImage(vancant[1]))
+          // myImage.src = vancant[1].replace(/\\$/, '')
         }
-        sessionStorage.setItem('haveLoad', 'true')
+        Promise.all(pr).then(() => {
+          sessionStorage.setItem('haveLoad', 'true')
+        })
         this.amountData = res.data.data
 
         this.shareM(this.amountData.weixinTitle, this.amountData.weixinDesc)
