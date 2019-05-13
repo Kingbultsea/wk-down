@@ -5,9 +5,9 @@
         <div class="img-bg">
           <img style="height: 100%" :src="background" />
         </div>
-        <!-- <div class="title">小睡眠官方测评</div> -->
+        <!-- <div class="title">小睡眠小测评</div> -->
         <div class="desc-block">
-          <!-- <div class="desc-block-title">标题少了一个字段</div> -->
+          <div class="desc-block-title">{{ title }}</div>
           <div class="desc-block-desc">{{ desc }}</div> <!-- 夜色琉璃，浮生倥偬你凭栏垂眸，眼里荡漾开漫天灯火。你说星星拥抱月光，你说烟花亲吻沉云，你把深夜的钟声谱写成歌，温柔荡漾成眼底闪烁比秋天短，比世界长“为你，千千万万遍”晚安。 -->
           <div class="qrBlock">
             <img class="qrBlock-logo" src="../assets/cosleep_test_img_logo2@3x.png"/>
@@ -49,6 +49,7 @@ export default {
           console.log(i.background)
           i.background ? this.background = i.background : ''
           this.desc = i.desc.replace(/\$\{score\}/g, score) // 还有一个backgoround 没有设置好
+          this.title = i.title || ''
           return
         }
       }

@@ -6,6 +6,7 @@ import './registerServiceWorker'
 import WJH from '@/js/wjhJS.js'
 import Axios from 'axios'
 import Share from '@/js/shareAndGetName'
+import Tool from './js/tool.js'
 
 Vue.prototype.WJH = WJH
 Vue.config.productionTip = false
@@ -19,6 +20,23 @@ new Vue({
     }
   },
   methods: {
+    shareM (title = '小睡眠官方测评', desc = '小睡眠', picUrl = 'https://res.psy-1.com/FqFCiruUYEg-3f4T8aXuV4LqcC7X') {
+      const share = new Share({ pic: picUrl, url: window.location.href.split('#')[0], title: title, desc: desc })
+      this.share = share
+      share.appShare()
+      share.rawWeiXinShare(this.url)
+    },
+    test () {
+      if (Tool.is_cosleep()) {
+        this.share.appGetName()
+      }
+      if (/micromessenger/.test(navigator.userAgent.toLowerCase())) {
+        console.log('?????QQ')
+        this.share.weiXinInit(this.url)
+        this.share.weatherCode()
+        this.share.weiXinGetName(this.url)
+      }
+    },
     appShare (title = '', desc = '', picUrl = 'https://res.psy-1.com/FqFCiruUYEg-3f4T8aXuV4LqcC7X') {
       const share = new Share({ pic: 'https://res.psy-1.com/FqFCiruUYEg-3f4T8aXuV4LqcC7X', url: window.location.href.split('#')[0], title: title, desc })
       share.appShare()
@@ -28,9 +46,10 @@ new Vue({
       const id = this.parseQuery(document.URL)
       Axios.get(this.url + '/evaluate-miniapp/question/find', { params: { id: id.article_id } }).then((res) => {
         // res.data.data
-        const reg = /\"(https.+?)\"/g
+        const reg = /"(https.+?)"/g
         const jsonString = JSON.stringify(res.data.data)
         let vancant = ''
+        /* eslint-disable */
         while (vancant = reg.exec(jsonString)) {
           const myImage = new Image(100, 200)
           console.log(vancant[1].replace(/\\$/, ''))
@@ -38,7 +57,10 @@ new Vue({
         }
         sessionStorage.setItem('haveLoad', 'true')
         this.amountData = res.data.data
-        this.appShare(this.amountData.weixinTitle, this.amountData .weixinDesc)
+
+        this.shareM(this.amountData.weixinTitle, this.amountData.weixinDesc)
+        this.test() // 获取微信名称
+        // this.appShare(this.amountData.weixinTitle, this.amountData.weixinDesc)
       })
     },
     parseQuery (url) {

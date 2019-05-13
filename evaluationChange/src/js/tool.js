@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 export default class Tool {
   // 是否为APP
   static is_cosleep () {
