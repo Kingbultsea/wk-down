@@ -1,6 +1,6 @@
 <template>
   <div class="font-list">
-    <div class="block" v-for="(li, index) in choices" :key="index" @click="submitData(li.toId, li.score)">
+    <div class="block" :style="{background: 'url(' + singleFont + ') 0% 0% / 100% 100%'}" v-for="(li, index) in choices" :key="index" @click="submitData(li.toId, li.score)">
       <div class="block-content">{{String.fromCharCode(65 + index)}}.{{ li.content }}</div>
     </div>
   </div>
@@ -10,6 +10,11 @@
 export default {
   props: {
     choices: Array
+  },
+  data () {
+    return {
+      singleFont: this.$root.style.singleFont
+    }
   },
   methods: {
     submitData (toId, score) {

@@ -1,6 +1,6 @@
 <template>
-  <div id="app" :style="{backgroundColor: bg_c}">
-    <img class="bg" :src="bg_img">
+  <div id="app" style="background-size: 100% 100%" :style="{background: 'url(' + this.$root.style.bg + ') 0% 0% / 100% 100%'}"> <!-- :style="{backgroundColor: bg_c}" -->
+    <!-- <img class="bg"> :src="this.$root.style.bg" -->
     <div class="app-template">
       <router-view/>
     </div>
@@ -14,7 +14,7 @@ import Share from '@/js/shareAndGetName'
 export default {
   data () {
     return {
-      bg_c: 'RGBA(0, 0, 0, 1)',
+      bg_c: '', // RGBA(0, 0, 0, 1)
       bg_img: require('./assets/bg.png'),
       url: 'https://api.debug.psy-1.com',
       share: ''
@@ -32,6 +32,7 @@ export default {
 
 <style lang="scss">
   #app {
+    background-size: 100% 100%;
     .bg {
       width: 100%;
       height: 100%;

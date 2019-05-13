@@ -2,7 +2,7 @@
   <transition enter-active-class="animated fadeIn">
     <div class="subject">
       <div class="block-title">
-        <img class="block-title-bg" src="../assets/cosleep_question_img_style01@3x.png">
+        <img class="block-title-bg" :src="this.$root.style.answerBg">
         <div class="block-title-inner">{{ title }}</div>
         <div class="block-title-desc">{{ content }}</div>
         <img class="block-title-icon" src="../assets/cosleep_test_img_logo1@3x.png">
@@ -40,6 +40,7 @@ export default {
     },
     subjectADJ (toId = 0, score = 0, lastMode = false) {
       console.log(toId + '  ---  ')
+      /* eslint-disable */
       isNaN(toId) ? '' : toId = parseInt(toId)
       try {
         navigator.vibrate(10)
@@ -51,7 +52,6 @@ export default {
         this.$router.push('/rs')
         return
       } else if (toId === 'next') {
-
         if (!lastMode) {
           this.savePreIndex.push(this.index)
           this.savePreScore.push(this.score)
@@ -65,12 +65,10 @@ export default {
           return
         }
       } else {
-
         if (!lastMode) {
           this.savePreIndex.push(this.index)
           this.savePreScore.push(this.score)
         }
-
         this.index = toId
       }
 

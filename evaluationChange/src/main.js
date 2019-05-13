@@ -16,7 +16,12 @@ new Vue({
   data () {
     return {
       url: 'https://api.debug.psy-1.com',
-      amountData: '' // 从服务器拉取的 总数据
+      amountData: '', // 从服务器拉取的 总数据
+      style: {
+        bg: '', // 背景
+        singleFont: '', // 单选文字的选框
+        answerBg: '' // 问题的框框
+      } // 从服务器拉取的 样式数据
     }
   },
   methods: {
@@ -54,22 +59,32 @@ new Vue({
     getData () {
       const id = this.parseQuery(document.URL)
       Axios.get(this.url + '/evaluate-miniapp/question/find', { params: { id: id.article_id } }).then((res) => {
-        // res.data.data
+        // res.data.data // 预加载
         const reg = /"(https.+?)"/g
         const jsonString = JSON.stringify(res.data.data)
         let vancant = ''
         let pr = []
         /* eslint-disable */
         while (vancant = reg.exec(jsonString)) {
-          const myImage = new Image(100, 200)
-          // console.log(vancant[1].replace(/\\$/, ''))
           pr.push(this.loadImage(vancant[1]))
-          // myImage.src = vancant[1].replace(/\\$/, '')
         }
         Promise.all(pr).then(() => {
           sessionStorage.setItem('haveLoad', 'true')
         })
         this.amountData = res.data.data
+
+        // 样式设置
+        Axios.get(this.url + '/evaluate-miniapp/styles/find', { params: { id: res.data.data.styleId } }).then((res) => {
+          const reg2 = /"(https.+?)"/g
+          this.style = res.data.data
+          const jsonString = JSON.stringify(res.data.data)
+          let vancant = ''
+          /* eslint-disable */
+          while (vancant = reg2.exec(jsonString)) {
+            const myImage = new Image(100, 200)
+            myImage.src = vancant[1].replace(/\\$/, '')
+          }
+        })
 
         this.shareM(this.amountData.weixinTitle, this.amountData.weixinDesc)
         this.test() // 获取微信名称

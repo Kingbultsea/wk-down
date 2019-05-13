@@ -1,7 +1,7 @@
 <template>
   <div class="pic-list">
     <div class="outer-block">
-      <div class="block" v-for="(li, index) in choices" :key="index" @click="submitData(li.toId, li.score)">
+      <div class="block" :style="{background: 'url(' + singlePic + ') 0% 0% / 100% 100%'}" v-for="(li, index) in choices" :key="index" @click="submitData(li.toId, li.score)">
         <div class="block-title">{{String.fromCharCode(65 + index)}}.</div>
         <div class="block-pic">
           <img class="block-pic-content" :src="li.picUrl">
@@ -15,6 +15,11 @@
 export default {
   props: {
     choices: Array
+  },
+  data () {
+    return {
+      singlePic: this.$root.style.singlePic
+    }
   },
   methods: {
     submitData (toId, score) {
