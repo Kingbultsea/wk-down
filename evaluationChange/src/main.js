@@ -56,6 +56,7 @@ new Vue({
         const myImage = new Image(100, 200)
         myImage.src = url.replace(/\\$/, '')
         myImage.onload = () => {
+          console.log('done inner')
           resolve()
         }
       })
@@ -74,6 +75,7 @@ new Vue({
           pr.push(this.loadImage(vancant[1]))
         }
         Promise.all(pr).then(() => {
+          console.log('done')
           sessionStorage.setItem('haveLoad', 'true')
         })
         this.amountData = res.data.data
