@@ -62,14 +62,14 @@ export default class Share {
         this.callAppRouter('Login', {}, (err, result) => {
           try {
             const r = JSON.parse(result)
-            sessionStorage.setItem('name', r.data.name)
-            sessionStorage.setItem('avatar', r.data.avatar)
+            localStorage.setItem('name', r.data.name)
+            localStorage.setItem('avatar', r.data.avatar)
             console.log(r, 'hkjhkhk')
             console.log(r.data.name, 'fgjhfjhfj')
           } catch (e) {
             console.log(result.data.avatar)
-            sessionStorage.setItem('avatar', result.data.avatar)
-            sessionStorage.setItem('name', result.data.name)
+            localStorage.setItem('avatar', result.data.avatar)
+            localStorage.setItem('name', result.data.name)
             console.log(result.data.name)
           }
         })
@@ -112,8 +112,8 @@ export default class Share {
         console.log(getSDK.data.wechat_config)
         getSDK.data.wechat_config.debug = false
 
-        if (bl && !sessionStorage.getItem('name')) window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx632d4c99bd681cf3&redirect_uri=' + encodeURI(location.href.split('#')[0]) +'&response_type=code&scope=snsapi_userinfo#wechart_redirect'
-        if (!bl || sessionStorage.getItem('name')) {
+        if (bl && !localStorage.getItem('name')) window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx632d4c99bd681cf3&redirect_uri=' + encodeURI(location.href.split('#')[0]) +'&response_type=code&scope=snsapi_userinfo#wechart_redirect'
+        if (!bl || localStorage.getItem('name')) {
           wx.config(getSDK.data.wechat_config)
           that.weiXinShare()
           that.weiXinGetName(url)
@@ -133,8 +133,8 @@ export default class Share {
   }
 
   weiXinGetName (url) {
-    if (!sessionStorage.getItem('name')) {
-      console.log(code + 'asd你想要的' + sessionStorage.getItem('code'))
+    if (!localStorage.getItem('name')) {
+      console.log(code + 'cd' + localStorage.getItem('code'))
       const code = localStorage.getItem('code').replace(/code=/, '').replace(/\&.+/, '')
 
       $.get(url + '/web/v1/wechat/user', { code }, (data) => {
@@ -142,8 +142,8 @@ export default class Share {
         if (data.hasOwnProperty('data')) {
           console.log(data)
           console.log('设置session')
-          sessionStorage.setItem('avatar', data.data.headimgurl)
-          sessionStorage.setItem('name', data.data.nickname)
+          localStorage.setItem('avatar', data.data.headimgurl)
+          localStorage.setItem('name', data.data.nickname)
           console.log(data.data.nickname)
         }
       })
@@ -179,13 +179,13 @@ export default class Share {
   }
 
   rawGetName () {
-    if (!sessionStorage.getItem('name')) {
-      console.log(code + 'asd你想要的' + sessionStorage.getItem('code'))
-      const code = sessionStorage.getItem('code').replace(/code=/, '').replace(/\&.+/, '')
+    if (!localStorage.getItem('name')) {
+      console.log(code + 'asd你想要的' + localStorage.getItem('code'))
+      const code = localStorage.getItem('code').replace(/code=/, '').replace(/\&.+/, '')
 
       $.get(url + '/web/v1/wechat/user', { code }, (data) => {
         console.log('jq都不行？'); console.log(data.data.nickname)
-        sessionStorage.setItem('name', data.data.nickname)
+        localStorage.setItem('name', data.data.nickname)
       })
     }
   }

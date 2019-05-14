@@ -55,8 +55,8 @@ export default {
           console.log(i.background)
           /* eslint-disable */
           i.background ? this.background = i.background : this.background = this.$root.style.resultBackground
-          this.desc = i.desc.replace(/\$\{score\}/g, score).replace(/\$\{name\}/g, sessionStorage.getItem('name') || '') // 还有一个backgoround 没有设置好
-          this.title = (i.title || '').replace(/\$\{score\}/g, score).replace(/\$\{name\}/g, sessionStorage.getItem('name') || '')
+          this.desc = i.desc.replace(/\$\{score\}/g, score).replace(/\$\{name\}/g, localStorage.getItem('name') || '') // 还有一个backgoround 没有设置好
+          this.title = (i.title || '').replace(/\$\{score\}/g, score).replace(/\$\{name\}/g, localStorage.getItem('name') || '')
           console.log(i.hasOwnProperty('shareTitle') && i.hasOwnProperty('shareDesc'), '')
           if (i.hasOwnProperty('shareTitle') && i.hasOwnProperty('shareDesc')) {
             this.$root.shareM(i.shareTitle, i.shareDesc)
