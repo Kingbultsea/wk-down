@@ -73,7 +73,7 @@ export default {
       }
       setTimeout(() => {
         this.$router.push('/subject')
-      }, 500)
+      }, 300)
     }
   },
   created () {

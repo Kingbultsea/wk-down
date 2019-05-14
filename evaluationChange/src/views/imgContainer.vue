@@ -212,6 +212,7 @@ export default {
     }
 
     .share-template {
+      margin-bottom: px2html(10px);
       margin-top: px2html(10px);
       background-color: #fff;
       box-shadow: px2html(0px) px2html(0px) px2html(14px) px2html(2px) rgba(0, 0, 0, 0.1);

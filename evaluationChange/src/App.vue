@@ -52,7 +52,9 @@ export default {
     width: 100vw;
     height:100vh;
     font-size: px2html(12px);
+    -webkit-overflow-scrolling: touch;
     .app-template {
+      -webkit-overflow-scrolling: touch;
       width: 100vw;
       height: 100vh;
       overflow: scroll;
@@ -63,6 +65,9 @@ export default {
 </style>
 
 <style lang="scss">
+  body {
+    background-color: RGBA(74, 144, 226, 1);
+  }
   * {
     padding: 0;
     margin: 0;
