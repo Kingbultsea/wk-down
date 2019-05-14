@@ -54,7 +54,7 @@ export default {
         if (score >= i.min && score <= i.max) {
           console.log(i.background)
           /* eslint-disable */
-          i.background ? this.background = i.background : ''
+          i.background ? this.background = i.background : this.background = this.$root.style.resultBackground
           this.desc = i.desc.replace(/\$\{score\}/g, score).replace(/\$\{name\}/g, sessionStorage.getItem('name') || '') // 还有一个backgoround 没有设置好
           this.title = (i.title || '').replace(/\$\{score\}/g, score).replace(/\$\{name\}/g, sessionStorage.getItem('name') || '')
           console.log(i.hasOwnProperty('shareTitle') && i.hasOwnProperty('shareDesc'), '')

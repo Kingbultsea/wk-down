@@ -20,14 +20,16 @@ new Vue({
       style: {
         bg: '', // 背景
         singleFont: '', // 单选文字的选框
-        answerBg: '' // 问题的框框
+        answerBg: '', // 问题的框框
+        resultBackground: '' // 结果页背景
       }, // 从服务器拉取的 样式数据
       id: ''
     }
   },
   methods: {
     shareM (title = '小睡眠官方测评', desc = '小睡眠', picUrl) {
-      picUrl ? '' : picUrl = this.amountData.weixinPic
+      // eslint-disable-next-line
+      picUrl ? true : picUrl = this.amountData.weixinPic
       const share = new Share({ pic: picUrl, url: window.location.href.split('#')[0], title: title, desc: desc })
       this.share = share
       share.appShare()
