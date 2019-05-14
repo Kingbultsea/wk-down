@@ -126,6 +126,7 @@ export default {
       font-weight: bold;
       position: absolute;
       text-align: justify;
+      width: px2html(290px);
     }
     .block-title-inner {
       font-size: px2html(18px);
@@ -145,12 +146,14 @@ export default {
       top: px2html(205px);
     }
     .block-title-page {
+      width: max-content;
       top: px2html(229px);
       right: px2html(40px);
       height: px2html(14px);
       font-size: px2html(14px);
     }
     .block-title-back {
+      width: max-content;
       top: px2html(227px);
       right: px2html(90px);
       height: px2html(14px);
