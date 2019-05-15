@@ -168,6 +168,7 @@ export default {
         // background-color: rgba(10, 86, 131, 1);
         border-radius: px2html(9px);
         .desc-block-title {
+          text-align: justify;
           font-size: px2html(26px);
           font-weight: 500;
           padding-bottom: px2html(9px);
