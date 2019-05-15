@@ -33,6 +33,7 @@ export default {
 <style lang="scss">
   #app {
     background-size: 100% 100%;
+    min-height: 100vh;
     .bg {
       width: 100%;
       height: 100%;
