@@ -148,6 +148,7 @@ export default {
       top: px2html(35px);
     }
     .block-title-desc {
+      z-index: 8;
       font-size: px2html(14px);
       left: px2html(62px);
       top: px2html(73px);
