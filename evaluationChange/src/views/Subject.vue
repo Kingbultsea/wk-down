@@ -4,7 +4,8 @@
       <div class="block-title">
         <img class="block-title-bg" :src="this.$root.style.answerBg">
         <div class="block-title-inner">{{ title }}</div>
-        <div class="block-title-desc">{{ content }}</div>
+        <div class="block-title-desc" v-if="!subjectImg">{{ content }}</div>
+        <div class="block-title-image" v-if="subjectImg"><img :src="subjectImg" style="height: 100%" /></div>
         <img class="block-title-icon" src="../assets/cosleep_test_img_logo1@3x.png">
         <div class="block-title-page">{{ index + 1 }}/{{ maxLength }}</div>
         <div class="block-title-back" @click="preSelection" v-if="this.savePreIndex.length >= 2">上一题</div>
@@ -17,6 +18,7 @@
 <script>
 import SinglePic from '@/components/picList'
 import SingleFont from '@/components/fontList'
+import FontAndPic from '@/components/fontAndPic'
 
 export default {
   name: 'Subject',
@@ -79,12 +81,15 @@ export default {
       this.title = data.title
       this.content = data.content
       this.choices = data.selections
+      this.subjectImg = data.subjectImg
+      console.log(data)
       console.log(score, toId)
     }
   },
   components: {
     SingleFont,
-    SinglePic
+    SinglePic,
+    FontAndPic
   },
   mounted () {
     setTimeout(() => {
@@ -114,6 +119,15 @@ export default {
     width: 100%;
     height: px2html(290px);
     position: relative;
+    .block-title-image {
+      margin-top: px2html(87px);
+      margin-left: px2html(88px);
+      position: absolute;
+      width: px2html(205px);
+      height: px2html(115px);
+      @include centerContent;
+      overflow: hidden;
+    }
     .block-title-bg {
       position: absolute;
       width: 100%;
