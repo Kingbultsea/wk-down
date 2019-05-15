@@ -37,18 +37,24 @@ export default {
 
   .block {
     width: 100%;
-    height: px2html(65px);
+    padding-top: px2html(23px);
+    padding-bottom: px2html(23px);
+    height: max-content;
     background: url("../assets/cosleep_item-photo_img_style01@3x.png");
     background-size: 100% 100%;
     position: relative;
+    display: flex;
+    align-items: center;
     .block-content {
       font-size: px2html(14px);
-      height: px2html(14px);
-      line-height: px2html(14px);
+      line-height: px2html(19px);
       font-weight: 900;
-      position: absolute;
-      left: px2html(51px);
-      top: px2html(23px);
+      text-align: justify;
+      width: px2html(280px);
+      transform: translateX(px2html(50px)) translateY(px2html(-3px));
+      // position: absolute;
+      // left: px2html(51px);
+      // top: px2html(23px);
     }
   }
 
