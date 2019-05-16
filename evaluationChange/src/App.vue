@@ -32,8 +32,9 @@ export default {
 
 <style lang="scss">
   #app {
+    height: 100%;
+    overflow: hidden;
     background-size: 100% 100%;
-    min-height: 100vh;
     .bg {
       width: 100%;
       height: 100%;
@@ -43,7 +44,6 @@ export default {
       opacity: 0.6;
       z-index: 1;
     }
-    position: fixed;
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -51,15 +51,14 @@ export default {
     color: #2c3e50;
     overflow: hidden;
     width: 100vw;
-    height:100vh;
     font-size: px2html(12px);
-    -webkit-overflow-scrolling: touch;
+    // -webkit-overflow-scrolling: touch;
+    // position: fixed;
     .app-template {
-      -webkit-overflow-scrolling: touch;
+      // -webkit-overflow-scrolling: touch;
+      // overflow-y: scroll;
       width: 100vw;
       height: 100vh;
-      overflow: scroll;
-      position: fixed;
       z-index: 1;
     }
   }
@@ -67,7 +66,7 @@ export default {
 
 <style lang="scss">
   body {
-    background-color: RGBA(74, 144, 226, 1);
+    height: 100vh;
   }
   * {
     padding: 0;

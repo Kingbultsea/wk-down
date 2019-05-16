@@ -33,7 +33,8 @@ export default {
       choices: [],
       score: 0,
       savePreIndex: [], // 保存上一个index 才可以返回上一题
-      savePreScore: [] // 保存上一个score
+      savePreScore: [], // 保存上一个score
+      subjectImg: ''
     }
   },
   methods: {
@@ -81,7 +82,7 @@ export default {
       this.title = data.title
       this.content = data.content
       this.choices = data.selections
-      this.subjectImg = data.subjectImg
+      this.subjectImg = data.hasOwnProperty('subjectImg') ? data.subjectImg : ''
       console.log(data)
       console.log(score, toId)
     }
