@@ -79,6 +79,7 @@ new Vue({
           sessionStorage.setItem('haveLoad', 'true')
         })
         this.amountData = res.data.data
+        document.title = this.amountData.title
 
         // 样式设置
         Axios.get(this.url + '/evaluate-miniapp/styles/find', { params: { id: res.data.data.styleId } }).then((res) => {

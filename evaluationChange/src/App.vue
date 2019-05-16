@@ -56,7 +56,7 @@ export default {
     // position: fixed;
     .app-template {
       // -webkit-overflow-scrolling: touch;
-      // overflow-y: scroll;
+      overflow-y: scroll;
       width: 100vw;
       height: 100vh;
       z-index: 1;
