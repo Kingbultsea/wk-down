@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     countResult () {
-      this.visiableFrame = this.$root.amountData.visiableFrame ? 'rgba(10, 86, 131, 0.5)' : ''
+      this.visiableFrame = this.$root.amountData.visiableFrame ? 'rgba(0, 0, 0, 0.5)' : '' // rgba(10, 86, 131, 0.5)
       const score = parseFloat(sessionStorage.getItem('score'))
       const list = this.$root.amountData.itemList
       console.log(JSON.parse(list))
