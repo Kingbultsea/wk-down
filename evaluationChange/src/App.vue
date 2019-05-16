@@ -32,7 +32,7 @@ export default {
 
 <style lang="scss">
   #app {
-    height: 100%;
+    // height: 100vh;
     overflow: hidden;
     background-size: 100% 100%;
     .bg {
@@ -48,8 +48,6 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
-    overflow: hidden;
     width: 100vw;
     font-size: px2html(12px);
     // -webkit-overflow-scrolling: touch;

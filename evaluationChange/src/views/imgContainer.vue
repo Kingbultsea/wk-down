@@ -41,7 +41,8 @@ export default {
       background: require('../assets/cosleep_test_img_result-card@3x.png'),
       desc: '',
       qrUrl: '',
-      visiableFrame: ''
+      visiableFrame: '',
+      title: ''
     }
   },
   methods: {
@@ -122,7 +123,7 @@ export default {
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.99);
     min-height: px2html(603px);
     height: 100vh;
     .pic-block {

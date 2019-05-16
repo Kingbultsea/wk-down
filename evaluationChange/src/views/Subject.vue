@@ -107,7 +107,6 @@ export default {
 
 <style lang="scss" scoped>
 .subject {
-  background-color: rgba(0, 0, 0, 0);
   width: px2html(375px);
   min-height: max-content;
   height: 100%;
