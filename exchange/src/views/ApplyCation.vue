@@ -255,7 +255,7 @@ normal">把身体瘦下来，同时更喜欢自己，也更加健康。</b><span
         padding-right: px2html(25px);
         box-sizing: border-box;
         margin: 0 auto;
-        padding-bottom: px2html(50px);
+        padding-bottom: px2html(80px);
         h1 {
             font-size: px2html(32px);
         }
