@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Xm from './views/限免.vue'
 import Xm2 from './views/限免2.vue'
 import Xm3 from './views/限免3.vue'
+import Xm4 from './views/限免4.vue'
 import smbwz from './views/睡眠保卫战'
 import atp from './views/AutoPhase'
 
@@ -30,6 +31,11 @@ export default new Router({
       path: '/xm3',
       name: 'xm3',
       component: Xm3
+    },
+    {
+      path: '/xm4',
+      name: 'xm4',
+      component: Xm4
     },
     {
       path: '/smbwz',
