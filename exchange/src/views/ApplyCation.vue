@@ -201,6 +201,12 @@ normal">把身体瘦下来，同时更喜欢自己，也更加健康。</b><span
                     this.rawHtmlData = `<p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: justify; font: 12.0px 'PingFang SC'; color: #000000; -webkit-text-stroke: #000000}span.s1 {font-kerning: none}span.s2 {font: 12.0px Helvetica; font-kerning: none}</style></p><h3><b>配套知识</b><b> – </b><b>准备物品</b></h3><div><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: justify; font: 12.0px 'PingFang SC'; color: #000000; -webkit-text-stroke: #000000}span.s1 {font-kerning: none}</style><p>今天的练习，在你本身要盖的被褥之外，需要再准备一个让你感到亲切的柔软的物品，可以是小毯子，小毛绒玩具，或者其他。把它放在一个你看得到，并且离你有一定距离，你需要伸手才能够得着的位置。准备好了就进入今晚的音频练习。</p></div>`
                 }
                     break;
+                case 27: {  // 考试焦虑睡眠改善
+                    // this.title = '配套知识 - 认识焦虑'
+                    this.title = '轻度嗜睡改善——提神'
+                    this.rawHtmlData = `<h3><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'; color: #000000}span.s1 {font: 12.0px Times}</style><h3><b>配套知识</b><b> – </b><b>掌握练习姿势</b></h3><p><span style="font-weight: normal;"></span>专为工作、学习犯困时提神而设计，可以帮助大脑和身体快速充电，激活大脑能量与身体活力。练习过程中如果你觉得足够精神了可随时结束。<br></p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}</style><p>这个练习需要椅子和一个书桌。</p><p><img src="https://res.psy-1.com/FjWDUpy42j-QFDn0w2hZCz7F2jWd" style="max-width:100%;"><br></p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}span.s1 {font: 12.0px Times}</style></p><p>首先坐在椅子前半部分，不能靠着椅背如<b>图</b><b>1</b>所示，两手掌心向下自然放在大腿上，脚掌踏实地放在地上。</p><p><img src="https://res.psy-1.com/Fs-Ph3kIfQtM-tlHxCcCKvLqbycp" style="max-width:100%;"><br></p><p>椅子前方需要有一个高度适中的桌子方便双手放在上面，如<b>图</b><span><b>2</b></span>所示，双手五指相对，手肘放在桌面上，调整自己的身体、椅子或桌子的位置，让身体和双手都可以自然舒适，同时脊椎保持自然直立，坐在椅子的前半部分。</p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}span.s1 {font: 12.0px Times}</style></p><p>先熟悉一下这个姿势，然后将双手放回到自己的大腿上，回到图1的姿势进入音频练习。</p><p><span style="font-weight: normal;"></span><br></p></h3><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}</style><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}</style>`
+                }
+                    break;
 
             }
 
