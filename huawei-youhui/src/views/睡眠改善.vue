@@ -29,7 +29,7 @@ export default {
     }
   },
   mounted () {
-    document.title = '小睡眠考生睡眠专题活动'
+    document.title = '嗜睡改善'
   }
 }
 </script>
