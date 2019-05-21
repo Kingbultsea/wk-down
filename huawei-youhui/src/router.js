@@ -7,6 +7,7 @@ import Xm3 from './views/限免3.vue'
 import Xm4 from './views/限免4.vue'
 import smbwz from './views/睡眠保卫战'
 import atp from './views/AutoPhase'
+import smc from './views/睡眠改善'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
       path: '/atp',
       name: 'atp',
       component: atp
+    },
+    {
+      path: '/smc',
+      name: 'smc',
+      component: smc
     },
     {
       path: '/about',
