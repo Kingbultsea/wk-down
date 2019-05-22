@@ -1,6 +1,7 @@
 <template>
   <div id="app" style="background-size: 100% 100%" :style="{background: 'url(' + this.$root.style.bg + ') 0% 0% / 100% 100%'}"> <!-- :style="{backgroundColor: bg_c}" -->
     <!-- <img class="bg"> :src="this.$root.style.bg" -->
+    <updateTemplate></updateTemplate>
     <div class="app-template">
       <router-view/>
     </div>
@@ -10,6 +11,7 @@
 <script>
 import '../node_modules/animate.css/animate.css'
 import Share from '@/js/shareAndGetName'
+import updateTemplate from './components/updateTemplate.vue'
 
 export default {
   data () {
@@ -19,6 +21,9 @@ export default {
       url: 'https://api.debug.psy-1.com',
       share: ''
     }
+  },
+  components: {
+    updateTemplate
   },
   methods: {
     actionWeixinShare () {

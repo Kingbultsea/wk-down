@@ -88,7 +88,7 @@ export default {
         'category_id': id
       }
       this.callAppRouter('Redirect', pre, function(err, result){})
-      window.location = 'https://www.heartide.com/statics/redirect?url=' + id
+      // window.location = 'https://www.heartide.com/statics/redirect?url=' + id
     },
     parseBR (data) {
       return data.replace(/\n/g, '<br/>')
