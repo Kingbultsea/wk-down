@@ -165,6 +165,8 @@ export default {
       position: absolute;
       width: px2html(270px);
       bottom: px2html(-255px);
+      left: 50%;
+      transform: translateX(-50%);
       transition-duration: 0.5s;
     }
   }

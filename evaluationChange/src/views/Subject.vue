@@ -109,7 +109,7 @@ export default {
 .subject {
   width: px2html(375px);
   min-height: max-content;
-  height: 100%;
+  min-height: px2html(667px);
   box-sizing: border-box;
   padding-bottom: px2html(64px);
   z-index: 1;
