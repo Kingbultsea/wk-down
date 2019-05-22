@@ -12,6 +12,8 @@
 import '../node_modules/animate.css/animate.css'
 import Share from '@/js/shareAndGetName'
 import updateTemplate from './components/updateTemplate.vue'
+import { callAppRouter } from '@/js/tool'
+import Tool from './js/tool.js'
 
 export default {
   data () {
@@ -26,11 +28,21 @@ export default {
     updateTemplate
   },
   methods: {
+    checkUpdate () {
+      if (Tool.is_cosleep()) {
+        callAppRouter('getEnv', {}, (r, s) => {
+          console.log(r)
+          console.log(s)
+        })
+      }
+    },
     actionWeixinShare () {
       Share.callAppRouter('Share')
     }
   },
   mounted () {
+    console.log('ggggggg')
+    this.checkUpdate()
   }
 }
 </script>

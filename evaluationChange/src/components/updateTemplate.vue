@@ -19,7 +19,7 @@ export default {
   name: 'updateTemplate',
   data () {
     return {
-      need_update: true
+      need_update: false
     }
   },
   methods: {
