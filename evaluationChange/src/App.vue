@@ -33,6 +33,7 @@ export default {
         callAppRouter('getEnv', {}, (r, s) => {
           console.log(r)
           console.log(s)
+          console.log(s.data.version <= 60, '安卓版本')
         })
       }
     },
