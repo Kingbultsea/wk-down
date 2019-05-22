@@ -92,7 +92,7 @@ export default {
     },
     init () {
       // this.$parent.bg_c = '#fff'
-      QRCode.toDataURL(window.location.href.split('#')[0] + '&sharepic')
+      QRCode.toDataURL((window.location.href.split('#')[0] + '&sharepic').replace(/&code.*?(?=\&)/, '').replace(/&state.*?(?=\&)/, ''))
         .then(url => {
           this.qrUrl = url
           console.log(url, 'asdasd')
