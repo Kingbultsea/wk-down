@@ -25,6 +25,8 @@
           <img class="adPic" :src="this.$root.amountData.advertisementPic" />
         </a>
       </div>
+
+      <div class="outer-img"></div>
     </div>
   </transition>
 </template>
@@ -69,6 +71,7 @@ export default {
     },
     parseToPic () {
       const dom = document.querySelector('#canvas')
+      const container = document.querySelector('.outer-img')
       html2canvas(dom, {
         useCORS: true,
         onclone: (document) => {
@@ -84,10 +87,11 @@ export default {
         img.style.top = '50%'
         img.style.transform = 'translateX(-50%) translateY(-50%)'
 
-        dom.innerHTML = ''
-        dom.appendChild(img)
-        dom.style.visibility = 'initial'
-        dom.classList.add('change-canvas-border-radius')
+        container.appendChild(img)
+        // dom.innerHTML = ''
+        // dom.appendChild(img)
+        // dom.style.visibility = 'initial'
+        // dom.classList.add('change-canvas-border-radius')
       })
     },
     init () {
@@ -104,15 +108,15 @@ export default {
   },
   mounted () {
     this.init()
-    setTimeout(() => {
-      if (!this.$root.amountData) {
-        this.$router.push('./')
-        return
-      }
-      this.desc = this.$root.amountData.defaultDesc // 到时候要删除的 这个是
-      this.countResult()
-      this.parseToPic()
-    }, 0)
+
+    if (!this.$root.amountData) {
+      this.$router.push('./')
+      return
+    }
+
+    this.desc = this.$root.amountData.defaultDesc // 到时候要删除的 这个是
+    this.countResult()
+    this.parseToPic()
   }
 }
 </script>
@@ -139,7 +143,7 @@ export default {
         height: px2html(477px);
       }
       position: relative;
-      visibility: collapse;
+      // visibility: collapse;
       width: px2html(325px);
       height: px2html(477px);
       // background: url("../assets/cosleep_test_img_result-card@3x.png");
@@ -211,6 +215,16 @@ export default {
           }
         }
       }
+    }
+
+    .outer-img {
+      width: 100%;
+      opacity: 0;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      height: px2html(477px);
+      z-index: 999;
     }
 
     .share-template {
