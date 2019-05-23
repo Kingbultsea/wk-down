@@ -1,25 +1,29 @@
 <template>
   <transition enter-active-class="animated fadeIn">
     <div class="img-container">
-      <div id="canvas" class="pic-block">
-        <div class="img-bg">
-          <img style="height: 100%" :src="background" />
-        </div>
-        <!-- <div class="title">小睡眠小测评</div> -->
-        <div class="desc-block" :style="{backgroundColor: visiableFrame}">
-          <div class="desc-block-title">{{ title }}</div>
-          <div class="desc-block-desc">{{ desc }}</div> <!-- 夜色琉璃，浮生倥偬你凭栏垂眸，眼里荡漾开漫天灯火。你说星星拥抱月光，你说烟花亲吻沉云，你把深夜的钟声谱写成歌，温柔荡漾成眼底闪烁比秋天短，比世界长“为你，千千万万遍”晚安。 -->
-          <div class="qrBlock">
-            <img class="qrBlock-logo" src="../assets/cosleep_test_img_logo2@3x.png"/>
-            <div class="qrBlock-img">
-              <div class="img-outer">
-                <img class="content-img" :src="qrUrl"/>
+
+      <div class="pic-block-outer">
+        <div id="canvas" class="pic-block">
+          <div class="img-bg">
+            <img style="height: 100%" :src="background" />
+          </div>
+          <!-- <div class="title">小睡眠小测评</div> -->
+          <div class="desc-block" :style="{backgroundColor: visiableFrame}">
+            <div class="desc-block-title">{{ title }}</div>
+            <div class="desc-block-desc">{{ desc }}</div> <!-- 夜色琉璃，浮生倥偬你凭栏垂眸，眼里荡漾开漫天灯火。你说星星拥抱月光，你说烟花亲吻沉云，你把深夜的钟声谱写成歌，温柔荡漾成眼底闪烁比秋天短，比世界长“为你，千千万万遍”晚安。 -->
+            <div class="qrBlock">
+              <img class="qrBlock-logo" src="../assets/cosleep_test_img_logo2@3x.png"/>
+              <div class="qrBlock-img">
+                <div class="img-outer">
+                  <img class="content-img" :src="qrUrl"/>
+                </div>
+                扫码马上测试
               </div>
-              扫码马上测试
             </div>
           </div>
         </div>
       </div>
+
       <div class="share-template"> <!-- @click="this.$parent.actionWeixinShare" -->
         <a :href="this.$root.amountData.advertisementUrl">
           <img class="adPic" :src="this.$root.amountData.advertisementPic" />
@@ -132,9 +136,13 @@ export default {
     background-color: rgba(255, 255, 255, 0.99);
     min-height: px2html(603px);
     height: 100vh;
-    .pic-block {
+    .pic-block-outer {
       border-radius: px2html(10px);
       overflow: hidden;
+      min-height: px2html(477px);
+      margin-top: px2html(10px);
+    }
+    .pic-block {
       min-height: px2html(477px);
       .img-bg {
         overflow: hidden;
@@ -153,7 +161,6 @@ export default {
       height: px2html(477px);
       // background: url("../assets/cosleep_test_img_result-card@3x.png");
       background-size: 100% 100%;
-      margin-top: px2html(10px);
       font-size: px2html(35px);
       font-weight: 500;
       .title {
@@ -230,6 +237,7 @@ export default {
       left: 0px;
       height: px2html(477px);
       z-index: 999;
+      overflow: hidden;
     }
 
     .share-template {
