@@ -131,6 +131,7 @@ export default {
     min-height: px2html(603px);
     height: 100vh;
     .pic-block {
+      min-height: px2html(477px);
       .img-bg {
         overflow: hidden;
         position: absolute;

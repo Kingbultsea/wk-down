@@ -20,7 +20,7 @@ export default {
     return {
       bg_c: '', // RGBA(0, 0, 0, 1)
       bg_img: require('./assets/bg.png'),
-      url: 'https://api.debug.psy-1.com',
+      url: 'https://api.psy-1.com',
       share: ''
     }
   },
