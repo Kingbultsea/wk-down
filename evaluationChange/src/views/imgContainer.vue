@@ -100,6 +100,9 @@ export default {
         .then(url => {
           this.qrUrl = url
           console.log(url, 'asdasd')
+          setTimeout(() => {
+            this.parseToPic()
+          }, 200)
         })
         .catch(err => {
           console.error(err, 'asderr')
@@ -116,7 +119,6 @@ export default {
 
     this.desc = this.$root.amountData.defaultDesc // 到时候要删除的 这个是
     this.countResult()
-    this.parseToPic()
   }
 }
 </script>
