@@ -7,7 +7,7 @@
           <div class="img-bg">
             <img style="height: 100%" :src="background" />
           </div>
-          <!-- <div class="title">小睡眠小测评</div> -->
+          <div class="title">小睡眠小测评</div>
           <div class="desc-block" :style="{backgroundColor: visiableFrame}">
             <div class="desc-block-title">{{ title }}</div>
             <div class="desc-block-desc">{{ desc }}</div> <!-- 夜色琉璃，浮生倥偬你凭栏垂眸，眼里荡漾开漫天灯火。你说星星拥抱月光，你说烟花亲吻沉云，你把深夜的钟声谱写成歌，温柔荡漾成眼底闪烁比秋天短，比世界长“为你，千千万万遍”晚安。 -->
@@ -62,7 +62,7 @@ export default {
           console.log(i.background)
           /* eslint-disable */
           i.background ? this.background = i.background : this.background = this.$root.style.resultBackground
-          this.desc = i.desc.replace(/\$\{score\}/g, score).replace(/\$\{name\}/g, localStorage.getItem('name') || '') // 还有一个backgoround 没有设置好
+          this.desc = i.desc.replace(/\$\{score\}/g, score).replace(/\$\{name\}/g, localStorage.getItem('name') || '你') // 还有一个backgoround 没有设置好
           this.title = (i.title || '').replace(/\$\{score\}/g, score).replace(/\$\{name\}/g, localStorage.getItem('name') || '')
           console.log(i.hasOwnProperty('shareTitle') && i.hasOwnProperty('shareDesc'), '')
           if (i.hasOwnProperty('shareTitle') && i.hasOwnProperty('shareDesc')) {
