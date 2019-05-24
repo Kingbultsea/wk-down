@@ -14,7 +14,7 @@ export default {
   data () {
     return {
       a: '',
-      url: 'https://api.debug.psy-1.com'
+      url: 'https://api.psy-1.com'
     }
   },
   methods: {

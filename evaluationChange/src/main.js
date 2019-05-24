@@ -15,7 +15,7 @@ require('@/js/setSize')
 new Vue({
   data () {
     return {
-      url: 'https://api.psy-1.com',
+      url: 'https://api.debug.psy-1.com',
       amountData: '', // 从服务器拉取的 总数据
       style: {
         bg: '', // 背景

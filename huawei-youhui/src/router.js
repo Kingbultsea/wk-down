@@ -14,7 +14,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/atp',
       name: 'home',
       component: Home
     },
@@ -44,7 +44,7 @@ export default new Router({
       component: smbwz
     },
     {
-      path: '/atp',
+      path: '/',
       name: 'atp',
       component: atp
     },
