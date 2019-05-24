@@ -10,7 +10,7 @@
         <img class="c-img" :src="li.cover_free" />
         <div class="desc" v-html="parseBR(li.detail.resdesc)"></div>
       </div>
-      <div class="button" @click="toLink(li.detail.category_id)">
+      <div class="button" @click="toLink(li.detail.category_id, li.id)">
         <div class="price">原价{{ li.detail.price }}元</div>
       </div>
     </div>
@@ -82,10 +82,11 @@ export default {
       }
       return queryObj
     },
-    toLink (id) {
+    toLink (id, vid) {
       let pre = {
         "code": 1052,
-        'category_id': id
+        'category_id': id,
+        'voice_id': vid
       }
       this.callAppRouter('Redirect', pre, function(err, result){})
       // window.location = 'https://www.heartide.com/statics/redirect?url=' + id
