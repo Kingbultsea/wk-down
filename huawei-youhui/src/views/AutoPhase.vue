@@ -177,10 +177,12 @@ export default {
     background-size: 100% 100%;
     margin-top: px2html(7px);
     .title {
+      font-weight: normal;
       padding-left: px2html(10px);
       padding-right: px2html(10px);
       height: px2html(27px);
       width: max-content;
+      color: rgba(45, 45, 45, 1);
       font-size: px2html(15px);
       margin-top: px2html(25px);
       background: url("../assets/xm/题目底部背景.png");
@@ -217,7 +219,6 @@ export default {
       background-size: 100% 100%;
       position: relative;
       .price {
-        position: absolute;
         left: 76%;
         top: 50%;
         transform: translateX(-50%) translateY(-50%);
@@ -244,12 +245,12 @@ export default {
 
   >.desc {
     line-height: px2html(21px);
-    font-weight: 700;
-    color: rgba(0, 0, 0, 1);
+    font-weight: normal;
     font-size: px2html(15px);
     margin-top: px2html(4px);
     position: relative;
     z-index: 1;
+    color: rgba(45, 45, 45, 1);
   }
   >.btn {
     margin-top: px2html(13px);
