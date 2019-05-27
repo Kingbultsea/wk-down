@@ -4,6 +4,7 @@
     <div class="img-title">
       <div>{{ this.startTime }}-{{this.endTime}}</div>
     </div>
+    <div v-if="allPrice !== 0" class="price">本期限免金额{{ allPrice }}元</div>
     <div class="template" v-for="(li, index) in list" :key="index">
       <div class="title">{{ li.detail.musicdesc }}</div>
       <div class="center">
@@ -31,6 +32,7 @@ export default {
   name: 'home',
   data () {
     return {
+      allPrice: 0,
       home_height: 0,
       timeDate: '',
       list: [],
@@ -102,6 +104,10 @@ export default {
           this.startTime = WJH.dateFormat(+(data.free_start + '000'), 'yyyy年MM月dd日')
           this.endTime = WJH.dateFormat(+(data.free_end + '000'), 'MM月dd日')
           this.list = data.free_list
+          for (let i in this.list) {
+            this.allPrice += parseFloat(this.list[i].detail.price)
+          }
+          this.allPrice = this.allPrice.toFixed(2)
           console.log(res.data.data)
         }
       })
@@ -134,7 +140,7 @@ export default {
     margin-top: px2html(34px);
     position: relative;
     width: px2html(235px);
-    height: px2html(79px);
+    height: px2html(71px);
     background: url("../assets/xm/矩形@3x(1).png");
     border-top: px2html(34px);
     background-size: auto 100%;
@@ -142,11 +148,19 @@ export default {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      bottom: px2html(0px);
+      top: px2html(0px);
       height: px2html(10px);
       line-height: px2html(10px);
       font-size: px2html(9px);
     }
+  }
+
+  >.price {
+    color: rgba(114, 159, 255, 1);
+    font-size: px2html(21px);
+    font-weight: 800;
+    position: relative;
+    z-index: 1;
   }
 
   .template {
@@ -161,7 +175,7 @@ export default {
     font-weight: 700;
     background: url("../assets/xm/矩形@3x(4).png");
     background-size: 100% 100%;
-    margin-top: px2html(17px);
+    margin-top: px2html(7px);
     .title {
       padding-left: px2html(10px);
       padding-right: px2html(10px);
