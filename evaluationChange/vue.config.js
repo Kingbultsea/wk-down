@@ -1,5 +1,7 @@
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin // webpack 模块可视化工具
+
 module.exports = {
-  baseUrl: 'https://webres.psy-1.com/sgy/dist', // /cosleep/teacher/    ./ https://webres.psy-1.com/sgy/dist
+  baseUrl: './', // /cosleep/teacher/    ./ https://webres.psy-1.com/sgy/dist
   assetsDir: './',
   css: {
     loaderOptions: {
@@ -7,5 +9,10 @@ module.exports = {
         data: `@import "@/globalscss/setSize.scss"; `
       }
     }
+  },
+  configureWebpack: { // webpack 配置
+    plugins: [
+      new BundleAnalyzerPlugin()
+    ]
   }
 }
