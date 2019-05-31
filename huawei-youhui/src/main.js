@@ -10,7 +10,7 @@ require('@/js/setSize')
 Vue.prototype.WJH = WJH
 Vue.config.productionTip = false
 const myAxios = Axios.create({
-  baseURL: 'https://api.psy-1.com' // https://api.psy-1.com/'
+  baseURL: process.env.NODE_ENV === 'production' ? 'https://api.psy-1.com' : 'https://api.debug.psy-1.com' // https://api.psy-1.com/'
 })
 Vue.prototype.$axios = myAxios
 

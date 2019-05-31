@@ -195,8 +195,8 @@ export default {
       background-size: 100% 100%;
       margin-top: px2html(9px);
       .c-img {
-        width: px2html(186px);
-        height: px2html(89px);
+        // width: px2html(186px);
+        height: px2html(91px);
         border-radius: px2html(10px);
         margin-top: px2html(12px);
       }
@@ -207,7 +207,7 @@ export default {
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        font-weight: 500;
+        font-weight: normal;
         font-size: px2html(9px);
       }
     }
@@ -228,6 +228,7 @@ export default {
         height: max-content;
         font-size: px2html(10px);
         color: #fff;
+        font-weight: normal;
         line-height: px2html(13px);
       }
       .price::before {
