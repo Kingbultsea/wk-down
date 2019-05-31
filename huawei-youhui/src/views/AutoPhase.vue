@@ -199,6 +199,7 @@ export default {
         height: px2html(91px);
         border-radius: px2html(10px);
         margin-top: px2html(12px);
+        box-shadow: px2html(3px) px2html(3px) px2html(3px) RGBA(213, 229, 244, 1);
       }
       .desc {
         color: rgba(0, 0, 0, 1);
