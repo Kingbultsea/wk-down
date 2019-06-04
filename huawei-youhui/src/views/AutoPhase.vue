@@ -156,7 +156,7 @@ export default {
   }
 
   >.price {
-    color: rgba(114, 159, 255, 1);
+    color: black;
     font-size: px2html(21px);
     font-weight: 800;
     position: relative;
