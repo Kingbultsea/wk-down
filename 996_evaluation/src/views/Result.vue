@@ -14,6 +14,7 @@
           <div class="profile">
             <img class="bg" style="width: 100%;height: 100%;position: absolute" src="../assets/z/frame@3x.png">
             <img class="img" ref="myImg" :src="avatar"/>
+            <!-- <img class="img" ref="myImg" src="../assets/profile.jpg"/> -->
           </div>
           <img v-if="isApp" src="../assets/appQRBlock.png" class="QRblock">
           <img v-else src="../assets/weixinQRBlock.png" class="QRblock">
@@ -369,9 +370,9 @@ export default {
             position: relative;
             z-index: 99;
             margin-left: px2html(-4px);
-            width: px2html(40px);
-            height: px2html(40px);
-            margin-top: px2html(5px);
+            width: px2html(42px);
+            height: px2html(42px);
+            margin-top: px2html(4px);
             border-radius: px2html(8px);
           }
         }
