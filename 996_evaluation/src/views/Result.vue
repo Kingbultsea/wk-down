@@ -15,7 +15,8 @@
             <img class="bg" style="width: 100%;height: 100%;position: absolute" src="../assets/z/frame@3x.png">
             <img class="img" ref="myImg" :src="avatar"/>
           </div>
-          <img src="../assets/block.png" class="QRblock">
+          <img v-if="isApp" src="../assets/appQRBlock.png" class="QRblock">
+          <img v-else src="../assets/weixinQRBlock.png" class="QRblock">
           <img v-show="tickOnePosition === 0" class="tick t1" src="../assets/tick@3x.png" />
           <img v-show="tickOnePosition === 1" class="tick t2" src="../assets/tick@3x.png" />
           <img v-show="tickOnePosition === 2" class="tick t3" src="../assets/tick@3x.png" />
@@ -34,11 +35,13 @@
 /* eslint-disable */
 import WJH from '../js/wjhJS'
 import html2canvas from 'html2canvas'
+import Tool from '../js/tool.js'
 
 export default {
   name: 'result',
   data () {
     return {
+      isApp: Tool.is_cosleep(),
       serialNumber: WJH.randomNum(10000, 20000),
       avatar: '',
       userName: localStorage.getItem('name') || '无名同学',
@@ -140,7 +143,7 @@ export default {
         img.style.top = '50%'
         img.style.transform = 'translateX(-50%) translateY(-50%)'
 
-        dom.innerHTML = ''
+        // dom.innerHTML = ''
         const div = document.createElement("div")
         div.classList.add('block')
         div.appendChild(img)
@@ -275,6 +278,7 @@ export default {
         position: absolute;
         z-index: 999;
         overflow: hidden;
+        opacity: 0;
       }
       >.title-img {
         width: px2html(242px);

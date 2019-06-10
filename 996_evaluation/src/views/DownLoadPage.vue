@@ -1,5 +1,5 @@
 <template>
-    <div class="DownLoadPage">
+    <div class="DownLoadPage animated fadeIn">
 
         <img class="ig" src="../assets/img_pic2@3x.png"/>
         <a target="view_window" href="https://a.app.qq.com/o/simple.jsp?pkgname=com.psyone.brainmusic">
