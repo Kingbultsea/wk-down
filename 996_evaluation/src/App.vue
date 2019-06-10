@@ -39,6 +39,7 @@ export default {
     }
   },
   mounted () {
+    Tool.baidu_statics()
     this.shareM('有种工伤叫"熬夜"', '测一测你是几级工伤')
     this.test()
   }
