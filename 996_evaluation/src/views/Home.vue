@@ -6,7 +6,7 @@
       <img src="../assets/03.gif"/>
       <span>开始测试</span>
     </div>
-    <a target="view_window" href="https://a.app.qq.com/o/simple.jsp?pkgname=com.psyone.brainmusic">
+    <a v-if="!isApp" target="view_window" href="https://a.app.qq.com/o/simple.jsp?pkgname=com.psyone.brainmusic">
       <img class="btn-tocosleep" src="../assets/首页/btn_tocosleep.gif">
     </a>
   </div>
@@ -16,12 +16,13 @@
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 /* eslint-disable */
+import Tool from '../js/tool.js'
 
 export default {
   name: 'home',
   data () {
     return {
-
+      isApp: Tool.is_cosleep()
     }
   },
   components: {

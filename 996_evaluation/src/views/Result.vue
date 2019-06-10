@@ -276,10 +276,13 @@ export default {
         border-radius: px2html(10px);
         width: px2html(300px);
         height: px2html(464px);
-        position: absolute;
+        position: fixed;
         z-index: 999;
         overflow: hidden;
         opacity: 0;
+        img {
+          pointer-events: initial;
+        }
       }
       >.title-img {
         width: px2html(242px);
@@ -403,6 +406,7 @@ export default {
     }
 
     >.button {
+      margin-top: px2html(8px);
       width: px2html(209px);
       height: px2html(52px);
       background-image: url("../assets/03.gif");

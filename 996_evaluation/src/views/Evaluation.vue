@@ -4,7 +4,7 @@
     <div class="title">
       <div class="desc">{{tDesc}}</div>
       <div class="label">{{index + 1}}/7</div>
-      <img v-show="fuckTest" class="img animated fadeIn" :src="tBg" />
+      <img v-show="fuckTest" class="img" :src="tBg" />
     </div>
     <div class="choice">
       <div class="list" v-for="(li, index) in choice" :index="index" @click="clickEvent" :key="index">{{li}}</div>
@@ -121,6 +121,7 @@ export default {
     align-items: center;
     flex-direction: column;
     min-height: px2html(550px);
+    height: 100vh;
     >.title {
       background: url("../assets/题目切图_slices/decorate@3x.png");
       width: px2html(307px);
@@ -152,12 +153,13 @@ export default {
       }
     }
     >.choice {
-      padding-top: px2html(10px);
+      // padding-top: px2html(10px);
       display: flex;
       min-height: px2html(220px);
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      flex-grow: 1;
       .list {
         width: px2html(304px);
         height: px2html(54px);

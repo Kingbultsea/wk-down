@@ -48,6 +48,9 @@ export default {
 </script>
 
 <style lang="scss">
+  img {
+    pointer-events: none;
+  }
   html,body{
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
