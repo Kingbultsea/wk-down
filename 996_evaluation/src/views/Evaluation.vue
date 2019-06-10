@@ -1,5 +1,5 @@
 <template>
-  <div class="evaluation animated fadeIn">
+  <div class="evaluation">
     <img :src="imgLink" style="opacity: 1;position: absolute;right: 1000px;bottom:0;">
     <div class="title">
       <div class="desc">{{tDesc}}</div>
