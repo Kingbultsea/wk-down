@@ -143,6 +143,8 @@ export default class Share {
         if (data.hasOwnProperty('data')) {
           console.log(data)
           console.log('设置session')
+          const img = new Image()
+          img.src = data.data.headimgurl
           localStorage.setItem('avatar', data.data.headimgurl)
           localStorage.setItem('name', data.data.nickname)
           console.log(data.data.nickname)

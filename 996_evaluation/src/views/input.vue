@@ -47,6 +47,7 @@ export default {
 .main{
     width: 100vw;
     min-height: px2html(567px);
+    height: 100vh;
     display:flex;
     flex-direction: column;
     align-items: center;
