@@ -104,7 +104,7 @@ export default {
     }
   },
   mounted () {
-    const l = sessionStorage.getItem('avatar') || 'http://wx3.sinaimg.cn/mw690/006Zdy2vgy1g2h2dk8qw2j30za0u0ain.jpg'
+    const l = localStorage.getItem('avatar') || 'http://wx3.sinaimg.cn/mw690/006Zdy2vgy1g2h2dk8qw2j30za0u0ain.jpg'
     this.imgLink = 'https://images.weserv.nl/?url=' + encodeURIComponent(l)
     console.log('?????', this.imgLink)
   }
