@@ -64,13 +64,18 @@ export default class Share {
             const r = JSON.parse(result)
             localStorage.setItem('name', r.data.name)
             localStorage.setItem('avatar', r.data.avatar)
-            console.log(r, 'hkjhkhk')
-            console.log(r.data.name, 'fgjhfjhfj')
+            const img = new Image()
+            img.src = 'https://images.weserv.nl/?url=' + r.data.avatar
+            console.log(r.data, 'at')
+            console.log(r.data.avatar, 'at')
           } catch (e) {
             console.log(result.data.avatar)
             localStorage.setItem('avatar', result.data.avatar)
             localStorage.setItem('name', result.data.name)
+            const img = new Image()
+            img.src = 'https://images.weserv.nl/?url=' + result.data.avatar
             console.log(result.data.name)
+            console.log(result.data, 'at')
           }
         })
       }
@@ -144,7 +149,7 @@ export default class Share {
           console.log(data)
           console.log('设置session')
           const img = new Image()
-          img.src = data.data.headimgurl
+          img.src = 'https://images.weserv.nl/?url=' + data.data.headimgurl
           localStorage.setItem('avatar', data.data.headimgurl)
           localStorage.setItem('name', data.data.nickname)
           console.log(data.data.nickname)

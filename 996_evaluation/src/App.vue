@@ -30,7 +30,8 @@ export default {
       if (Tool.is_cosleep()) {
         this.share.appGetName()
       }
-      if (/micromessenger/.test(navigator.userAgent.toLowerCase())) {
+      const ua = navigator.userAgent.toLocaleLowerCase()
+      if (/micromessenger/.test(navigator.userAgent.toLowerCase()) || ua.match(/QQ/i) === 'qq') {
         console.log('?????QQ')
         this.share.weiXinInit(this.url)
         this.share.weatherCode()

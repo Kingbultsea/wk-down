@@ -23,7 +23,7 @@ export default {
         submit(){
             if(!this.name) this.name = '无名同学'  //小失误 就是if条件判断的时候没有加上this
             if(this.name){  //又是上面的失误 看来这个情况挺严重的呀
-                sessionStorage.setItem('name', this.name)
+                localStorage.setItem('name', this.name)
                 this.$router.push( {path:'/e'} )
             }
         }

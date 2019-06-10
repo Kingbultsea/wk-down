@@ -220,7 +220,7 @@ export default {
   },
   mounted () {
     const l = localStorage.getItem('avatar') || 'http://wx3.sinaimg.cn/mw690/006Zdy2vgy1g2h2dk8qw2j30za0u0ain.jpg'
-    this.avatar = 'https://images.weserv.nl/?url=' + encodeURIComponent(l)
+    this.avatar = 'https://images.weserv.nl/?url=' + l
     console.log(localStorage.getItem('avatar'), '头像link', this.avatar)
     this.parseToPic()
     console.log(WJH.dateFormat(new Date(), 'yy年M月d日hh时m分s秒'))
@@ -242,15 +242,16 @@ export default {
 <style lang="scss">
   .result {
     width: px2html(375px);
+    overflow-x: hidden;
     height: 100vh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
     .template::before {
-      content: '*长按保存*';
+      content: ' ↑ ↑ ↑长按上方保存图片';
       height: 1px;
-      width: 100px;
+      width: px2html(160px);
       position: absolute;
       color: rgba(19, 19, 19, 1);
       font-size: px2html(11px);
