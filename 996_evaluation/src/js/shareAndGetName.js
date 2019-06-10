@@ -113,7 +113,7 @@ export default class Share {
         getSDK.data.wechat_config.debug = false
 
         // 正式服 appid wx2dbf7017998b37cb   测试服： wx632d4c99bd681cf3
-        if (bl && !sessionStorage.getItem('name')) window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2dbf7017998b37cb&redirect_uri=' + encodeURI(location.href.split('#')[0]) +'&response_type=code&scope=snsapi_userinfo#wechart_redirect'
+        if (bl && !sessionStorage.getItem('name')) window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx632d4c99bd681cf3&redirect_uri=' + encodeURI(location.href.split('#')[0]) +'&response_type=code&scope=snsapi_userinfo#wechart_redirect'
         if (!bl || sessionStorage.getItem('name')) {
           wx.config(getSDK.data.wechat_config)
           that.weiXinShare()
