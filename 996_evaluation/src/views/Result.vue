@@ -46,7 +46,7 @@ export default {
       tickOnePosition: 0,
       tickTwoPosition: 0,
       date: WJH.dateFormat(new Date(), 'yy年M月d日'),
-      result: localStorage.getItem('result'),
+      result: sessionStorage.getItem('result'),
       authenticate: [],
       advance: [],
       A: [{2: '0', 3: '1'}, {2: '0', 3: '0'}, {2: '1', 3: '0'}, {2: '3', 3: '1'}, {2: '1', 3: '1'}], // 报复性熬夜
