@@ -4,7 +4,7 @@
     <div class="title">
       <div class="desc">{{tDesc}}</div>
       <div class="label">{{index + 1}}/7</div>
-      <img class="img" :src="tBg" />
+      <img v-show="fuckTest" class="img animated fadeIn" :src="tBg" />
     </div>
     <div class="choice">
       <div class="list" v-for="(li, index) in choice" :index="index" @click="clickEvent" :key="index">{{li}}</div>
@@ -20,6 +20,7 @@ export default {
   name: 'evluation',
   data () {
     return {
+      fuckTest: true,
       imgLink: '',
       index: 0,
       tDesc: '你目前是？',
@@ -87,6 +88,7 @@ export default {
       }
       e.target.style.background = `url(${this.clickBg})`
       e.target.style.backgroundSize = '100% 100%'
+      this.fuckTest = false
       // 修改
 
       const delay = navigator.userAgent.toLowerCase().match(/QQ/i) ? 300 : 100
@@ -97,6 +99,7 @@ export default {
         this.tDesc = this.evData[this.index].title
         this.choice = this.evData[this.index].choice
         this.tBg = this.evData[this.index].bg
+        this.fuckTest = true
       }, delay)
     }
   },
