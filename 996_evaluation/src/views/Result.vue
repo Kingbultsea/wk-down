@@ -41,12 +41,12 @@ export default {
     return {
       serialNumber: WJH.randomNum(10000, 20000),
       avatar: '',
-      userName: sessionStorage.getItem('name') || '无名同学',
+      userName: localStorage.getItem('name') || '无名同学',
       time: 0,
       tickOnePosition: 0,
       tickTwoPosition: 0,
       date: WJH.dateFormat(new Date(), 'yy年M月d日'),
-      result: sessionStorage.getItem('result'),
+      result: localStorage.getItem('result'),
       authenticate: [],
       advance: [],
       A: [{2: '0', 3: '1'}, {2: '0', 3: '0'}, {2: '1', 3: '0'}, {2: '3', 3: '1'}, {2: '1', 3: '1'}], // 报复性熬夜
@@ -216,9 +216,9 @@ export default {
     }
   },
   mounted () {
-    const l = sessionStorage.getItem('avatar') || 'http://wx3.sinaimg.cn/mw690/006Zdy2vgy1g2h2dk8qw2j30za0u0ain.jpg'
+    const l = localStorage.getItem('avatar') || 'http://wx3.sinaimg.cn/mw690/006Zdy2vgy1g2h2dk8qw2j30za0u0ain.jpg'
     this.avatar = 'https://images.weserv.nl/?url=' + encodeURIComponent(l)
-    console.log(sessionStorage.getItem('avatar'), '头像link', this.avatar)
+    console.log(localStorage.getItem('avatar'), '头像link', this.avatar)
     this.parseToPic()
     console.log(WJH.dateFormat(new Date(), 'yy年M月d日hh时m分s秒'))
     const r = JSON.parse(this.result)
