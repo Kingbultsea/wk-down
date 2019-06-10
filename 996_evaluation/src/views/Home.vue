@@ -29,13 +29,13 @@ export default {
   },
   methods: {
     start () {
-      if (sessionStorage.getItem('name')) {  //又是上面的失误 看来这个情况挺严重的呀
+      if (localStorage.getItem('name')) {  //又是上面的失误 看来这个情况挺严重的呀
         this.$router.push( {path:'/e'} )
       }
 
-      if (!sessionStorage.getItem('name')) {
+      if (!localStorage.getItem('name')) {
         setTimeout(() => {
-          if (sessionStorage.getItem('name')) {  //又是上面的失误 看来这个情况挺严重的呀
+          if (localStorage.getItem('name')) {  //又是上面的失误 看来这个情况挺严重的呀
             this.$router.push( {path:'/e'} )
           } else {
             this.$router.push( {path:'/input'} )
