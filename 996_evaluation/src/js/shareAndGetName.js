@@ -139,7 +139,7 @@ export default class Share {
   }
 
   weiXinGetName (url) {
-    if (!localStorage.getItem('name')) {
+    if (!localStorage.getItem('name') || !localStorage.getItem('avatar')) {
       console.log(code + 'asd你想要的' + localStorage.getItem('code'))
       const code = localStorage.getItem('code').replace(/code=/, '').replace(/\&.+/, '')
 
