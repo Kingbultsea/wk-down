@@ -1,10 +1,10 @@
 <template>
-  <div class="evaluation">
-    <img :src="imgLink" style="opacity: 1;position: absolute;right: 0px;bottom:0px;width: 40px;height: 40px">
+  <div class="evaluation animated fadeIn">
+    <img :src="imgLink" style="opacity: 0;position: absolute;right: 0px;bottom:0px;width: 40px;height: 40px">
     <div class="title">
       <div class="desc">{{tDesc}}</div>
       <div class="label">{{index + 1}}/7</div>
-      <img v-show="fuckTest" class="img" :src="tBg" />
+      <img v-show="fuckTest" class="img animated fadeIn" :src="tBg" />
     </div>
     <div class="choice">
       <div class="list" v-for="(li, index) in choice" :index="index" @click="clickEvent" :key="index">{{li}}</div>
