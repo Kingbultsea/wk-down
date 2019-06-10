@@ -1,6 +1,6 @@
 <template>
   <div class="evaluation">
-    <img :src="imgLink" style="opacity: 1;position: absolute;right: 10000px;bottom:0px;">
+    <img :src="imgLink" style="opacity: 1;position: absolute;right: 0px;bottom:0px;width: 40px;height: 40px">
     <div class="title">
       <div class="desc">{{tDesc}}</div>
       <div class="label">{{index + 1}}/7</div>
