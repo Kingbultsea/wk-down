@@ -144,7 +144,7 @@ export default class Share {
       const code = localStorage.getItem('code').replace(/code=/, '').replace(/\&.+/, '')
 
       $.get(url + '/web/v1/wechat/user', { code }, (data) => {
-        console.log('偶尔取不到？')
+        console.log('偶尔取不到？' + data)
         if (data.hasOwnProperty('data')) {
           console.log(data)
           console.log('设置session')
