@@ -166,7 +166,7 @@ export default {
       this.advance.push(
         this.desc[type][this.tickOnePosition][this.tickOnePosition].advance[WJH.randomNum(0, 1)]
       )
-      console.log(df, this.desc[type][this.tickOnePosition][this.tickOnePosition].advance[0])
+      console.log(df, this.desc[type][this.tickOnePosition][this.tickTwoPosition].advance[0])
       return 0
     },
     lv (d) {
