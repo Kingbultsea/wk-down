@@ -162,26 +162,53 @@ export default {
       df.splice(WJH.randomNum(0, df.length - 1), 1)
       df.splice(WJH.randomNum(0, df.length - 1), 1)
       df.splice(WJH.randomNum(0, df.length - 1), 1)
-      this.authenticate = df
-      this.advance.push(
-        this.desc[type][this.tickOnePosition][this.tickTwoPosition].advance[WJH.randomNum(0, 1)]
-      )
+      if (sessionStorage.getItem('df')) {
+        this.authenticate = JSON.parse(sessionStorage.getItem('df'))
+      } else {
+        sessionStorage.setItem('df', JSON.stringify(df))
+        this.authenticate = df
+      }
+
+      if (sessionStorage.getItem('advance')) {
+        this.advance = JSON.parse(sessionStorage.getItem('advance'))
+      } else {
+        this.advance.push(
+          this.desc[type][this.tickOnePosition][this.tickTwoPosition].advance[WJH.randomNum(0, 1)]
+        )
+        sessionStorage.setItem('advance', JSON.stringify(this.advance))
+      }
+      console.log(this.desc[type][this.tickOnePosition])
       console.log(df, this.desc[type][this.tickOnePosition][this.tickTwoPosition].advance[0])
       return 0
     },
     lv (d) {
       for (let i of this.one) {
         if (i[0] === parseInt(d[3]) && i[1] === parseInt(d[5]) && i[2] === parseInt(d[6])) {
+          if (sessionStorage.getItem('time')) {
+            this.time = sessionStorage.getItem('time')
+            return 0
+          }
           this.time = WJH.randomNum(801, 1200)
+          sessionStorage.setItem('time', this.time)
           return 0
         }
       }
       for (let i of this.two) {
         if (i[0] === parseInt(d[3]) && i[1] === parseInt(d[5]) && i[2] === parseInt(d[6])) {
+          if (sessionStorage.getItem('time')) {
+            this.time = sessionStorage.getItem('time')
+            return 1
+          }
           this.time = WJH.randomNum(401, 800)
+          sessionStorage.setItem('time', this.time)
           return 1
         }
       }
+      if (sessionStorage.getItem('time')) {
+        this.time = sessionStorage.getItem('time')
+        return 2
+      }
+      sessionStorage.setItem('time', this.time)
       this.time = WJH.randomNum(0, 400)
       return 2
     },
