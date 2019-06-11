@@ -164,7 +164,7 @@ export default {
       df.splice(WJH.randomNum(0, df.length - 1), 1)
       this.authenticate = df
       this.advance.push(
-        this.desc[type][this.tickOnePosition][this.tickOnePosition].advance[WJH.randomNum(0, 1)]
+        this.desc[type][this.tickOnePosition][this.tickTwoPosition].advance[WJH.randomNum(0, 1)]
       )
       console.log(df, this.desc[type][this.tickOnePosition][this.tickTwoPosition].advance[0])
       return 0
