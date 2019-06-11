@@ -158,7 +158,7 @@ export default {
     authenticateAndAdvance (d) {
       let type = ''
       d[0] === '0' ? type = 'student' : d[0] === '1' ? type = 'worker' : d[0] === '2' ? type = 'free' : false
-      const df = this.desc[type][this.tickOnePosition][this.tickOnePosition].authenticate
+      const df = this.desc[type][this.tickOnePosition][this.tickTwoPosition].authenticate
       df.splice(WJH.randomNum(0, df.length - 1), 1)
       df.splice(WJH.randomNum(0, df.length - 1), 1)
       df.splice(WJH.randomNum(0, df.length - 1), 1)
