@@ -109,6 +109,7 @@ export default {
     const img = new Image()
     img.src = 'https://images.weserv.nl/?url=' + encodeURIComponent(l)
     console.log('?????', this.imgLink)
+    sessionStorage.clear()
   }
 }
 </script>
