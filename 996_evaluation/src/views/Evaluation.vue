@@ -134,6 +134,7 @@ export default {
       background-size: 100% 100%;
       text-align: left;
       position: relative;
+      margin-top: px2html(20px);
       >.desc {
         padding-top: px2html(36px);
         padding-left: px2html(48px);
