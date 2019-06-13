@@ -1,11 +1,12 @@
 <template>
     <div class="result animated fadeIn">
       <div class="template" id="canvas">
+        <img class="background-img" src="../assets/结果页_slices/wireframe@3x2.png" />
         <div class="block"></div>
         <img class="title-img" src="../assets/结果页_slices/headline@3x.png"/>
         <div class="serial-number">编号：{{ serialNumber }}</div>
         <div class="content">
-          <img src="../assets/frame@3x.png" style="width: 100%;height: 100%;position: absolute;left: 0px;top: 0px;">
+          <img src="../assets/frame@3x3.png" style="width: 100%;height: 100%;position: absolute;left: 0px;top: 0px;">
           <div class="user-name">{{ userName }}</div>
           <div class="date">{{date}}</div>
           <div class="authenticate" v-for="(li, index) in authenticate" :key="index + 3">{{ li }}</div>
@@ -53,6 +54,7 @@ export default {
       result: sessionStorage.getItem('result'),
       authenticate: [],
       advance: [],
+      backgroundResultSave: require('../assets/bg.png'),
       A: [{2: '0', 3: '1'}, {2: '0', 3: '0'}, {2: '1', 3: '0'}, {2: '3', 3: '1'}, {2: '1', 3: '1'}], // 报复性熬夜
       B: [{2: '2', 3: '0'}, {2: '2', 3: '3'}, {2: '3', 3: '0'}, {2: '3', 3: '3'}, {2: '3', 3: '3'}], // 被迫式熬夜
       C: [{2: '1', 3: '2'}, {2: '2', 3: '1'}, {2: '0', 3: '2'}, {2: '2', 3: '2'}, {2: '1', 3: '3'}], // 习惯性熬夜 其他 特殊处理 随便选一个
@@ -134,15 +136,17 @@ export default {
       const dom = document.querySelector('#canvas')
       html2canvas(dom, { onclone: (document) => {
           document.querySelector('#canvas').style.visibility = 'initial'
+          document.querySelector('#canvas').style.backgroundColor = '#c5b099'
+          document.querySelector('#canvas').style.backgroundImage = `url(${this.backgroundResultSave})`
         }, useCORS: true }).then((canvas) => {
         const img = new Image()
         img.src = canvas.toDataURL()
-        img.style.width = '113%'
+        img.style.width = '100%'
 
-        img.style.position = 'absolute'
-        img.style.left = '50%'
-        img.style.top = '50%'
-        img.style.transform = 'translateX(-50%) translateY(-50%)'
+        // img.style.position = 'absolute'
+        // img.style.left = '50%'
+        // img.style.top = '50%'
+        // img.style.transform = 'translateX(-50%) translateY(-50%)'
 
         // dom.innerHTML = ''
         const div = document.createElement("div")
@@ -294,12 +298,19 @@ export default {
       width: px2html(340px);
       height: px2html(494px);
       background-size: 100% 100%;
-      background-image: url("../assets/结果页_slices/wireframe@3x.png");
+      // background-image: url("../assets/bg.png");
       background-position: px2html(-2px) 0px;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      >.background-img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+      }
       >.block {
         border-radius: px2html(10px);
         width: px2html(300px);
@@ -316,6 +327,7 @@ export default {
         width: px2html(242px);
         height: px2html(47px);
         padding-top: px2html(12px);
+        position: relative;
       }
       >.serial-number {
         color: rgba(45, 45, 45, 1);
@@ -333,9 +345,11 @@ export default {
           color: rgba(45, 45, 45, 1);
           font-size: px2html(18px);
           position: absolute;
-          left: px2html(45px);
+          left: px2html(25px);
           top: px2html(29px);
-          width: px2html(153px);
+          width: px2html(203px);
+          overflow: hidden;
+          height: px2html(22px);
           text-align: center;
         }
         >.date {
@@ -437,7 +451,7 @@ export default {
       margin-top: px2html(8px);
       width: px2html(209px);
       height: px2html(52px);
-      background-image: url("../assets/03.gif");
+      background-image: url("../assets/h5.gif");
       background-size: 100% 100%;
       text-align: center;
       font-size: px2html(15px);

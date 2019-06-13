@@ -83,23 +83,27 @@ export default {
       if (this.index === 7) {
         this.index--
         sessionStorage.setItem('result', JSON.stringify(this.resultC))
-        this.$router.push('./r')
+        e.target.style.background = `url(${this.clickBg})`
+        e.target.style.backgroundSize = '100% 100%'
+        setTimeout(() => {
+          this.$router.push('./r')
+        }, 500)
         return
       }
       e.target.style.background = `url(${this.clickBg})`
       e.target.style.backgroundSize = '100% 100%'
-      this.fuckTest = false
       // 修改
 
-      const delay = navigator.userAgent.toLowerCase().match(/QQ/i) ? 300 : 100
+      const delay = navigator.userAgent.toLowerCase().match(/QQ/i) ? 400 : 400
       setTimeout(() => {
+        // this.fuckTest = false
         this.busyClick = false
         e.target.style.background = `url(${this.clickDefault})`
         e.target.style.backgroundSize = '100% 100%'
         this.tDesc = this.evData[this.index].title
         this.choice = this.evData[this.index].choice
         this.tBg = this.evData[this.index].bg
-        this.fuckTest = true
+        // this.fuckTest = true
       }, delay)
     }
   },
@@ -171,6 +175,7 @@ export default {
         line-height: px2html(52px);
         text-align: left;
         text-indent: px2html(22px);
+        transition: 0.3s linear;
       }
     }
   }

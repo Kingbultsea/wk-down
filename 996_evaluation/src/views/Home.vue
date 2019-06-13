@@ -3,8 +3,8 @@
     <img class="img-title" src="../assets/首页/img_title@3x.png"/>
     <img class="img-pic" src="../assets/首页/img_pic@3x.png"/>
     <div class="btn-start" @click="start">
-      <img src="../assets/03.gif"/>
-      <span>开始测试</span>
+      <img src="../assets/btn_start@3x.png"/>
+      <!-- <span>开始测试</span> -->
     </div>
     <a v-if="!isApp" target="view_window" href="https://a.app.qq.com/o/simple.jsp?pkgname=com.psyone.brainmusic">
       <img class="btn-tocosleep" src="../assets/首页/btn_tocosleep.gif">
@@ -75,7 +75,7 @@ export default {
     }
     >.btn-start {
       padding-top: px2html(20px);
-      width: px2html(209px);
+      width: px2html(149px);
       height: px2html(39px);
       position: relative;
       img {
