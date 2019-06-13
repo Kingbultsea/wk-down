@@ -33,18 +33,20 @@ export default {
         flex-direction: column;
         align-items: center;
         flex-grow: 1;
-        justify-content: space-around;
+        justify-content: center;
         min-height: max-content;
+        height: 100vh;
             .ig{
                 width:px2html(320px);
                 height:px2html(400px);
-                padding-top: px2html(52px);
+                padding-top: px2html(0px);
             }
 
         .button {
+          margin-top: px2html(25px);
           width: px2html(149px);
           height: px2html(39px);
-          background-image: url("../assets/btn_download@3x.png");
+          background-image: url("../assets/btn_download@3x.gif");
           background-size: 100% 100%;
           text-align: center;
           font-size: px2html(15px);

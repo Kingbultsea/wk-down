@@ -27,7 +27,7 @@
           <img v-show="tickTwoPosition === 2" class="tick t6" src="../assets/tick@3x.png" />
         </div>
       </div>
-      <div class="button" @click="toDownLoad">领取工伤补贴</div>
+      <div class="button" @click="toDownLoad"></div>
     </div>
 </template>
 
@@ -453,7 +453,8 @@ export default {
       width: px2html(209px);
       height: px2html(52px);
       background-image: url("../assets/h5.gif");
-      background-size: 100% 100%;
+      background-size: 100% ;
+      background-repeat: no-repeat;
       text-align: center;
       font-size: px2html(15px);
       color: rgba(43, 43, 43, 1);

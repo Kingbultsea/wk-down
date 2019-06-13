@@ -79,6 +79,13 @@ export default {
   * {
     padding: 0;
     margin: 0;
+    moz-user-select: -moz-none;
+    -moz-user-select: none;
+    -o-user-select:none;
+    -khtml-user-select:none;
+    -webkit-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
   }
   a,a:link,a:visited,a:hover,a:active{
     text-decoration: none;
