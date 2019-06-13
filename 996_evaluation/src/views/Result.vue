@@ -324,7 +324,7 @@ export default {
         }
       }
       >.title-img {
-        width: px2html(242px);
+        // width: px2html(242px);
         height: px2html(47px);
         padding-top: px2html(12px);
         position: relative;
@@ -335,6 +335,7 @@ export default {
         text-align: right;
         height: px2html(4px);
         width: px2html(280px);
+        position: relative;
       }
       >.content {
         width: px2html(301px);
