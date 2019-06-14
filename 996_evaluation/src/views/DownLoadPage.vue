@@ -47,7 +47,8 @@ export default {
           width: px2html(149px);
           height: px2html(39px);
           background-image: url("../assets/btn_download@3x.gif");
-          background-size: 100% 100%;
+          background-size: 100% auto;
+          background-repeat: no-repeat;
           text-align: center;
           font-size: px2html(15px);
           color: rgba(43, 43, 43, 1);
