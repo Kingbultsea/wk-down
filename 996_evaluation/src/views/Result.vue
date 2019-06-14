@@ -47,7 +47,7 @@ export default {
       serialNumber: WJH.randomNum(10000, 20000),
       avatar: '',
       userName: localStorage.getItem('name') || '无名同学',
-      time: localStorage.getItem('time') || 0,
+      time: 0,
       tickOnePosition: 0,
       tickTwoPosition: 0,
       date: WJH.dateFormat(new Date(), 'yy年M月d日'),
@@ -188,32 +188,32 @@ export default {
     lv (d) {
       for (let i of this.one) {
         if (i[0] === parseInt(d[3]) && i[1] === parseInt(d[5]) && i[2] === parseInt(d[6])) {
-          if (localStorage.getItem('time')) {
-            this.time = localStorage.getItem('time')
+          if (sessionStorage.getItem('time')) {
+            this.time = sessionStorage.getItem('time')
             return 0
           }
           this.time = WJH.randomNum(801, 1200)
-          localStorage.setItem('time', this.time)
+          sessionStorage.setItem('time', this.time)
           return 0
         }
       }
       for (let i of this.two) {
         if (i[0] === parseInt(d[3]) && i[1] === parseInt(d[5]) && i[2] === parseInt(d[6])) {
-          if (localStorage.getItem('time')) {
-            this.time = localStorage.getItem('time')
+          if (sessionStorage.getItem('time')) {
+            this.time = sessionStorage.getItem('time')
             return 1
           }
           this.time = WJH.randomNum(401, 800)
-          localStorage.setItem('time', this.time)
+          sessionStorage.setItem('time', this.time)
           return 1
         }
       }
-      if (localStorage.getItem('time')) {
-        this.time = localStorage.getItem('time')
+      if (sessionStorage.getItem('time')) {
+        this.time = sessionStorage.getItem('time')
         return 2
       }
-      localStorage.setItem('time', this.time)
       this.time = WJH.randomNum(0, 400)
+      sessionStorage.setItem('time', this.time)
       return 2
     },
     toBase64 (url, callback, outputFormat = 'image/png') {
