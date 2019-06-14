@@ -47,7 +47,7 @@ export default {
       serialNumber: WJH.randomNum(10000, 20000),
       avatar: '',
       userName: localStorage.getItem('name') || '无名同学',
-      time: 0,
+      time: sessionStorage.getItem('time') || 0,
       tickOnePosition: 0,
       tickTwoPosition: 0,
       date: WJH.dateFormat(new Date(), 'yy年M月d日'),
