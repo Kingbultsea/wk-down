@@ -449,6 +449,8 @@ export default {
     }
 
     >.button {
+      position: relative;
+      z-index: 999;
       margin-top: px2html(8px);
       width: px2html(209px);
       height: px2html(52px);

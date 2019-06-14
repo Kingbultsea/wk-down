@@ -10,6 +10,7 @@
 import Share from '@/js/shareAndGetName'
 import '../node_modules/animate.css/animate.css'
 import Tool from './js/tool.js'
+import { callAppRouter } from './js/tool.js'
 
 export default {
   data () {

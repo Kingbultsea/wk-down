@@ -51,3 +51,26 @@ export default class Tool {
     s.parentNode.insertBefore(hm, s)
   }
 }
+
+export const callAppRouter = (method, params={}, callback) => {
+  try {
+    let req = {
+      'Method': method,
+      'Data': params
+    },cbName = `CB_${Date.now()}_${Math.ceil(Math.random() * 10)}`;
+    req=JSON.stringify(req);
+    Xinchao.Web[cbName] =  (err, result) => {
+      if(callback){
+        callback(err, result);
+      }
+      delete Xinchao.Web[cbName];
+    };
+    if (/(iPhone|iPad|iPod)/i.test(navigator.userAgent)) {
+      window.webkit.messageHandlers.XinchaoApp.postMessage({req, cbName});
+    } else {
+      XinchaoApp.callRouter(req, cbName);
+    }
+  } catch (e) {
+
+  }
+}

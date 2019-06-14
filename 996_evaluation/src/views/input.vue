@@ -10,17 +10,63 @@
 
 <script>
 import ButtonI from '@/components/button.vue'
+import Tool from '../js/tool.js'
+import { callAppRouter } from '../js/tool.js'
 /* eslint-disable */
 
 export default {
     name: 'inputname',
     data () {
         return {
-            name: ''
+            name: '',
+            openid: ''
         }
     },
     methods:{
-        submit(){
+        getOpenId () {
+          callAppRouter('Login', {}, (res, ed) => {
+            let mesg = null
+            if (typeof ed === 'string') {
+              mesg = JSON.parse(ed)
+            } else {
+              mesg = ed
+            }
+            this.openid = mesg.data.openid
+          })
+        },
+        login (e, init = false) {
+          callAppRouter('isLogin', {}, (res, ed) => {
+            console.log('??')
+            let mesg = null
+            if (typeof ed === 'string') {
+              mesg = JSON.parse(ed)
+            } else {
+              mesg = ed
+            }
+            if (mesg.msg === '已登录') {
+              console.log('已登陆')
+              if (!init) {
+                this.submit()
+              }
+              if (this.openid) {
+                clearInterval(this.redirect_interval)
+                this.$router.push( {path:'/e'} )
+                return
+              }
+              this.getOpenId()
+            } else {
+              if (init) {
+                return
+              }
+              callAppRouter('Redirect', { code: '1024' }, (res, ed) => {
+                this.redirect_interval = setInterval(() => {
+                  this.login(e, true)
+                }, 500)
+              })
+            }
+          })
+        },
+        submit () {
             if(!this.name) this.name = '无名同学'  //小失误 就是if条件判断的时候没有加上this
             if(this.name){  //又是上面的失误 看来这个情况挺严重的呀
                 localStorage.setItem('name', this.name)
@@ -32,7 +78,9 @@ export default {
         ButtonI
     },
     mounted(){
-
+      if (Tool.is_cosleep()) {
+        this.login()
+      }
     },
     beforeDestroy () {
       setTimeout(() => {
@@ -69,15 +117,13 @@ export default {
         color:#391f13;
         font-size:px2html(28px);
 
-        input{
+        input {
             border: none;
             -moz-appearance:none;
             -webkit-appearance : none ;/*解决ios上按钮的圆角问题*/
             border-radius: 0;/*解决ios上输入框圆角问题*/
             outline:medium;/*去掉鼠标点击的默认黄色边框*/
             background-color: transparent;
-
-
 
             position:relative;
             top:px2html(-30px);
@@ -91,6 +137,7 @@ export default {
             width:px2html(224px);
             text-align:center;
             padding-bottom: px2html(8px);
+            user-select: auto;
         }
 
     }
