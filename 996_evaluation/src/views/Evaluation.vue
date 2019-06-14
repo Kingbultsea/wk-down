@@ -7,7 +7,7 @@
       <img v-show="fuckTest" class="img animated fadeIn" :src="tBg" />
     </div>
     <div class="choice">
-      <div class="list" v-for="(li, index) in choice" :index="index" @click="clickEvent" :key="index">{{li}}</div>
+      <div class="list" :style="{ transition: '' + tsTime +'s linear' }" v-for="(li, index) in choice" :index="index" @click="clickEvent" :key="index">{{li}}</div>
     </div>
   </div>
 </template>
@@ -20,6 +20,7 @@ export default {
   name: 'evluation',
   data () {
     return {
+      tsTime: 0.4,
       fuckTest: true,
       imgLink: '',
       index: 0,
@@ -176,7 +177,7 @@ export default {
         line-height: px2html(52px);
         text-align: left;
         text-indent: px2html(22px);
-        transition: 0.3s linear;
+        // transition: 0.3s linear;
       }
     }
   }
