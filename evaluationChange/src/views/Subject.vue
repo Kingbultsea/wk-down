@@ -139,7 +139,7 @@ export default {
     .block-title-inner, .block-title-desc, .block-title-page, .block-title-back{
       color: rgba(0, 0, 0, 0.8);
       font-weight: bold;
-      position: absolute;
+      position: relative;
       text-align: justify;
       width: px2html(290px);
     }
@@ -147,12 +147,13 @@ export default {
       font-size: px2html(18px);
       left: px2html(45px);
       top: px2html(35px);
+      padding-bottom: px2html(40px);
     }
     .block-title-desc {
       z-index: 8;
       font-size: px2html(14px);
       left: px2html(62px);
-      top: px2html(73px);
+      // top: px2html(73px);
       width: px2html(255px);
     }
     .block-title-icon {
@@ -162,6 +163,7 @@ export default {
       top: px2html(205px);
     }
     .block-title-page {
+      position: absolute;
       width: max-content;
       top: px2html(229px);
       right: px2html(40px);
