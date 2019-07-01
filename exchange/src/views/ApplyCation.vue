@@ -210,6 +210,10 @@ normal">把身体瘦下来，同时更喜欢自己，也更加健康。</b><span
                 case 28: {
                     this.rawHtmlData = `<h3>配套知识<span> –<span>&nbsp; </span></span>抚触肾脏示意图</h3><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; min-height: 14.0px}span.s1 {font: 12.0px Times}</style></p><p>请仔细阅读以下图文内容，先了解练习过程中需要掌握的姿势，以便获得更好的练习效果。</p><p><img src="https://res.psy-1.com/FmikfsygQqhBEx-rnog27zWNzciR" style="max-width: 100%;"></p><p><br></p><p><br></p>`
                 }
+                  break;
+                case 29: {
+                    this.rawHtmlData = `<h3><span>配套知识</span><span> – </span><span>大脑放松示意图</span></h3><p>请仔细阅读以下图文内容，先了解练习过程中需要掌握的方法，以便获得更好的练习效果。<br><span></span></p><p><img src="https://res.psy-1.com/FnjphuwtCkAqNAhMDXfgsdeuCi2-" style="max-width:100%;"><br></p><p><br></p><p><br></p><p><br></p><p><br></p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: justify; font: 10.5px 'PingFang SC'; color: #000000; -webkit-text-stroke: #000000}p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: justify; font: 10.5px Helvetica; color: #000000; -webkit-text-stroke: #000000; min-height: 12.0px}span.s1 {font-kerning: none}span.s2 {font: 10.5px Helvetica; font-kerning: none}</style>`
+                }
 
             }
 
