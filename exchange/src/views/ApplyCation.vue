@@ -212,7 +212,7 @@ normal">把身体瘦下来，同时更喜欢自己，也更加健康。</b><span
                 }
                   break;
                 case 29: {
-                    this.rawHtmlData = `<h3><span>配套知识</span><span> – </span><span>大脑放松示意图</span></h3><p>请仔细阅读以下图文内容，先了解练习过程中需要掌握的方法，以便获得更好的练习效果。<br><span></span></p><p><img src="https://res.psy-1.com/FnjphuwtCkAqNAhMDXfgsdeuCi2-" style="max-width:100%;"><br></p><p><br></p><p><br></p><p><br></p><p><br></p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: justify; font: 10.5px 'PingFang SC'; color: #000000; -webkit-text-stroke: #000000}p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: justify; font: 10.5px Helvetica; color: #000000; -webkit-text-stroke: #000000; min-height: 12.0px}span.s1 {font-kerning: none}span.s2 {font: 10.5px Helvetica; font-kerning: none}</style>`
+                    this.rawHtmlData = `<h3><span>配套知识 </span><span>— </span>舌头运动示意图</h3><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'PingFang SC'; color: #000000}p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}span.s1 {font: 12.0px 'Songti SC'; color: #000000}span.s2 {font: 11.0px 'Helvetica Neue'}</style></p><p>请先熟悉下图，舌尖对上颚轻柔地来回触碰，在练习过程中尤其注意舌尖对靠近喉咙位置柔软部分的来回触碰，然后进入练习根据引导进行。</p><p style="text-align: center;"><img src="https://res.psy-1.com/FnjphuwtCkAqNAhMDXfgsdeuCi2-" style="max-width:100%;"><b>卷起舌头进行舌头触碰的运动示意图</b><br></p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}</style><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}</style>`
                 }
 
             }
