@@ -9,6 +9,7 @@ import Xm5 from './views/限免5.vue'
 import smbwz from './views/睡眠保卫战'
 import atp from './views/AutoPhase'
 import smc from './views/睡眠改善'
+import zmgs from './views/助眠改善.vue'
 
 Vue.use(Router)
 
@@ -58,6 +59,11 @@ export default new Router({
       path: '/smc',
       name: 'smc',
       component: smc
+    },
+    {
+      path: '/zmgs',
+      name: 'zmgs',
+      component: zmgs
     },
     {
       path: '/about',

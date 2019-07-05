@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Success from './views/Success.vue'
 import Detail from './views/Detail.vue'
 import Invite from './views/Invite.vue'
+import zhumianmingxiang from './views/zumianmingxiang.vue'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/success',
       name: 'success',
       component: Success
+    },
+    {
+      path: '/zmx',
+      name: 'zmx',
+      component: zhumianmingxiang
     },
     {
       path: '/about',
