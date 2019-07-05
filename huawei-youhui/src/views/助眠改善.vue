@@ -1,15 +1,16 @@
 <template>
   <div class="smbwz" :style="home_height">
     <img class="ig" src="../assets/H5助眠冥想新品.png" />
-    <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=614'" class="a a1"></div>
-    <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=615'" class="a a2"></div>
-    <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=616'" class="a a3"></div>
-    <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=558'" class="a a4"></div>
+    <div @click="toLink(1, 10150)" class="a a1"></div>
+    <div @click="toLink(1, 10151)"  class="a a2"></div>
+    <div @click="toLink(1, 10153)" class="a a3"></div>
+    <div @click="toMember" class="a a4"></div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+/* eslint-disable */
 
 export default {
   name: 'smbwj',
@@ -21,12 +22,48 @@ export default {
   components: {
   },
   methods: {
+    callAppRouter (method, params={}, callback) {
+      let req = {
+        'Method': method,
+        'Data': params
+      }, cbName = `CB_${Date.now()}_${Math.ceil(Math.random() * 10)}`
+      req = JSON.stringify(req)
+      Xinchao.Web[cbName] = (err, result) => {
+        if (callback) {
+          callback(err, result)
+        }
+        delete Xinchao.Web[cbName]
+      }
+      if (/(iPhone|iPad|iPod)/i.test(navigator.userAgent)) {
+        window.webkit.messageHandlers.XinchaoApp.postMessage({
+          req,
+          cbName
+        })
+      } else {
+        XinchaoApp.callRouter(req, cbName)
+      }
+    },
+    toLink (id, vid) {
+      let pre = {
+        "code": 1052,
+        'category_id': id,
+        'voice_id': vid
+      }
+      this.callAppRouter('Redirect', pre, function(err, result){})
+      // window.location = 'https://www.heartide.com/statics/redirect?url=' + id
+    },
     oo () {
       window.location = 'https://www.heartide.com/app/redirect?code=10017&goods_id=4'
     },
     ooo () {
       window.location = 'https://www.heartide.com/app/redirect?code=10025&goods_id=16'
-    }
+    },
+    toMember () {
+      let pre = {
+        'code': 10017
+      }
+      this.callAppRouter('Redirect', pre, function(err, result){})
+    },
   },
   mounted () {
     document.title = '小睡眠考生睡眠专题活动'
