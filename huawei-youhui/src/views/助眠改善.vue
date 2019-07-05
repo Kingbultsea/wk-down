@@ -60,13 +60,14 @@ export default {
     },
     toMember () {
       let pre = {
-        'code': 10017
+        'code': 10017,
+        'goods_id': 5
       }
       this.callAppRouter('Redirect', pre, function(err, result){})
     },
   },
   mounted () {
-    document.title = '小睡眠考生睡眠专题活动'
+    document.title = '小睡眠-助眠冥想新品专题'
   }
 }
 </script>
