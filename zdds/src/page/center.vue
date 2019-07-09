@@ -6,8 +6,8 @@
         <div  class="wjh">
             <div class="wjh-outer">
                 链接跳转
-                <input   v-model="wjh.twelve" placeholder="跳转链接" style="width: 100%;background-color: #eee" />
-                <a :href="wjh.twelve"><button @click.stop="twelve" type="info">提交</button></a>
+                <!-- <input   v-model="wjh.toLink" placeholder="跳转链接" style="width: 100%;background-color: #eee" /> -->
+                <button @click.stop="toLink" type="info">提交</button>
             </div>
         </div>
 
@@ -166,6 +166,7 @@ export default {
         return{
             codeArr:[],
           wjh:{
+              toLink: '',
               one: {one: '10010',two: 'kZkCCukLd3CHWMWZ'},
               two:'',
                 three:{one:'', two:''},
@@ -513,6 +514,10 @@ export default {
               pre.recommend_id = this.wjh.ten.two
           }
           callAppRouter('Redirect',pre,function(err, result){})
+      },
+
+      toLink () {
+        window.location.href = 'market://details?id=com.heartide.xinchao.stressandroid'
       },
 
         twelve () {
