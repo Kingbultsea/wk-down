@@ -219,7 +219,7 @@ normal">把身体瘦下来，同时更喜欢自己，也更加健康。</b><span
                 case 10001: {
                   this.xc = true
                   // xc 第四天 七天考试
-                  this.rawHtmlData = `<h3><b>配套知识</b><span><b>-</b></span><b>面对考试结果</b></h3><p>考试是一个持久战，在你努力的过程中，如何面对上一次的考试结果对于提高下一次的成绩很重要，这也是考试能力的一个重要方面。</p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}span.s1 {font: 12.0px Times}span.s2 {font: 12.0px 'Lucida Grande'}</style></p><p>今天的练习有配套知识，请在练习过程中根据语音提示<b>（出现在</b><b>03:16</b><b>）</b>，点击课程旁的“⌃”查看学习。</p><p><img src="https://res.psy-1.com/FkDTZUBmasIvUXLv46OlEj-QJAvZ" style="max-width:100%;"><br></p>`
+                  this.rawHtmlData = `<h3><b>配套知识</b><span><b>-</b></span><b>面对考试结果</b></h3><p>考试是一个持久战，在你努力的过程中，如何面对上一次的考试结果对于提高下一次的成绩很重要，这也是考试能力的一个重要方面。</p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}span.s1 {font: 12.0px Times}span.s2 {font: 12.0px 'Lucida Grande'}</style></p><p>今天的练习有配套知识，请在练习过程中根据语音提示<b>（出现在</b><b>03:16</b><b>）</b>，点击课程旁的“<img src="https://res.psy-1.com/FgWMDszX9jI1NfYEzMJsoHpSX0_F" style="width: 16px;display: inline-block" />”查看学习。</p><p><img src="https://res.psy-1.com/FkDTZUBmasIvUXLv46OlEj-QJAvZ" style="max-width:100%;"><br></p>`
                 }
                   break;
                 case 10002: {
