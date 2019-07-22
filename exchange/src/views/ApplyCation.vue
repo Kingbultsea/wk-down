@@ -225,7 +225,7 @@ normal">把身体瘦下来，同时更喜欢自己，也更加健康。</b><span
                 case 10002: {
                   this.xc = true
                   // xc 第六天 七天考试
-                  this.rawHtmlData = `<h3><b>配套知识</b><span><b>-</b></span><b>应对考前紧张</b></h3><p>很多人在考前容易紧张，又不知道怎么去处理，硬扛着进去考试，常常影响发挥。所以今天来看看，我们能为这方面做点什么。</p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}span.s1 {font: 12.0px Times}span.s2 {font: 12.0px 'Lucida Grande'}</style></p><p>课程开始前，请准备8张纸，分别按照图1、2，在地上摆放好，然后开始今天的课程。练习过程中，可以根据语音提示，点击课程旁的“⌃”查看配套知识。</p><p><img src="https://res.psy-1.com/FtNgDJnHvhVS_cCM9BBRK5nj-lq6" style="max-width:100%;"><br></p>`
+                  this.rawHtmlData = `<h3><b>配套知识</b><span><b>-</b></span><b>应对考前紧张</b></h3><p>很多人在考前容易紧张，又不知道怎么去处理，硬扛着进去考试，常常影响发挥。所以今天来看看，我们能为这方面做点什么。</p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}span.s1 {font: 12.0px Times}span.s2 {font: 12.0px 'Lucida Grande'}</style></p><p>课程开始前，请准备8张纸，分别按照图1、2，在地上摆放好，然后开始今天的课程。练习过程中，可以根据语音提示，点击课程旁的“<img src="https://res.psy-1.com/FgWMDszX9jI1NfYEzMJsoHpSX0_F" style="width: 16px;display: inline-block" />”查看配套知识。</p><p><img src="https://res.psy-1.com/FtNgDJnHvhVS_cCM9BBRK5nj-lq6" style="max-width:100%;"><br></p>`
                 }
                   break;
                 case 10003: {
