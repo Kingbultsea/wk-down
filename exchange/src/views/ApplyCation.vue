@@ -33,7 +33,8 @@
                 appOutside: false,
                 saveFont: 1,
                 title: '七天睡眠瘦身',
-                rawHtmlData: ''
+                rawHtmlData: '',
+                xc: false,
             }
         },
         methods: {
@@ -214,6 +215,25 @@ normal">把身体瘦下来，同时更喜欢自己，也更加健康。</b><span
                 case 29: {
                     this.rawHtmlData = `<h3><span>配套知识 </span><span>— </span>舌头运动示意图</h3><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'PingFang SC'; color: #000000}p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}span.s1 {font: 12.0px 'Songti SC'; color: #000000}span.s2 {font: 11.0px 'Helvetica Neue'}</style></p><p>请先熟悉下图，舌尖对上颚轻柔地来回触碰，在练习过程中尤其注意舌尖对靠近喉咙位置柔软部分的来回触碰，然后进入练习根据引导进行。</p><p style="text-align: center;"><img src="https://res.psy-1.com/FnjphuwtCkAqNAhMDXfgsdeuCi2-" style="max-width:100%;"><b>卷起舌头进行舌头触碰的运动示意图</b><br></p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}</style><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}</style>`
                 }
+                  break;
+                case 10001: {
+                  this.xc = true
+                  // xc 第四天 七天考试
+                  this.rawHtmlData = `<h3><b>配套知识</b><span><b>-</b></span><b>面对考试结果</b></h3><p>考试是一个持久战，在你努力的过程中，如何面对上一次的考试结果对于提高下一次的成绩很重要，这也是考试能力的一个重要方面。</p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}span.s1 {font: 12.0px Times}span.s2 {font: 12.0px 'Lucida Grande'}</style></p><p>今天的练习有配套知识，请在练习过程中根据语音提示<b>（出现在</b><b>03:16</b><b>）</b>，点击课程旁的“⌃”查看学习。</p><p><img src="https://res.psy-1.com/FkDTZUBmasIvUXLv46OlEj-QJAvZ" style="max-width:100%;"><br></p>`
+                }
+                  break;
+                case 10002: {
+                  this.xc = true
+                  // xc 第六天 七天考试
+                  this.rawHtmlData = `<h3><b>配套知识</b><span><b>-</b></span><b>应对考前紧张</b></h3><p>很多人在考前容易紧张，又不知道怎么去处理，硬扛着进去考试，常常影响发挥。所以今天来看看，我们能为这方面做点什么。</p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}span.s1 {font: 12.0px Times}span.s2 {font: 12.0px 'Lucida Grande'}</style></p><p>课程开始前，请准备8张纸，分别按照图1、2，在地上摆放好，然后开始今天的课程。练习过程中，可以根据语音提示，点击课程旁的“⌃”查看配套知识。</p><p><img src="https://res.psy-1.com/FtNgDJnHvhVS_cCM9BBRK5nj-lq6" style="max-width:100%;"><br></p>`
+                }
+                  break;
+                case 10003: {
+                  this.xc = true
+                  // xc 第七天 七天考试
+                  this.rawHtmlData = `<h3><b>配套知识</b><span><b>-</b></span><b>摆放椅子</b></h3><p>今天我们将一起更直接的面对考场。这个练习可以平常进行，熟练之后考试前一天练习一次，帮助你轻松面对第二天的考试。</p><p><style type="text/css">p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Songti SC'}span.s1 {font: 12.0px Times}</style></p><p>课程开始前，需要准备一张空白的模拟试卷以及两把椅子，如下图的方式摆好。</p><p><img src="https://res.psy-1.com/Fn5Eye-1miv_CGmJ8QLIZubOh18M" style="max-width:100%;"><br></p>`
+                }
+                  break;
 
             }
 
@@ -223,6 +243,9 @@ normal">把身体瘦下来，同时更喜欢自己，也更加健康。</b><span
             const isCosleep = Tool.is_cosleep()
             if (!isCosleep) {
                 this.appOutside = true
+            }
+            if (this.xc) {
+              this.appOutside = false
             }
 
             const that = this
