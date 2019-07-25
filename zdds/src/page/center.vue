@@ -570,7 +570,7 @@ export default {
             callAppRouter('Redirect',pre,function(err, result){})
         },
 
-      fifteen () {
+      sixteen () {
         let pre = {
           "code": 1053
         }
