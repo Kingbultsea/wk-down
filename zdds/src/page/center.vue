@@ -197,7 +197,7 @@ export default {
                   one: '',
                   two: ''
               },
-              sixteen
+              sixteen: ''
               },
           dsb:'',
           A:'',
