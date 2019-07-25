@@ -120,6 +120,13 @@
                   </div>
               </div>
 
+              <div v-if="item.code_number == 1053" class="wjh">
+                  <div class="wjh-outer">
+                      <input  @click.stop="showId" v-model="wjh.sixteen" placeholder="activity_link" style="width: 100%;background-color: #eee" />
+                      <button @click.stop="sixteen" type="info">提交</button>
+                  </div>
+              </div>
+
 
 
 
@@ -149,9 +156,9 @@
               </div>
 
 
-              <div v-if="item.code_number == 1053" class="input_container" @click.stop="showId">
+              <!-- <div v-if="item.code_number == 1053" class="input_container" @click.stop="showId">
                   (暂时不做处理)
-              </div>
+              </div> -->
           </li>
         </ul>
     </div>
@@ -189,7 +196,8 @@ export default {
               fifteen: {
                   one: '',
                   two: ''
-              }
+              },
+              sixteen
               },
           dsb:'',
           A:'',
@@ -560,7 +568,17 @@ export default {
                 pre.goods_badge_text = this.wjh.fifteen.two
             }
             callAppRouter('Redirect',pre,function(err, result){})
+        },
+
+      fifteen () {
+        let pre = {
+          "code": 1053
         }
+        if(this.wjh.sixteen){
+          pre.activity_link = this.wjh.sixteen
+        }
+        callAppRouter('Redirect',pre,function(err, result){})
+      }
 
 
 
