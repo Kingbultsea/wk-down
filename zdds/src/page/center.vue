@@ -590,7 +590,7 @@ export default {
 
       seventeen () {
         let pre = {
-          "code": 1053
+          "code": 10029
         }
         if(this.wjh.seventeen){
           pre.star_id = this.wjh.seventeen
