@@ -1,7 +1,7 @@
 <template>
   <div class="smbwz" :style="home_height">
     <img class="ig" src="../assets/华为-H5(1).jpg" />
-    <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=558'" class="a a1"></div>
+    <div @click="oo" class="a a1"></div>
   </div>
 </template>
 
@@ -18,8 +18,34 @@ export default {
   components: {
   },
   methods: {
+    callAppRouter (method, params={}, callback) {
+      let req = {
+        'Method': method,
+        'Data': params
+      }, cbName = `CB_${Date.now()}_${Math.ceil(Math.random() * 10)}`
+      req = JSON.stringify(req)
+      Xinchao.Web[cbName] = (err, result) => {
+        if (callback) {
+          callback(err, result)
+        }
+        delete Xinchao.Web[cbName]
+      }
+      if (/(iPhone|iPad|iPod)/i.test(navigator.userAgent)) {
+        window.webkit.messageHandlers.XinchaoApp.postMessage({
+          req,
+          cbName
+        })
+      } else {
+        XinchaoApp.callRouter(req, cbName)
+      }
+    },
     oo () {
-      window.location = 'https://www.heartide.com/app/redirect?code=10017&goods_id=4'
+      let pre = {
+        'code': 10017,
+        'goods_id': 5
+      }
+      this.callAppRouter('Redirect', pre, function(err, result){})
+      _hmt.push(['_trackEvent', 'nav', 'click', `click`, '558'])
     },
     ooo () {
       window.location = 'https://www.heartide.com/app/redirect?code=10025&goods_id=16'
