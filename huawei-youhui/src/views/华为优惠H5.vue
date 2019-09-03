@@ -26,7 +26,7 @@ export default {
     }
   },
   mounted () {
-    document.title = '嗜睡改善'
+    document.title = '小睡眠&华为专属优惠活动'
   }
 }
 </script>
