@@ -40,12 +40,12 @@ export default {
       }
     },
     oo () {
+      _hmt.push(['_trackEvent', 'nav', 'click', `click`, '558'])
       let pre = {
         'code': 10017,
         'goods_id': 5
       }
       this.callAppRouter('Redirect', pre, function(err, result){})
-      _hmt.push(['_trackEvent', 'nav', 'click', `click`, '558'])
     },
     ooo () {
       window.location = 'https://www.heartide.com/app/redirect?code=10025&goods_id=16'
