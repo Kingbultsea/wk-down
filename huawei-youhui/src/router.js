@@ -11,6 +11,7 @@ import atp from './views/AutoPhase'
 import smc from './views/睡眠改善'
 import zmgs from './views/助眠改善.vue'
 import huawei from './views/华为优惠H5.vue'
+import zqr from './views/中秋返利.vue'
 
 Vue.use(Router)
 
@@ -62,6 +63,11 @@ export default new Router({
       component: smc
     },
     {
+      path: '/smc',
+      name: 'smc',
+      component: smc
+    },
+    {
       path: '/zmgs',
       name: 'zmgs',
       component: zmgs
@@ -70,6 +76,11 @@ export default new Router({
       path: '/hwc',
       name: 'sdas',
       component: huawei
+    },
+    {
+      path: '/zqr', // 中秋返利
+      name: 'zqr',
+      component: zqr
     }
   ]
 })

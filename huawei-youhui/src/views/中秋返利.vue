@@ -1,6 +1,6 @@
 <template>
   <div class="smbwz" :style="home_height">
-    <img class="ig" src="../assets/华为-H5(1).jpg" />
+    <img class="ig" src="../assets/华为活动（中秋返利）-H5(1).png" />
     <div @click="oo" class="a a1"></div>
   </div>
 </template>
@@ -40,7 +40,7 @@ export default {
       }
     },
     oo () {
-      _hmt.push(['_trackEvent', 'nav', 'click', `click`, '558'])
+      _hmt.push(['_trackEvent', 'nav', 'click', `华为中秋`])
       let pre = {
         'code': 10017,
         'goods_id': 5
@@ -57,7 +57,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .smbwz {
     position: relative;
     width: px2html(375px);
@@ -91,7 +91,7 @@ export default {
       transform: translateX(50%);
     }
     >.a1 {
-      top: px2html(585px);
+      top: px2html(755px);
     }
     >.a2 {
       top: px2html(760px);
