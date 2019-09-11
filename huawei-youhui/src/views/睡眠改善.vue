@@ -1,5 +1,5 @@
 <template>
-  <div class="smbwz" :style="home_height">
+  <div class="smbwzf" :style="home_height">
     <img class="ig" src="../assets/H5嗜睡改善.png" />
     <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=575'" class="a a1"></div>
     <div onclick="window.location = 'https://www.heartide.com/statics/redirect?url=576'" class="a a2"></div>
@@ -34,8 +34,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-  .smbwz {
+<style lang="scss" scoped>
+  .smbwzf {
     position: relative;
     width: px2html(375px);
     background-color: #fff8ef;
