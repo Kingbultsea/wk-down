@@ -12,7 +12,7 @@
         <div class="desc" v-html="parseBR(li.detail.resdesc)"></div>
       </div>
       <div class="button" @click="toLink(li.detail.category_id, li.id)">
-        <div class="price">原价{{ li.detail.price }}元</div>
+        <div class="price">原价{{ li.detail.price_origin }}元</div>
       </div>
     </div>
     <div class="desc">
