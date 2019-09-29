@@ -12,6 +12,8 @@ import smc from './views/睡眠改善'
 import zmgs from './views/助眠改善.vue'
 import huawei from './views/华为优惠H5.vue'
 import zqr from './views/中秋返利.vue'
+import gq1 from './views/国庆1.vue'
+import gq2 from './views/国庆2.vue'
 
 Vue.use(Router)
 
@@ -81,6 +83,16 @@ export default new Router({
       path: '/zqr', // 中秋返利
       name: 'zqr',
       component: zqr
+    },
+    {
+      path: '/gq1', // 中秋返利
+      name: 'gq1',
+      component: gq1
+    },
+    {
+      path: '/gq2', // 中秋返利
+      name: 'gq2',
+      component: gq2
     }
   ]
 })
