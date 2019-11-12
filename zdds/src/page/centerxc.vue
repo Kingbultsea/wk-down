@@ -91,7 +91,7 @@ export default {
       autorParseMethod(code, params, index) {
         console.log(index)
         if (!params) {
-          document.location.href = `https://api.psy-1.com/heartide/v3/web/app/redirect?${code}`
+          document.location.href = `https://api.psy-1.com/heartide/v3/web/app/redirect?code=${code}`
           return
         }
         for(let [index, value] of params.entries()) {
