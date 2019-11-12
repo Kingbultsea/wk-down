@@ -105,11 +105,11 @@ export default {
           }
         }
         if (params.length === 0) {
-          document.location.href = `https://api.psy-1.com/heartide/v3/web/app/redirect?${code}`
+          document.location.href = `https://api.psy-1.com/heartide/v3/web/app/redirect?code=${code}`
           return
         }
         const p = params.join('&')
-        document.location.href = `https://api.psy-1.com/heartide/v3/web/app/redirect?${code}&${p}`
+        document.location.href = `https://api.psy-1.com/heartide/v3/web/app/redirect?code=${code}&${p}`
       },
        getCode(){
            var _this = this;
