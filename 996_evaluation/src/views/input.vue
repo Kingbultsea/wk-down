@@ -10,8 +10,8 @@
 
 <script>
 import ButtonI from '@/components/button.vue'
-import Tool from '../js/tool.js'
-import { callAppRouter } from '../js/tool.js'
+import { callAppRouter, Tool } from '../js/tool.js'
+
 /* eslint-disable */
 
 export default {

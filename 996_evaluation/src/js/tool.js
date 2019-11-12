@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-export default class Tool {
+export class Tool {
   // 是否为APP
   static is_cosleep () {
     return this.is_cosleep_android() || this.is_cosleep_ios()

@@ -2,7 +2,7 @@
     <div class="DownLoadPage animated fadeIn">
 
         <img class="ig" src="../assets/img_pic2@3x.png"/>
-        <a target="view_window" href="https://a.app.qq.com/o/simple.jsp?pkgname=com.psyone.brainmusic">
+        <a target="view_window" href="https://www.heartide.com/statics/redirect?url=735">
             <!--<Button id="dl" class="button" >为老爸找回好梦</Button>-->
           <div id="dl" class="button"></div>
 
@@ -13,7 +13,7 @@
 
 <script>
 /* eslint-disable */
-import Tool from '../js/tool.js'
+import { Tool } from '../js/tool.js'
 export default {
     name: "DownLoadPage",
     components:{

@@ -1,10 +1,10 @@
 <template>
-  <div class="evaluation animated fadeIn">
+  <div class="evaluation">
     <img :src="imgLink" style="opacity: 0;position: absolute;right: 0px;bottom:0px;width: 40px;height: 40px">
-    <div class="title">
+    <div class="title cb">
       <div class="desc">{{tDesc}}</div>
       <div class="label">{{index + 1}}/7</div>
-      <img v-show="fuckTest" class="img animated fadeIn" :src="tBg" />
+      <img :class="{'fix-height': index === 5 && fuckTest, 'fix-height2': (index === 4 || index === 6) && fuckTest}" v-show="fuckTest" class="img animated fadeIn" :src="tBg" />
     </div>
     <div class="choice">
       <div class="list" :style="{ transition: '' + tsTime +'s linear' }" v-for="(li, index) in choice" :index="index" @click="clickEvent" :key="index">{{li}}</div>
@@ -38,24 +38,24 @@ export default {
           choice: ['A.学生党', 'B.上班族', 'C.自由职业']
         },
         {
-          title: '忙碌了一天，晚上你会通过哪种方式找回自我 ？',
+          title: '忙碌了一天，晚上你会通过哪种方式找回自我？',
           bg: require('../assets/题目切图_slices/second@3x.png'),
-          choice: ['A.轻轻松松吃盘鸡，王者开黑上分。', 'B.熬夜追剧特别爽，一直追一直爽。', 'C.瑜伽跑步和养生，开启老年生活。', 'D.放松？不存在的，996加班学习ing。']
+          choice: ['A.回到宿舍葛优躺，拿起手机玩玩游戏。', 'B.天天煲剧看小说，简直就要爽翻天了。', 'C.听歌阅读和发呆，做个安静的美少年。', 'D.迷失在作业的海洋，沉迷学习难自拔。']
         },
         {
-          title: '看了一眼时间，已经凌晨01:30了，你会 ？',
+          title: '看了一眼时间，已经01 :30了，你会？',
           bg: require('../assets/题目切图_slices/third@3x.png'),
-          choice: ['A.去洗漱，睡觉觉。', 'B.没尽兴，继续玩。', 'C.还很早，发会呆。', 'D.继续熬，赶进度。']
+          choice: ['A.赶紧睡觉，不然上课没精神。', 'B.在游戏中，寻找人生的乐趣。', 'C.在熬夜中，体验无穷的自由。', 'D.还这么早，疯狂赶作业ing。']
         },
         {
-          title: '熬了一晚上，第二天你是哪种状态 ？',
+          title: '熬了一晚上，第二天白天你是哪种状态？',
           bg: require('../assets/题目切图_slices/forth@3x.png'),
-          choice: ['A.白天捧着保温杯，晚上继续熬。', 'B.休息三五天再熬，实在嗨不动。', 'C.好嗨哟，人生已达到高潮巅峰。', 'D.我是谁，我在哪，我要干什么。']
+          choice: ['A.就算一直犯困，也要打起精神。', 'B.没写完的作业，继续认真的抄。', 'C.好嗨哟，人生已达到高潮巅峰。', 'D.找同学作掩护，在课上睡会觉。']
         },
         {
-          title: '如果接到妈妈的电话，她会叮嘱你什么 ？',
+          title: '你是否有过这些经历？',
           bg: require('../assets/题目切图_slices/fifth@3x.png'),
-          choice: ['A.劝我别再加班了，担心我的身体健康。', 'B.劝我晚上早点睡，别老是熬夜玩游戏。', 'C.担心我学习太晚，让我每天早睡早起。', 'D.没什么可叮嘱的，就是和我聊聊家常。']
+          choice: ['A.通宵打游戏，第二天就被老妈抓到。', 'B.假装学习实则看小说，被老妈识破。', 'C.熬夜学习ing，老妈过来催促睡觉。', 'D.没经历过，一直都是爱睡觉的孩子。']
         },
         {
           title: '仅用眼睛找出入口9对应的出口',
@@ -63,9 +63,9 @@ export default {
           choice: ['A.对应出口是A', 'B.对应出口是B', 'C.对应出口是C', 'D.对应出口是D']
         },
         {
-          title: '对你来说，熬夜的资本是什么 ？',
+          title: '为什么你会选择熬夜？',
           bg: require('../assets/题目切图_slices/seventh@3x.png'),
-          choice: ['A.年轻就是资本，当然可以肆意挥霍。', 'B.姜还是老的辣，既能熬夜也会养生。', 'C.工资以论年薪，30万、100万……', 'D.要什么资本呢，纯粹就是想熬夜了。']
+          choice: ['A.身体倍儿棒，怎么熬都不会坏掉。', 'B.这个夜越熬越爽，一直熬一直爽。', 'C.学霸都在熬夜，我只能奉陪到底。', 'D.我有大把时间，可以肆意的挥霍。']
         }
       ]
     }
@@ -81,6 +81,45 @@ export default {
       this.busyClick = true
       this.index++
       this.resultC.push(e.target.getAttribute('index'))
+
+      // 根据 第二题 需要调整的东西
+      if (this.index === 1) {
+        console.log('5555')
+        const select = e.target.getAttribute('index') // number 0 开始
+        if (parseInt(select) !== 0) { // 非学生党 需要调整文案
+          console.log('调整', select)
+          this.evData[1].title = '忙碌了一天，晚上你会通过哪种方式找回自我？'
+          this.evData[1].choice[0] = 'A.轻轻松松吃盘鸡，王者开黑上分。'
+          this.evData[1].choice[1] = 'B.熬夜追剧特别爽，一直追一直爽。'
+          this.evData[1].choice[2] = 'C.瑜伽跑步和养生，开启老年生活。'
+          this.evData[1].choice[3] = 'D.放松？不存在的，996加班学习ing'
+
+          this.evData[2].title = '看了一眼时间，已经01 :30了，你会？'
+          this.evData[2].choice[0] = 'A.去洗漱，睡觉觉。'
+          this.evData[2].choice[1] = 'B.没尽兴，继续玩。'
+          this.evData[2].choice[2] = 'C.还很早，发会呆。'
+          this.evData[2].choice[3] = 'D.继续熬，赶进度。'
+
+          this.evData[3].title = '熬了一晚上，第二天晚上你是哪种状态？'
+          this.evData[3].choice[0] = 'A.手捧保温杯，继续熬。'
+          this.evData[3].choice[1] = 'B.实在嗨不动，决定早睡不熬夜。'
+          this.evData[3].choice[2] = 'C.人生已达到高潮巅峰。'
+          this.evData[3].choice[3] = 'D.我是谁，我在哪，我要干什么。'
+
+          this.evData[4].title = '如果接到妈妈的电话，她会叮嘱你什么？'
+          this.evData[4].choice[0] = 'A.劝我别再通宵了，担心我的身体健康。'
+          this.evData[4].choice[1] = 'B.劝我晚上早点睡，别老是熬夜玩游戏。'
+          this.evData[4].choice[2] = 'C.担心我工作太晚，让我每天早睡早起。'
+          this.evData[4].choice[3] = 'D.没什么可叮嘱的，就是和我聊聊家常。'
+
+          this.evData[6].title = '对你来说，熬夜的资本是什么？'
+          this.evData[6].choice[0] = 'A.年轻就是资本，当然可以肆意挥霍。'
+          this.evData[6].choice[1] = 'B.姜还是老的辣，既能熬夜也会养生。'
+          this.evData[6].choice[2] = 'C.工资以论年薪，30万、100万……'
+          this.evData[6].choice[3] = 'D.要什么资本呢，纯粹就是想熬夜了。'
+        }
+      }
+
       if (this.index === 7) {
         this.index--
         sessionStorage.setItem('result', JSON.stringify(this.resultC))
@@ -96,6 +135,7 @@ export default {
       // 修改
 
       const delay = navigator.userAgent.toLowerCase().match(/QQ/i) ? 400 : 400
+      this.fuckTest = false
       setTimeout(() => {
         // this.fuckTest = false
         this.busyClick = false
@@ -104,7 +144,7 @@ export default {
         this.tDesc = this.evData[this.index].title
         this.choice = this.evData[this.index].choice
         this.tBg = this.evData[this.index].bg
-        // this.fuckTest = true
+        this.fuckTest = true
       }, delay)
     }
   },
@@ -113,13 +153,18 @@ export default {
     this.imgLink = 'https://images.weserv.nl/?url=' + l
     const img = new Image()
     img.src = 'https://images.weserv.nl/?url=' + encodeURIComponent(l)
-    console.log('?????', this.imgLink)
     sessionStorage.clear()
   }
 }
 </script>
 
 <style lang="scss">
+  .fix-height2 {
+    // margin-top: px2html(12px);
+  }
+  .fix-height {
+    margin-top: px2html(30px);
+  }
   .evaluation {
     width: px2html(375px);
     display: flex;
@@ -142,7 +187,7 @@ export default {
         color: rgba(19, 19, 19, 1);
         font-size: px2html(18px);
         font-weight: 500;
-        width: px2html(200px);
+        width: px2html(220px);
       }
       >.img {
         width: px2html(239px);

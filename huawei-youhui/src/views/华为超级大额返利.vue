@@ -1,6 +1,6 @@
 <template>
-  <div class="smbwz" :style="home_height">
-    <img class="ig" src="../assets/国庆2.jpg" />
+  <div class="hwcjdefl" :style="home_height">
+    <img class="ig" src="../assets/华为-H5(3).jpg" />
     <div @click="oo" class="a a1"></div>
   </div>
 </template>
@@ -18,6 +18,7 @@ export default {
   components: {
   },
   methods: {
+    // https://www.heartide.com/app/redirect?code=10017&goods_id=4#/
     callAppRouter (method, params={}, callback) {
       let req = {
         'Method': method,
@@ -40,7 +41,7 @@ export default {
       }
     },
     oo () {
-      _hmt.push(['_trackEvent', 'nav', 'gq2', `694`])
+      _hmt.push(['_trackEvent', 'nav', 'hw3', `574`])
       let pre = {
         'code': 10017,
         'goods_id': 4
@@ -52,13 +53,13 @@ export default {
     }
   },
   mounted () {
-    document.title = '庆70华诞 好礼不间断'
+    document.title = '超级大额返利'
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  .smbwz {
+  .hwcjdefl {
     position: relative;
     width: px2html(375px);
     background-color: #fff8ef;

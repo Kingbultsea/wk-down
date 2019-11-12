@@ -1,12 +1,13 @@
 <template>
   <div class="home">
+    <img style="position: fixed; bottom: 0px;right: 0px; transform: translateY(100%) translateX(100%)" src="../assets/结果页_slices/wireframe@3x2.png" />
     <img class="img-title" src="../assets/首页/img_title@3x.png"/>
     <img class="img-pic" src="../assets/首页/img_pic@3x.png"/>
     <div class="btn-start" @click="start">
       <img src="../assets/btn_start@3x.png"/>
       <!-- <span>开始测试</span> -->
     </div>
-    <a v-if="!isApp" target="view_window" href="https://a.app.qq.com/o/simple.jsp?pkgname=com.psyone.brainmusic">
+    <a v-if="!isApp" target="view_window" href="https://www.heartide.com/statics/redirect?url=734">
       <img class="btn-tocosleep" src="../assets/首页/btn_tocosleep.gif">
     </a>
   </div>
@@ -16,7 +17,7 @@
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
 /* eslint-disable */
-import Tool from '../js/tool.js'
+import { Tool } from '../js/tool.js'
 
 export default {
   name: 'home',
@@ -30,18 +31,23 @@ export default {
   },
   methods: {
     start () {
-      if (localStorage.getItem('name')) {  //又是上面的失误 看来这个情况挺严重的呀
-        this.$router.push( {path:'/e'} )
-      }
+      this.$parent.qqGetName()
+      try {
+        if (localStorage.getItem('name')) {  //又是上面的失误 看来这个情况挺严重的呀
+          this.$router.push( {path:'/e'} )
+        }
 
-      if (!localStorage.getItem('name')) {
-        setTimeout(() => {
-          if (localStorage.getItem('name')) {  //又是上面的失误 看来这个情况挺严重的呀
-            this.$router.push( {path:'/e'} )
-          } else {
-            this.$router.push( {path:'/input'} )
-          }
-        }, 1000)
+        if (!localStorage.getItem('name')) {
+          setTimeout(() => {
+            if (localStorage.getItem('name')) {  //又是上面的失误 看来这个情况挺严重的呀
+              this.$router.push( {path:'/e'} )
+            } else {
+              this.$router.push( {path:'/input'} )
+            }
+          }, 1000)
+        }
+      } catch(e) {
+        console.log(e)
       }
     }
   },

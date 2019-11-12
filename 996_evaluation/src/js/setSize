@@ -1,4 +1,5 @@
 function setSizeRem () {
+  console.log('123')
   var width = document.documentElement.clientWidth
   var html = document.querySelector('html')
   html.style.fontSize = width / 10 + 'px'

@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build && node cdn",
+    "build": "vue-cli-service build && npm run copy && node cdn",
+    "copy": "COPY /y E:\\heartide\\frontend-wangjianhai\\huawei-youhui\\dist\\index.html E:\\heartideProduct\\frontend-wangjianhai\\huawei-youhui\\dist",
     "lint": "vue-cli-service lint",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit"

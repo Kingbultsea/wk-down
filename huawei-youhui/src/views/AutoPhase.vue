@@ -105,7 +105,7 @@ export default {
           this.endTime = WJH.dateFormat(+(data.free_end + '000'), 'MM月dd日')
           this.list = data.free_list
           for (let i in this.list) {
-            this.allPrice += parseFloat(this.list[i].detail.price)
+            this.allPrice += parseFloat(this.list[i].detail.price_origin)
           }
           this.allPrice = this.allPrice.toFixed(2)
           console.log(res.data.data)

@@ -9,8 +9,7 @@
 <script>
 import Share from '@/js/shareAndGetName'
 import '../node_modules/animate.css/animate.css'
-import Tool from './js/tool.js'
-import { callAppRouter } from './js/tool.js'
+import { Tool } from './js/tool.js'
 
 export default {
   data () {
@@ -27,20 +26,32 @@ export default {
       share.appShare()
       share.rawWeiXinShare(this.url)
     },
+    qqGetName () {
+      const ua = navigator.userAgent.toLocaleLowerCase()
+      if (ua.match(/QQ/i) == 'qq' && !/micromessenger/.test(navigator.userAgent.toLowerCase())) {
+        // console.log('qq', ua.match(/qq/i))
+        // alert('qq', ua.match(/qq/i))
+        this.share.qqGetCode()
+      }
+    },
     test () {
       if (Tool.is_cosleep()) {
+        console.log(' i m app')
         this.share.appGetName()
       }
-      const ua = navigator.userAgent.toLocaleLowerCase()
-      if (/micromessenger/.test(navigator.userAgent.toLowerCase()) || ua.match(/QQ/i) === 'qq') {
-        console.log('?????QQ')
-        this.share.weiXinInit(this.url)
-        this.share.weatherCode()
-        this.share.weiXinGetName(this.url)
+      try {
+        if (/micromessenger/.test(navigator.userAgent.toLowerCase())) { //  || ua.match(/QQ/i) === 'qq'
+          this.share.weiXinInit(this.url)
+          // this.share.weatherCode()
+          // this.share.weiXinGetName(this.url)
+        }
+      } catch (e) {
+        // console.log(e)
       }
     }
   },
   mounted () {
+    // console.log('app')
     this.shareM('有种工伤叫"熬夜"', '测一测你是几级工伤')
     this.test()
     Tool.baidu_statics()

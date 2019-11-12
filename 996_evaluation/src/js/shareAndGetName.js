@@ -1,4 +1,7 @@
 /* eslint-disable */
+
+import axios from 'axios'
+
 export default class Share {
   constructor ({ url, title, desc, pic, dataUrl = null }) {
     console.log('??')
@@ -64,18 +67,15 @@ export default class Share {
             const r = JSON.parse(result)
             localStorage.setItem('name', r.data.name)
             localStorage.setItem('avatar', r.data.avatar)
-            const img = new Image()
-            img.src = 'https://images.weserv.nl/?url=' + r.data.avatar
-            console.log(r.data, 'at')
-            console.log(r.data.avatar, 'at')
+            localStorage.setItem('openid', r.data.openid)
+            // console.log(r, 'hkjhkhk')
+            // console.log(r.data.name, 'fgjhfjhfj')
           } catch (e) {
-            console.log(result.data.avatar)
+            // console.log(result.data.avatar)
             localStorage.setItem('avatar', result.data.avatar)
             localStorage.setItem('name', result.data.name)
-            const img = new Image()
-            img.src = 'https://images.weserv.nl/?url=' + result.data.avatar
-            console.log(result.data.name)
-            console.log(result.data, 'at')
+            localStorage.setItem('openid', result.data.openid)
+            // console.log(result.data.name)
           }
         })
       }
@@ -116,9 +116,13 @@ export default class Share {
         let getSDK = JSON.parse(getappid.response)
         console.log(getSDK.data.wechat_config)
         getSDK.data.wechat_config.debug = false
-
+        const appid = 'wx2dbf7017998b37cb'
+        console.log(' open id ')
         // 正式服 appid wx2dbf7017998b37cb   测试服： wx632d4c99bd681cf3
-        if (bl && !localStorage.getItem('name')) window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2dbf7017998b37cb&redirect_uri=' + encodeURI(location.href.split('#')[0]) +'&response_type=code&scope=snsapi_userinfo#wechart_redirect'
+        localStorage.setItem('ustatus', 'done')
+        if (bl && !localStorage.getItem('name')) window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + appid +  '&redirect_uri=' + encodeURIComponent('https://www.heartide.com/heartidemp/auth/proxy?link_actual=' + encodeURIComponent(location.href.split('#')[0])) +'&response_type=code&scope=snsapi_userinfo#wechart_redirect'
+
+        // if (bl && !localStorage.getItem('name')) window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2dbf7017998b37cb&redirect_uri=' + encodeURI(location.href.split('#')[0]) +'&response_type=code&scope=snsapi_userinfo#wechart_redirect'
         if (!bl || localStorage.getItem('name')) {
           wx.config(getSDK.data.wechat_config)
           that.weiXinShare()
@@ -129,10 +133,26 @@ export default class Share {
     getappid.send()
   }
 
+  parseQuery(url) {
+    let queryObj = {}
+    let reg = /[?&]([^=&#]+)=([^&#]*)/g
+    let querys = url.match(reg)
+    if (querys) {
+      for (let i in querys) {
+        let query = querys[i].split('=')
+        let key = query[0].substr(1)
+        let value = query[1]
+        queryObj[key] ? queryObj[key] = [].concat(queryObj[key], value) : queryObj[key] = value
+      }
+    }
+    return queryObj
+  }
+
   weatherCode () {
     const QRblock = /code=(.+?)&/
-    const code = window.location.href.match(QRblock)
+    const code = this.parseQuery(window.location.href).code
     localStorage.setItem('code', code)
+    // alert('code' + window.location.href + '---' + localStorage.getItem('code'))
     if (code) { return code } else {
       return false
     }
@@ -140,12 +160,9 @@ export default class Share {
 
   weiXinGetName (url) {
     if (!localStorage.getItem('name') || !localStorage.getItem('avatar')) {
-      console.log(code + 'asd你想要的' + localStorage.getItem('code'))
       const code = localStorage.getItem('code').replace(/code=/, '').replace(/\&.+/, '')
-
+      console.log(code + 'asd你想要的' + localStorage.getItem('code'))
       $.get(url + '/web/v1/wechat/user', { code }, (data) => {
-        console.log('偶尔取不到？')
-        console.log(data, '---')
         if (data.hasOwnProperty('data')) {
           console.log(data)
           console.log('设置session')
@@ -197,5 +214,37 @@ export default class Share {
         localStorage.setItem('name', data.data.nickname)
       })
     }
+  }
+
+  qqGetCode () {
+    if (localStorage.getItem('name') && localStorage.getItem('avatar')) {
+      return
+    }
+    const access_token = /access_token=(.+?)&/.exec(window.location.href)
+    console.log(access_token, 'toekn!')
+    if (access_token) {
+      axios.get(`https://api.psy-1.com/web/v1/qq/user?access_token=${access_token[1]}`).then(res => {
+        const data = res.data.data
+        console.log(res.data.data, 'qq')
+        localStorage.setItem('name', data.nickname)
+        localStorage.setItem('avatar', data.figureurl_qq)
+        localStorage.setItem('openid', data.openid)
+      })
+      axios.get(`https://api.psy-1.com/web/v1/qq/user/openid?access_token=${access_token[1]}`).then(res => {
+        if (res.data.status == 1) {
+          localStorage.setItem('openid', res.data.data.openid)
+        }
+      })
+      return
+    }
+    const params = {
+      response_type: 'token',
+      client_id: '101734131',
+      redirect_uri: encodeURI(location.href.split('#')[0])
+    }
+    window.location.href = `https://graph.qq.com/oauth2.0/authorize?response_type=${params.response_type}&client_id=${params.client_id}&redirect_uri=${params.redirect_uri}`
+    // axios.get('https://graph.z.qq.com/moc2/authorize', { params }).then(res => {
+
+    // })
   }
 }

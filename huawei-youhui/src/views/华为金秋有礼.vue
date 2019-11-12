@@ -1,6 +1,6 @@
 <template>
   <div class="hwcjdefl" :style="home_height">
-    <img class="ig" src="../assets/华为-H5(3).jpg" />
+    <img class="ig" src="../assets/华为-H5金秋有礼物.jpg" />
     <div @click="oo" class="a a1"></div>
   </div>
 </template>
@@ -53,7 +53,7 @@ export default {
     }
   },
   mounted () {
-    document.title = '超级大额返利'
+    document.title = '金秋欢购有礼'
   }
 }
 </script>
@@ -92,7 +92,7 @@ export default {
       transform: translateX(50%);
     }
     >.a1 {
-      top: px2html(585px);
+      top: px2html(688px);
     }
     >.a2 {
       top: px2html(760px);
