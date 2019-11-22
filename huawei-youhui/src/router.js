@@ -17,6 +17,7 @@ import gq2 from './views/国庆2.vue'
 import hwcjdefl from './views/华为超级大额返利'
 import hwcjdefl2 from './views/华为金秋有礼'
 import huaweiACV from './views/huawei-20191121'
+import clander from './views/日历送会员'
 
 Vue.use(Router)
 
@@ -111,6 +112,11 @@ export default new Router({
       path: '/hw2a9df', // 中秋返利
       name: 'huaweiACV',
       component: huaweiACV
+    },
+    {
+      path: '/clander',
+      name: 'clander',
+      component: clander
     }
   ]
 })
