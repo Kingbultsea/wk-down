@@ -16,6 +16,7 @@ import gq1 from './views/国庆1.vue'
 import gq2 from './views/国庆2.vue'
 import hwcjdefl from './views/华为超级大额返利'
 import hwcjdefl2 from './views/华为金秋有礼'
+import huaweiACV from './views/huawei-20191121'
 
 Vue.use(Router)
 
@@ -105,6 +106,11 @@ export default new Router({
       path: '/hw3e2', // 中秋返利
       name: 'hw3e2',
       component: hwcjdefl2
+    },
+    {
+      path: '/hw2a9df', // 中秋返利
+      name: 'huaweiACV',
+      component: huaweiACV
     }
   ]
 })
