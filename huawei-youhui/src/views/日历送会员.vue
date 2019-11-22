@@ -1,6 +1,6 @@
 <template>
   <div class="smbwz" :style="home_height">
-    <img class="ig" src="../assets/日历-H5(1).jpg" />
+    <img class="ig" src="../assets/日历-H5(3).jpg" />
     <div @click="o3" class="a a1"></div>
     <div @click="o1" class="a a2"></div>
     <div @click="o3" class="a a3"></div>
@@ -44,18 +44,18 @@ export default {
       }
     },
     o1 () {
-      _hmt.push(['_trackEvent', '2019-11-22', '日历', `772`])
-      let pre = {
-        'code': 10017,
-        'goods_id': 5
-      }
-      this.callAppRouter('Redirect', pre, function(err, result){})
-    },
-    o3 () {
       _hmt.push(['_trackEvent', '2019-11-22', '日历', `773`])
       let pre = {
         'code': 10017,
         'goods_id': 4
+      }
+      this.callAppRouter('Redirect', pre, function(err, result){})
+    },
+    o2 () {
+      _hmt.push(['_trackEvent', '2019-11-22', '日历', `772`])
+      let pre = {
+        'code': 10017,
+        'goods_id': 5
       }
       this.callAppRouter('Redirect', pre, function(err, result){})
     },
@@ -65,7 +65,7 @@ export default {
     }
   },
   mounted () {
-    document.title = '开会员送199月有声日历'
+    document.title = '开会员送199元有声日历'
   }
 }
 </script>
@@ -107,16 +107,16 @@ export default {
       top: px2html(425px);
     }
     >.a2 {
-      top: px2html(500px);
+      top: px2html(482px);
     }
     >.a3 {
       top: px2html(740px);
     }
     >.a4 {
-      top: px2html(810px);
+      top: px2html(800px);
     }
     >.a5 {
-      top: px2html(1360px);
+      top: px2html(1350px);
     }
   }
 </style>
