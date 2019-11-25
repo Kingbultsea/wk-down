@@ -1,6 +1,6 @@
 <template>
   <div class="smbwz" :style="home_height">
-    <img class="ig" src="../assets/日历-H56.jpg" />
+    <img class="ig" src="../assets/日历-H5(9).jpg" />
     <div @click="o3" class="a a1"></div>
     <div @click="o1" class="a a2"></div>
     <div @click="o3" class="a a3"></div>
